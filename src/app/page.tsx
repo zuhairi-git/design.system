@@ -99,7 +99,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Colors</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
-                Our color system is designed to be accessible and flexible, with a range of primary, accent, and semantic colors.
+                Our color system is designed to be accessible and flexible, with theme-specific palettes for light, dark, and colorful modes.
               </p>
               
               <ColorExtractor 
@@ -107,56 +107,217 @@ export default function Home() {
                 description="Upload or drag an image to extract its color palette" 
               />
               
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-12 mb-4">Primary Colors</h3>
-              <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Used for primary brand elements and interactive components.</p>
+              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-12 mb-4">Light Theme</h3>
+              <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Clean and professional color palette for default light mode.</p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-10">
-                {[
-                  { shade: "50", color: "#eefbfd" },
-                  { shade: "100", color: "#d5f4f8" },
-                  { shade: "200", color: "#b0e8f1" },
-                  { shade: "300", color: "#79d6e7" },
-                  { shade: "400", color: "#3fbcd5" },
-                  { shade: "500", color: "#209fba" },
-                  { shade: "600", color: "#16809d" },
-                  { shade: "700", color: "#1e6880" },
-                  { shade: "800", color: "#215669" },
-                  { shade: "900", color: "#204859" },
-                  { shade: "950", color: "#102e3c" },
-                ].map((item, index) => (
-                  <ColorCard 
-                    key={index} 
-                    shade={item.shade} 
-                    color={`primary-${item.shade}`}
-                    name={item.color}
-                  />
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <ColorCard 
+                  shade="Background" 
+                  color="bg-white" 
+                  name="#ffffff"
+                />
+                <ColorCard 
+                  shade="Foreground" 
+                  color="text-neutral-800"
+                  name="#1f2937"
+                />
+                <ColorCard 
+                  shade="Primary" 
+                  color="text-blue-500"
+                  name="#3b82f6"
+                />
+                <ColorCard 
+                  shade="Primary Hover" 
+                  color="text-blue-600"
+                  name="#2563eb"
+                />
+                <ColorCard 
+                  shade="Primary Glow" 
+                  color="shadow-blue-200/20"
+                  name="rgba(59, 130, 246, 0.2)"
+                />
+                <div className="col-span-1 md:col-span-3 card overflow-hidden p-0">
+                  <div 
+                    className="h-24 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
+                  ></div>
+                  <div className="p-3 bg-white dark:bg-neutral-800">
+                    <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Gradient</p>
+                    <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #3b82f6 via #a855f7 to #3b82f6</p>
+                  </div>
+                </div>
               </div>
               
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-10 mb-4">Accent Colors</h3>
-              <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Used to emphasize secondary actions and highlight information.</p>
+              <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mt-8 mb-3">Card Styling</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <ColorCard 
+                  shade="Card From" 
+                  color="bg-neutral-50/90"
+                  name="rgba(253, 253, 253, 0.9)"
+                />
+                <ColorCard 
+                  shade="Card To" 
+                  color="bg-neutral-100/90"
+                  name="rgba(243, 244, 246, 0.9)"
+                />
+                <ColorCard 
+                  shade="Card Border" 
+                  color="border-neutral-200/50"
+                  name="rgba(229, 231, 235, 0.5)"
+                />
+                <ColorCard 
+                  shade="Card Border Hover" 
+                  color="border-blue-300/50"
+                  name="rgba(96, 165, 250, 0.5)"
+                />
+                <ColorCard 
+                  shade="Card Shadow" 
+                  color="shadow-purple-500/10"
+                  name="rgba(168, 85, 247, 0.1)"
+                />
+              </div>
+
+              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-12 mb-4">Dark Theme</h3>
+              <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Sophisticated dark palette for late night browsing.</p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-10">
-                {[
-                  { shade: "50", color: "#fff4ed" },
-                  { shade: "100", color: "#ffe5d4" },
-                  { shade: "200", color: "#ffc8a8" },
-                  { shade: "300", color: "#ffa171" },
-                  { shade: "400", color: "#ff6429" },
-                  { shade: "500", color: "#fe4911" },
-                  { shade: "600", color: "#ef2107" },
-                  { shade: "700", color: "#c61e08" },
-                  { shade: "800", color: "#9d1a0f" },
-                  { shade: "900", color: "#7e1910" },
-                  { shade: "950", color: "#440806" },
-                ].map((item, index) => (
-                  <ColorCard 
-                    key={index} 
-                    shade={item.shade} 
-                    color={`accent-${item.shade}`}
-                    name={item.color}
-                  />
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <ColorCard 
+                  shade="Background" 
+                  color="bg-neutral-900" 
+                  name="#0a0a0a"
+                />
+                <ColorCard 
+                  shade="Foreground" 
+                  color="text-neutral-100"
+                  name="#ededed"
+                />
+                <ColorCard 
+                  shade="Primary" 
+                  color="text-blue-500"
+                  name="#3b82f6"
+                />
+                <ColorCard 
+                  shade="Primary Hover" 
+                  color="text-blue-600"
+                  name="#2563eb"
+                />
+                <ColorCard 
+                  shade="Primary Glow" 
+                  color="shadow-blue-500/20"
+                  name="rgba(59, 130, 246, 0.2)"
+                />
+                <div className="col-span-1 md:col-span-3 card overflow-hidden p-0">
+                  <div 
+                    className="h-24 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
+                  ></div>
+                  <div className="p-3 bg-white dark:bg-neutral-800">
+                    <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Gradient</p>
+                    <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #3b82f6 via #a855f7 to #3b82f6</p>
+                  </div>
+                </div>
+              </div>
+              
+              <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mt-8 mb-3">Card Styling</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <ColorCard 
+                  shade="Card From" 
+                  color="bg-neutral-800/90"
+                  name="rgba(31, 41, 55, 0.9)"
+                />
+                <ColorCard 
+                  shade="Card To" 
+                  color="bg-neutral-900/90"
+                  name="rgba(17, 24, 39, 0.9)"
+                />
+                <ColorCard 
+                  shade="Card Border" 
+                  color="border-neutral-600/50"
+                  name="rgba(75, 85, 99, 0.5)"
+                />
+                <ColorCard 
+                  shade="Card Border Hover" 
+                  color="border-blue-300/50"
+                  name="rgba(96, 165, 250, 0.5)"
+                />
+                <ColorCard 
+                  shade="Card Shadow" 
+                  color="shadow-blue-500/20"
+                  name="rgba(59, 130, 246, 0.2)"
+                />
+              </div>
+              
+              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-12 mb-4">Colorful Theme</h3>
+              <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Vibrant cosmic-inspired palette for creative applications.</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <ColorCard 
+                  shade="Background" 
+                  color="bg-indigo-950" 
+                  name="#050023"
+                />
+                <ColorCard 
+                  shade="Foreground" 
+                  color="text-blue-50"
+                  name="#f0f8ff"
+                />
+                <ColorCard 
+                  shade="Primary" 
+                  color="text-pink-600"
+                  name="#ff00cc"
+                />
+                <ColorCard 
+                  shade="Primary Hover" 
+                  color="text-fuchsia-600"
+                  name="#d100ff"
+                />
+                <ColorCard 
+                  shade="Primary Glow" 
+                  color="shadow-pink-600/30"
+                  name="rgba(255, 0, 204, 0.3)"
+                />
+                <div className="col-span-1 md:col-span-3 card overflow-hidden p-0">
+                  <div 
+                    className="h-24 w-full bg-gradient-to-r from-cyan-400 via-pink-500 to-blue-500"
+                    style={{ background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)" }}
+                  ></div>
+                  <div className="p-3 bg-white dark:bg-neutral-800">
+                    <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Cosmic Gradient</p>
+                    <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)</p>
+                  </div>
+                </div>
+              </div>
+              
+              <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mt-8 mb-3">Card Styling</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <ColorCard 
+                  shade="Card From" 
+                  color="bg-indigo-900/80"
+                  name="rgba(20, 10, 50, 0.8)"
+                />
+                <ColorCard 
+                  shade="Card To" 
+                  color="bg-indigo-950/80"
+                  name="rgba(10, 5, 30, 0.8)"
+                />
+                <ColorCard 
+                  shade="Card Border" 
+                  color="border-purple-500/30"
+                  name="rgba(128, 0, 255, 0.3)"
+                />
+                <ColorCard 
+                  shade="Card Border Hover" 
+                  color="border-cyan-400/60"
+                  name="rgba(0, 255, 255, 0.6)"
+                />
+                <ColorCard 
+                  shade="Card Shadow" 
+                  color="shadow-pink-600/30"
+                  name="rgba(255, 0, 204, 0.3)"
+                />
+                <ColorCard 
+                  shade="Text Accent" 
+                  color="text-pink-600"
+                  name="#ff00cc"
+                />
               </div>
             </div>
           </AnimatedSection>
