@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// Image import removed as it's not being used
 import ThemeToggle from './ThemeToggle';
 
 type HeaderProps = {
@@ -126,9 +126,8 @@ export default function Header({ title }: HeaderProps) {
                 href="#overview" 
                 className="flex items-center" 
                 onClick={() => handleNavLinkClick('overview')}
-              >
-                <h1 className="font-heading font-bold text-lg text-neutral-950 dark:text-white">
-                  Alux
+              >                <h1 className="font-heading font-bold text-lg text-neutral-950 dark:text-white">
+                  {title || "Alux"}
                 </h1>
               </Link>
             </div>

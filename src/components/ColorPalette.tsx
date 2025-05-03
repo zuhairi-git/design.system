@@ -51,8 +51,9 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
   const isDirectColorValue = () => {
     return color.startsWith('#') || color.startsWith('rgb');
   };
-
-  // Determine text color based on the background color
+  // This function determines text contrast based on background color
+  // Note: Function is now commented out as it's not being used
+  /* 
   const getContrastColor = () => {
     // For simplicity, we'll use a simple check
     // Light colors get dark text, dark colors get light text
@@ -61,6 +62,7 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
     }
     return "text-white";
   };
+  */
 
   return (
     <div 

@@ -1,15 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type AboutModalProps = {
   isOpen: boolean;
-  onClose: () => void;
+  onCloseAction: () => void;  // Renamed to indicate it's an action
 };
 
-export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
+export default function AboutModal({ isOpen, onCloseAction: onClose }: AboutModalProps) {
   // Close modal when Escape key is pressed
   useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
@@ -104,11 +104,10 @@ export default function AboutModal({ isOpen, onClose }: AboutModalProps) {
               <div className="flex-1">
                 <h2 className="text-2xl font-heading font-bold text-neutral-950 dark:text-white mb-3">Ali Al-Zuhairi</h2>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-4">Product Owner & Design Leader — Helsinki, Finland</p>
-                
-                <p className="text-neutral-700 dark:text-neutral-300 mb-6">
-                  I'm a passionate dreamer and creative soul who believes in the power of design to transform ideas into meaningful experiences. 
-                  With my journey spanning across continents – from Damascus to Helsinki – I've learned that great design is about more than 
-                  just aesthetics; it's about touching hearts and solving real problems.
+                  <p className="text-neutral-700 dark:text-neutral-300 mb-6">
+                  I&apos;m a passionate dreamer and creative soul who believes in the power of design to transform ideas into meaningful experiences. 
+                  With my journey spanning across continents – from Damascus to Helsinki – I&apos;ve learned that great design is about more than 
+                  just aesthetics; it&apos;s about touching hearts and solving real problems.
                 </p>
                 
                 {/* Skills section */}
