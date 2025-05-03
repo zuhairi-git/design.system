@@ -78,12 +78,11 @@ export default function Sidebar() {
         className={`fixed inset-0 bg-neutral-950 bg-opacity-50 md:hidden transition-opacity z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setIsOpen(false)}
       ></div>
-      
-      {/* Sidebar */}
+        {/* Sidebar */}
       <div 
-        className={`fixed md:sticky top-0 h-full md:h-screen w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-40 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+        className={`fixed md:sticky top-16 h-[calc(100vh-64px)] md:h-[calc(100vh-64px)] w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-20 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
-        <div>
+        <div className="border-b border-neutral-300 dark:border-neutral-800 flex justify-end">
           {/* Logo and Design System title removed */}
           <button 
             onClick={() => setIsOpen(false)}
@@ -116,8 +115,7 @@ export default function Sidebar() {
             </svg>
           </div>
         </div>
-        
-        <nav className="h-[calc(100vh-130px)] overflow-y-auto">
+          <nav className="h-[calc(100vh-180px)] overflow-y-auto">
           <ul className="py-2">
             {filteredNavItems.map((item) => (
               <li key={item.id}>

@@ -10,7 +10,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header title="Alux Design System" />
       
-      <div className="flex flex-1">
+      <div className="flex flex-1 pt-0">
         <Sidebar />
         
         <main className="flex-1 md:ml-[280px] p-0">
