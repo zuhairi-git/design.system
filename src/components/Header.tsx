@@ -112,15 +112,14 @@ export default function Header({ title }: HeaderProps) {
 
   return (
     <>      <header 
-        className={`sticky top-0 z-30 w-full bg-white dark:bg-neutral-900 border-b transition-all duration-300 ${
+        className={`sticky top-0 z-40 w-full bg-white dark:bg-neutral-900 border-b transition-all duration-300 ${
           scrolled 
             ? 'border-neutral-300 dark:border-neutral-800 shadow-sm backdrop-blur-md bg-opacity-90 dark:bg-opacity-90' 
             : 'border-transparent'
         }`}
       >        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">{/* Left side - Alux title */}
-            <div className="flex items-center">
-              <Link 
+            <div className="flex items-center">              <Link 
                 href="#overview" 
                 className="flex items-center" 
                 onClick={() => handleNavLinkClick('overview')}
@@ -129,9 +128,6 @@ export default function Header({ title }: HeaderProps) {
                   {title || "Alux"}
                 </h1>
               </Link>
-              <span className="md:hidden ml-2 px-2 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 text-xs font-medium rounded">
-                Design System
-              </span>
             </div>
               {/* Desktop navigation */}
             <nav className="hidden md:flex items-center space-x-1">
