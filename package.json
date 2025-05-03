@@ -6,9 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "npx wrangler deploy --assets=./.next/static",
-    "deploy:worker": "cd workers-site && npm install && npx wrangler deploy"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "15.3.1",
