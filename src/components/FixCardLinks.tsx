@@ -5,9 +5,8 @@ import { useEffect } from 'react';
 export default function FixCardLinks() {
   useEffect(() => {
     // Function to make feature cards fully clickable
-    const makeFeatureCardsClickable = () => {
-      // Find all cards with links inside them
-      const cards = document.querySelectorAll('.card');
+    const makeFeatureCardsClickable = () => {      // Find all cards with links inside them
+      const cards = document.querySelectorAll('.card') as NodeListOf<HTMLElement>;
       
       cards.forEach(card => {
         // Find the link inside the card
@@ -40,9 +39,8 @@ export default function FixCardLinks() {
               window.location.href = href;
             }
           });
-          
-          // Add styling to indicate the card is clickable
-          card.style.cursor = 'pointer';
+            // Add styling to indicate the card is clickable
+          (card as HTMLElement).style.cursor = 'pointer';
         }
       });
     };
