@@ -11,21 +11,19 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <FixCardLinks />      
-      <Header title="Alux Design System" />
-        <div className="flex flex-1 pt-0 relative">
+      <Header title="Alux Design System" />        <div className="flex flex-1 pt-0 relative">
         <Sidebar />
         
-        <main className="flex-1 w-full p-0 md:pl-[280px]">
-          {/* Overview Section */}          <AnimatedSection id="overview" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
+        <main className="flex-1 w-full p-0 md:pl-[280px] overflow-x-hidden max-w-[100vw]">          {/* Overview Section */}          <AnimatedSection id="overview" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="w-full">
-              <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-6">
+              <h1 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-4 sm:mb-6">
                 Alux Design System
               </h1>
               
-              <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mb-12">
+              <p className="font-body text-base sm:text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mb-8 sm:mb-12">
                 A comprehensive design system featuring a complete set of guidelines, components, and resources to create consistent and beautiful user interfaces.
               </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 animate-fade-in">
                 {[
                   {
                     title: "Colors",
@@ -83,7 +81,7 @@ export default function Home() {
           </AnimatedSection>
           
           {/* Colors Section */}
-          <AnimatedSection id="colors" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="fade-in">
+          <AnimatedSection id="colors" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="fade-in">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Colors</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -310,7 +308,7 @@ export default function Home() {
             </div>
           </AnimatedSection>
             {/* Typography Section */}
-          <AnimatedSection id="typography" className="px-6 py-12 md:px-10 lg:px-20" animation="fade-in">
+          <AnimatedSection id="typography" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20" animation="fade-in">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Typography</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -431,7 +429,7 @@ export default function Home() {
             </div>
           </AnimatedSection>
             {/* Spacing Section */}
-          <AnimatedSection id="spacing" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="fade-in">
+          <AnimatedSection id="spacing" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="fade-in">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Spacing</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -455,7 +453,7 @@ export default function Home() {
                 ))}              </div>            </div>
           </AnimatedSection>
             {/* Breakpoints Section */}
-          <AnimatedSection id="breakpoints" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
+          <AnimatedSection id="breakpoints" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Breakpoints</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -483,7 +481,7 @@ export default function Home() {
             </div>
           </AnimatedSection>
             {/* Shadows Section */}
-          <AnimatedSection id="shadows" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="slide-up">
+          <AnimatedSection id="shadows" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Drop Shadows</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -514,7 +512,7 @@ export default function Home() {
             </div>          </AnimatedSection>
           
           {/* Tints Section */}
-          <AnimatedSection id="tints" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
+          <AnimatedSection id="tints" className="px-4 sm:px-6 py-10 sm:py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Tints</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">

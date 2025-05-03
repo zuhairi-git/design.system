@@ -12,7 +12,7 @@ interface FeatureCardProps {
 export default function FeatureCard({ title, description, icon, link }: FeatureCardProps) {
   return (
     <a
-      href={link}      className="p-6 relative overflow-hidden group block no-underline cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-all duration-300 hover:animate-hover-lift"
+      href={link}      className="p-4 sm:p-6 relative overflow-hidden group block no-underline cursor-pointer rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-md transition-all duration-300 hover:animate-hover-lift"
       onClick={(e) => {
         // Use client-side navigation for smoother scrolling to the section
         e.preventDefault();
@@ -24,10 +24,9 @@ export default function FeatureCard({ title, description, icon, link }: FeatureC
           window.history.pushState(null, '', link);
         }
       }}
-    >
-      <div className="text-4xl mb-3">{icon}</div>
-      <h2 className="font-heading font-bold text-xl text-primary-700 dark:text-primary-400 mb-2">{title}</h2>
-      <p className="font-body text-neutral-700 dark:text-neutral-400 mb-6">{description}</p>
+    >      <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">{icon}</div>
+      <h2 className="font-heading font-bold text-lg sm:text-xl text-primary-700 dark:text-primary-400 mb-1.5 sm:mb-2">{title}</h2>
+      <p className="font-body text-sm sm:text-base text-neutral-700 dark:text-neutral-400 mb-4 sm:mb-6">{description}</p>
       <span 
         className="font-body text-sm font-medium text-primary-700 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 inline-flex items-center"
       >
