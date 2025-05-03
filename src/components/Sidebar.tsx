@@ -24,8 +24,15 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('overview');
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isClient, setIsClient] = useState(false);
+  
+  // Set default state only on client side to avoid hydration mismatch
+  useEffect(() => {
+    setIsClient(true);
+    setActiveSection('overview');
+  }, []);
   
   // Filter nav items based on search term
   const filteredNavItems = navItems.filter(item => 
@@ -40,7 +47,7 @@ export default function Sidebar() {
 
       sections.forEach(section => {
         if (section) {
-          const sectionTop = section.offsetTop;
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY;
           const sectionHeight = section.clientHeight;
           if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             setActiveSection(section.id);
@@ -126,9 +133,8 @@ export default function Sidebar() {
                   onClick={() => {
                     setIsOpen(false);
                     setActiveSection(item.id);
-                  }}
-                  className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors border-l-4 ${
-                    activeSection === item.id 
+                  }}                  className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors border-l-4 ${
+                    isClient && activeSection === item.id 
                       ? 'bg-primary-50 text-primary-700 border-primary-700 dark:bg-primary-900/20 dark:text-primary-300 dark:border-primary-400' 
                       : 'border-transparent text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800'
                   }`}

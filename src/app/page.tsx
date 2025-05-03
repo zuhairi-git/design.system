@@ -3,6 +3,10 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import ColorCard from "@/components/ColorCard";
 import TypographyCard from "@/components/TypographyCard";
+import AnimatedSection from "@/components/AnimatedSection";
+import ColorExtractor from "@/components/ColorExtractor";
+import ColorPalette from "@/components/ColorPalette";
+import CodeSnippet from "@/components/CodeSnippet";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,7 +19,7 @@ export default function Home() {
         
         <main className="flex-1 p-0 md:ml-[280px]">
           {/* Overview Section */}
-          <section id="overview" className="px-6 py-12 md:px-10 lg:px-20">
+          <AnimatedSection id="overview" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-6">
                 Alux Design System
@@ -88,17 +92,22 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </section>
+          </AnimatedSection>
           
           {/* Colors Section */}
-          <section id="colors" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30">
+          <AnimatedSection id="colors" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="fade-in">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Colors</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
                 Our color system is designed to be accessible and flexible, with a range of primary, accent, and semantic colors.
               </p>
               
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-8 mb-4">Primary Colors</h3>
+              <ColorExtractor 
+                title="Color Picker" 
+                description="Upload or drag an image to extract its color palette" 
+              />
+              
+              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-12 mb-4">Primary Colors</h3>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Used for primary brand elements and interactive components.</p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-10">
@@ -150,7 +159,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </section>
+          </AnimatedSection>
           
           {/* Typography Section */}
           <section id="typography" className="px-6 py-12 md:px-10 lg:px-20">
