@@ -37,22 +37,24 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
     return "text-white dark:text-white";
   };
 
-  return (
-    <div 
-      className={`relative group hover-scale card overflow-hidden`}
+  return (    <div
+      className={`relative group hover-scale card overflow-hidden border border-neutral-200 dark:border-neutral-800`}
       onClick={copyToClipboard}
-      style={{ backgroundColor: getActualColor() }}
+      style={{ 
+        backgroundColor: getActualColor(),
+        boxShadow: '0 2px 10px rgba(0,0,0,0.05)'
+      }}
     >      <div 
-        className={`h-24 w-full transition-transform group-hover:scale-105 relative flex items-center justify-center ${color}`} 
-      >        <span className="font-mono text-xs font-medium px-2.5 py-1 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white">
+        className={`h-24 w-full transition-transform group-hover:scale-105 relative flex items-center justify-center ${color}`}
+        style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1)' }}
+      >        <span className="font-mono text-xs font-medium px-2.5 py-1 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white shadow-sm">
           {name}
         </span>
-      </div>
-      <div className={`p-3 border-t border-neutral-300/20 dark:border-neutral-800/40 ${getContrastColor()}`}>
+      </div>      <div className={`p-3 border-t border-neutral-300/20 dark:border-neutral-800/40 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white`}>
         <div className="flex justify-between items-center mb-1">
-          <p className={`font-body text-xs opacity-80`}>{shade}</p>
+          <p className={`font-body text-xs text-neutral-700 dark:text-neutral-300`}>{shade}</p>
         </div>
-        <p className={`font-body text-sm font-medium`}>{color}</p></div><div 
+        <p className={`font-body text-sm font-medium text-neutral-900 dark:text-neutral-50`}>{color}</p></div><div 
         className="absolute top-2 right-2 flex items-center justify-center"
       >
         <span 

@@ -67,11 +67,12 @@ export default function Sidebar() {
   }, []);  return (
     <>      {/* Mobile Navigation Toggle */}      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed bottom-4 right-4 z-[60] bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg flex items-center justify-center"
+        className="md:hidden fixed bottom-4 right-4 z-[60] bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg flex items-center justify-center border-2 border-white dark:border-neutral-800"
         aria-label="Toggle menu"
+        style={{ backgroundColor: 'var(--primary-600)' }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: 'white' }}>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>{/* Mobile Overlay */}
       <div 
@@ -79,8 +80,8 @@ export default function Sidebar() {
         onClick={() => setIsOpen(false)}
       ></div>
         {/* Sidebar */}      <div 
-        className={`fixed top-0 h-screen w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-50 transform transition-transform duration-300 pt-16 ${isOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full md:translate-x-0'}`}
-      ><div className="border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-end p-2">
+        className={`fixed top-0 h-screen w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-50 transform transition-transform duration-300 ${isOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full md:translate-x-0'}`}      ><div className="h-16 border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-between p-2">
+          <div className="font-heading font-semibold text-neutral-950 dark:text-neutral-50 ml-2">Navigation</div>
           <button 
             onClick={() => setIsOpen(false)}
             className="md:hidden text-neutral-700 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white p-1"
@@ -111,7 +112,7 @@ export default function Sidebar() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
-        </div>          <nav className="h-[calc(100vh-170px)] overflow-y-auto">
+        </div>          <nav className="h-[calc(100vh-120px)] overflow-y-auto">
           <ul className="py-2">
             {filteredNavItems.length > 0 ? (
               filteredNavItems.map((item) => (

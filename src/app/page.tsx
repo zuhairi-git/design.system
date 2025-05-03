@@ -95,8 +95,7 @@ export default function Home() {
               
               <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-12 mb-4">Light Theme</h3>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Clean and professional color palette for default light mode.</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
                 <ColorCard 
                   shade="Background" 
                   color="bg-white" 
