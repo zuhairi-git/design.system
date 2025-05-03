@@ -4,10 +4,13 @@ import ColorCard from "@/components/ColorCard";
 import TypographyCard from "@/components/TypographyCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import ColorExtractor from "@/components/ColorExtractor";
+import FeatureCard from "@/components/FeatureCard";
+import FixCardLinks from "@/components/FixCardLinks";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      <FixCardLinks />      
       <Header title="Alux Design System" />
       
       <div className="flex flex-1 pt-0">
@@ -24,8 +27,7 @@ export default function Home() {
               <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mb-12">
                 A comprehensive design system featuring a complete set of guidelines, components, and resources to create consistent and beautiful user interfaces.
               </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
                 {[
                   {
                     title: "Colors",
@@ -68,23 +70,15 @@ export default function Home() {
                     description: "Transparent layers for highlighting elements",
                     link: "#tints",
                     icon: "🖌️"
-                  },
+                  }
                 ].map((item, index) => (
-                  <div 
+                  <FeatureCard
                     key={index}
-                    className="card hover-scale p-6 transition-all relative overflow-hidden group"
-                  >
-                    <div className="text-4xl mb-3">{item.icon}</div>
-                    <h2 className="font-heading font-bold text-xl text-primary-700 dark:text-primary-400 mb-2">{item.title}</h2>
-                    <p className="font-body text-neutral-700 dark:text-neutral-400 mb-6">{item.description}</p>
-                    <a 
-                      href={item.link}
-                      className="font-body text-sm font-medium text-primary-700 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 inline-flex items-center"
-                    >
-                      View {item.title} <span className="ml-1">→</span>
-                    </a>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
+                    title={item.title}
+                    description={item.description}
+                    icon={item.icon}
+                    link={item.link}
+                  />
                 ))}
               </div>
             </div>
@@ -317,9 +311,8 @@ export default function Home() {
               </div>
             </div>
           </AnimatedSection>
-          
-          {/* Typography Section */}
-          <section id="typography" className="px-6 py-12 md:px-10 lg:px-20">
+            {/* Typography Section */}
+          <AnimatedSection id="typography" className="px-6 py-12 md:px-10 lg:px-20" animation="fade-in">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Typography</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -436,13 +429,11 @@ export default function Home() {
                   lineHeight="1.5"
                   sampleText="الثعلب البني السريع يقفز فوق الكلب الكسول. هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة."
                   language="ar"
-                />
-              </div>
+                />              </div>
             </div>
-          </section>
-          
-          {/* Spacing Section */}
-          <section id="spacing" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30">
+          </AnimatedSection>
+            {/* Spacing Section */}
+          <AnimatedSection id="spacing" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="fade-in">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Spacing</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -463,13 +454,10 @@ export default function Home() {
                       ></div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-          
-          {/* Breakpoints Section */}
-          <section id="breakpoints" className="px-6 py-12 md:px-10 lg:px-20">
+                ))}              </div>            </div>
+          </AnimatedSection>
+            {/* Breakpoints Section */}
+          <AnimatedSection id="breakpoints" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Breakpoints</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -495,10 +483,9 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </section>
-          
-          {/* Shadows Section */}
-          <section id="shadows" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30">
+          </AnimatedSection>
+            {/* Shadows Section */}
+          <AnimatedSection id="shadows" className="px-6 py-12 md:px-10 lg:px-20 bg-neutral-50 dark:bg-neutral-900/30" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Drop Shadows</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -526,11 +513,10 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-          </section>
+            </div>          </AnimatedSection>
           
           {/* Tints Section */}
-          <section id="tints" className="px-6 py-12 md:px-10 lg:px-20">
+          <AnimatedSection id="tints" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="max-w-7xl mx-auto">
               <h2 className="font-heading font-bold text-3xl text-neutral-950 dark:text-white mb-4">Tints</h2>
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-10 max-w-3xl">
@@ -554,14 +540,13 @@ export default function Home() {
                       <span className={`font-body font-medium ${tint.textColor}`}>
                         {tint.name}
                       </span>
-                    </div>
-                    <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 font-medium">{tint.name}</p>
+                    </div>                    <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 font-medium">{tint.name}</p>
                     <p className="font-body text-xs text-neutral-600 dark:text-neutral-400">{tint.color}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </section>
+          </AnimatedSection>
         </main>
       </div>
       
