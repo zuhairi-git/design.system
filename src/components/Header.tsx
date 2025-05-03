@@ -116,19 +116,17 @@ export default function Header({ title }: HeaderProps) {
             ? 'border-neutral-300 dark:border-neutral-800 shadow-sm backdrop-blur-md bg-opacity-90 dark:bg-opacity-90' 
             : 'border-transparent'
         }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">            {/* Logo and title */}
+      >        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">            
+            {/* Left side - Alux title */}
             <div className="flex items-center">
               <Link 
                 href="#overview" 
                 className="flex items-center" 
                 onClick={() => handleNavLinkClick('overview')}
-                // No conditional classes to avoid hydration mismatch
               >
-                <Image src="/globe.svg" alt="Logo" width={24} height={24} className="text-primary-700 dark:text-primary-400" />
-                <h1 className="ml-2 font-heading font-bold text-lg text-neutral-950 dark:text-white hidden sm:block">
-                  {title}
+                <h1 className="font-heading font-bold text-lg text-neutral-950 dark:text-white">
+                  Alux
                 </h1>
               </Link>
             </div>

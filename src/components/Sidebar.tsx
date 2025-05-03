@@ -60,18 +60,16 @@ export default function Sidebar() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  return (
+  }, []);  return (
     <>
       {/* Mobile Navigation Toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed top-4 right-4 z-50 bg-primary-700 text-white p-2 rounded-lg shadow-md"
+        className="md:hidden fixed bottom-4 right-4 z-50 bg-primary-700 text-white p-3 rounded-full shadow-lg"
         aria-label="Toggle menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
         </svg>
       </button>
 
@@ -80,18 +78,13 @@ export default function Sidebar() {
         className={`fixed inset-0 bg-neutral-950 bg-opacity-50 md:hidden transition-opacity z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setIsOpen(false)}
       ></div>
-
+      
       {/* Sidebar */}
       <div 
-        className={`fixed md:sticky top-0 h-full md:h-screen w-[280px] max-w-[80vw] md:max-w-none bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-50 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+        className={`fixed md:sticky top-0 h-full md:h-screen w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-40 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
-        <div className="p-4 border-b border-neutral-300 dark:border-neutral-800 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/globe.svg" alt="Logo" width={24} height={24} className="text-primary-700" />
-            <h1 className="text-lg font-heading font-bold text-neutral-950 dark:text-white">
-              Design System
-            </h1>
-          </Link>
+        <div>
+          {/* Logo and Design System title removed */}
           <button 
             onClick={() => setIsOpen(false)}
             className="md:hidden text-neutral-700 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white"
@@ -129,11 +122,10 @@ export default function Sidebar() {
             {filteredNavItems.map((item) => (
               <li key={item.id}>
                 <Link
-                  href={`#${item.id}`}
-                  onClick={() => {
-                    setIsOpen(false);
+                  href={`#${item.id}`}                  onClick={() => {
                     setActiveSection(item.id);
-                  }}                  className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors border-l-4 ${
+                    setIsOpen(false); // Close sidebar on mobile when clicking a link
+                  }}className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors border-l-4 ${
                     isClient && activeSection === item.id 
                       ? 'bg-primary-50 text-primary-700 border-primary-700 dark:bg-primary-900/20 dark:text-primary-300 dark:border-primary-400' 
                       : 'border-transparent text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800'
