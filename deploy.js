@@ -9,6 +9,13 @@ console.log('Starting deployment process...');
 const nodeVersion = process.version;
 console.log(`Current Node.js version: ${nodeVersion}`);
 
+// Ensure the output directory exists
+const outDir = path.join(__dirname, 'out');
+if (!fs.existsSync(outDir)) {
+  console.log('Creating output directory...');
+  fs.mkdirSync(outDir, { recursive: true });
+}
+
 const requiredVersion = '18.18.0';
 console.log(`Required Node.js version: ${requiredVersion}`);
 
@@ -32,7 +39,7 @@ try {
 // Deploy to Cloudflare Pages
 try {
   console.log('Deploying to Cloudflare Pages...');
-  execSync('npx wrangler pages publish .next --project-name alux-design-system', { stdio: 'inherit' });
+  execSync('npx wrangler pages publish out --project-name alux-design-system', { stdio: 'inherit' });
   console.log('Deployment completed successfully.');
 } catch (error) {
   console.error('Deployment failed:', error);

@@ -4,13 +4,12 @@
   "private": true,
   "engines": {
     "node": ">=18.18.0"
-  },
-  "scripts": {
+  },  "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "wrangler pages publish .next --project-name alux-design-system"
+    "deploy": "wrangler pages publish out --project-name alux-design-system"
   },
   "dependencies": {
     "next": "15.3.1",

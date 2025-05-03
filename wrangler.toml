@@ -1,0 +1,19 @@
+name = "alux-design-system"
+compatibility_date = "2025-05-03"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./out"
+
+[build.upload]
+format = "directory"
+
+[env]
+NODE_VERSION = "18.18.0"
+
+# Configure Pages
+[pages_build]
+pages_build_output_dir = "out"
