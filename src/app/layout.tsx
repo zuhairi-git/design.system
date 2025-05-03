@@ -36,7 +36,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="/script.js" defer></script>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </head>
       <body

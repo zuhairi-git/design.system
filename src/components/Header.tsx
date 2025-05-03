@@ -16,11 +16,13 @@ export default function Header({ title }: HeaderProps) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
-
   // Mark when component is mounted on client
   useEffect(() => {
     setIsClient(true);
-    setActiveSection('overview'); // Set initial active section only on client
+    // Delay setting the active section to avoid hydration mismatch
+    setTimeout(() => {
+      setActiveSection('overview'); // Set initial active section only on client after hydration
+    }, 0);
   }, []);
 
   // Handle language toggle

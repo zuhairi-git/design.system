@@ -24,14 +24,18 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  // Start with null to avoid hydration mismatch between server and client
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isClient, setIsClient] = useState(false);
-  
-  // Set default state only on client side to avoid hydration mismatch
+    // Set default state only on client side to avoid hydration mismatch
   useEffect(() => {
     setIsClient(true);
-    setActiveSection('overview');
+    // Only set active section after client-side hydration is complete
+    // to avoid hydration mismatches with server rendering
+    setTimeout(() => {
+      setActiveSection('overview');
+    }, 0);
   }, []);
   
   // Filter nav items based on search term
@@ -118,12 +122,13 @@ export default function Sidebar() {
           <nav className="h-[calc(100vh-180px)] overflow-y-auto">
           <ul className="py-2">
             {filteredNavItems.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={`#${item.id}`}                  onClick={() => {
+              <li key={item.id}>                <Link
+                  href={`#${item.id}`}
+                  onClick={() => {
                     setActiveSection(item.id);
                     setIsOpen(false); // Close sidebar on mobile when clicking a link
-                  }}className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors border-l-4 ${
+                  }}
+                  className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors border-l-4 ${
                     isClient && activeSection === item.id 
                       ? 'bg-primary-50 text-primary-700 border-primary-700 dark:bg-primary-900/20 dark:text-primary-300 dark:border-primary-400' 
                       : 'border-transparent text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800'
