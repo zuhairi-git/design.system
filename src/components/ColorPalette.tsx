@@ -52,17 +52,25 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
       onClick={copyToClipboard}
       className="rounded-md overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer relative group"
     >      <div 
-        className="h-24 flex items-center justify-center"
+        className="h-24 flex items-center justify-center relative"
         style={{ backgroundColor: color }}
       >
-        <div className={`absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${copied ? 'opacity-100' : ''}`}>
-          <span className={`text-white text-sm font-medium px-2 py-1 rounded-full bg-black bg-opacity-70 ${copied ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}>
-            {copied ? 'Copied!' : 'Click to copy'}
+        <div className="absolute top-2 right-2 flex items-center justify-center">
+          <span 
+            className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 cursor-pointer hover:text-primary-500 transition-colors"
+            style={{ fontSize: '18px' }}
+          >
+            {copied ? 'check' : 'content_copy'}
           </span>
         </div>
-      </div>      <div className="p-2 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-        <p className={`text-xs font-body ${textColor}`}>{name}</p>
-        <p className="text-xs font-medium font-body text-neutral-900 dark:text-neutral-200">{color}</p>
+      </div>      
+      <div className="p-2 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
+        <div className="flex justify-between items-center">
+          <p className={`text-xs font-body ${textColor}`}>{name}</p>
+          <p className="font-mono text-xs font-medium bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded">
+            {color}
+          </p>
+        </div>
       </div>
     </div>
   );
