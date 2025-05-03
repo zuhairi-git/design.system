@@ -12,14 +12,12 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <FixCardLinks />      
       <Header title="Alux Design System" />
-      
-      <div className="flex flex-1 pt-0">
+        <div className="flex flex-1 pt-0 relative">
         <Sidebar />
         
-        <main className="flex-1 md:ml-[280px] p-0">
-          {/* Overview Section */}
-          <AnimatedSection id="overview" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
-            <div className="max-w-7xl mx-auto">
+        <main className="flex-1 w-full p-0 md:pl-[280px]">
+          {/* Overview Section */}          <AnimatedSection id="overview" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
+            <div className="w-full">
               <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-6">
                 Alux Design System
               </h1>
@@ -551,7 +549,7 @@ export default function Home() {
       </div>
       
       <footer className="bg-neutral-950 text-white py-10 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <h2 className="font-heading font-bold text-xl mb-2">Alux Design System</h2>
             <p className="font-body text-neutral-400 text-sm">© {new Date().getFullYear()} All rights reserved</p>

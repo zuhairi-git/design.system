@@ -82,9 +82,8 @@ export default function Sidebar() {
         className={`fixed inset-0 bg-neutral-950 bg-opacity-50 md:hidden transition-opacity z-40 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         onClick={() => setIsOpen(false)}
       ></div>
-        {/* Sidebar */}
-      <div 
-        className={`fixed md:sticky top-16 h-[calc(100vh-64px)] md:h-[calc(100vh-64px)] w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-20 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+        {/* Sidebar */}      <div 
+        className={`fixed top-16 h-[calc(100vh-64px)] w-[280px] bg-white dark:bg-neutral-900 border-r border-neutral-300 dark:border-neutral-800 z-20 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
         <div className="border-b border-neutral-300 dark:border-neutral-800 flex justify-end">
           {/* Logo and Design System title removed */}
