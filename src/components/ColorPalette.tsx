@@ -51,8 +51,7 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
     <div 
       onClick={copyToClipboard}
       className="rounded-md overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer relative group"
-    >
-      <div 
+    >      <div 
         className="h-24 flex items-center justify-center"
         style={{ backgroundColor: color }}
       >
@@ -61,9 +60,8 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
             {copied ? 'Copied!' : 'Click to copy'}
           </span>
         </div>
-      </div>
-      <div className="p-2 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-        <p className="text-xs font-body text-neutral-600 dark:text-neutral-400">{name}</p>
+      </div>      <div className="p-2 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
+        <p className={`text-xs font-body ${textColor}`}>{name}</p>
         <p className="text-xs font-medium font-body text-neutral-900 dark:text-neutral-200">{color}</p>
       </div>
     </div>

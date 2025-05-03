@@ -24,7 +24,7 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
     >
       <div 
         className="h-24 w-full transition-transform group-hover:scale-105" 
-        style={{ backgroundColor: name }}
+        style={{ backgroundColor: color }}
       ></div>
       <div className="p-3 bg-white dark:bg-neutral-900 border-t border-neutral-300 dark:border-neutral-800">
         <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">{shade}</p>

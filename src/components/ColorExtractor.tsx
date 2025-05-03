@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
+import NextImage from 'next/image';
 
 interface ColorExtractorProps {
   title: string;
@@ -178,12 +179,14 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
               The image will be processed locally and not uploaded anywhere
             </p>
           </div>
-        ) : (
-          <div className="w-full">
-            <img 
+        ) : (          <div className="w-full">
+            <NextImage 
               src={image} 
-              alt="Uploaded" 
-              className="max-h-64 mx-auto object-contain rounded-md" 
+              alt="Uploaded"
+              width={400}
+              height={300} 
+              className="max-h-64 mx-auto object-contain rounded-md"
+              unoptimized // Since we're using a data URL
             />
           </div>
         )}

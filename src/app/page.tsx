@@ -1,13 +1,9 @@
-import { Suspense } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import ColorCard from "@/components/ColorCard";
 import TypographyCard from "@/components/TypographyCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import ColorExtractor from "@/components/ColorExtractor";
-import ColorPalette from "@/components/ColorPalette";
-import CodeSnippet from "@/components/CodeSnippet";
-import Image from "next/image";
 
 export default function Home() {
   return (
