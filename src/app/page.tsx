@@ -13,7 +13,7 @@ export default function Home() {
       <div className="flex flex-1">
         <Sidebar />
         
-        <main className="flex-1 p-0 md:ml-[280px]">
+        <main className="flex-1 p-0 md:ml">
           {/* Overview Section */}
           <AnimatedSection id="overview" className="px-6 py-12 md:px-10 lg:px-20" animation="slide-up">
             <div className="max-w-7xl mx-auto">

@@ -211,6 +211,7 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
                 style={{ backgroundColor: color }}
               >                <div 
                   className="h-16 w-full relative flex items-center justify-center"
+                  style={{ backgroundColor: color }}
                 >
                   <span className="font-mono text-xs font-medium px-2 py-0.5 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white">
                     {color}

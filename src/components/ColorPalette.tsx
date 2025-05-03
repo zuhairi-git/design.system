@@ -67,11 +67,11 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
       onClick={copyToClipboard}
       className={`rounded-md overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer relative group ${!isDirectColorValue() ? color : ''}`}
       style={isDirectColorValue() ? { backgroundColor: color } : {}}
-    ><div 
-        className="h-24 flex items-center justify-center relative"
+    >      <div 
+        className={`h-24 flex items-center justify-center relative ${!isDirectColorValue() ? color : ''}`}
       >
         <span className="font-mono text-xs font-medium px-2.5 py-1 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white">
-          {color}
+          {isDirectColorValue() ? color : name}
         </span>
         
         <div className="absolute top-2 right-2 flex items-center justify-center">
@@ -83,8 +83,8 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
           </span>
         </div>
       </div>      
-      <div className={`p-2 border-t border-neutral-200/20 dark:border-neutral-800/40 ${getContrastColor()}`}>
-        <p className="text-xs font-body">{name}</p>
+      <div className="p-2 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
+        <p className={`text-xs font-body ${textColor}`}>{name}</p>
       </div>
     </div>
   );
