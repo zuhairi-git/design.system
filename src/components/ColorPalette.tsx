@@ -47,30 +47,44 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Determine if color is a hex or rgb value that can be used directly
+  const isDirectColorValue = () => {
+    return color.startsWith('#') || color.startsWith('rgb');
+  };
+
+  // Determine text color based on the background color
+  const getContrastColor = () => {
+    // For simplicity, we'll use a simple check
+    // Light colors get dark text, dark colors get light text
+    if (color.includes('white') || color.includes('light') || color.includes('50') || color.includes('100') || color.includes('200') || color.includes('rgba') && color.includes('0.1')) {
+      return "text-neutral-900";
+    }
+    return "text-white";
+  };
+
   return (
     <div 
       onClick={copyToClipboard}
-      className="rounded-md overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer relative group"
-    >      <div 
+      className={`rounded-md overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md cursor-pointer relative group ${!isDirectColorValue() ? color : ''}`}
+      style={isDirectColorValue() ? { backgroundColor: color } : {}}
+    ><div 
         className="h-24 flex items-center justify-center relative"
-        style={{ backgroundColor: color }}
       >
+        <span className="font-mono text-xs font-medium px-2.5 py-1 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white">
+          {color}
+        </span>
+        
         <div className="absolute top-2 right-2 flex items-center justify-center">
           <span 
-            className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 cursor-pointer hover:text-primary-500 transition-colors"
+            className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 cursor-pointer hover:text-primary-500 transition-colors shadow-sm"
             style={{ fontSize: '18px' }}
           >
             {copied ? 'check' : 'content_copy'}
           </span>
         </div>
       </div>      
-      <div className="p-2 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-        <div className="flex justify-between items-center">
-          <p className={`text-xs font-body ${textColor}`}>{name}</p>
-          <p className="font-mono text-xs font-medium bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded">
-            {color}
-          </p>
-        </div>
+      <div className={`p-2 border-t border-neutral-200/20 dark:border-neutral-800/40 ${getContrastColor()}`}>
+        <p className="text-xs font-body">{name}</p>
       </div>
     </div>
   );

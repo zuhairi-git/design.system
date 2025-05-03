@@ -205,31 +205,28 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
           <h4 className="font-heading font-medium text-lg text-neutral-900 dark:text-white">
             Extracted Colors
           </h4>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {colors.map((color, index) => (              <div 
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">            {colors.map((color, index) => (              <div 
                 key={index} 
                 className="rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div 
-                  className="h-16 w-full relative"
-                  style={{ backgroundColor: color }}
+                style={{ backgroundColor: color }}
+              >                <div 
+                  className="h-16 w-full relative flex items-center justify-center"
                 >
+                  <span className="font-mono text-xs font-medium px-2 py-0.5 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white">
+                    {color}
+                  </span>
+                
                   <div 
                     className="absolute top-2 right-2 flex items-center justify-center cursor-pointer"
                     onClick={() => copyColor(color)}
                   >
                     <span 
-                      className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-colors"
+                      className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 hover:text-primary-500 transition-colors shadow-sm"
                       style={{ fontSize: '16px' }}
                     >
                       content_copy
                     </span>
                   </div>
-                </div>
-                <div className="p-1.5 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800">
-                  <p className="text-center font-mono text-xs font-medium text-neutral-800 dark:text-neutral-200">
-                    {color}
-                  </p>
                 </div>
               </div>
             ))}
