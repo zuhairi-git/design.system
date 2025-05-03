@@ -1,0 +1,17 @@
+{
+  "name": "alux-design-system",
+  "compatibility_date": "2025-05-03",
+  "main": "workers-site/index.js",
+  "site": {
+    "bucket": "./.next/static"
+  },
+  "build": {
+    "command": "npm run build"
+  },
+  "routes": [
+    { "pattern": "/*", "script": "workers-site/index.js" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
