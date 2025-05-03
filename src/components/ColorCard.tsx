@@ -27,16 +27,6 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
     return ''; // Default fallback
   };
 
-  // Determine text color based on the background color
-  const getContrastColor = () => {
-    // For simplicity, we'll use a simple check based on the color name
-    // Light colors get dark text, dark colors get light text
-    if (name.includes('white') || name.includes('light') || name.includes('50') || name.includes('100') || name.includes('200') || name.includes('rgba') && name.includes('0.1')) {
-      return "text-neutral-900 dark:text-neutral-900";
-    }
-    return "text-white dark:text-white";
-  };
-
   return (    <div
       className={`relative group hover-scale card overflow-hidden border border-neutral-200 dark:border-neutral-800`}
       onClick={copyToClipboard}
