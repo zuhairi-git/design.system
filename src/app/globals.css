@@ -1,26 +1,151 @@
 @import "tailwindcss";
 
 :root {
+  /* Base colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #272a2b;
+  
+  /* Primary colors */
+  --primary-50: #eefbfd;
+  --primary-100: #d5f4f8;
+  --primary-200: #b0e8f1;
+  --primary-300: #79d6e7;
+  --primary-400: #3fbcd5;
+  --primary-500: #209fba;
+  --primary-600: #16809d;
+  --primary-700: #1e6880;
+  --primary-800: #215669;
+  --primary-900: #204859;
+  
+  /* Accent colors */
+  --accent-500: #fe4911;
+  --accent-600: #ef2107;
+  --accent-700: #c61e08;
+  
+  /* Neutral colors */
+  --neutral-50: #f9fafa;
+  --neutral-100: #f3f4f4;
+  --neutral-200: #e6e7e8;
+  --neutral-300: #d1d5d6;
+  --neutral-400: #b5bbbd;
+  --neutral-500: #9ba2a4;
+  --neutral-600: #787f81;
+  --neutral-700: #61686a;
+  --neutral-800: #515557;
+  --neutral-900: #45484a;
+  --neutral-950: #272a2b;
+  
+  /* Success colors */
+  --success-500: #579f48;
+  --success-600: #448237;
+  
+  /* Warning colors */
+  --warning-500: #f5980b;
+  --warning-600: #d97106;
+  
+  /* Error colors */
+  --error-500: #e52030;
+  --error-600: #c01020;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-roboto);
+  --font-arabic-heading: var(--font-tajawal);
+  --font-arabic-body: var(--font-tajawal);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #15191a;
+    --foreground: #f3f4f4;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+}
+
+.font-heading {
+  font-family: var(--font-heading), sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-arabic-heading {
+  font-family: var(--font-arabic-heading), sans-serif;
+}
+
+.font-arabic-body {
+  font-family: var(--font-arabic-body), sans-serif;
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-500);
+}
+
+/* Animation utilities */
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Container classes */
+.card {
+  background-color: var(--neutral-50);
+  border-radius: 0.5rem;
+  border: 1px solid var(--neutral-300);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-300);
+}
+
+.section {
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+/* RTL Support */
+[dir="rtl"] body {
+  font-family: var(--font-arabic-body), sans-serif;
+}
+
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: var(--font-arabic-heading), sans-serif;
 }
