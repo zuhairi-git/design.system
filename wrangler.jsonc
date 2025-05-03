@@ -1,0 +1,16 @@
+{
+  "name": "alux-design-system",
+  "compatibility_date": "2025-05-03",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "workers-site/index.js",
+  "site": {
+    "bucket": "./.next/static"
+  },
+  "build": {
+    "command": "npm run build",
+    "cwd": "."
+  },
+  "env": {
+    "NODE_VERSION": "18.18.0"
+  }
+}
