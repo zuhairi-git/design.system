@@ -180,40 +180,39 @@ export default function Header({ title }: HeaderProps) {
                   {langMode === 'en' ? 'ع' : 'En'}
                 </span>
               </button>
+                <ThemeToggle />
               
-              <ThemeToggle />
-                {/* Mobile menu button - hidden on mobile as requested */}
-              <button
-                onClick={toggleMobileMenu}
-                className="inline-flex items-center justify-center p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 hidden hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
-                aria-expanded={mobileMenuOpen ? 'true' : 'false'}
-              >
-                <span className="sr-only">Open main menu</span>
-                {mobileMenuOpen ? (
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              {/* Mobile menu button - completely removed from rendering */}
+              {/* We're using conditional rendering to completely hide this button
+              {mobileMenuOpen && (
+                <button
+                  onClick={toggleMobileMenu}
+                  className="hidden"
+                  aria-expanded="true"
+                >
+                  <span className="sr-only">Close menu</span>
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
-                ) : (
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </button>
+                </button>
+              )} */}
             </div>
           </div>
-        </div>
-          {/* Mobile menu, show/hide based on menu state */}
+        </div>          {/* Mobile menu - modified to be tied to the sidebar state instead */}
         <div 
-          className={`${mobileMenuOpen ? 'max-h-96 opacity-100 border-t' : 'max-h-0 opacity-0 border-transparent'} 
+          className={`${isOpen ? 'max-h-96 opacity-100 border-t' : 'max-h-0 opacity-0 border-transparent'} 
             md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-lg border-neutral-200 dark:border-neutral-800 
             overflow-hidden transition-all duration-300 ease-in-out`}
         >
-          <div className={`px-4 py-4 space-y-2 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 delay-100`}>
+          <div className={`px-4 py-4 space-y-2 ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 delay-100`}>
             {navLinks.map(link => (
               <Link
                 key={link.id}
                 href={`#${link.id}`}
-                onClick={() => handleNavLinkClick(link.id)}
+                onClick={() => {
+                  handleNavLinkClick(link.id);
+                  toggleSidebar(); // Close sidebar when link is clicked
+                }}
                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                   isClient && activeSection === link.id 
                     ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
@@ -226,12 +225,11 @@ export default function Header({ title }: HeaderProps) {
           </div>
         </div>
       </header>
-      
-      {/* Backdrop for mobile menu */}
-      {mobileMenuOpen && (
+        {/* Backdrop for mobile menu - now controlled by sidebar state */}
+      {isOpen && (
         <div 
           className="fixed inset-0 bg-black/30 backdrop-blur-sm z-20 md:hidden transition-opacity duration-300"
-          onClick={toggleMobileMenu}
+          onClick={toggleSidebar}
           aria-hidden="true"
         ></div>
       )}
