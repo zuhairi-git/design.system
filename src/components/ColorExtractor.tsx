@@ -8,12 +8,12 @@ interface ColorExtractorProps {
   description?: string;
 }
 
-export default function ColorExtractor({ title, description }: ColorExtractorProps) {
-  const [image, setImage] = useState<string | null>(null);
+export default function ColorExtractor({ title, description }: ColorExtractorProps) {  const [image, setImage] = useState<string | null>(null);
   const [colors, setColors] = useState<string[]>([]);
   const [extracting, setExtracting] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [showTooltip, setShowTooltip] = useState<string | null>(null);
+  // Removed unused state variables
+  // const [isDragging, setIsDragging] = useState(false);
+  // const [showTooltip, setShowTooltip] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 

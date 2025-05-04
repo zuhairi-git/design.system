@@ -15,6 +15,7 @@ export default function Header({ title }: HeaderProps) {
   const [langMode, setLangMode] = useState<'en' | 'ar'>('en');
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   
@@ -85,24 +86,20 @@ export default function Header({ title }: HeaderProps) {
       window.removeEventListener('scroll', detectActiveSection);
     };
   }, []);
-
-  // Handle mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    if (!mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  };
-
-  // Close mobile menu when clicking a link
+  // Mobile menu toggle function is no longer used since we're using the sidebar toggle
+  // Removed unused function
+  // const toggleMobileMenu = () => {
+  //   setMobileMenuOpen(!mobileMenuOpen);
+  //   if (!mobileMenuOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //   } else {
+  //     document.body.style.overflow = '';
+  //   }
+  // };
+  // Handle navigation link clicks
   const handleNavLinkClick = (sectionId: string) => {
     setActiveSection(sectionId);
-    if (mobileMenuOpen) {
-      setMobileMenuOpen(false);
-      document.body.style.overflow = '';
-    }
+    // We no longer need the mobile menu state handling since we're using the sidebar
   };
 
   const navLinks = [
@@ -181,12 +178,10 @@ export default function Header({ title }: HeaderProps) {
                 </span>
               </button>
                 <ThemeToggle />
-              
-              {/* Mobile menu button - completely removed from rendering */}
-              {/* We're using conditional rendering to completely hide this button
+                {/* Mobile menu button - completely removed from rendering */}
+              {/* We're using the sidebar toggle instead of a separate mobile menu button
               {mobileMenuOpen && (
                 <button
-                  onClick={toggleMobileMenu}
                   className="hidden"
                   aria-expanded="true"
                 >
