@@ -16,6 +16,7 @@ export default function Header({ title }: HeaderProps) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  
   // Mark when component is mounted on client
   useEffect(() => {
     setIsClient(true);
@@ -109,70 +110,79 @@ export default function Header({ title }: HeaderProps) {
     { id: 'shadows', label: 'Shadows' },
     { id: 'tints', label: 'Tints' }
   ];
-
   return (
-    <>      <header 
-        className={`sticky top-0 z-40 w-full bg-white dark:bg-neutral-900 border-b transition-all duration-300 ${
+    <>
+      <header 
+        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled 
-            ? 'border-neutral-300 dark:border-neutral-800 shadow-sm backdrop-blur-md bg-opacity-90 dark:bg-opacity-90' 
-            : 'border-transparent'
+            ? 'border-b border-neutral-200 dark:border-neutral-800/80 shadow-md backdrop-blur-xl bg-white/90 dark:bg-neutral-900/95' 
+            : 'bg-transparent'
         }`}
-      >        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">{/* Left side - Alux title */}
-            <div className="flex items-center">              <Link 
+      >
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Left side - Logo & Title */}
+            <div className="flex items-center">
+              <Link 
                 href="#overview" 
-                className="flex items-center" 
+                className="flex items-center group" 
                 onClick={() => handleNavLinkClick('overview')}
               >
-                <h1 className="font-heading font-bold text-lg text-neutral-950 dark:text-white">
+                <div className="mr-2 bg-primary-500 text-white rounded-md p-1.5 group-hover:scale-105 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  </svg>
+                </div>
+                <h1 className="font-heading font-bold text-xl text-neutral-950 dark:text-white">
                   {title || "Alux"}
                 </h1>
               </Link>
             </div>
-              {/* Desktop navigation */}
+
+            {/* Desktop navigation */}
             <nav className="hidden md:flex items-center space-x-1">
               {navLinks.map(link => (
                 <Link 
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={() => handleNavLinkClick(link.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isClient && activeSection === link.id 
-                      ? 'text-primary-700 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/20' 
-                      : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50'
+                      ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
+                      : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/40'
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
-            
-            {/* Right side buttons */}
-            <div className="flex items-center space-x-2">
+              {/* Right side buttons */}
+            <div className="flex items-center space-x-3">
               <button 
                 onClick={toggleLang}
-                className="flex items-center justify-center p-2 rounded-full bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+                className="flex items-center justify-center p-2 rounded-full bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200 hover:scale-105"
                 aria-label="Switch language"
               >
                 <span className="text-sm font-medium">
                   {langMode === 'en' ? 'ع' : 'En'}
                 </span>
               </button>
+              
               <ThemeToggle />
               
               {/* Mobile menu button */}
               <button
                 onClick={toggleMobileMenu}
-                className="inline-flex items-center justify-center p-2 rounded-md text-neutral-700 dark:text-neutral-300 md:hidden focus:outline-none"
-                aria-expanded="false"
+                className="inline-flex items-center justify-center p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 md:hidden hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
+                aria-expanded={mobileMenuOpen ? 'true' : 'false'}
               >
                 <span className="sr-only">Open main menu</span>
                 {mobileMenuOpen ? (
-                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 ) : (
-                  <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
                 )}
@@ -180,18 +190,22 @@ export default function Header({ title }: HeaderProps) {
             </div>
           </div>
         </div>
-        
-        {/* Mobile menu, show/hide based on menu state */}
-        <div className={`${mobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">            {navLinks.map(link => (
+          {/* Mobile menu, show/hide based on menu state */}
+        <div 
+          className={`${mobileMenuOpen ? 'max-h-96 opacity-100 border-t' : 'max-h-0 opacity-0 border-transparent'} 
+            md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-lg border-neutral-200 dark:border-neutral-800 
+            overflow-hidden transition-all duration-300 ease-in-out`}
+        >
+          <div className={`px-4 py-4 space-y-2 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 delay-100`}>
+            {navLinks.map(link => (
               <Link
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={() => handleNavLinkClick(link.id)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                   isClient && activeSection === link.id 
-                    ? 'text-primary-700 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/20' 
-                    : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50'
+                    ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
+                    : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/40'
                 }`}
               >
                 {link.label}
@@ -204,7 +218,7 @@ export default function Header({ title }: HeaderProps) {
       {/* Backdrop for mobile menu */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-25 z-20 md:hidden"
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-20 md:hidden transition-opacity duration-300"
           onClick={toggleMobileMenu}
           aria-hidden="true"
         ></div>

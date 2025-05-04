@@ -46,14 +46,17 @@ export default function AnimatedSection({
         return 'animate-fade-in';
     }
   };
-
   return (
     <section
       id={id}
       ref={ref}
-      className={`${className} ${getAnimationClass()}`}
+      className={`${className} ${getAnimationClass()} relative`}
       style={{ animationDelay: `${delay}ms` }}
     >
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary-100/30 dark:bg-primary-900/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-primary-200/20 dark:bg-primary-800/10 rounded-full blur-2xl"></div>
+      </div>
       {children}
     </section>
   );

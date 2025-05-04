@@ -26,26 +26,33 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
     }
     return ''; // Default fallback
   };
-
-  return (    <div
-      className={`relative group hover-scale card overflow-hidden border border-neutral-200 dark:border-neutral-800`}
+  return (
+    <div
+      className={`relative group hover-scale card overflow-hidden rounded-xl border border-neutral-200/80 dark:border-neutral-800/80 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer`}
       onClick={copyToClipboard}
       style={{ 
         backgroundColor: getActualColor(),
-        boxShadow: '0 2px 10px rgba(0,0,0,0.05)'
+        boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
       }}
-    >      <div 
-        className={`h-24 w-full transition-transform group-hover:scale-105 relative flex items-center justify-center ${color}`}
-        style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.1)' }}
-      >        <span className="font-mono text-xs font-medium px-2.5 py-1 rounded bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50 text-black dark:text-white shadow-sm">
+    >
+      <div 
+        className={`h-28 w-full transition-all duration-300 group-hover:scale-105 relative flex items-center justify-center ${color}`}
+        style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.05)' }}
+      >
+        <span className="font-mono text-xs font-medium px-3 py-1.5 rounded-md bg-white/90 dark:bg-black/70 text-black dark:text-white backdrop-blur-sm shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {name}
         </span>
-      </div>      <div className={`p-3 border-t border-neutral-300/20 dark:border-neutral-800/40 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white`}>
-        <div className="flex justify-between items-center mb-1">
-          <p className={`font-body text-xs text-neutral-700 dark:text-neutral-300`}>{shade}</p>
+      </div>
+      
+      <div className={`p-4 border-t border-neutral-200/40 dark:border-neutral-800/40 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white`}>
+        <div className="flex justify-between items-center">
+          <p className={`font-body text-sm font-medium text-neutral-700 dark:text-neutral-300`}>{shade}</p>
         </div>
-        <p className={`font-body text-sm font-medium text-neutral-900 dark:text-neutral-50`}>{color}</p></div><div 
-        className="absolute top-2 right-2 flex items-center justify-center"
+        <p className={`font-body text-xs mt-1 text-neutral-500 dark:text-neutral-400 font-mono`}>{color}</p>
+      </div>
+      
+      <div 
+        className="absolute top-3 right-3 flex items-center justify-center"
       >
         <span 
           className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 cursor-pointer hover:text-primary-500 transition-colors shadow-sm"

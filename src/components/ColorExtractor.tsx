@@ -12,6 +12,8 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
   const [image, setImage] = useState<string | null>(null);
   const [colors, setColors] = useState<string[]>([]);
   const [extracting, setExtracting] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [showTooltip, setShowTooltip] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -53,31 +55,55 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
               // Draw the image on the canvas
               ctx.drawImage(img, 0, 0);
               
-              // Sample 5 different regions of the image
+              // Enhanced color extraction algorithm
+              const colorCounts: Record<string, number> = {};
               const extractedColors: string[] = [];
               
-              // Top left, top right, center, bottom left, bottom right
-              const positions = [
-                { x: img.width * 0.2, y: img.height * 0.2 },
-                { x: img.width * 0.8, y: img.height * 0.2 },
-                { x: img.width * 0.5, y: img.height * 0.5 },
-                { x: img.width * 0.2, y: img.height * 0.8 },
-                { x: img.width * 0.8, y: img.height * 0.8 },
-              ];
+              // Sample regions strategically
+              // We'll sample a grid plus some focal points for better coverage
               
-              // Also sample some random positions
-              for (let i = 0; i < 5; i++) {
-                positions.push({
-                  x: Math.random() * img.width,
-                  y: Math.random() * img.height
-                });
+              // Create a grid of sample points
+              const gridSize = 10;
+              const xStep = img.width / gridSize;
+              const yStep = img.height / gridSize;
+              
+              const positions: {x: number, y: number}[] = [];
+              
+              // Add grid points
+              for (let x = 0; x < gridSize; x++) {
+                for (let y = 0; y < gridSize; y++) {
+                  positions.push({
+                    x: (x + 0.5) * xStep, 
+                    y: (y + 0.5) * yStep
+                  });
+                }
               }
               
-              // Extract colors from the positions
+              // Add focal points (center, corners, etc.)
+              positions.push({ x: img.width * 0.5, y: img.height * 0.5 });  // center
+              positions.push({ x: img.width * 0.25, y: img.height * 0.25 }); // top-left quadrant
+              positions.push({ x: img.width * 0.75, y: img.height * 0.25 }); // top-right quadrant
+              positions.push({ x: img.width * 0.25, y: img.height * 0.75 }); // bottom-left quadrant
+              positions.push({ x: img.width * 0.75, y: img.height * 0.75 }); // bottom-right quadrant
+              
+              // Extract and quantize colors from the positions
               positions.forEach(({ x, y }) => {
                 const pixel = ctx.getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
-                const rgb = `#${pixel[0].toString(16).padStart(2, '0')}${pixel[1].toString(16).padStart(2, '0')}${pixel[2].toString(16).padStart(2, '0')}`;
-                extractedColors.push(rgb);
+                
+                // Basic quantization to reduce similar colors
+                const r = Math.round(pixel[0] / 10) * 10;
+                const g = Math.round(pixel[1] / 10) * 10;
+                const b = Math.round(pixel[2] / 10) * 10;
+                
+                const rgb = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+                
+                // Count color occurrences
+                if (colorCounts[rgb]) {
+                  colorCounts[rgb]++;
+                } else {
+                  colorCounts[rgb] = 1;
+                  extractedColors.push(rgb);
+                }
               });
               
               // Remove duplicate colors and limit to 10
