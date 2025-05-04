@@ -79,16 +79,14 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <>
-      {/* Mobile Navigation Toggle - bottom right corner */}
+    <>      {/* Mobile Navigation Toggle - bottom right corner with matching style to top left hamburger */}
       <button
         onClick={toggleSidebar}
-        className="md:hidden fixed bottom-6 right-6 z-[60] bg-primary-600 hover:bg-primary-700 text-white p-4 rounded-full shadow-xl flex items-center justify-center border border-primary-400/20 backdrop-blur-sm"
+        className="md:hidden fixed bottom-6 right-6 z-[60] bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 p-3 rounded-lg shadow-lg flex items-center justify-center hover:bg-neutral-200 dark:hover:bg-neutral-700/70 transition-all duration-200"
         aria-label="Toggle menu"
-        style={{ backgroundColor: 'var(--primary-600)' }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ color: 'white' }}>
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
         </svg>
       </button>
 

@@ -182,11 +182,10 @@ export default function Header({ title }: HeaderProps) {
               </button>
               
               <ThemeToggle />
-              
-              {/* Mobile menu button */}
+                {/* Mobile menu button - hidden on mobile as requested */}
               <button
                 onClick={toggleMobileMenu}
-                className="inline-flex items-center justify-center p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 md:hidden hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
+                className="inline-flex items-center justify-center p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 hidden hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
                 aria-expanded={mobileMenuOpen ? 'true' : 'false'}
               >
                 <span className="sr-only">Open main menu</span>
