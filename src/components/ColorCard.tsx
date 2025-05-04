@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { showNotification } from '../utils/notifications';
 
 interface ColorCardProps {
   color: string;
@@ -9,11 +10,10 @@ interface ColorCardProps {
 }
 
 export default function ColorCard({ color, shade, name }: ColorCardProps) {
-  const [copied, setCopied] = useState(false);
-
-  const copyToClipboard = () => {
+  const [copied, setCopied] = useState(false);  const copyToClipboard = () => {
     navigator.clipboard.writeText(name);
     setCopied(true);
+    showNotification('Color copied!');
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -50,16 +50,33 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
         </div>
         <p className={`font-body text-xs mt-1 text-neutral-500 dark:text-neutral-400 font-mono`}>{color}</p>
       </div>
-      
-      <div 
+        <div 
         className="absolute top-3 right-3 flex items-center justify-center"
       >
-        <span 
-          className="material-icons bg-white dark:bg-neutral-800 rounded-full p-1 text-neutral-600 dark:text-neutral-300 cursor-pointer hover:text-primary-500 transition-colors shadow-sm"
-          style={{ fontSize: '18px' }}
+        <button 
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent triggering the parent onClick
+            copyToClipboard();
+          }}
+          className={`flex items-center justify-center rounded-full w-8 h-8 
+            ${copied 
+              ? 'bg-primary-500 text-white' 
+              : 'bg-white/90 dark:bg-neutral-800/90 text-neutral-600 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400'
+            } 
+            backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md`}
+          aria-label="Copy color code"
         >
-          {copied ? 'check' : 'content_copy'}
-        </span>
+          {copied ? (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+              <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+            </svg>
+          )}
+        </button>
       </div>
     </div>
   );

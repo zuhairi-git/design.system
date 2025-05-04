@@ -141,6 +141,29 @@ html {
   margin-bottom: 2rem;
 }
 
+/* Copy button styles */
+.copy-btn.copied {
+  background-color: var(--primary-500) !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+.copy-btn .copy-icon {
+  display: block;
+}
+
+.copy-btn .check-icon {
+  display: none;
+}
+
+.copy-btn.copied .copy-icon {
+  display: none;
+}
+
+.copy-btn.copied .check-icon {
+  display: block;
+}
+
 /* RTL Support */
 [dir="rtl"] body {
   font-family: var(--font-arabic-body), sans-serif;
