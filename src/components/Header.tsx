@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 // Image import removed as it's not being used
 import ThemeToggle from './ThemeToggle';
+import { useSidebar } from './Sidebar';
 
 type HeaderProps = {
   title: string;
@@ -16,6 +17,9 @@ export default function Header({ title }: HeaderProps) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  
+  // Access sidebar context for the toggle button
+  const { isOpen, toggleSidebar } = useSidebar();
   
   // Mark when component is mounted on client
   useEffect(() => {
@@ -119,10 +123,19 @@ export default function Header({ title }: HeaderProps) {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Left side - Logo & Title */}
-            <div className="flex items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Left side - Hamburger menu, Logo & Title */}
+            <div className="flex items-center">              {/* Hamburger Menu Toggle for Sidebar */}
+              <button 
+                onClick={toggleSidebar}
+                className="mr-3 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/70 transition-all duration-200"
+                aria-label="Toggle sidebar"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                </svg>
+              </button>
+              
               <Link 
                 href="#overview" 
                 className="flex items-center group" 

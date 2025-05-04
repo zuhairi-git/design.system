@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,6 +9,15 @@ type NavItem = {
   label: string;
   icon?: string;
 };
+
+// Create a context for sidebar state
+export const SidebarContext = createContext({
+  isOpen: false,
+  toggleSidebar: () => {}
+});
+
+// Hook to use sidebar context
+export const useSidebar = () => useContext(SidebarContext);
 
 const navItems: NavItem[] = [
   { id: 'overview', label: 'Overview', icon: '/window.svg' },
@@ -23,7 +32,9 @@ const navItems: NavItem[] = [
 ];
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  // Use the context values provided from the parent component
+  const { isOpen, toggleSidebar } = useSidebar();
+  
   // Start with null to avoid hydration mismatch between server and client
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,11 +76,13 @@ export default function Sidebar() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);  return (
+  }, []);
+
+  return (
     <>
-      {/* Mobile Navigation Toggle */}
+      {/* Mobile Navigation Toggle - bottom right corner */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggleSidebar}
         className="md:hidden fixed bottom-6 right-6 z-[60] bg-primary-600 hover:bg-primary-700 text-white p-4 rounded-full shadow-xl flex items-center justify-center border border-primary-400/20 backdrop-blur-sm"
         aria-label="Toggle menu"
         style={{ backgroundColor: 'var(--primary-600)' }}
@@ -81,22 +94,31 @@ export default function Sidebar() {
 
       {/* Mobile Overlay */}
       <div 
-        className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-sm md:hidden transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
-        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-sm transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        onClick={toggleSidebar}
       ></div>
-      
-      {/* Sidebar */}
+        {/* Sidebar - hidden by default */}
       <div 
         className={`fixed top-0 h-screen w-[280px] bg-white/95 dark:bg-neutral-900/95 border-r border-neutral-200 dark:border-neutral-800 backdrop-blur-md z-50 transform transition-all duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full md:translate-x-0 md:shadow-lg'}`}
+        ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}
       >
+        {/* Toggle button for sidebar at the right edge */}
+        <button
+          onClick={toggleSidebar}
+          className="absolute -right-10 top-4 p-2 bg-white dark:bg-neutral-800 rounded-r-lg shadow-md border border-l-0 border-neutral-200 dark:border-neutral-700 hidden md:flex"
+          aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-700 dark:text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
+          </svg>
+        </button>
         <div className="h-16 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between px-4">
           <div className="font-heading font-semibold text-neutral-950 dark:text-neutral-50">
             Navigation
           </div>
           <button 
-            onClick={() => setIsOpen(false)}
-            className="md:hidden text-neutral-700 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
+            onClick={toggleSidebar}
+            className="text-neutral-700 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
             aria-label="Close menu"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -135,7 +157,7 @@ export default function Sidebar() {
                     href={`#${item.id}`}
                     onClick={() => {
                       setActiveSection(item.id);
-                      setIsOpen(false); // Close sidebar on mobile when clicking a link
+                      toggleSidebar(); // Close sidebar when clicking a link
                     }}
                     className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all duration-200 rounded-lg ${
                       isClient && activeSection === item.id 
