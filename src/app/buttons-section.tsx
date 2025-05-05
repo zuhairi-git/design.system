@@ -23,9 +23,8 @@ export default function ButtonsSection() {
             </span>
             Light Theme Button
           </h3>
-          <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-            <div className="flex flex-wrap gap-6 mb-4">
-              <button className="inline-block px-8 py-4 rounded-full font-medium transition-all duration-300 bg-blue-500 hover:bg-blue-600 text-white">
+          <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">            <div className="flex flex-wrap gap-6 mb-4">
+              <button className="inline-block px-8 py-4 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#3b82f6] via-[#a855f7] to-[#3b82f6] hover:bg-gradient-to-l text-white">
                 View Portfolio
               </button>
             </div>
@@ -33,7 +32,7 @@ export default function ButtonsSection() {
               <pre className="text-xs text-neutral-800 dark:text-neutral-200 font-mono">
 {`/* Base styles */
 inline-block px-8 py-4 rounded-full font-medium transition-all duration-300
-bg-blue-500 hover:bg-blue-600 text-white`}
+bg-gradient-to-r from-[#3b82f6] via-[#a855f7] to-[#3b82f6] hover:bg-gradient-to-l text-white`}
               </pre>
             </div>
           </div>
@@ -46,9 +45,8 @@ bg-blue-500 hover:bg-blue-600 text-white`}
             </span>
             Dark Theme Button
           </h3>
-          <div className="mb-8 p-6 bg-neutral-800 dark:bg-neutral-900 rounded-lg border border-neutral-700 dark:border-neutral-800">
-            <div className="flex flex-wrap gap-6 mb-4">
-              <button className="inline-block px-8 py-4 rounded-full font-medium transition-all duration-300 bg-blue-500 hover:bg-blue-600 text-white">
+          <div className="mb-8 p-6 bg-neutral-800 dark:bg-neutral-900 rounded-lg border border-neutral-700 dark:border-neutral-800">            <div className="flex flex-wrap gap-6 mb-4">
+              <button className="inline-block px-8 py-4 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-[#3b82f6] via-[#a855f7] to-[#3b82f6] hover:bg-gradient-to-l text-white">
                 View Portfolio
               </button>
             </div>
@@ -56,7 +54,7 @@ bg-blue-500 hover:bg-blue-600 text-white`}
               <pre className="text-xs text-neutral-400 dark:text-neutral-400 font-mono">
 {`/* Base styles */
 inline-block px-8 py-4 rounded-full font-medium transition-all duration-300
-bg-blue-500 hover:bg-blue-600 text-white`}
+bg-gradient-to-r from-[#3b82f6] via-[#a855f7] to-[#3b82f6] hover:bg-gradient-to-l text-white`}
               </pre>
             </div>
           </div>
