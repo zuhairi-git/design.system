@@ -258,6 +258,53 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+                
+                <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-16 mb-5 flex items-center">
+                  <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </span>
+                  Colorful Theme
+                </h3>
+                <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Vibrant, creative palette for immersive, colorful interfaces.</p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
+                  <ColorCard 
+                    shade="Background" 
+                    color="bg-indigo-950" 
+                    name="#050023"
+                  />
+                  <ColorCard 
+                    shade="Foreground" 
+                    color="text-blue-50"
+                    name="#f0f8ff"
+                  />
+                  <ColorCard 
+                    shade="Primary" 
+                    color="text-fuchsia-600"
+                    name="#ff00cc"
+                  />
+                  <ColorCard 
+                    shade="Primary Hover" 
+                    color="text-fuchsia-700"
+                    name="#d100ff"
+                  />
+                  <ColorCard 
+                    shade="Primary Glow" 
+                    color="shadow-fuchsia-500/30"
+                    name="rgba(255, 0, 204, 0.3)"
+                  />
+                  <div className="col-span-1 md:col-span-3 card overflow-hidden p-0 rounded-xl">
+                    <div 
+                      className="h-24 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-600 to-blue-500"
+                    ></div>
+                    <div className="p-3 bg-white dark:bg-neutral-800">
+                      <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Cosmic Gradient</p>
+                      <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #00ffff via #ff00cc to #3b82f6</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </AnimatedSection>
               
@@ -319,6 +366,64 @@ export default function Home() {
                     lineHeight="1.4"
                     sampleText="The quick brown fox jumps over the lazy dog"
                     language="en"
+                  />
+                </div>
+                
+                <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-10 mb-4 flex items-center">
+                  <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    </svg>
+                  </span>
+                  Body Text Fonts
+                </h3>
+                <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">
+                  Our design system includes support for different body fonts in multiple languages.
+                </p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                  <TypographyCard
+                    title="Roboto Regular"
+                    description="Clean, modern sans-serif for body text"
+                    fontFamily="Roboto"
+                    fontWeight="400"
+                    fontSize="16px"
+                    lineHeight="1.5"
+                    sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow."
+                    language="en"
+                  />
+                  
+                  <TypographyCard
+                    title="Roboto Medium"
+                    description="Medium weight for emphasis in body text"
+                    fontFamily="Roboto"
+                    fontWeight="500"
+                    fontSize="16px"
+                    lineHeight="1.5"
+                    sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow."
+                    language="en"
+                  />
+                  
+                  <TypographyCard
+                    title="Tajwal Regular (Arabic)"
+                    description="Modern Arabic font for RTL interfaces"
+                    fontFamily="Tajwal"
+                    fontWeight="400"
+                    fontSize="16px"
+                    lineHeight="1.6"
+                    sampleText="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى"
+                    language="ar"
+                  />
+                  
+                  <TypographyCard
+                    title="Tajwal Bold (Arabic)"
+                    description="Bold Arabic font for RTL headers"
+                    fontFamily="Tajwal"
+                    fontWeight="700"
+                    fontSize="24px"
+                    lineHeight="1.4"
+                    sampleText="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص"
+                    language="ar"
                   />
                 </div>
               </div>
