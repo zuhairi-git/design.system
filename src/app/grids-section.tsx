@@ -5,17 +5,22 @@ import Image from 'next/image';
 import AnimatedSection from '@/components/AnimatedSection';
 import CodeSnippet from '@/components/CodeSnippet';
 
+// Import local images
+import gridImage1 from '@/img/brooke-lark-V4MBq8kue3U-unsplash.jpg';
+import gridImage2 from '@/img/brooke-lark-lcZ9NxhOSlo-unsplash.jpg';
+import galleryImage1 from '@/img/brooke-lark-pXEsx3kRuNc-unsplash.jpg';
+import galleryImage2 from '@/img/brooke-lark-GTMGG-xvxdU-unsplash.jpg';
+import galleryImage3 from '@/img/brooke-lark-rS26chimPaA-unsplash.jpg';
+import galleryImage4 from '@/img/brooke-lark-lcZ9NxhOSlo-unsplash.jpg';
+
 export default function GridsSection() {
   // Sample grid layouts to showcase
   const gridSamples = [
-    {
-      name: "Basic Grid",
+    {      name: "Basic Grid",
       columns: 3,
       snippet: `<div class="grid grid-cols-3 gap-4">
   <div>Column 1</div>
-  <div                    <                  <h5 className="font-medium text-neutral-900 dark:text-white mb-2 flex items-center">
-                    <span className="text-error-600 dark:text-error-400 mr-2">✗</span> Don&apos;t
-                  </h5>lassName="text-neutral-600 dark:text-neutral-400">You don&apos;t need to know the code - just communicate how many columns you want in your layout, and your developer will handle the rest.</p>Column 2</div>
+  <div>Column 2</div>
   <div>Column 3</div>
 </div>`,
       description: "Simple equal-width columns"
@@ -64,22 +69,29 @@ export default function GridsSection() {
           <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mb-4">
             Think of a grid system as a digital sheet of graph paper that helps organize content on your page in a neat, orderly fashion.
             It creates invisible lines that help align elements and create a consistent, professional look.
-          </p>          <div className="flex flex-col sm:flex-row gap-6 mb-8 bg-white/80 dark:bg-neutral-900/80 p-6 rounded-lg border border-neutral-100 dark:border-neutral-800/70">
-            <div className="flex-1 flex flex-col items-center">              <div className="w-full h-60 bg-neutral-100 dark:bg-neutral-800 rounded-lg mb-3 p-2 flex items-center justify-center overflow-hidden">
-                <Image 
-                  src="https://images.unsplash.com/photo-1490914327627-9fe8d52f4d90?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                  alt="Content without grid structure" 
-                  className="object-cover rounded"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
+          </p>          <div className="flex flex-col sm:flex-row gap-6 mb-8 bg-white/80 dark:bg-neutral-900/80 p-6 rounded-lg border border-neutral-100 dark:border-neutral-800/70">            <div className="flex-1 flex flex-col items-center">              <div className="w-full h-60 bg-neutral-100 dark:bg-neutral-800 rounded-lg mb-3 p-2 flex items-center justify-center overflow-hidden">
+                <div className="relative w-full h-full">                  <Image 
+                    src={gridImage1}
+                    alt="Content without grid structure" 
+                    className="object-cover rounded"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-black/30 flex flex-col p-4">
+                    <div className="bg-white/90 dark:bg-neutral-800/90 p-2 mb-2 rounded w-3/4">News headline takes up random width</div>
+                    <div className="flex mb-2">
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-1/3 mr-2">Image</div>
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-1/2">Text overlaps awkwardly</div>
+                    </div>
+                    <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-full mb-1">Content with inconsistent spacing</div>
+                    <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-2/3">Elements poorly aligned</div>
+                  </div>
+                </div>
               </div>
               <p className="text-center text-neutral-700 dark:text-neutral-400 text-sm font-medium">Without grid: Unorganized content</p>
-            </div>
-            <div className="flex-1 flex flex-col items-center">              <div className="w-full h-60 bg-neutral-100 dark:bg-neutral-800 rounded-lg mb-3 p-2 overflow-hidden relative">
-                <Image 
-                  src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            </div>            <div className="flex-1 flex flex-col items-center">              <div className="w-full h-60 bg-neutral-100 dark:bg-neutral-800 rounded-lg mb-3 p-2 overflow-hidden relative">                <Image 
+                  src={gridImage2}
                   alt="Content with grid structure" 
                   className="object-cover rounded"
                   fill
@@ -89,6 +101,25 @@ export default function GridsSection() {
                   {Array(16).fill(null).map((_, i) => (
                     <div key={i} className="border-2 border-dashed border-primary-300/40 dark:border-primary-300/30 rounded"></div>
                   ))}
+                </div>
+                <div className="absolute inset-0 bg-black/20">
+                  <div className="grid grid-cols-4 h-full p-4">
+                    <div className="col-span-4 flex items-center justify-center">
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-3/4 text-center text-sm">Full width headline perfectly aligned</div>
+                    </div>
+                    <div className="col-span-2 flex items-center justify-center p-1">
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-full text-center text-sm">Feature content</div>
+                    </div>
+                    <div className="col-span-1 flex items-center justify-center p-1">
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-full text-center text-sm">Sidebar</div>
+                    </div>
+                    <div className="col-span-1 flex items-center justify-center p-1">
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-full text-center text-sm">Related</div>
+                    </div>
+                    <div className="col-span-4 flex items-center justify-center">
+                      <div className="bg-white/90 dark:bg-neutral-800/90 p-2 rounded w-full text-center text-sm">Even spacing and consistent alignment</div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <p className="text-center text-neutral-700 dark:text-neutral-400 text-sm font-medium">With grid: Clean, organized layout</p>
@@ -149,19 +180,43 @@ export default function GridsSection() {
                 </div>
                 
                 <div className="bg-white/80 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700 rounded-lg p-4">
-                  <div className="mb-3">
-                    <h5 className="font-medium text-neutral-900 dark:text-white mb-2">Photo Gallery</h5>                    <div className="grid grid-cols-4 gap-1 mb-2">
-                      {Array(4).fill(null).map((_, i) => (
-                        <div key={i} className="h-14 bg-primary-200 dark:bg-primary-800/50 rounded overflow-hidden flex items-center justify-center text-primary-700 dark:text-primary-300 text-xs relative">
-                          <Image 
-                            src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94" 
-                            alt="Gallery image" 
-                            className="object-cover"
-                            fill
-                            sizes="(max-width: 768px) 25vw, 10vw"
-                          />
-                        </div>
-                      ))}
+                  <div className="mb-3">                    <h5 className="font-medium text-neutral-900 dark:text-white mb-2">Photo Gallery</h5>                    <div className="grid grid-cols-4 gap-1 mb-2">
+                      <div className="h-14 bg-primary-200 dark:bg-primary-800/50 rounded overflow-hidden flex items-center justify-center text-primary-700 dark:text-primary-300 text-xs relative">                          
+                        <Image 
+                          src={galleryImage1} 
+                          alt="Gallery image 1" 
+                          className="object-cover"
+                          fill
+                          sizes="(max-width: 768px) 25vw, 10vw"
+                        />
+                      </div>
+                      <div className="h-14 bg-primary-200 dark:bg-primary-800/50 rounded overflow-hidden flex items-center justify-center text-primary-700 dark:text-primary-300 text-xs relative">                          
+                        <Image 
+                          src={galleryImage2} 
+                          alt="Gallery image 2" 
+                          className="object-cover"
+                          fill
+                          sizes="(max-width: 768px) 25vw, 10vw"
+                        />
+                      </div>
+                      <div className="h-14 bg-primary-200 dark:bg-primary-800/50 rounded overflow-hidden flex items-center justify-center text-primary-700 dark:text-primary-300 text-xs relative">                          
+                        <Image 
+                          src={galleryImage3} 
+                          alt="Gallery image 3" 
+                          className="object-cover"
+                          fill
+                          sizes="(max-width: 768px) 25vw, 10vw"
+                        />
+                      </div>
+                      <div className="h-14 bg-primary-200 dark:bg-primary-800/50 rounded overflow-hidden flex items-center justify-center text-primary-700 dark:text-primary-300 text-xs relative">                          
+                        <Image 
+                          src={galleryImage4} 
+                          alt="Gallery image 4" 
+                          className="object-cover"
+                          fill
+                          sizes="(max-width: 768px) 25vw, 10vw"
+                        />
+                      </div>
                     </div>
                     <p className="text-neutral-600 dark:text-neutral-400 text-sm mt-1">Four photos per row</p>
                   </div>

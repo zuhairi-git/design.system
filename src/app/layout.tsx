@@ -27,12 +27,12 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
+}>) {  return (
     <html lang="en">
       <head>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-      </head>      <body
+      </head>
+      <body
         className={`${poppins.variable} ${roboto.variable} antialiased`}
       >
         {children}
