@@ -10,6 +10,8 @@ import FixCardLinks from "@/components/FixCardLinks";
 import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
 import ButtonsSection from "./buttons-section";
 import TintsSection from "./tints-section";
+import GridsSection from "./grids-section";
+import BreakpointsSection from "./breakpoints-section";
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -635,51 +637,14 @@ export default function Home() {
                 </div>
               </div>
             </AnimatedSection>
-              
-            {/* Buttons Section */}
+                {/* Buttons Section */}
             <ButtonsSection />
               
+            {/* Grids Section */}
+            <GridsSection />
+              
             {/* Breakpoints Section */}
-            <AnimatedSection id="breakpoints" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="slide-up">
-              <div className="max-w-7xl mx-auto">
-                <div className="mb-10">
-                  <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                    <span className="mr-2">📱</span> Responsive Design
-                  </div>
-                  <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Breakpoints</h2>
-                  <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                    Our responsive breakpoints ensure layouts adapt seamlessly across different screen sizes.
-                  </p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
-                    { name: "Small (Mobile)", size: "< 640px", description: "Single column layouts with stacked elements", icon: "📱" },
-                    { name: "Medium (Tablet)", size: "≥ 640px", description: "Two column layouts begin to appear", icon: "📟" },
-                    { name: "Large (Laptop)", size: "≥ 1024px", description: "Multi-column layouts with more complex components", icon: "💻" },
-                    { name: "X-Large (Desktop)", size: "≥ 1280px", description: "Full layouts with optimal spacing and density", icon: "🖥️" }
-                  ].map((breakpoint, index) => (
-                    <div key={index} className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/70 dark:border-neutral-800/70 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                      <div className="flex items-start">
-                        <div className="flex-shrink-0 mr-5 text-3xl">{breakpoint.icon}</div>
-                        <div>
-                          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-2">{breakpoint.name}</h3>
-                          <p className="font-mono text-sm text-primary-700 dark:text-primary-400 font-medium mb-3">{breakpoint.size}</p>
-                          <p className="font-body text-neutral-700 dark:text-neutral-400">{breakpoint.description}</p>
-                          
-                          <div className="w-full h-3 bg-neutral-100 dark:bg-neutral-800 rounded-full mt-5 overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-to-r from-primary-400 to-primary-600"
-                              style={{ width: index === 0 ? '25%' : index === 1 ? '50%' : index === 2 ? '75%' : '100%' }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
+            <BreakpointsSection />
               
             {/* Shadows Section */}
             <AnimatedSection id="shadows" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60" animation="slide-up">
