@@ -3,11 +3,11 @@
 import Header from "@/components/Header";
 import Sidebar, { SidebarContext } from "@/components/Sidebar";
 import ColorCard from "@/components/ColorCard";
-import TypographyCard from "@/components/TypographyCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import ColorExtractor from "@/components/ColorExtractor";
 import FeatureCard from "@/components/FeatureCard";
 import FixCardLinks from "@/components/FixCardLinks";
+import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
 import { useState } from 'react';
 
 export default function Home() {
@@ -63,10 +63,9 @@ export default function Home() {
                       description: "Complete color palette including primary, accent, and semantic colors",
                       link: "#colors",
                       icon: "🎨"
-                    },
-                    {
+                    },                    {
                       title: "Typography",
-                      description: "Font styles and hierarchy for all text elements",
+                      description: "Interactive font styles with live preview",
                       link: "#typography",
                       icon: "✍️"
                     },
@@ -315,56 +314,23 @@ export default function Home() {
                   <div>
                     <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
                       <span className="mr-2">✍️</span> Typography System
-                    </div>
-                    <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Typography</h2>                    <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                      Our typography system uses Poppins for headings and Roboto for body text,
-                      providing a clean and readable experience.
+                    </div>                    <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Dynamic Typography</h2>
+                    <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+                      Our interactive typography system lets you customize and preview different font styles.
+                      Try changing the properties below to see how they affect the text appearance.
                     </p>
                   </div>
                 </div>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                  <TypographyCard
-                    title="Display"
-                    description="Used for hero sections and prominent headlines"
-                    fontFamily="Poppins"
-                    fontWeight="700"
-                    fontSize="48px"
-                    lineHeight="1.2"
-                    sampleText="The quick brown fox jumps over the lazy dog"
-                    language="en"
-                  />
-                  
-                  <TypographyCard
-                    title="Heading 1"
-                    description="Main section headings"
-                    fontFamily="Poppins"
-                    fontWeight="700"
-                    fontSize="36px"
-                    lineHeight="1.3"
-                    sampleText="The quick brown fox jumps over the lazy dog"
-                    language="en"
-                  />
-                  
-                  <TypographyCard
-                    title="Heading 2"
-                    description="Sub-section headings"
-                    fontFamily="Poppins"
-                    fontWeight="700"
-                    fontSize="30px"
-                    lineHeight="1.3"
-                    sampleText="The quick brown fox jumps over the lazy dog"
-                    language="en"
-                  />
-                  
-                  <TypographyCard
-                    title="Heading 3"
-                    description="Component and group headings"
-                    fontFamily="Poppins"
-                    fontWeight="600"
-                    fontSize="24px"
-                    lineHeight="1.4"
-                    sampleText="The quick brown fox jumps over the lazy dog"
+                  <div className="mb-12">
+                  <DynamicTypographyPreview
+                    title="Heading Typography"
+                    description="Customize and preview heading styles with different properties"
+                    fontFamilies={['Poppins', 'Roboto']}
+                    defaultFontFamily="Poppins"
+                    defaultFontWeight="700"
+                    defaultFontSize="36px"
+                    defaultLineHeight="1.3"
+                    sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow."
                     language="en"
                   />
                 </div>
@@ -380,49 +346,28 @@ export default function Home() {
                 <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">
                   Our design system includes support for different body fonts in multiple languages.
                 </p>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-                  <TypographyCard
-                    title="Roboto Regular"
-                    description="Clean, modern sans-serif for body text"
-                    fontFamily="Roboto"
-                    fontWeight="400"
-                    fontSize="16px"
-                    lineHeight="1.5"
-                    sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow."
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                  <DynamicTypographyPreview
+                    title="English Body Typography"
+                    description="Customize and preview body text styles for English and Latin languages"
+                    fontFamilies={['Roboto', 'Poppins']}
+                    defaultFontFamily="Roboto"
+                    defaultFontWeight="400"
+                    defaultFontSize="16px"
+                    defaultLineHeight="1.5"
+                    sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow. A wizard's job is to vex chumps quickly in fog. How vexingly quick daft zebras jump! The five boxing wizards jump quickly."
                     language="en"
                   />
                   
-                  <TypographyCard
-                    title="Roboto Medium"
-                    description="Medium weight for emphasis in body text"
-                    fontFamily="Roboto"
-                    fontWeight="500"
-                    fontSize="16px"
-                    lineHeight="1.5"
-                    sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow."
-                    language="en"
-                  />
-                  
-                  <TypographyCard
-                    title="Tajwal Regular (Arabic)"
-                    description="Modern Arabic font for RTL interfaces"
-                    fontFamily="Tajwal"
-                    fontWeight="400"
-                    fontSize="16px"
-                    lineHeight="1.6"
-                    sampleText="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى"
-                    language="ar"
-                  />
-                  
-                  <TypographyCard
-                    title="Tajwal Bold (Arabic)"
-                    description="Bold Arabic font for RTL headers"
-                    fontFamily="Tajwal"
-                    fontWeight="700"
-                    fontSize="24px"
-                    lineHeight="1.4"
-                    sampleText="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص"
+                  <DynamicTypographyPreview
+                    title="Arabic Typography"
+                    description="Customize and preview text styles for RTL languages like Arabic"
+                    fontFamilies={['Tajwal']}
+                    defaultFontFamily="Tajwal"
+                    defaultFontWeight="400"
+                    defaultFontSize="16px"
+                    defaultLineHeight="1.6"
+                    sampleText="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى. حيث يمكنك توليد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق."
                     language="ar"
                   />
                 </div>
