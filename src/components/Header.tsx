@@ -16,6 +16,7 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [langMode, setLangMode] = useState('en'); // Add language mode state
   
   // Access sidebar context for the toggle button
   const { isOpen, toggleSidebar } = useSidebar();
@@ -28,6 +29,16 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
       setActiveSection('overview'); // Set initial active section only on client after hydration
     }, 0);
   }, []);
+
+  // Initialize language from localStorage
+  useEffect(() => {
+    if (isClient) {
+      const savedLang = localStorage.getItem('language') || 'en';
+      setLangMode(savedLang);
+      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', savedLang);
+    }
+  }, [isClient]);
 
   // Handle language toggle
   const toggleLang = () => {
@@ -157,6 +168,13 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
               ))}
             </nav>
               {/* Right side buttons */}            <div className="flex items-center space-x-3">
+                <button
+                  onClick={toggleLang}
+                  className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/70 transition-all duration-200"
+                  aria-label="Toggle language"
+                >
+                  <span className="font-medium text-sm">{langMode === 'en' ? 'AR' : 'EN'}</span>
+                </button>
                 <ThemeToggle />
                 {/* Mobile menu button - completely removed from rendering */}
               {/* We're using the sidebar toggle instead of a separate mobile menu button
