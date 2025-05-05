@@ -132,30 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
-  // Language toggle functionality
-  const langToggle = document.getElementById('lang-toggle');
-  
-  if (langToggle) {
-    const currentLang = localStorage.getItem('lang') || 'en';
-    const htmlElement = document.documentElement;
-    
-    // Set initial language direction
-    htmlElement.setAttribute('lang', currentLang);
-    htmlElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-    
-    // Update button text
-    langToggle.textContent = currentLang === 'en' ? 'ع' : 'En';
-    
-    // Toggle language
-    langToggle.addEventListener('click', function() {
-      const newLang = htmlElement.getAttribute('lang') === 'en' ? 'ar' : 'en';
-      htmlElement.setAttribute('lang', newLang);
-      htmlElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
-      this.textContent = newLang === 'en' ? 'ع' : 'En';
-      localStorage.setItem('lang', newLang);
-    });
-  }
+    // Language toggle functionality removed
   
   // Filter functionality for search
   const searchInput = document.getElementById('nav-search');

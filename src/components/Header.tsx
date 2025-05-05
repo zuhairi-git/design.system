@@ -10,9 +10,7 @@ type HeaderProps = {
   title: string;
 };
 
-export default function Header({ title }: HeaderProps) {
-  // Initialize these on the client-side only to avoid hydration mismatch
-  const [langMode, setLangMode] = useState<'en' | 'ar'>('en');
+export default function Header({ title }: HeaderProps) {  // Initialize these on the client-side only to avoid hydration mismatch
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -64,15 +62,7 @@ export default function Header({ title }: HeaderProps) {
           setActiveSection(sectionId);
         }
       });
-    };
-
-    // Set initial language from localStorage if available
-    const savedLang = localStorage.getItem('language');
-    if (savedLang && (savedLang === 'en' || savedLang === 'ar')) {
-      setLangMode(savedLang);
-      document.documentElement.setAttribute('dir', savedLang === 'ar' ? 'rtl' : 'ltr');
-      document.documentElement.setAttribute('lang', savedLang);
-    }
+    };    // Language switcher has been removed
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('scroll', detectActiveSection);
@@ -166,17 +156,7 @@ export default function Header({ title }: HeaderProps) {
                 </Link>
               ))}
             </nav>
-              {/* Right side buttons */}
-            <div className="flex items-center space-x-3">
-              <button 
-                onClick={toggleLang}
-                className="flex items-center justify-center p-2 rounded-full bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200 hover:scale-105"
-                aria-label="Switch language"
-              >
-                <span className="text-sm font-medium">
-                  {langMode === 'en' ? 'ع' : 'En'}
-                </span>
-              </button>
+              {/* Right side buttons */}            <div className="flex items-center space-x-3">
                 <ThemeToggle />
                 {/* Mobile menu button - completely removed from rendering */}
               {/* We're using the sidebar toggle instead of a separate mobile menu button

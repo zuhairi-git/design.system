@@ -47,7 +47,7 @@ export default function Home() {
                   </p>
                   
                   <div className="flex flex-wrap gap-3 mb-14">
-                    <a href="#colors" className="px-5 py-2.5 text-white bg-primary-600 hover:bg-primary-700 rounded-lg font-medium transition-colors shadow-sm">
+                    <a href="#colors" className="px-5 py-2.5 text-dark bg-primary-600 hover:bg-primary-700 rounded-lg font-medium transition-colors shadow-sm">
                       Explore Components
                     </a>
                     <a href="#typography" className="px-5 py-2.5 text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 border border-primary-200 dark:border-primary-800/40 rounded-lg font-medium transition-colors">
@@ -269,10 +269,9 @@ export default function Home() {
                     <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
                       <span className="mr-2">✍️</span> Typography System
                     </div>
-                    <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Typography</h2>
-                    <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                      Our typography system uses Poppins for headings, Roboto for body text, and Tajawal for Arabic content, 
-                      providing a clean and readable experience across different languages.
+                    <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Typography</h2>                    <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+                      Our typography system uses Poppins for headings and Roboto for body text,
+                      providing a clean and readable experience.
                     </p>
                   </div>
                 </div>

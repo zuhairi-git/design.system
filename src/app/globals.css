@@ -53,8 +53,6 @@
   --color-foreground: var(--foreground);
   --font-heading: var(--font-poppins);
   --font-body: var(--font-roboto);
-  --font-arabic-heading: var(--font-tajawal);
-  --font-arabic-body: var(--font-tajawal);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -164,14 +162,7 @@ html {
   display: block;
 }
 
-/* RTL Support */
-[dir="rtl"] body {
-  font-family: var(--font-arabic-body), sans-serif;
-}
-
-[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
-  font-family: var(--font-arabic-heading), sans-serif;
-}
+/* RTL Support removed */
 
 /* Card styles */
 .card {
