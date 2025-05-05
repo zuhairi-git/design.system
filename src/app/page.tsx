@@ -50,7 +50,7 @@ export default function Home() {
                     <a href="#colors" className="px-5 py-2.5 text-dark bg-primary-600 hover:bg-primary-700 rounded-lg font-medium transition-colors shadow-sm">
                       Explore Components
                     </a>
-                    <a href="#typography" className="px-5 py-2.5 text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 border border-primary-200 dark:border-primary-800/40 rounded-lg font-medium transition-colors">
+                    <a href="#" className="px-5 py-2.5 text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 border border-primary-200 dark:border-primary-800/40 rounded-lg font-medium transition-colors">
                       Learn More
                     </a>
                   </div>
