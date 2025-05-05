@@ -13,8 +13,7 @@ type HeaderProps = {
 export default function Header({ title }: HeaderProps) {  // Initialize these on the client-side only to avoid hydration mismatch
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   
   // Access sidebar context for the toggle button
   const { isOpen, toggleSidebar } = useSidebar();
@@ -160,44 +159,10 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
-              )} */}
-            </div>
-          </div>
-        </div>          {/* Mobile menu - modified to be tied to the sidebar state instead */}
-        <div 
-          className={`${isOpen ? 'max-h-96 opacity-100 border-t' : 'max-h-0 opacity-0 border-transparent'} 
-            md:hidden bg-white/95 dark:bg-neutral-900/95 backdrop-blur-lg border-neutral-200 dark:border-neutral-800 
-            overflow-hidden transition-all duration-300 ease-in-out`}
-        >
-          <div className={`px-4 py-4 space-y-2 ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200 delay-100`}>
-            {navLinks.map(link => (
-              <Link
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={() => {
-                  handleNavLinkClick(link.id);
-                  toggleSidebar(); // Close sidebar when link is clicked
-                }}
-                className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
-                  isClient && activeSection === link.id 
-                    ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
-                    : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/40'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+              )} */}            </div>
           </div>
         </div>
       </header>
-        {/* Backdrop for mobile menu - now controlled by sidebar state */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-20 md:hidden transition-opacity duration-300"
-          onClick={toggleSidebar}
-          aria-hidden="true"
-        ></div>
-      )}
     </>
   );
 }

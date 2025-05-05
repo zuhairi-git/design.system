@@ -10,23 +10,79 @@ import FixCardLinks from "@/components/FixCardLinks";
 import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
 import ButtonsSection from "./buttons-section";
 import TintsSection from "./tints-section";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   // State for sidebar toggle
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  // State to track if we're on mobile view
+  const [isMobile, setIsMobile] = useState(true);
+
+  // Check if we're on mobile when component mounts
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 768);
+      
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+      
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   // Toggle sidebar function
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+  // Prevent content shifting on mobile when sidebar is open
+  useEffect(() => {
+    // Get the current scroll position before the body is locked
+    let scrollPosition = 0;
+    
+    const handleSidebarToggle = () => {
+      if (typeof window === 'undefined') return;
+      
+      if (isSidebarOpen && isMobile) {
+        // Store current scroll position
+        scrollPosition = window.scrollY;
+        
+        // Apply styles to prevent content shifting
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
+      } else {
+        // Reset styles when closing sidebar
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        
+        // Restore scroll position
+        if (scrollPosition > 0) {
+          window.scrollTo(0, scrollPosition);
+        }
+      }
+    };
+    
+    handleSidebarToggle();
+    
+    return () => {
+      // Clean up styles when unmounting
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+    };
+  }, [isSidebarOpen, isMobile]);
 
   return (
     <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
       <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
         <FixCardLinks />      
-        <Header title="Alux Design System" />
-        <div className="flex flex-1 pt-0 relative">
+        <Header title="Alux Design System" />        <div className="flex flex-1 pt-0 relative">
           <Sidebar />
             <main className={`flex-1 w-full p-0 overflow-x-hidden max-w-[100vw] transition-all duration-300 ${isSidebarOpen ? 'md:pl-[280px]' : 'md:pl-0'}`}>
             {/* Overview Section */}

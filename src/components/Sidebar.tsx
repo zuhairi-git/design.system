@@ -40,8 +40,7 @@ export default function Sidebar() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isClient, setIsClient] = useState(false);
-  
-  // Set default state only on client side to avoid hydration mismatch
+    // Set default state only on client side to avoid hydration mismatch
   useEffect(() => {
     setIsClient(true);
     // Only set active section after client-side hydration is complete
@@ -89,16 +88,15 @@ export default function Sidebar() {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
         </svg>
-      </button>
-
-      {/* Mobile Overlay */}
+      </button>      {/* Mobile Overlay */}
       <div 
         className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-sm transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
         onClick={toggleSidebar}
+        aria-hidden="true"
       ></div>
         {/* Sidebar - hidden by default */}
       <div 
-        className={`fixed top-0 h-screen w-[280px] bg-white/95 dark:bg-neutral-900/95 border-r border-neutral-200 dark:border-neutral-800 backdrop-blur-md z-50 transform transition-all duration-300 ease-in-out
+        className={`fixed top-0 left-0 h-screen w-[280px] bg-white/95 dark:bg-neutral-900/95 border-r border-neutral-200 dark:border-neutral-800 backdrop-blur-md z-50 transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}
       >
         {/* Toggle button for sidebar at the right edge */}
