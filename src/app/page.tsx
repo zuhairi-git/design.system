@@ -43,7 +43,7 @@ export default function Home() {
                   </h1>
                   
                   <p className="font-body text-lg sm:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mb-10 leading-relaxed">
-                    A comprehensive design system featuring a complete set of guidelines, components, and resources to create consistent and beautiful user interfaces.
+                    A simple design system featuring a set of guidelines, components, and resources to create consistent and beautiful user interfaces.
                   </p>
                   
                   <div className="flex flex-wrap gap-3 mb-14">
