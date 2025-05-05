@@ -39,19 +39,20 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
       return true;
     }
     return false;
-  };
-  return (    <div
-      className={`relative group overflow-hidden rounded-lg border border-neutral-200/80 dark:border-neutral-800/80 hover:shadow-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer`}
+  };  return (
+    <div
+      className={`relative group overflow-hidden rounded-lg border border-neutral-200/80 dark:border-neutral-800/80 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer`}
       onClick={copyToClipboard}
       style={{ 
         backgroundColor: getActualColor(),
         boxShadow: '0 2px 10px rgba(0,0,0,0.02)'
       }}
-    >      <div 
-        className={`h-20 w-full transition-all duration-300 group-hover:scale-105 relative flex items-center justify-center ${color}`}
+    >
+      <div 
+        className={`h-20 w-full transition-all duration-300 group-hover:scale-[1.02] relative flex items-center justify-center ${color}`}
         style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.03)' }}
       >
-        <span className={`font-mono text-xs font-medium px-2 py-1 rounded ${shouldUseDarkText() ? 'text-neutral-900' : 'text-white'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+        <span className={`font-mono text-xs font-medium px-2 py-1 rounded backdrop-blur-sm ${shouldUseDarkText() ? 'bg-white/20 text-neutral-900' : 'bg-black/20 text-white'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
           {name}
         </span>
       </div>
@@ -61,8 +62,10 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
           <p className={`font-body text-xs font-medium text-neutral-700 dark:text-neutral-300`}>{shade}</p>
         </div>
         <p className={`font-body text-[10px] mt-0.5 text-neutral-500 dark:text-neutral-400 font-mono`}>{color}</p>
-      </div>        <div 
-        className="absolute top-1.5 right-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+      </div>
+      
+      <div 
+        className="absolute top-1.5 right-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
         <button 
           onClick={(e) => {

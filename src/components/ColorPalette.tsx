@@ -8,7 +8,6 @@ interface ColorPaletteProps {
   colors: {
     name: string;
     value: string;
-    textColor?: string;
   }[];
 }
 
@@ -18,13 +17,11 @@ export default function ColorPalette({ title, description, colors }: ColorPalett
       <h3 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-1.5">{title}</h3>
       <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">{description}</p>
       
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-        {colors.map((color, index) => (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">        {colors.map((color, index) => (
           <ColorSwatch 
             key={index} 
             color={color.value} 
-            name={color.name} 
-            textColor={color.textColor}
+            name={color.name}
           />
         ))}
       </div>
@@ -35,11 +32,11 @@ export default function ColorPalette({ title, description, colors }: ColorPalett
 interface ColorSwatchProps {
   color: string;
   name: string;
-  textColor?: string;
 }
 
-function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps) {
+function ColorSwatch({ color, name }: ColorSwatchProps) {
   const [copied, setCopied] = useState(false);
+  
   const copyToClipboard = () => {
     navigator.clipboard.writeText(color);
     setCopied(true);
@@ -64,36 +61,38 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
     }, 2000);
   };
 
-  // Determine if color is a hex or rgb value that can be used directly  const isDirectColorValue = () => {
+  // Determine if color is a hex or rgb value that can be used directly
+  const isDirectColorValue = () => {
     return color.startsWith('#') || color.startsWith('rgb');
   };
   
   // Determine if we should use light or dark text based on the color
-  const getContrastColor = () => {
-    // For simplicity, we'll use a simple check
-    // Light colors get dark text, dark colors get light text
+  const shouldUseDarkText = () => {
+    // Simple check for light colors that need dark text
     if (color.includes('white') || 
         color.includes('light') || 
-        color.includes('50') || 
-        color.includes('100') || 
-        color.includes('200') || 
-        (color.includes('rgba') && color.includes('0.1'))) {
-      return "text-neutral-900";
+        color.includes('-50') || 
+        color.includes('-100') || 
+        color.includes('-200') ||
+        color === '#ffffff' ||
+        (color.includes('rgba') && color.includes('255,'))) {
+      return true;
     }
-    return "text-white";
-  };
-
-  return (    <div 
+    return false;
+  };  return (
+    <div 
       onClick={copyToClipboard}
-      className={`rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer relative group ${!isDirectColorValue() ? color : ''}`}
+      className={`rounded-lg overflow-hidden shadow-sm border border-neutral-200/80 dark:border-neutral-800/80 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer relative group ${!isDirectColorValue() ? color : ''}`}
       style={isDirectColorValue() ? { backgroundColor: color } : {}}
     >
       <div 
-        className={`h-16 flex items-center justify-center relative ${!isDirectColorValue() ? color : ''}`}
+        className={`h-16 flex items-center justify-center relative group-hover:scale-[1.02] transition-all duration-300 ${!isDirectColorValue() ? color : ''}`}
       >
-        <span className={`font-mono text-[10px] font-medium px-2 py-0.5 rounded ${shouldUseDarkText() ? 'text-neutral-900' : 'text-white'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+        <span className={`font-mono text-[10px] font-medium px-2 py-0.5 rounded backdrop-blur-sm ${shouldUseDarkText() ? 'bg-white/20 text-neutral-900' : 'bg-black/20 text-white'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
           {isDirectColorValue() ? color : name}
-        </span><div className="absolute top-1.5 right-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        </span>
+        
+        <div className="absolute top-1.5 right-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
           <button 
             onClick={(e) => {
               e.stopPropagation(); // Prevent triggering the parent onClick
@@ -101,12 +100,13 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
             }}
             className={`flex items-center justify-center rounded-full w-5 h-5 
               ${copied 
-                ? 'bg-primary-500 text-white' 
+                ? 'bg-primary-500 text-white scale-110' 
                 : 'bg-white/90 dark:bg-neutral-800/90 text-neutral-600 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-primary-600 dark:hover:text-primary-400'
               } 
-              backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md`}
+              backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-110`}
             aria-label="Copy color code"
-          >            {copied ? (
+          >
+            {copied ? (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
@@ -118,9 +118,10 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
             )}
           </button>
         </div>
-      </div>      
-      <div className="p-1.5 bg-white dark:bg-neutral-900 border-t border-neutral-200/40 dark:border-neutral-800/40">
-        <p className={`text-[10px] font-body truncate ${textColor}`}>{name}</p>
+      </div>
+      
+      <div className="p-1.5 bg-white dark:bg-neutral-800 border-t border-neutral-200/40 dark:border-neutral-800/40 text-neutral-900 dark:text-white">
+        <p className={`text-[10px] font-body truncate text-neutral-700 dark:text-neutral-300`}>{name}</p>
       </div>
     </div>
   );

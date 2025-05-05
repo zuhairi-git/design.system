@@ -204,7 +204,39 @@ export default function Home() {
                     </span>
                     Light Theme
                   </h3>
-                  <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Clean and professional color palette for default light mode.</p><div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
+                  <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Clean and professional color palette for default light mode.</p>
+                  
+                  {/* Light Theme Card Preview */}
+                  <div className="mb-6 flex flex-col md:flex-row gap-4">
+                    <div className="w-full md:w-1/2 lg:w-1/3 group">
+                      <div 
+                        className="relative p-6 rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
+                        style={{
+                          background: "linear-gradient(to bottom, rgba(253, 253, 253, 0.9), rgba(243, 244, 246, 0.9))",
+                          border: "1px solid rgba(229, 231, 235, 0.5)",
+                          boxShadow: "0 4px 12px rgba(168, 85, 247, 0.1)"
+                        }}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h4 className="font-heading text-base font-medium text-neutral-900 mb-1">Light Theme Card</h4>
+                            <p className="font-body text-sm text-neutral-700">Clean and professional styling</p>
+                          </div>
+                          <div className="bg-blue-500/10 text-blue-500 p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-neutral-200/40">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-500">
+                            <span className="text-[10px]">Light Theme Card</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                     <ColorCard 
                       shade="Background" 
                       color="bg-white" 
@@ -373,8 +405,7 @@ export default function Home() {
                   </div>
                 
                 <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
-                
-                <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
+                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
                   <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -383,7 +414,39 @@ export default function Home() {
                   Colorful Theme
                 </h3>
                 <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Vibrant, creative palette for immersive, colorful interfaces.</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
+                
+                {/* Colorful Theme Card Preview */}
+                <div className="mb-6 flex flex-col md:flex-row gap-4">
+                  <div className="w-full md:w-1/2 lg:w-1/3 group">
+                    <div 
+                      className="relative p-6 rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
+                      style={{
+                        background: "linear-gradient(to bottom, rgba(20, 10, 50, 0.8), rgba(10, 5, 30, 0.8))",
+                        border: "1px solid rgba(128, 0, 255, 0.3)",
+                        boxShadow: "0 4px 12px rgba(255, 0, 204, 0.3)"
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-heading text-base font-medium text-blue-50 mb-1">Colorful Theme Card</h4>
+                          <p className="font-body text-sm text-blue-200/80">Creative and vibrant card styling</p>
+                        </div>
+                        <div className="bg-fuchsia-500/10 text-fuchsia-400 p-2 rounded-lg">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-purple-500/30">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-cyan-400">
+                          <span className="text-[10px]">Colorful Theme Card</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                   <ColorCard 
                     shade="Background" 
                     color="bg-indigo-950" 
