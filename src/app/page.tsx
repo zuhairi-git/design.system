@@ -177,14 +177,13 @@ export default function Home() {
             
             {/* Colors Section */}
             <AnimatedSection id="colors" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60" animation="fade-in">
-              <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+              <div className="max-w-7xl mx-auto">                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
                   <div>
-                    <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                      <span className="mr-2">🎨</span> Color System
+                    <div className="inline-flex items-center px-2.5 py-1 mb-3 text-xs font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+                      <span className="mr-1.5">🎨</span> Color System
                     </div>
-                    <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Colors</h2>
-                    <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+                    <h2 className="font-heading font-bold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-3">Colors</h2>
+                    <p className="font-body text-base text-neutral-700 dark:text-neutral-300 max-w-3xl">
                       Our color system is designed to be accessible and flexible, with theme-specific palettes for light, dark, and colorful modes.
                     </p>
                   </div>
@@ -197,17 +196,15 @@ export default function Home() {
                   />
                 </div>
                 
-                <div className="mb-16">
-                  <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-5 flex items-center">
-                    <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="mb-16">                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
+                    <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                       </svg>
                     </span>
                     Light Theme
                   </h3>
-                  <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Clean and professional color palette for default light mode.</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
+                  <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Clean and professional color palette for default light mode.</p><div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                     <ColorCard 
                       shade="Background" 
                       color="bg-white" 
@@ -244,8 +241,7 @@ export default function Home() {
                     </div>
                   </div>
                 
-                  <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mt-8 mb-3">Card Styling</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+                  <h4 className="font-heading font-medium text-base text-neutral-950 dark:text-white mt-6 mb-2">Card Styling</h4>                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                     <ColorCard 
                       shade="Card From" 
                       color="bg-neutral-50/90"
@@ -272,19 +268,16 @@ export default function Home() {
                       name="rgba(168, 85, 247, 0.1)"
                     />
                   </div>
-                </div>
-
-                <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-16 mb-5 flex items-center">
-                  <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                </div>                <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mt-12 mb-3 flex items-center">
+                  <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
                   </span>
                   Dark Theme
                 </h3>
-                <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Sophisticated dark palette for late night browsing.</p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
+                <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Sophisticated dark palette for late night browsing.</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                   <ColorCard 
                     shade="Background" 
                     color="bg-neutral-900" 
@@ -320,18 +313,16 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                
-                <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-16 mb-5 flex items-center">
-                  <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mt-12 mb-3 flex items-center">
+                  <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                     </svg>
                   </span>
                   Colorful Theme
                 </h3>
-                <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">Vibrant, creative palette for immersive, colorful interfaces.</p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
+                <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Vibrant, creative palette for immersive, colorful interfaces.</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                   <ColorCard 
                     shade="Background" 
                     color="bg-indigo-950" 
@@ -356,14 +347,13 @@ export default function Home() {
                     shade="Primary Glow" 
                     color="shadow-fuchsia-500/30"
                     name="rgba(255, 0, 204, 0.3)"
-                  />
-                  <div className="col-span-1 md:col-span-3 card overflow-hidden p-0 rounded-xl">
+                  />                  <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 overflow-hidden rounded-lg border border-neutral-200/80 dark:border-neutral-800/80 shadow-sm">
                     <div 
-                      className="h-24 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-600 to-blue-500"
+                      className="h-20 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-600 to-blue-500"
                     ></div>
-                    <div className="p-3 bg-white dark:bg-neutral-800">
-                      <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Cosmic Gradient</p>
-                      <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #00ffff via #ff00cc to #3b82f6</p>
+                    <div className="p-2.5 bg-white dark:bg-neutral-800">
+                      <p className="font-body text-xs font-medium text-neutral-950 dark:text-white">Cosmic Gradient</p>
+                      <p className="font-body text-[10px] mt-0.5 text-neutral-500 dark:text-neutral-400 font-mono">from #00ffff via #ff00cc to #3b82f6</p>
                     </div>
                   </div>
                 </div>
