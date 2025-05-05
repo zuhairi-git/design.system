@@ -24,6 +24,7 @@ const navItems: NavItem[] = [
   { id: 'colors', label: 'Colors', icon: '/file.svg' },
   { id: 'typography', label: 'Typography', icon: '/file.svg' },
   { id: 'spacing', label: 'Spacing', icon: '/file.svg' },
+  { id: 'buttons', label: 'Buttons', icon: '/file.svg' },
   { id: 'grids', label: 'Grids', icon: '/file.svg' },
   { id: 'breakpoints', label: 'Breakpoints', icon: '/file.svg' },
   { id: 'shadows', label: 'Drop Shadows', icon: '/file.svg' },

@@ -102,12 +102,12 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
     setActiveSection(sectionId);
     // We no longer need the mobile menu state handling since we're using the sidebar
   };
-
   const navLinks = [
     { id: 'overview', label: 'Overview' },
     { id: 'colors', label: 'Colors' },
     { id: 'typography', label: 'Typography' },
     { id: 'spacing', label: 'Spacing' },
+    { id: 'buttons', label: 'Buttons' },
     { id: 'breakpoints', label: 'Breakpoints' },
     { id: 'shadows', label: 'Shadows' },
     { id: 'tints', label: 'Tints' }
