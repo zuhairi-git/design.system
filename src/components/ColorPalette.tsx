@@ -64,35 +64,36 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
     }, 2000);
   };
 
-  // Determine if color is a hex or rgb value that can be used directly
-  const isDirectColorValue = () => {
+  // Determine if color is a hex or rgb value that can be used directly  const isDirectColorValue = () => {
     return color.startsWith('#') || color.startsWith('rgb');
   };
-  // This function determines text contrast based on background color
-  // Note: Function is now commented out as it's not being used
-  /* 
+  
+  // Determine if we should use light or dark text based on the color
   const getContrastColor = () => {
     // For simplicity, we'll use a simple check
     // Light colors get dark text, dark colors get light text
-    if (color.includes('white') || color.includes('light') || color.includes('50') || color.includes('100') || color.includes('200') || color.includes('rgba') && color.includes('0.1')) {
+    if (color.includes('white') || 
+        color.includes('light') || 
+        color.includes('50') || 
+        color.includes('100') || 
+        color.includes('200') || 
+        (color.includes('rgba') && color.includes('0.1'))) {
       return "text-neutral-900";
     }
     return "text-white";
   };
-  */
 
-  return (
-    <div 
+  return (    <div 
       onClick={copyToClipboard}
       className={`rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer relative group ${!isDirectColorValue() ? color : ''}`}
       style={isDirectColorValue() ? { backgroundColor: color } : {}}
-    >      <div 
+    >
+      <div 
         className={`h-16 flex items-center justify-center relative ${!isDirectColorValue() ? color : ''}`}
       >
-        <span className="font-mono text-[10px] font-medium px-2 py-0.5 rounded bg-white/90 dark:bg-black/70 text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <span className={`font-mono text-[10px] font-medium px-2 py-0.5 rounded ${shouldUseDarkText() ? 'text-neutral-900' : 'text-white'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
           {isDirectColorValue() ? color : name}
-        </span>
-          <div className="absolute top-1.5 right-1.5 flex items-center justify-center">
+        </span><div className="absolute top-1.5 right-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <button 
             onClick={(e) => {
               e.stopPropagation(); // Prevent triggering the parent onClick
@@ -119,7 +120,7 @@ function ColorSwatch({ color, name, textColor = 'text-white' }: ColorSwatchProps
         </div>
       </div>      
       <div className="p-1.5 bg-white dark:bg-neutral-900 border-t border-neutral-200/40 dark:border-neutral-800/40">
-        <p className={`text-[10px] font-body ${textColor}`}>{name}</p>
+        <p className={`text-[10px] font-body truncate ${textColor}`}>{name}</p>
       </div>
     </div>
   );

@@ -277,6 +277,37 @@ export default function Home() {
                   Dark Theme
                 </h3>
                 <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Sophisticated dark palette for late night browsing.</p>
+                
+                {/* Dark Theme Card Preview */}
+                <div className="mb-6 flex flex-col md:flex-row gap-4">
+                  <div className="w-full md:w-1/2 lg:w-1/3 group">
+                    <div 
+                      className="relative p-6 rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
+                      style={{
+                        background: "linear-gradient(to bottom, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9))",
+                        border: "1px solid rgba(75, 85, 99, 0.5)",
+                        boxShadow: "0 4px 12px rgba(59, 130, 246, 0.2)"
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h4 className="font-heading text-base font-medium text-white mb-1">Dark Theme Card</h4>
+                          <p className="font-body text-sm text-neutral-300">Preview of the dark theme card styling</p>
+                        </div>
+                        <div className="bg-blue-500/10 text-blue-400 p-2 rounded-lg">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-neutral-700/50">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-400">
+                          <span className="text-[10px]">Dark Theme Card</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
                   <ColorCard 
                     shade="Background" 
@@ -297,8 +328,7 @@ export default function Home() {
                     shade="Primary Hover" 
                     color="text-blue-600"
                     name="#2563eb"
-                  />
-                  <ColorCard 
+                  />                  <ColorCard 
                     shade="Primary Glow" 
                     color="shadow-blue-500/20"
                     name="rgba(59, 130, 246, 0.2)"
@@ -311,9 +341,40 @@ export default function Home() {
                       <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Gradient</p>
                       <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #3b82f6 via #a855f7 to #3b82f6</p>
                     </div>
+                  </div>                </div>
+
+                  <h4 className="font-heading font-medium text-base text-neutral-950 dark:text-white mt-6 mb-2">Card Styling</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
+                    <ColorCard 
+                      shade="Card From" 
+                      color="bg-neutral-800/90"
+                      name="rgba(31, 41, 55, 0.9)"
+                    />
+                    <ColorCard 
+                      shade="Card To" 
+                      color="bg-neutral-900/90"
+                      name="rgba(17, 24, 39, 0.9)"
+                    />
+                    <ColorCard 
+                      shade="Card Border" 
+                      color="border-neutral-700/50"
+                      name="rgba(75, 85, 99, 0.5)"
+                    />
+                    <ColorCard 
+                      shade="Card Border Hover" 
+                      color="border-blue-300/50"
+                      name="rgba(96, 165, 250, 0.5)"
+                    />
+                    <ColorCard 
+                      shade="Card Shadow" 
+                      color="shadow-blue-500/20"
+                      name="rgba(59, 130, 246, 0.2)"
+                    />
                   </div>
-                </div>
-                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mt-12 mb-3 flex items-center">
+                
+                <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
+                
+                <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
                   <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -347,14 +408,56 @@ export default function Home() {
                     shade="Primary Glow" 
                     color="shadow-fuchsia-500/30"
                     name="rgba(255, 0, 204, 0.3)"
-                  />                  <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 overflow-hidden rounded-lg border border-neutral-200/80 dark:border-neutral-800/80 shadow-sm">
+                  />                  <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 overflow-hidden rounded-lg border border-purple-500/30 shadow-lg shadow-fuchsia-500/30">
                     <div 
-                      className="h-20 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-600 to-blue-500"
-                    ></div>
-                    <div className="p-2.5 bg-white dark:bg-neutral-800">
-                      <p className="font-body text-xs font-medium text-neutral-950 dark:text-white">Cosmic Gradient</p>
-                      <p className="font-body text-[10px] mt-0.5 text-neutral-500 dark:text-neutral-400 font-mono">from #00ffff via #ff00cc to #3b82f6</p>
+                      className="h-20 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-600 to-blue-500 relative"
+                    >
+                      <div className="absolute inset-0 bg-[url('/public/stars.png')] mix-blend-overlay opacity-30"></div>
                     </div>
+                    <div className="p-2.5 bg-indigo-950/80">
+                      <p className="font-body text-xs font-medium text-blue-100">Cosmic Gradient</p>
+                      <p className="font-body text-[10px] mt-0.5 text-blue-200/70 font-mono">linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <h4 className="font-heading font-medium text-base text-neutral-950 dark:text-white mt-6 mb-2">Card Styling</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
+                  <ColorCard 
+                    shade="Card From" 
+                    color="bg-indigo-950/80"
+                    name="rgba(20, 10, 50, 0.8)"
+                  />
+                  <ColorCard 
+                    shade="Card To" 
+                    color="bg-indigo-950/80"
+                    name="rgba(10, 5, 30, 0.8)"
+                  />
+                  <ColorCard 
+                    shade="Card Border" 
+                    color="border-purple-500/30"
+                    name="rgba(128, 0, 255, 0.3)"
+                  />
+                  <ColorCard 
+                    shade="Card Border Hover" 
+                    color="border-cyan-400/60"
+                    name="rgba(0, 255, 255, 0.6)"
+                  />
+                  <ColorCard 
+                    shade="Card Shadow" 
+                    color="shadow-fuchsia-500/30"
+                    name="rgba(255, 0, 204, 0.3)"
+                  />
+                </div>
+                  <div className="p-4 bg-gradient-to-br from-indigo-950/80 to-[rgba(10,5,30,0.8)] border border-purple-500/30 hover:border-cyan-400/60 rounded-lg shadow-lg shadow-fuchsia-500/30 mt-2 mb-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+                  <div className="flex items-center gap-3 mb-1.5">
+                    <div className="h-3 w-3 rounded-full bg-pink-400"></div>
+                    <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
+                    <div className="h-3 w-3 rounded-full bg-cyan-400"></div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-mono text-blue-100">Card preview with all styles applied</p>
+                    <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-fuchsia-400">Cosmic Theme Card</span>
                   </div>
                 </div>
               </div>

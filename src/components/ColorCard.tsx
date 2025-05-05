@@ -16,7 +16,6 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
     showNotification('Color copied!');
     setTimeout(() => setCopied(false), 2000);
   };
-
   // Convert Tailwind classes to actual CSS color values
   const getActualColor = () => {
     if (name && name.startsWith('#')) {
@@ -26,6 +25,21 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
     }
     return ''; // Default fallback
   };
+    // Determine if we should use light or dark text based on the background color
+  const shouldUseDarkText = () => {
+    // Simple check: anything with "white", "light", "neutral-50", etc. likely needs dark text
+    if (color.includes('white') || 
+        color.includes('light') || 
+        color.includes('-50') || 
+        color.includes('-100') || 
+        color.includes('-200') ||
+        color.includes('bg-neutral-50') ||
+        name === '#ffffff' ||
+        name.includes('rgba(255,')) {
+      return true;
+    }
+    return false;
+  };
   return (    <div
       className={`relative group overflow-hidden rounded-lg border border-neutral-200/80 dark:border-neutral-800/80 hover:shadow-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer`}
       onClick={copyToClipboard}
@@ -33,12 +47,11 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
         backgroundColor: getActualColor(),
         boxShadow: '0 2px 10px rgba(0,0,0,0.02)'
       }}
-    >
-      <div 
+    >      <div 
         className={`h-20 w-full transition-all duration-300 group-hover:scale-105 relative flex items-center justify-center ${color}`}
         style={{ boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.03)' }}
       >
-        <span className="font-mono text-xs font-medium px-2 py-1 rounded bg-white/90 dark:bg-black/70 text-black dark:text-white backdrop-blur-sm shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <span className={`font-mono text-xs font-medium px-2 py-1 rounded ${shouldUseDarkText() ? 'text-neutral-900' : 'text-white'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
           {name}
         </span>
       </div>
@@ -48,9 +61,8 @@ export default function ColorCard({ color, shade, name }: ColorCardProps) {
           <p className={`font-body text-xs font-medium text-neutral-700 dark:text-neutral-300`}>{shade}</p>
         </div>
         <p className={`font-body text-[10px] mt-0.5 text-neutral-500 dark:text-neutral-400 font-mono`}>{color}</p>
-      </div>
-        <div 
-        className="absolute top-1.5 right-1.5 flex items-center justify-center"
+      </div>        <div 
+        className="absolute top-1.5 right-1.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
       >
         <button 
           onClick={(e) => {
