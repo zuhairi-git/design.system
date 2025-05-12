@@ -14,8 +14,8 @@ interface DashboardCardProps {
   change?: string;
   isPositive?: boolean;
   icon: React.ReactNode;
-  iconBgColor: string;
-  iconColor: string;
+  iconBgColor?: string; // Optional now, as we use unified styling
+  iconColor?: string;   // Optional now, as we use unified styling
   theme: 'light' | 'dark' | 'colorful';
   variant?: 'stat' | 'progress' | 'chart';
   progress?: number;
@@ -27,8 +27,8 @@ function DashboardCard({
   change, 
   isPositive = true, 
   icon, 
-  iconBgColor, 
-  iconColor, 
+  iconBgColor, // No longer used, kept for backward compatibility
+  iconColor,    // No longer used, kept for backward compatibility
   theme, 
   variant = 'stat',
   progress = 75
@@ -122,15 +122,16 @@ function DashboardCard({
   const bgStyle = theme === 'colorful' ? getCardBackground('colorful') : {};
 
   const renderVariant = () => {
-    switch (variant) {
-      case 'progress':
+    switch (variant) {      case 'progress':
         const progressColors = getProgressColors();
         return (
           <div className={`rounded-xl overflow-hidden p-6 ${getCardStyles()}`} style={bgStyle}>
             <div className="flex items-center justify-between mb-4">
               <h3 className={`font-body text-sm font-medium ${getTitleStyles()}`}>{title}</h3>
               <div className={`p-2 rounded-lg ${getIconBgStyles()}`}>
-                {icon}
+                <span className={getIconColorStyles()}>
+                  {icon}
+                </span>
               </div>
             </div>
             
@@ -149,14 +150,15 @@ function DashboardCard({
             </div>
           </div>
         );
-      
-      case 'chart':
+        case 'chart':
         return (
           <div className={`rounded-xl overflow-hidden p-6 ${getCardStyles()}`} style={bgStyle}>
             <div className="flex items-center justify-between mb-4">
               <h3 className={`font-body text-sm font-medium ${getTitleStyles()}`}>{title}</h3>
               <div className={`p-2 rounded-lg ${getIconBgStyles()}`}>
-                {icon}
+                <span className={getIconColorStyles()}>
+                  {icon}
+                </span>
               </div>
             </div>
             
@@ -423,8 +425,10 @@ export default function DashboardCardsSection() {
   change="12.5% increase"
   isPositive={true}
   icon={<UserIcon className="h-5 w-5" />}
-  iconBgColor="bg-blue-500/10"
-  iconColor="text-blue-500"
+  // Icon styling is now handled automatically based on theme:
+  // Light theme: bg-blue-500/10 text-blue-500
+  // Dark theme: bg-blue-500/10 text-blue-400
+  // Colorful theme: bg-fuchsia-500/10 text-fuchsia-400
 />`}
             language="jsx"
           />
