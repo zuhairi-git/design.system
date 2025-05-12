@@ -123,21 +123,20 @@ export default function AccessibilityUtilitiesSection() {
             <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">
               Common ARIA attributes to enhance screen reader compatibility.
             </p>
-            <div className="space-y-2 mb-4">
-              <div className="text-xs text-neutral-600 dark:text-neutral-400 font-mono">
-                aria-label="Description"
+            <div className="space-y-2 mb-4">              <div className="text-xs text-neutral-600 dark:text-neutral-400 font-mono">
+                aria-label=&quot;Description&quot;
               </div>
               <div className="text-xs text-neutral-600 dark:text-neutral-400 font-mono">
-                aria-labelledby="element-id"
+                aria-labelledby=&quot;element-id&quot;
               </div>
               <div className="text-xs text-neutral-600 dark:text-neutral-400 font-mono">
-                aria-describedby="element-id"
+                aria-describedby=&quot;element-id&quot;
               </div>
               <div className="text-xs text-neutral-600 dark:text-neutral-400 font-mono">
-                aria-hidden="true|false"
+                aria-hidden=&quot;true|false&quot;
               </div>
               <div className="text-xs text-neutral-600 dark:text-neutral-400 font-mono">
-                role="button|tab|dialog"
+                role=&quot;button|tab|dialog&quot;
               </div>
             </div>
           </div>

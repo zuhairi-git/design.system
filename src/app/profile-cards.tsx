@@ -2,7 +2,6 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import CodeSnippet from "@/components/CodeSnippet";
 import PersonIcon from '@mui/icons-material/Person';
-import Image from 'next/image';
 
 export default function ProfileCardsSection() {
   return (

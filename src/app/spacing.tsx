@@ -231,9 +231,8 @@ export default function SpacingSection() {
               <span className="text-red-500 mr-2">✗</span>
               <span>Avoid arbitrary spacing values outside the spacing scale</span>
             </li>
-            <li className="flex items-start">
-              <span className="text-red-500 mr-2">✗</span>
-              <span>Don't use inconsistent spacing for similar elements</span>
+            <li className="flex items-start">              <span className="text-red-500 mr-2">✗</span>
+              <span>Don&apos;t use inconsistent spacing for similar elements</span>
             </li>
           </ul>
         </div>

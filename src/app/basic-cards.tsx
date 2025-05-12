@@ -1,6 +1,5 @@
 // File: src/app/basic-cards.tsx
 import AnimatedSection from "@/components/AnimatedSection";
-import ThemeCard from "@/components/ThemeCard";
 import CodeSnippet from "@/components/CodeSnippet";
 import StyleIcon from '@mui/icons-material/Style';
 
