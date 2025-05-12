@@ -80,16 +80,12 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
   const handleNavLinkClick = (sectionId: string) => {
     setActiveSection(sectionId);
     // We no longer need the mobile menu state handling since we're using the sidebar
-  };
-  const navLinks = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'colors', label: 'Colors' },
-    { id: 'typography', label: 'Typography' },
-    { id: 'spacing', label: 'Spacing' },
-    { id: 'buttons', label: 'Buttons' },
-    { id: 'breakpoints', label: 'Breakpoints' },
-    { id: 'shadows', label: 'Shadows' },
-    { id: 'tints', label: 'Tints' }
+  };  const navLinks = [
+    { id: 'overview', label: 'Home' },
+    { id: 'foundations', label: 'Foundations', submenu: ['colors', 'typography', 'spacing', 'grids'] },
+    { id: 'components', label: 'Components', submenu: ['buttons', 'cards'] },
+    { id: 'patterns', label: 'Patterns', submenu: ['layouts', 'navigation', 'forms'] },
+    { id: 'utilities', label: 'Utilities', submenu: ['breakpoints', 'shadows', 'tints'] }
   ];
   return (
     <>
@@ -127,23 +123,50 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
                   {title || "Alux"}
                 </h1>
               </Link>
-            </div>
-
-            {/* Desktop navigation */}
+            </div>            {/* Desktop navigation */}
             <nav className="hidden md:flex items-center space-x-1">
               {navLinks.map(link => (
-                <Link 
-                  key={link.id}
-                  href={`#${link.id}`}
-                  onClick={() => handleNavLinkClick(link.id)}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    isClient && activeSection === link.id 
-                      ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
-                      : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/40'
-                  }`}
-                >
-                  {link.label}
-                </Link>
+                <div key={link.id} className="relative group">
+                  <Link 
+                    href={link.submenu ? `#${link.submenu[0]}` : `#${link.id}`}
+                    onClick={() => handleNavLinkClick(link.submenu ? link.submenu[0] : link.id)}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center ${
+                      isClient && (activeSection === link.id || (link.submenu && link.submenu.includes(activeSection || '')))
+                        ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
+                        : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/40'
+                    }`}
+                  >
+                    {link.label}
+                    {link.submenu && (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
+                  </Link>
+                  
+                  {link.submenu && (
+                    <div className="absolute left-0 mt-1 w-48 bg-white dark:bg-neutral-800 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-neutral-200 dark:border-neutral-700">
+                      {link.submenu.map(subId => {
+                        const subLabel = navLinks.find(item => item.id === subId)?.label || 
+                                        subId.charAt(0).toUpperCase() + subId.slice(1);
+                        return (
+                          <Link
+                            key={subId}
+                            href={`#${subId}`}
+                            onClick={() => handleNavLinkClick(subId)}
+                            className={`block px-4 py-2 text-sm transition-colors ${
+                              isClient && activeSection === subId
+                                ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30'
+                                : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-primary-400 dark:hover:bg-neutral-700/50'
+                            }`}
+                          >
+                            {subLabel}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>              {/* Right side buttons */}            <div className="flex items-center">
                 <ThemeToggle />

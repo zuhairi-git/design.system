@@ -13,6 +13,14 @@ import TintsSection from "./tints-section";
 import GridsSection from "./grids-section";
 import BreakpointsSection from "./breakpoints-section";
 import CardsSection from "./cards-section";
+import BasicCardsSection from "./basic-cards";
+import InteractiveCardsSection from "./interactive-cards";
+import MediaCardsSection from "./media-cards";
+import DashboardCardsSection from "./dashboard-cards";
+import ProfileCardsSection from "./profile-cards";
+import AccessibilityUtilitiesSection from "./accessibility-utilities";
+import ResponsiveUtilitiesSection from "./responsive-utilities";
+import SpacingSection from "./spacing";
 import { useState, useEffect } from 'react';
 // Material Icons for feature cards
 import PaletteIcon from '@mui/icons-material/Palette';
@@ -711,9 +719,21 @@ export default function Home() {
                 </div>
               </div>
             </AnimatedSection>
-            
-            {/* Tints Section */}
+              {/* Tints Section */}
             <TintsSection />
+              {/* Card Variants Sections */}
+            <BasicCardsSection />
+            <InteractiveCardsSection />            <MediaCardsSection />
+            <DashboardCardsSection />
+            <ProfileCardsSection />
+            
+            {/* Foundations Sections */}
+            <SpacingSection />
+            
+            {/* Utilities Sections */}
+            <AccessibilityUtilitiesSection />
+            <ResponsiveUtilitiesSection />
+            
           </main>
         </div>
       </div>
