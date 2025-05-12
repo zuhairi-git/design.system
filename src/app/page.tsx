@@ -12,6 +12,7 @@ import ButtonsSection from "./buttons-section";
 import TintsSection from "./tints-section";
 import GridsSection from "./grids-section";
 import BreakpointsSection from "./breakpoints-section";
+import CardsSection from "./cards-section";
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -121,8 +122,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 animate-fade-in">
-                  {[
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 animate-fade-in">                  {[
                     {
                       title: "Colors",
                       description: "Complete color palette including primary, accent, and semantic colors",
@@ -139,6 +139,12 @@ export default function Home() {
                       description: "4-point grid system for consistent spacing",
                       link: "#spacing",
                       icon: "📏"
+                    },
+                    {
+                      title: "Cards",
+                      description: "Multiple card variants with different themes and styles",
+                      link: "#cards",
+                      icon: "🃏"
                     },
                     {
                       title: "Buttons",
@@ -636,9 +642,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </AnimatedSection>
-                {/* Buttons Section */}
+            </AnimatedSection>                {/* Buttons Section */}
             <ButtonsSection />
+              
+            {/* Cards Section */}
+            <CardsSection />
               
             {/* Grids Section */}
             <GridsSection />

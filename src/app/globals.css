@@ -198,6 +198,21 @@ html {
   overflow: hidden;
 }
 
+/* Cosmic title effect with text glow from theme-colors.txt */
+.cosmic-title {
+  text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  }
+}
+
 .cosmic-shimmer::before {
   content: '';
   position: absolute;
@@ -222,5 +237,20 @@ html {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Cosmic title effect with text glow from theme-colors.txt */
+.cosmic-title {
+  text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
   }
 }
