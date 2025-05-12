@@ -187,7 +187,7 @@ export default function Sidebar() {
       
       {/* Mobile Overlay */}
       <div 
-        className={`fixed inset-0 bg-neutral-950/60 backdrop-blur-sm transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
+        className={`fixed inset-0 bg-neutral-950/10 transition-opacity duration-300 z-40 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
         onClick={toggleSidebar}
         aria-hidden="true"
       ></div>
