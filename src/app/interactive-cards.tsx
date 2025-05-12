@@ -2,6 +2,145 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import CodeSnippet from "@/components/CodeSnippet";
 import TouchAppIcon from '@mui/icons-material/TouchApp';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import { getCardBackground } from "@/utils/cardThemes";
+import { useState } from "react";
+
+// Interactive Card component with theme support
+interface InteractiveCardProps {
+  title: string;
+  description: string;
+  theme: 'light' | 'dark' | 'colorful';
+  variant: 'hover' | 'click' | 'expand';
+}
+
+function InteractiveCard({ title, description, theme, variant }: InteractiveCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Get card styles based on theme and variant
+  const getCardStyles = () => {
+    let baseStyle = '';
+    
+    // Base styles for each theme
+    if (theme === 'colorful') {
+      baseStyle = 'border border-[rgba(128,0,255,0.3)] shadow-[0_4px_12px_rgba(255,0,204,0.3)]';
+    } else if (theme === 'dark') {
+      baseStyle = 'bg-neutral-800 border-neutral-700 shadow-md';
+    } else {
+      baseStyle = 'bg-white border-neutral-200 shadow-md';
+    }
+    
+    // Add variant-specific styles
+    if (variant === 'hover') {
+      baseStyle += ' transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer';
+      
+      if (theme === 'colorful') {
+        baseStyle += ' hover:border-[rgba(0,255,255,0.6)]';
+      } else if (theme === 'dark') {
+        baseStyle += ' hover:border-primary-700';
+      } else {
+        baseStyle += ' hover:border-primary-300';
+      }
+    } else if (variant === 'click') {
+      baseStyle += ' cursor-pointer';
+      
+      if (theme === 'colorful') {
+        baseStyle += ' active:bg-[rgba(128,0,255,0.2)]';
+      } else if (theme === 'dark') {
+        baseStyle += ' active:bg-neutral-700/50';
+      } else {
+        baseStyle += ' active:bg-neutral-50';
+      }
+    }
+    
+    return baseStyle;
+  };
+  
+  // Get text styles based on theme
+  const getTitleStyles = () => {
+    let style = '';
+    
+    if (theme === 'colorful') {
+      style = 'text-[#f0f8ff]';
+    } else if (theme === 'dark') {
+      style = 'text-white';
+    } else {
+      style = 'text-neutral-900';
+    }
+    
+    if (variant === 'hover') {
+      if (theme === 'colorful') {
+        style += ' group-hover:text-[#00ffff]';
+      } else {
+        style += ' group-hover:text-primary-600 dark:group-hover:text-primary-400';
+      }
+    }
+    
+    return style;
+  };
+  
+  const getDescriptionStyles = () => {
+    if (theme === 'colorful') return 'text-[#f0f8ff]/90';
+    if (theme === 'dark') return 'text-neutral-300';
+    return 'text-neutral-600';
+  };
+  
+  const getIconStyles = () => {
+    if (theme === 'colorful') return 'text-[#00ffff]';
+    if (theme === 'dark') return 'text-neutral-400';
+    return 'text-neutral-500';
+  };
+  
+  const bgStyle = theme === 'colorful' ? getCardBackground('colorful') : {};
+  
+  // Render specific card based on variant
+  const renderCard = () => {
+    if (variant === 'expand') {
+      return (
+        <div className={`rounded-xl overflow-hidden ${getCardStyles()}`} style={bgStyle}>
+          <div className="p-6">
+            <div className="flex items-center justify-between cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+              <h3 className={`font-heading text-lg font-medium ${getTitleStyles()}`}>{title}</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${getIconStyles()} transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            
+            <div className={`mt-4 text-sm ${getDescriptionStyles()} overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-32' : 'max-h-0'}`}>
+              {description}
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className={`group rounded-xl overflow-hidden ${getCardStyles()}`} style={bgStyle}>
+          <div className="p-6">
+            <h3 className={`font-heading text-lg font-medium ${getTitleStyles()} mb-2`}>{title}</h3>
+            <p className={`font-body text-sm ${getDescriptionStyles()}`}>
+              {description}
+            </p>
+          </div>
+        </div>
+      );
+    }
+  };
+  
+  return (
+    <>
+      {renderCard()}
+      {theme === 'colorful' && (
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+          opacity: 0.07,
+          mixBlendMode: 'overlay'
+        }} />
+      )}
+    </>
+  );
+}
 
 export default function InteractiveCardsSection() {
   return (
@@ -13,62 +152,103 @@ export default function InteractiveCardsSection() {
           </div>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Interactive Cards</h2>
           <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-            Cards with interactive elements that respond to user actions like hover, click, and touch.
+            Cards with interactive elements that respond to user actions like hover, click, and touch - available in Light, Dark, and Colorful themes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-          {/* Hover Effect Card */}
-          <div className="group bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
-            <div className="p-6">
-              <h3 className="font-heading text-lg font-medium text-neutral-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Hover Effect Card</h3>
-              <p className="font-body text-sm text-neutral-600 dark:text-neutral-300">
-                This card animates on hover with a subtle lift and color change.
-              </p>
-            </div>
+        {/* Light theme interactive cards */}
+        <div className="mb-12">
+          <div className="flex items-center mb-4">
+            <LightModeIcon className="mr-2 text-amber-500" />
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Light Theme Interactive Cards</h3>
           </div>
-          
-          {/* Click Ripple Card */}
-          <div className="relative bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden border border-neutral-200 dark:border-neutral-700 cursor-pointer active:bg-neutral-50 dark:active:bg-neutral-700/50 transition-colors">
-            <div className="p-6">
-              <h3 className="font-heading text-lg font-medium text-neutral-900 dark:text-white mb-2">Click Effect Card</h3>
-              <p className="font-body text-sm text-neutral-600 dark:text-neutral-300">
-                This card has a tactile click effect when pressed.
-              </p>
-            </div>
-          </div>
-          
-          {/* Expandable Card */}
-          <div className="bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden border border-neutral-200 dark:border-neutral-700">
-            <div className="p-6">
-              <div className="flex items-center justify-between cursor-pointer">
-                <h3 className="font-heading text-lg font-medium text-neutral-900 dark:text-white">Expandable Card</h3>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-500 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              
-              <div className="mt-4 text-sm text-neutral-600 dark:text-neutral-300">
-                <p>Click the header to expand and collapse this card.</p>
-                <div className="mt-2 pt-2 border-t border-neutral-200 dark:border-neutral-700">
-                  <p className="text-xs">Additional content that can be shown or hidden.</p>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <InteractiveCard
+              theme="light"
+              variant="hover"
+              title="Hover Effect Card"
+              description="This card animates on hover with a subtle lift and color change."
+            />
+            <InteractiveCard
+              theme="light"
+              variant="click"
+              title="Click Effect Card"
+              description="This card has a tactile click effect when pressed."
+            />
+            <InteractiveCard
+              theme="light"
+              variant="expand"
+              title="Expandable Card"
+              description="Click the header to expand and reveal this additional content. The card smoothly animates between states."
+            />
           </div>
         </div>
         
+        {/* Dark theme interactive cards */}
+        <div className="mb-12">
+          <div className="flex items-center mb-4">
+            <DarkModeIcon className="mr-2 text-blue-500" />
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Dark Theme Interactive Cards</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <InteractiveCard
+              theme="dark"
+              variant="hover"
+              title="Hover Effect Card"
+              description="This card animates on hover with a subtle lift and color change."
+            />
+            <InteractiveCard
+              theme="dark"
+              variant="click"
+              title="Click Effect Card"
+              description="This card has a tactile click effect when pressed."
+            />
+            <InteractiveCard
+              theme="dark"
+              variant="expand"
+              title="Expandable Card"
+              description="Click the header to expand and reveal this additional content. The card smoothly animates between states."
+            />
+          </div>
+        </div>
+        
+        {/* Colorful theme interactive cards */}
+        <div className="mb-12">
+          <div className="flex items-center mb-4">
+            <AutoAwesomeIcon className="mr-2 text-fuchsia-500" />
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Colorful Theme Interactive Cards</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <InteractiveCard
+              theme="colorful"
+              variant="hover"
+              title="Hover Effect Card"
+              description="This card animates on hover with a subtle lift and color change."
+            />
+            <InteractiveCard
+              theme="colorful"
+              variant="click"
+              title="Click Effect Card"
+              description="This card has a tactile click effect when pressed."
+            />
+            <InteractiveCard
+              theme="colorful"
+              variant="expand"
+              title="Expandable Card"
+              description="Click the header to expand and reveal this additional content. The card smoothly animates between states."
+            />
+          </div>
+        </div>
+
         <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg mb-8 border border-neutral-200/50 dark:border-neutral-800/50">
           <h3 className="font-heading text-xl font-semibold text-neutral-900 dark:text-white mb-4">Code Example</h3>
           <CodeSnippet 
-            code={`<div className="group bg-white dark:bg-neutral-800 rounded-xl shadow-md overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
-  <div className="p-6">
-    <h3 className="font-heading text-lg font-medium text-neutral-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Interactive Card</h3>
-    <p className="font-body text-sm text-neutral-600 dark:text-neutral-300">
-      This card animates on hover with a subtle lift and color change.
-    </p>
-  </div>
-</div>`}
+            code={`<InteractiveCard
+  theme="light" // Options: 'light', 'dark', 'colorful'
+  variant="hover" // Options: 'hover', 'click', 'expand'
+  title="Card Title"
+  description="Card description text"
+/>`}
             language="jsx"
           />
         </div>

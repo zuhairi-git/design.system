@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react';
 import { SvgIconProps } from '@mui/material';
+import { CardTheme, getCardBackground } from '@/utils/cardThemes';
 
 interface ThemeCardProps {
   title: string;
@@ -98,7 +99,6 @@ export default function ThemeCard({
     }
     return {};
   };
-
   return (
     <div 
       className={`${baseStyles} ${variantStyles[variant]} ${themeStyles[theme]} ${className}`}

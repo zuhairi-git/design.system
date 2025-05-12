@@ -16,6 +16,9 @@ import LayersIcon from '@mui/icons-material/Layers';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 import StyleIcon from '@mui/icons-material/Style';
+import ImageIcon from '@mui/icons-material/Image';
+import PersonIcon from '@mui/icons-material/Person';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 export default function CardsSection() {
   return (
@@ -120,15 +123,39 @@ export default function CardsSection() {
               </div>
             </div>
           </div>
-            {/* Themed Card Variants */}
+          
+          {/* Light Theme Variants */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                <ColorLensIcon className="h-4 w-4" />
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">
+                <LightModeIcon className="h-4 w-4" />
               </span>
-              Themed Variants
+              Light Theme Variants
             </h3>
             <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">                <ThemeCard 
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <ThemeCard 
+                  variant="minimal"
+                  theme="light-enhanced"
+                  title="Minimal Light"
+                  description="A clean, minimalist light card that changes background on hover."
+                  materialIcon={AltRouteIcon}
+                />
+                <ThemeCard 
+                  variant="gradient"
+                  theme="light-enhanced"
+                  title="Gradient Light"
+                  description="Light theme with subtle gradient background for visual interest."
+                  materialIcon={ColorLensIcon}
+                />
+                <ThemeCard 
+                  variant="bordered"
+                  theme="light-enhanced"
+                  title="Bordered Light"
+                  description="Light theme with a colored border to highlight content."
+                  materialIcon={BorderStyleIcon}
+                />
+                <ThemeCard 
                   variant="elevated"
                   theme="light-enhanced"
                   title="Elevated Light"
@@ -137,87 +164,174 @@ export default function CardsSection() {
                 />
                 <ThemeCard 
                   variant="glass"
-                  theme="dark-enhanced"
-                  title="Glass Dark"
-                  description="Dark theme with a subtle glass effect and backdrop blur."
-                  materialIcon={BlurOnIcon}
-                />                <ThemeCard 
-                  variant="gradient"
-                  theme="colorful"
-                  title="Cosmic Gradient"
-                  description="Cosmic gradient with cyan (#00ffff), magenta (#ff00cc), and blue (#3b82f6) accents."
-                  materialIcon={SparklesIcon}
-                  className="hover:shadow-[0_8px_24px_rgba(255,0,204,0.4)]"
-                />
-                <ThemeCard 
-                  variant="bordered"
                   theme="light-enhanced"
-                  title="Bordered Light"
-                  description="Light theme with prominent border for emphasis."
-                  materialIcon={BorderStyleIcon}
+                  title="Glass Light"
+                  description="Light theme with a subtle glass effect and backdrop blur."
+                  materialIcon={BlurOnIcon}
                 />
-                <ThemeCard 
-                  variant="minimal"
-                  theme="dark-enhanced"
-                  title="Minimal Dark"
-                  description="Clean dark theme with hover effects and minimal styling."
-                  materialIcon={AltRouteIcon}
-                />
-              </div>
-              <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto mt-6">                <CodeSnippet code={`<ThemeCard 
-  variant="glass"
-  theme="dark-enhanced"
-  title="Glass Dark"
-  description="Dark theme with glass effect"
-  materialIcon={BlurOnIcon}
-/>`} />
               </div>
             </div>
           </div>
           
-          {/* Interactive Cards */}
+          {/* Dark Theme Variants */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                <TouchAppIcon className="h-4 w-4" />
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+                <DarkModeIcon className="h-4 w-4" />
               </span>
-              Interactive Usage
+              Dark Theme Variants
             </h3>
             <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">Card with onClick Handler</h4>                  <ThemeCard 
-                    variant="elevated"
-                    title="Click Me"
-                    description="This card has an onClick handler that can trigger custom actions."
-                    materialIcon={TouchAppIcon}
-                    className="cursor-pointer hover:ring-2 hover:ring-primary-400/50 dark:hover:ring-primary-500/30"
-                    onClick={() => alert('Card clicked!')}
-                  />
-                </div>                <div>
-                  <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">Dynamic Theme Switching</h4>
-                  <ThemeCard 
-                    variant="bordered"
-                    theme="colorful"
-                    title="Theme Switcher"
-                    description="This card showcases our vibrant colorful theme with bordered variant."
-                    materialIcon={ColorLensIcon}
-                    className="hover:scale-[1.02] transition-transform"
-                    onClick={() => alert('This could trigger a theme change in your application!')}
-                  />
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <ThemeCard 
+                  variant="minimal"
+                  theme="dark-enhanced"
+                  title="Minimal Dark"
+                  description="A clean, minimalist dark card that changes background on hover."
+                  materialIcon={AltRouteIcon}
+                />
+                <ThemeCard 
+                  variant="gradient"
+                  theme="dark-enhanced"
+                  title="Gradient Dark"
+                  description="Dark theme with subtle gradient background for visual interest."
+                  materialIcon={ColorLensIcon}
+                />
+                <ThemeCard 
+                  variant="bordered"
+                  theme="dark-enhanced"
+                  title="Bordered Dark"
+                  description="Dark theme with a colored border to highlight content."
+                  materialIcon={BorderStyleIcon}
+                />
+                <ThemeCard 
+                  variant="elevated"
+                  theme="dark-enhanced"
+                  title="Elevated Dark"
+                  description="Dark theme with elevation effect that raises on hover."
+                  materialIcon={LayersIcon}
+                />
+                <ThemeCard 
+                  variant="glass"
+                  theme="dark-enhanced"
+                  title="Glass Dark"
+                  description="Dark theme with a subtle glass effect and backdrop blur."
+                  materialIcon={BlurOnIcon}
+                />
               </div>
-              <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto mt-6">                <CodeSnippet code={`// Interactive card with theme and onClick handler
-<ThemeCard 
-  variant="bordered"
-  theme="colorful"
-  title="Theme Switcher"
-  description="Dynamic theme switching card"
-  materialIcon={ColorLensIcon}
-  className="hover:scale-[1.02] transition-transform"
-  onClick={() => handleThemeChange()}
+            </div>
+          </div>
+            
+          {/* Colorful Theme Variants */}
+          <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-600 dark:text-fuchsia-400">
+                <AutoAwesomeIcon className="h-4 w-4" />
+              </span>
+              Colorful Theme Variants
+            </h3>
+            <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <ThemeCard 
+                  variant="minimal"
+                  theme="colorful"
+                  title="Minimal Cosmic"
+                  description="A clean, minimalist cosmic card that changes background on hover."
+                  materialIcon={AltRouteIcon}
+                />
+                <ThemeCard 
+                  variant="gradient"
+                  theme="colorful"
+                  title="Gradient Cosmic"
+                  description="Cosmic theme with gradient background for vibrant visual interest."
+                  materialIcon={ColorLensIcon}
+                />
+                <ThemeCard 
+                  variant="bordered"
+                  theme="colorful"
+                  title="Bordered Cosmic"
+                  description="Cosmic theme with a colored border to highlight content."
+                  materialIcon={BorderStyleIcon}
+                />
+                <ThemeCard 
+                  variant="elevated"
+                  theme="colorful"
+                  title="Elevated Cosmic"
+                  description="Cosmic theme with elevation effect that raises on hover."
+                  materialIcon={LayersIcon}
+                />
+                <ThemeCard 
+                  variant="glass"
+                  theme="colorful"
+                  title="Glass Cosmic"
+                  description="Cosmic theme with a subtle glass effect and backdrop blur."
+                  materialIcon={BlurOnIcon}
+                  className="hover:shadow-[0_8px_24px_rgba(255,0,204,0.4)]"
+                />
+              </div>
+              <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto mt-6">
+                <CodeSnippet code={`<ThemeCard 
+  variant="glass" // Any card variant
+  theme="colorful" // Options: 'light-enhanced', 'dark-enhanced', 'colorful'
+  title="Glass Cosmic"
+  description="Cosmic theme with glass effect"
+  materialIcon={BlurOnIcon}
+  className="hover:shadow-[0_8px_24px_rgba(255,0,204,0.4)]"
 />`} />
               </div>
             </div>
+          </div>
+            
+          {/* Card System Links */}
+          <div className="flex flex-col lg:flex-row gap-5 mb-10">
+            <a href="#basic-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-primary-50 dark:bg-primary-900/20 rounded-lg text-primary-600 dark:text-primary-400">
+                <StyleIcon />
+              </div>
+              <div>
+                <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-1">Basic Cards</h3>
+                <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Simple card components for general content display</p>
+              </div>
+            </a>
+            <a href="#profile-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-lg text-purple-600 dark:text-purple-400">
+                <PersonIcon />
+              </div>
+              <div>
+                <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-1">Profile Cards</h3>
+                <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Cards designed for user profiles and team members</p>
+              </div>
+            </a>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row gap-5">
+            <a href="#media-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-lg text-amber-600 dark:text-amber-400">
+                <ImageIcon />
+              </div>
+              <div>
+                <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-1">Media Cards</h3>
+                <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Cards designed for images and rich media</p>
+              </div>
+            </a>
+            <a href="#interactive-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600 dark:text-blue-400">
+                <TouchAppIcon />
+              </div>
+              <div>
+                <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-1">Interactive Cards</h3>
+                <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Cards with hover, click, and expand animations</p>
+              </div>
+            </a>
+            <a href="#dashboard-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
+              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-green-50 dark:bg-green-900/20 rounded-lg text-green-600 dark:text-green-400">
+                <DashboardIcon />
+              </div>
+              <div>
+                <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-1">Dashboard Cards</h3>
+                <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Cards for data visualization and analytics</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
