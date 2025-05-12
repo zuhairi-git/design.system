@@ -14,6 +14,15 @@ import GridsSection from "./grids-section";
 import BreakpointsSection from "./breakpoints-section";
 import CardsSection from "./cards-section";
 import { useState, useEffect } from 'react';
+// Material Icons for feature cards
+import PaletteIcon from '@mui/icons-material/Palette';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import SpaceBarIcon from '@mui/icons-material/SpaceBar';
+import StyleIcon from '@mui/icons-material/Style';
+import SmartButtonIcon from '@mui/icons-material/SmartButton';
+import DevicesIcon from '@mui/icons-material/Devices';
+import BlurOnIcon from '@mui/icons-material/BlurOn';
+import OpacityIcon from '@mui/icons-material/Opacity';
 
 export default function Home() {
   // State for sidebar toggle
@@ -127,55 +136,55 @@ export default function Home() {
                       title: "Colors",
                       description: "Complete color palette including primary, accent, and semantic colors",
                       link: "#colors",
-                      icon: "🎨"
-                    },                    {
+                      materialIcon: PaletteIcon
+                    },
+                    {
                       title: "Typography",
                       description: "Interactive font styles with live preview",
                       link: "#typography",
-                      icon: "✍️"
+                      materialIcon: TextFieldsIcon
                     },
                     {
                       title: "Spacing",
                       description: "4-point grid system for consistent spacing",
                       link: "#spacing",
-                      icon: "📏"
+                      materialIcon: SpaceBarIcon
                     },
                     {
                       title: "Cards",
                       description: "Multiple card variants with different themes and styles",
                       link: "#cards",
-                      icon: "🃏"
+                      materialIcon: StyleIcon
                     },
                     {
                       title: "Buttons",
                       description: "Button styles and variations across different themes",
                       link: "#buttons",
-                      icon: "👆"
+                      materialIcon: SmartButtonIcon
                     },
                     {
                       title: "Breakpoints",
                       description: "Responsive breakpoints for different devices",
                       link: "#breakpoints",
-                      icon: "📱"
+                      materialIcon: DevicesIcon
                     },
                     {
                       title: "Drop Shadows",
                       description: "Shadow styles for elevation and depth",
                       link: "#shadows",
-                      icon: "👥"
+                      materialIcon: BlurOnIcon
                     },
                     {
                       title: "Tints",
                       description: "Transparent layers for highlighting elements",
                       link: "#tints",
-                      icon: "🖌️"
+                      materialIcon: OpacityIcon
                     }
-                  ].map((item, index) => (
-                    <FeatureCard
+                  ].map((item, index) => (                    <FeatureCard
                       key={index}
                       title={item.title}
                       description={item.description}
-                      icon={item.icon}
+                      materialIcon={item.materialIcon}
                       link={item.link}
                     />
                   ))}

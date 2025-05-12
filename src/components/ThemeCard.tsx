@@ -1,11 +1,13 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { SvgIconProps } from '@mui/material';
 
 interface ThemeCardProps {
   title: string;
   description: string;
   icon?: ReactNode;
+  materialIcon?: React.ElementType<SvgIconProps>;
   variant: 'default' | 'minimal' | 'gradient' | 'bordered' | 'elevated' | 'glass';
   theme?: 'light' | 'dark' | 'system' | 'colorful' | 'light-enhanced' | 'dark-enhanced';
   className?: string;
@@ -15,7 +17,8 @@ interface ThemeCardProps {
 export default function ThemeCard({ 
   title, 
   description, 
-  icon, 
+  icon,
+  materialIcon: MaterialIcon,
   variant = 'default',
   theme = 'system',
   className = '',
@@ -101,10 +104,13 @@ export default function ThemeCard({
       className={`${baseStyles} ${variantStyles[variant]} ${themeStyles[theme]} ${className}`}
       onClick={onClick}
       style={theme === 'colorful' || theme === 'light-enhanced' || theme === 'dark-enhanced' ? getBackgroundStyle() : {}}
-    >
-      {icon && (
+    >      {(icon || MaterialIcon) && (
         <div className={`flex items-center justify-center w-10 h-10 mb-4 rounded-lg ${getIconStyle()}`}>
-          <span className="text-xl">{icon}</span>
+          {MaterialIcon ? (
+            <MaterialIcon fontSize="medium" className="text-[22px]" />
+          ) : (
+            <span className="text-xl">{icon}</span>
+          )}
         </div>
       )}
       

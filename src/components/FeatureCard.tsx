@@ -1,15 +1,17 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { SvgIconProps } from '@mui/material';
 
 interface FeatureCardProps {
   title: string;
   description: string;
-  icon: ReactNode;
+  icon?: ReactNode;
+  materialIcon?: React.ElementType<SvgIconProps>;
   link: string;
 }
 
-export default function FeatureCard({ title, description, icon, link }: FeatureCardProps) {
+export default function FeatureCard({ title, description, icon, materialIcon: MaterialIcon, link }: FeatureCardProps) {
   return (
     <a
       href={link}
@@ -25,9 +27,12 @@ export default function FeatureCard({ title, description, icon, link }: FeatureC
           window.history.pushState(null, '', link);
         }
       }}
-    >
-      <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform duration-300">
-        <span className="text-2xl">{icon}</span>
+    >      <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform duration-300">
+        {MaterialIcon ? (
+          <MaterialIcon fontSize="medium" className="text-[24px]" />
+        ) : (
+          <span className="text-2xl">{icon}</span>
+        )}
       </div>
       
       <h2 className="font-heading font-bold text-lg sm:text-xl text-primary-700 dark:text-primary-400 mb-2 sm:mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors">{title}</h2>
