@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
 
 interface CodeSnippetProps {
   code: string;
@@ -36,14 +38,9 @@ export default function CodeSnippet({ code, language = 'css', title }: CodeSnipp
           aria-label="Copy code to clipboard"
         >
           {copied ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <CheckRoundedIcon className="align-middle" style={{ fontSize: 16 }} />
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
+            <ContentCopyRoundedIcon className="align-middle" style={{ fontSize: 16 }} />
           )}
         </button>
       </div>

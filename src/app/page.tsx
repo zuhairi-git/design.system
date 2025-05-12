@@ -22,15 +22,14 @@ import AccessibilityUtilitiesSection from "./accessibility-utilities";
 import ResponsiveUtilitiesSection from "./responsive-utilities";
 import SpacingSection from "./spacing";
 import { useState, useEffect } from 'react';
-// Material Icons for feature cards
-import PaletteIcon from '@mui/icons-material/Palette';
-import TextFieldsIcon from '@mui/icons-material/TextFields';
-import SpaceBarIcon from '@mui/icons-material/SpaceBar';
-import StyleIcon from '@mui/icons-material/Style';
-import SmartButtonIcon from '@mui/icons-material/SmartButton';
-import DevicesIcon from '@mui/icons-material/Devices';
-import BlurOnIcon from '@mui/icons-material/BlurOn';
-import OpacityIcon from '@mui/icons-material/Opacity';
+import PaletteRoundedIcon from '@mui/icons-material/PaletteRounded';
+import TextFieldsRoundedIcon from '@mui/icons-material/TextFieldsRounded';
+import SpaceBarRoundedIcon from '@mui/icons-material/SpaceBarRounded';
+import StyleRoundedIcon from '@mui/icons-material/StyleRounded';
+import SmartButtonRoundedIcon from '@mui/icons-material/SmartButtonRounded';
+import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
+import BlurOnRoundedIcon from '@mui/icons-material/BlurOnRounded';
+import OpacityRoundedIcon from '@mui/icons-material/OpacityRounded';
 
 export default function Home() {
   // State for sidebar toggle
@@ -110,9 +109,7 @@ export default function Home() {
               <div className="max-w-7xl mx-auto">
                 <div className="mb-10">
                   <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                    <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
+                    <PaletteRoundedIcon className="w-4 h-4 mr-2 align-middle" />
                     Design Documentation
                   </div>
                   
@@ -144,49 +141,49 @@ export default function Home() {
                       title: "Colors",
                       description: "Complete color palette including primary, accent, and semantic colors",
                       link: "#colors",
-                      materialIcon: PaletteIcon
+                      materialIcon: () => <PaletteRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Typography",
                       description: "Interactive font styles with live preview",
                       link: "#typography",
-                      materialIcon: TextFieldsIcon
+                      materialIcon: () => <TextFieldsRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Spacing",
                       description: "4-point grid system for consistent spacing",
                       link: "#spacing",
-                      materialIcon: SpaceBarIcon
+                      materialIcon: () => <SpaceBarRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Cards",
                       description: "Multiple card variants with different themes and styles",
                       link: "#cards",
-                      materialIcon: StyleIcon
+                      materialIcon: () => <StyleRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Buttons",
                       description: "Button styles and variations across different themes",
                       link: "#buttons",
-                      materialIcon: SmartButtonIcon
+                      materialIcon: () => <SmartButtonRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Breakpoints",
                       description: "Responsive breakpoints for different devices",
                       link: "#breakpoints",
-                      materialIcon: DevicesIcon
+                      materialIcon: () => <DevicesRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Drop Shadows",
                       description: "Shadow styles for elevation and depth",
                       link: "#shadows",
-                      materialIcon: BlurOnIcon
+                      materialIcon: () => <BlurOnRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Tints",
                       description: "Transparent layers for highlighting elements",
                       link: "#tints",
-                      materialIcon: OpacityIcon
+                      materialIcon: () => <OpacityRoundedIcon className="align-middle" />
                     }
                   ].map((item, index) => (                    <FeatureCard
                       key={index}
@@ -205,7 +202,7 @@ export default function Home() {
               <div className="max-w-7xl mx-auto">                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
                   <div>
                     <div className="inline-flex items-center px-2.5 py-1 mb-3 text-xs font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                      <span className="mr-1.5">🎨</span> Color System
+                      <PaletteRoundedIcon className="h-3.5 w-3.5 mr-1.5 align-middle" /> Color System
                     </div>
                     <h2 className="font-heading font-bold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-3">Colors</h2>
                     <p className="font-body text-base text-neutral-700 dark:text-neutral-300 max-w-3xl">
@@ -222,11 +219,7 @@ export default function Home() {
                 </div>
                 
                 <div className="mb-16">                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
-                    <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                      </svg>
-                    </span>
+                    <PaletteRoundedIcon className="h-3.5 w-3.5 align-middle" />
                     Light Theme
                   </h3>
                   <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Clean and professional color palette for default light mode.</p>
@@ -248,9 +241,7 @@ export default function Home() {
                             <p className="font-body text-sm text-neutral-700">Clean and professional styling</p>
                           </div>
                           <div className="bg-blue-500/10 text-blue-500 p-2 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                            </svg>
+                            <PaletteRoundedIcon className="align-middle" />
                           </div>
                         </div>
                         <div className="mt-4 pt-4 border-t border-neutral-200/40">
@@ -326,11 +317,7 @@ export default function Home() {
                     />
                   </div>
                 </div>                <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mt-12 mb-3 flex items-center">
-                  <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                  </span>
+                  <BlurOnRoundedIcon className="h-3.5 w-3.5 align-middle" />
                   Dark Theme
                 </h3>
                 <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Sophisticated dark palette for late night browsing.</p>
@@ -352,9 +339,7 @@ export default function Home() {
                           <p className="font-body text-sm text-neutral-300">Preview of the dark theme card styling</p>
                         </div>
                         <div className="bg-blue-500/10 text-blue-400 p-2 rounded-lg">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                          </svg>
+                          <BlurOnRoundedIcon className="align-middle" />
                         </div>
                       </div>
                       <div className="mt-4 pt-4 border-t border-neutral-700/50">
@@ -431,11 +416,7 @@ export default function Home() {
                 
                 <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
                   <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
-                  <span className="inline-flex items-center justify-center w-6 h-6 mr-2 rounded-md bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-                  </span>
+                  <OpacityRoundedIcon className="h-3.5 w-3.5 align-middle" />
                   Colorful Theme
                 </h3>
                 <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Vibrant, creative palette for immersive, colorful interfaces.</p>
@@ -457,9 +438,7 @@ export default function Home() {
                           <p className="font-body text-sm text-blue-200/80">Creative and vibrant card styling</p>
                         </div>
                         <div className="bg-fuchsia-500/10 text-fuchsia-400 p-2 rounded-lg">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                          </svg>
+                          <OpacityRoundedIcon className="align-middle" />
                         </div>
                       </div>
                       <div className="mt-4 pt-4 border-t border-purple-500/30">
@@ -557,7 +536,7 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
                   <div>
                     <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                      <span className="mr-2">✍️</span> Typography System
+                      <TextFieldsRoundedIcon className="align-middle" /> Typography System
                     </div>                    <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Dynamic Typography</h2>
                     <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
                       Our interactive typography system lets you customize and preview different font styles.
@@ -580,11 +559,7 @@ export default function Home() {
                 </div>
                 
                 <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-10 mb-4 flex items-center">
-                  <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-                    </svg>
-                  </span>
+                  <TextFieldsRoundedIcon className="h-4 w-4 align-middle" />
                   Body Text Fonts
                 </h3>
                 <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">
@@ -623,7 +598,7 @@ export default function Home() {
               <div className="max-w-7xl mx-auto">
                 <div className="mb-10">
                   <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                    <span className="mr-2">📏</span> Grid System
+                    <SpaceBarRoundedIcon className="mr-2 align-middle" /> Grid System
                   </div>
                   <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Spacing</h2>
                   <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
@@ -676,7 +651,7 @@ export default function Home() {
               <div className="max-w-7xl mx-auto">
                 <div className="mb-10">
                   <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                    <span className="mr-2">👥</span> Elevation System
+                    <BlurOnRoundedIcon className="mr-2 align-middle" /> Elevation System
                   </div>
                   <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Drop Shadows</h2>
                   <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">

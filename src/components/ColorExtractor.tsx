@@ -2,6 +2,9 @@
 
 import { useState, useRef } from 'react';
 import NextImage from 'next/image';
+import CloudUploadRoundedIcon from '@mui/icons-material/CloudUploadRounded';
+import ContentCopyRoundedIcon from '@mui/icons-material/ContentCopyRounded';
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 
 interface ColorExtractorProps {
   title: string;
@@ -200,20 +203,7 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
         
         {!image ? (
           <div className="text-center space-y-2">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-12 w-12 mx-auto text-neutral-400 dark:text-neutral-600"
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={1.5} 
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" 
-              />
-            </svg>
+            <CloudUploadRoundedIcon className="h-12 w-12 mx-auto text-neutral-400 dark:text-neutral-600 align-middle" />
             <p className="font-body text-neutral-600 dark:text-neutral-400">
               Drag & drop an image or click to browse
             </p>
@@ -275,13 +265,8 @@ export default function ColorExtractor({ title, description }: ColorExtractorPro
                         backdrop-blur-sm transition-all duration-300 shadow-sm hover:shadow-md"
                       aria-label="Copy color code"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 copy-icon">
-                        <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-                        <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
-                      </svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 check-icon hidden">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
+                      <ContentCopyRoundedIcon className="w-4 h-4 copy-icon align-middle" />
+                      <CheckRoundedIcon className="w-4 h-4 check-icon hidden align-middle" />
                     </button>
                   </div>
                 </div>

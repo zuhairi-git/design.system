@@ -3,6 +3,11 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 
 // Types for navigation items
 type NavItem = {
@@ -180,9 +185,7 @@ export default function Sidebar() {
         className="md:hidden fixed bottom-6 right-6 z-[60] bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 p-3 rounded-lg shadow-lg flex items-center justify-center hover:bg-neutral-200 dark:hover:bg-neutral-700/70 transition-all duration-200"
         aria-label="Toggle menu"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-        </svg>
+        <MenuRoundedIcon className="h-5 w-5 align-middle" />
       </button>
       
       {/* Mobile Overlay */}
@@ -203,9 +206,7 @@ export default function Sidebar() {
           className="absolute -right-10 top-4 p-2 bg-white dark:bg-neutral-800 rounded-r-lg shadow-md border border-l-0 border-neutral-200 dark:border-neutral-700 hidden md:flex"
           aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-700 dark:text-neutral-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
-          </svg>
+          <ChevronLeftRoundedIcon className="h-5 w-5 text-neutral-700 dark:text-neutral-300 align-middle" />
         </button>
         
         <div className="h-16 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between px-4">
@@ -217,9 +218,7 @@ export default function Sidebar() {
             className="text-neutral-700 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800/50 transition-colors"
             aria-label="Close menu"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <CloseRoundedIcon className="h-5 w-5 align-middle" />
           </button>
         </div>
         
@@ -232,15 +231,7 @@ export default function Sidebar() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-2.5 pl-10 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800/50 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:text-white transition-all"
             />
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-4 w-4 absolute left-3.5 top-3.5 text-neutral-500 dark:text-neutral-400" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <SearchRoundedIcon className="h-4 w-4 absolute left-3.5 top-3.5 text-neutral-500 dark:text-neutral-400 align-middle" />
           </div>
         </div>
         
@@ -257,15 +248,7 @@ export default function Sidebar() {
                       <Image src={category.icon} width={16} height={16} alt="" className="mr-2 opacity-70" />
                       {category.label}
                     </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className={`h-4 w-4 transition-transform ${category.isExpanded ? 'rotate-180' : ''}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                    <ExpandMoreRoundedIcon className={`h-4 w-4 transition-transform ${category.isExpanded ? 'rotate-180' : ''} align-middle`} />
                   </button>
                   
                   {category.isExpanded && (

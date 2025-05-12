@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 // Image import removed as it's not being used
-import ThemeToggle from './ThemeToggle';
 import { useSidebar } from './Sidebar';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 type HeaderProps = {
   title: string;
@@ -104,21 +106,13 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
                 className="mr-3 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/70 transition-all duration-200"
                 aria-label="Toggle sidebar"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-                </svg>
+                <MenuRoundedIcon className="h-5 w-5 align-middle" />
               </button>
-              
-              <Link 
+                <Link 
                 href="#overview" 
                 className="flex items-center group" 
                 onClick={() => handleNavLinkClick('overview')}
               >
-                <div className="mr-2 bg-primary-500 text-white rounded-md p-1.5 group-hover:scale-105 transition-transform">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                  </svg>
-                </div>
                 <h1 className="font-heading font-bold text-xl text-neutral-950 dark:text-white">
                   {title || "Alux"}
                 </h1>
@@ -138,9 +132,7 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
                   >
                     {link.label}
                     {link.submenu && (
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <ExpandMoreRoundedIcon className="h-4 w-4 ml-1 align-middle" />
                     )}
                   </Link>
                   
@@ -167,9 +159,8 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
                     </div>
                   )}
                 </div>
-              ))}
-            </nav>              {/* Right side buttons */}            <div className="flex items-center">
-                <ThemeToggle />
+              ))}            </nav>              {/* Right side buttons */}            <div className="flex items-center">
+                {/* Theme toggle removed */}
                 {/* Mobile menu button - completely removed from rendering */}
               {/* We're using the sidebar toggle instead of a separate mobile menu button
               {mobileMenuOpen && (
@@ -178,9 +169,7 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
                   aria-expanded="true"
                 >
                   <span className="sr-only">Close menu</span>
-                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <CloseRoundedIcon className="h-5 w-5 align-middle" />
                 </button>
               )} */}            </div>
           </div>
