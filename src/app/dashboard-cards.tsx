@@ -27,7 +27,9 @@ function DashboardCard({
   change, 
   isPositive = true, 
   icon, 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   iconBgColor, // No longer used, kept for backward compatibility
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   iconColor,    // No longer used, kept for backward compatibility
   theme, 
   variant = 'stat',

@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { useSidebar } from './Sidebar';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+// Removed unused import
+// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 type HeaderProps = {
   title: string;
@@ -16,9 +17,8 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
-  
-  // Access sidebar context for the toggle button
-  const { isOpen, toggleSidebar } = useSidebar();
+    // Access sidebar context for the toggle button
+  const { toggleSidebar } = useSidebar(); // Only use toggleSidebar, isOpen is not needed here
   
   // Mark when component is mounted on client
   useEffect(() => {
