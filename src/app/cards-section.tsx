@@ -10,7 +10,6 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import AltRouteIcon from '@mui/icons-material/AltRoute';
 import BlurOnIcon from '@mui/icons-material/BlurOn';
-import SparklesIcon from '@mui/icons-material/Flare';
 import BorderStyleIcon from '@mui/icons-material/BorderStyle';
 import LayersIcon from '@mui/icons-material/Layers';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
