@@ -27,7 +27,7 @@ export default function FeatureCard({ title, description, icon, materialIcon: Ma
           window.history.pushState(null, '', link);
         }
       }}
-    >      <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform duration-300">
+    >      <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg bg-blue-500/10 dark:bg-blue-500/10 text-blue-500 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
         {MaterialIcon ? (
           <MaterialIcon fontSize="medium" className="text-[24px]" />
         ) : (

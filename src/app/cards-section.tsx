@@ -34,7 +34,7 @@ export default function CardsSection() {
         
         <div className="space-y-14">          {/* Theme Cards */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <LightModeIcon className="h-4 w-4" />
               </span>
               Theme Cards
@@ -75,7 +75,7 @@ export default function CardsSection() {
           
           {/* Card Variants */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <StyleIcon className="h-4 w-4" />
               </span>
               Card Variants
@@ -125,8 +125,7 @@ export default function CardsSection() {
           
           {/* Light Theme Variants */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
-              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400">
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <LightModeIcon className="h-4 w-4" />
               </span>
               Light Theme Variants
@@ -174,8 +173,7 @@ export default function CardsSection() {
           
           {/* Dark Theme Variants */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
-              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400">
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <DarkModeIcon className="h-4 w-4" />
               </span>
               Dark Theme Variants
@@ -223,8 +221,7 @@ export default function CardsSection() {
             
           {/* Colorful Theme Variants */}
           <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
-              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-100 dark:bg-fuchsia-900/40 text-fuchsia-600 dark:text-fuchsia-400">
+            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-400">
                 <AutoAwesomeIcon className="h-4 w-4" />
               </span>
               Colorful Theme Variants
@@ -283,8 +280,7 @@ export default function CardsSection() {
             
           {/* Card System Links */}
           <div className="flex flex-col lg:flex-row gap-5 mb-10">
-            <a href="#basic-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
-              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-primary-50 dark:bg-primary-900/20 rounded-lg text-primary-600 dark:text-primary-400">
+            <a href="#basic-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-lg text-blue-500 dark:text-blue-400">
                 <StyleIcon />
               </div>
               <div>
@@ -292,8 +288,7 @@ export default function CardsSection() {
                 <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Simple card components for general content display</p>
               </div>
             </a>
-            <a href="#profile-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
-              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-purple-50 dark:bg-purple-900/20 rounded-lg text-purple-600 dark:text-purple-400">
+            <a href="#profile-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-lg text-blue-500 dark:text-blue-400">
                 <PersonIcon />
               </div>
               <div>
@@ -304,8 +299,7 @@ export default function CardsSection() {
           </div>
           
           <div className="flex flex-col lg:flex-row gap-5">
-            <a href="#media-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
-              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-amber-50 dark:bg-amber-900/20 rounded-lg text-amber-600 dark:text-amber-400">
+            <a href="#media-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-lg text-blue-500 dark:text-blue-400">
                 <ImageIcon />
               </div>
               <div>
@@ -313,8 +307,7 @@ export default function CardsSection() {
                 <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Cards designed for images and rich media</p>
               </div>
             </a>
-            <a href="#interactive-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
-              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-lg text-blue-600 dark:text-blue-400">
+            <a href="#interactive-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-lg text-blue-500 dark:text-blue-400">
                 <TouchAppIcon />
               </div>
               <div>
@@ -322,8 +315,7 @@ export default function CardsSection() {
                 <p className="font-body text-sm text-neutral-600 dark:text-neutral-400">Cards with hover, click, and expand animations</p>
               </div>
             </a>
-            <a href="#dashboard-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">
-              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-green-50 dark:bg-green-900/20 rounded-lg text-green-600 dark:text-green-400">
+            <a href="#dashboard-cards" className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-5 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-md flex-1 flex items-center hover:border-primary-300 dark:hover:border-primary-700 transition-colors">              <div className="mr-4 w-12 h-12 flex items-center justify-center bg-blue-500/10 rounded-lg text-blue-500 dark:text-blue-400">
                 <DashboardIcon />
               </div>
               <div>

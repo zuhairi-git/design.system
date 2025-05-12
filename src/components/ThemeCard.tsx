@@ -53,10 +53,10 @@ export default function ThemeCard({
     'dark-enhanced': "!text-[#ededed] !border-[rgba(75,85,99,0.5)] !shadow-[0_4px_12px_rgba(59,130,246,0.2)]"
   };  // Determine icon background style based on theme-colors.txt
   const getIconStyle = () => {
-    if (theme === 'colorful') return "bg-[rgba(128,0,255,0.2)] text-[#00ffff]";
-    if (theme === 'dark' || theme === 'dark-enhanced') return "bg-[rgba(31,41,55,0.9)] text-[#3b82f6]";
-    if (theme === 'light' || theme === 'light-enhanced') return "bg-[rgba(59,130,246,0.1)] text-[#2563eb]";
-    return "bg-[rgba(59,130,246,0.1)] dark:bg-[rgba(59,130,246,0.2)] text-[#3b82f6] dark:text-[#3b82f6]";
+    if (theme === 'colorful') return "bg-fuchsia-500/10 text-fuchsia-400";
+    if (theme === 'dark' || theme === 'dark-enhanced') return "bg-blue-500/10 text-blue-400";
+    if (theme === 'light' || theme === 'light-enhanced') return "bg-blue-500/10 text-blue-500";
+    return "bg-blue-500/10 dark:bg-blue-500/10 text-blue-500 dark:text-blue-400";
   };
   // Determine text colors based on theme-colors.txt
   const getTitleStyle = () => {

@@ -31,11 +31,11 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
   // Get avatar styles based on theme
   const getAvatarStyles = () => {
     if (theme === 'colorful') {
-      return 'bg-[#2d0a4a]';
+      return 'bg-fuchsia-500/10';
     } else if (theme === 'dark') {
-      return 'bg-neutral-700';
+      return 'bg-blue-500/10';
     } else {
-      return 'bg-neutral-200';
+      return 'bg-blue-500/10';
     }
   };
 
@@ -60,9 +60,9 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
 
   // Get social icon styles based on theme
   const getSocialIconStyles = () => {
-    if (theme === 'colorful') return 'bg-[#2d0a4a] text-cyan-300';
-    if (theme === 'dark') return 'bg-neutral-700 text-neutral-300';
-    return 'bg-neutral-100 text-neutral-600';
+    if (theme === 'colorful') return 'bg-fuchsia-500/10 text-fuchsia-400';
+    if (theme === 'dark') return 'bg-blue-500/10 text-blue-400';
+    return 'bg-blue-500/10 text-blue-500';
   };
 
   const bgStyle = theme === 'colorful' ? getCardBackground('colorful') : {};
@@ -75,7 +75,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
           <div className={`rounded-xl border overflow-hidden ${getCardStyles()}`} style={bgStyle}>
             <div className="p-5 flex items-center">
               <div className={`w-12 h-12 rounded-full ${getAvatarStyles()} mr-4 overflow-hidden flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${theme === 'colorful' ? 'text-cyan-300' : theme === 'dark' ? 'text-neutral-300' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${theme === 'colorful' ? 'text-fuchsia-400' : theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
@@ -92,7 +92,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
           <div className={`rounded-xl border overflow-hidden ${getCardStyles()}`} style={bgStyle}>
             <div className="flex">
               <div className={`${getAvatarStyles()} w-24 flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-10 w-10 ${theme === 'colorful' ? 'text-cyan-300' : theme === 'dark' ? 'text-neutral-300' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-10 w-10 ${theme === 'colorful' ? 'text-fuchsia-400' : theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
@@ -110,7 +110,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
           <div className={`rounded-xl border overflow-hidden ${getCardStyles()}`} style={bgStyle}>
             <div className="p-6 flex flex-col items-center text-center">
               <div className={`w-24 h-24 rounded-full ${getAvatarStyles()} mb-4 overflow-hidden flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-12 w-12 ${theme === 'colorful' ? 'text-cyan-300' : theme === 'dark' ? 'text-neutral-300' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-12 w-12 ${theme === 'colorful' ? 'text-fuchsia-400' : theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>

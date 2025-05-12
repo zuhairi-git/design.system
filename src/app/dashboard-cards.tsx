@@ -61,40 +61,28 @@ function DashboardCard({
   // Get icon background styles based on theme
   const getIconBgStyles = () => {
     if (theme === 'colorful') {
-      // For colorful theme, use custom cosmic colors
-      if (iconBgColor.includes('primary')) return 'bg-[rgba(0,255,255,0.2)]';
-      if (iconBgColor.includes('purple')) return 'bg-[rgba(255,0,204,0.2)]';
-      if (iconBgColor.includes('green')) return 'bg-[rgba(0,255,128,0.2)]';
-      return 'bg-[rgba(128,0,255,0.2)]';
+      // For colorful theme, use unified fuchsia-500/10
+      return 'bg-fuchsia-500/10';
     } else if (theme === 'dark') {
-      // For dark theme
-      if (iconBgColor.includes('primary')) return 'bg-primary-900/30';
-      if (iconBgColor.includes('purple')) return 'bg-purple-900/30';
-      if (iconBgColor.includes('green')) return 'bg-green-900/30';
-      return iconBgColor;
+      // For dark theme, use unified blue-500/10
+      return 'bg-blue-500/10';
     } else {
-      // For light theme
-      return iconBgColor;
+      // For light theme, use unified blue-500/10
+      return 'bg-blue-500/10';
     }
   };
 
   // Get icon color styles based on theme
   const getIconColorStyles = () => {
     if (theme === 'colorful') {
-      // For colorful theme
-      if (iconColor.includes('primary')) return 'text-[#00ffff]';
-      if (iconColor.includes('purple')) return 'text-[#ff00cc]';
-      if (iconColor.includes('green')) return 'text-[#00ff80]';
-      return 'text-[#00ffff]';
+      // For colorful theme, use unified text-fuchsia-400
+      return 'text-fuchsia-400';
     } else if (theme === 'dark') {
-      // For dark theme
-      if (iconColor.includes('primary')) return 'text-primary-400';
-      if (iconColor.includes('purple')) return 'text-purple-400';
-      if (iconColor.includes('green')) return 'text-green-400';
-      return iconColor;
+      // For dark theme, use unified text-blue-400
+      return 'text-blue-400';
     } else {
-      // For light theme
-      return iconColor;
+      // For light theme, use unified text-blue-500
+      return 'text-blue-500';
     }
   };
 
@@ -278,8 +266,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               }
-              iconBgColor="bg-primary-100"
-              iconColor="text-primary-600"
+              iconBgColor="bg-blue-500/10"
+              iconColor="text-blue-500"
             />
             <DashboardCard
               theme="light"
@@ -293,8 +281,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               }
-              iconBgColor="bg-purple-100"
-              iconColor="text-purple-600"
+              iconBgColor="bg-blue-500/10"
+              iconColor="text-blue-500"
             />
             <DashboardCard
               theme="light"
@@ -308,8 +296,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               }
-              iconBgColor="bg-green-100"
-              iconColor="text-green-600"
+              iconBgColor="bg-blue-500/10"
+              iconColor="text-blue-500"
             />
           </div>
         </div>
@@ -333,8 +321,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               }
-              iconBgColor="bg-primary-900/30"
-              iconColor="text-primary-400"
+              iconBgColor="bg-blue-500/10"
+              iconColor="text-blue-400"
             />
             <DashboardCard
               theme="dark"
@@ -348,8 +336,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               }
-              iconBgColor="bg-purple-900/30"
-              iconColor="text-purple-400"
+              iconBgColor="bg-blue-500/10"
+              iconColor="text-blue-400"
             />
             <DashboardCard
               theme="dark"
@@ -363,8 +351,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               }
-              iconBgColor="bg-green-900/30"
-              iconColor="text-green-400"
+              iconBgColor="bg-blue-500/10"
+              iconColor="text-blue-400"
             />
           </div>
         </div>
@@ -388,8 +376,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               }
-              iconBgColor="bg-primary-100"
-              iconColor="text-primary-600"
+              iconBgColor="bg-fuchsia-500/10"
+              iconColor="text-fuchsia-400"
             />
             <DashboardCard
               theme="colorful"
@@ -403,8 +391,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               }
-              iconBgColor="bg-purple-100"
-              iconColor="text-purple-600"
+              iconBgColor="bg-fuchsia-500/10"
+              iconColor="text-fuchsia-400"
             />
             <DashboardCard
               theme="colorful"
@@ -418,8 +406,8 @@ export default function DashboardCardsSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               }
-              iconBgColor="bg-green-100"
-              iconColor="text-green-600"
+              iconBgColor="bg-fuchsia-500/10"
+              iconColor="text-fuchsia-400"
             />
           </div>
         </div>
@@ -435,8 +423,8 @@ export default function DashboardCardsSection() {
   change="12.5% increase"
   isPositive={true}
   icon={<UserIcon className="h-5 w-5" />}
-  iconBgColor="bg-primary-100"
-  iconColor="text-primary-600"
+  iconBgColor="bg-blue-500/10"
+  iconColor="text-blue-500"
 />`}
             language="jsx"
           />
