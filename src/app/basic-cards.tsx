@@ -19,31 +19,31 @@ function BasicCard({ title, description, theme, variant = 'basic' }: BasicCardPr
   // Get variant-specific styles
   const getVariantStyles = () => {
     if (theme === 'colorful') {
-      // For colorful theme, use vibrant variants
+      // For colorful theme, use vibrant backgrounds for better contrast
       switch (variant) {
-        case 'info': return 'border-blue-400/50 shadow-[0_4px_12px_rgba(0,255,255,0.3)]';
-        case 'success': return 'border-green-400/50 shadow-[0_4px_12px_rgba(0,255,200,0.3)]';
-        case 'warning': return 'border-amber-400/50 shadow-[0_4px_12px_rgba(255,200,0,0.3)]';
-        case 'danger': return 'border-rose-400/50 shadow-[0_4px_12px_rgba(255,0,100,0.3)]';
-        default: return 'border-[rgba(128,0,255,0.3)] shadow-[0_4px_12px_rgba(255,0,204,0.3)]';
+        case 'info': return 'bg-cyan-900/80 border-cyan-400/80 shadow-[0_4px_16px_rgba(0,255,255,0.25)]';
+        case 'success': return 'bg-green-900/80 border-green-400/80 shadow-[0_4px_16px_rgba(0,255,200,0.25)]';
+        case 'warning': return 'bg-amber-900/80 border-amber-400/80 shadow-[0_4px_16px_rgba(255,200,0,0.25)]';
+        case 'danger': return 'bg-rose-900/80 border-rose-400/80 shadow-[0_4px_16px_rgba(255,0,100,0.25)]';
+        default: return 'bg-[#1a0033] border-[rgba(128,0,255,0.7)] shadow-[0_4px_16px_rgba(255,0,204,0.25)]';
       }
     } else if (theme === 'dark') {
-      // For dark theme
+      // For dark theme, use deeper backgrounds and lighter borders
       switch (variant) {
-        case 'info': return 'bg-blue-900/20 border-blue-800/30 shadow-md';
-        case 'success': return 'bg-green-900/20 border-green-800/30 shadow-md';
-        case 'warning': return 'bg-amber-900/20 border-amber-800/30 shadow-md';
-        case 'danger': return 'bg-rose-900/20 border-rose-800/30 shadow-md';
-        default: return 'bg-[#0a0a0a] border-neutral-700 shadow-md';
+        case 'info': return 'bg-blue-900 border-blue-400 shadow-lg';
+        case 'success': return 'bg-green-900 border-green-400 shadow-lg';
+        case 'warning': return 'bg-amber-900 border-amber-400 shadow-lg';
+        case 'danger': return 'bg-rose-900 border-rose-400 shadow-lg';
+        default: return 'bg-[#0a0a0a] border-neutral-600 shadow-lg';
       }
     } else {
-      // For light theme
+      // For light theme, use more saturated backgrounds and darker text
       switch (variant) {
-        case 'info': return 'bg-blue-50 border-blue-200 shadow-md';
-        case 'success': return 'bg-green-50 border-green-200 shadow-md';
-        case 'warning': return 'bg-amber-50 border-amber-200 shadow-md';
-        case 'danger': return 'bg-rose-50 border-rose-200 shadow-md';
-        default: return 'bg-white border-neutral-200 shadow-md';
+        case 'info': return 'bg-blue-100 border-blue-600 shadow-md';
+        case 'success': return 'bg-green-100 border-green-600 shadow-md';
+        case 'warning': return 'bg-amber-100 border-amber-600 shadow-md';
+        case 'danger': return 'bg-rose-100 border-rose-600 shadow-md';
+        default: return 'bg-white border-neutral-300 shadow-md';
       }
     }
   };
@@ -51,57 +51,21 @@ function BasicCard({ title, description, theme, variant = 'basic' }: BasicCardPr
   // Get text styles based on theme and variant
   const getTitleStyles = () => {
     if (theme === 'colorful') {
-      switch (variant) {
-        case 'info': return 'text-cyan-100';
-        case 'success': return 'text-green-100';
-        case 'warning': return 'text-amber-100';
-        case 'danger': return 'text-rose-100';
-        default: return 'text-[#f0f8ff]';
-      }
+      return 'text-white';
     } else if (theme === 'dark') {
-      switch (variant) {
-        case 'info': return 'text-blue-300';
-        case 'success': return 'text-green-300';
-        case 'warning': return 'text-amber-300';
-        case 'danger': return 'text-rose-300';
-        default: return 'text-white';
-      }
+      return 'text-white';
     } else {
-      switch (variant) {
-        case 'info': return 'text-blue-800';
-        case 'success': return 'text-green-800';
-        case 'warning': return 'text-amber-800';
-        case 'danger': return 'text-rose-800';
-        default: return 'text-neutral-900';
-      }
+      return 'text-neutral-900';
     }
   };
 
   const getDescriptionStyles = () => {
     if (theme === 'colorful') {
-      switch (variant) {
-        case 'info': return 'text-cyan-100/90';
-        case 'success': return 'text-green-100/90';
-        case 'warning': return 'text-amber-100/90';
-        case 'danger': return 'text-rose-100/90';
-        default: return 'text-[#f0f8ff]/90';
-      }
+      return 'text-white/90';
     } else if (theme === 'dark') {
-      switch (variant) {
-        case 'info': return 'text-blue-200';
-        case 'success': return 'text-green-200';
-        case 'warning': return 'text-amber-200';
-        case 'danger': return 'text-rose-200';
-        default: return 'text-neutral-300';
-      }
+      return 'text-neutral-200';
     } else {
-      switch (variant) {
-        case 'info': return 'text-blue-700';
-        case 'success': return 'text-green-700';
-        case 'warning': return 'text-amber-700';
-        case 'danger': return 'text-rose-700';
-        default: return 'text-neutral-600';
-      }
+      return 'text-neutral-700';
     }
   };
 
@@ -109,18 +73,16 @@ function BasicCard({ title, description, theme, variant = 'basic' }: BasicCardPr
 
   return (
     <div 
-      className={`rounded-xl overflow-hidden border ${getVariantStyles()}`}
+      className={`relative rounded-xl overflow-hidden border ${getVariantStyles()}`}
       style={bgStyle}
     >
       <div className="p-6">
-        <h3 className={`font-heading text-lg font-medium ${getTitleStyles()} mb-2`}>{title}</h3>
-        <p className={`font-body text-sm ${getDescriptionStyles()}`}>
-          {description}
-        </p>
+        <h3 className={`font-heading text-lg font-bold ${getTitleStyles()} mb-2`}>{title}</h3>
+        <p className={`font-body text-sm ${getDescriptionStyles()}`}>{description}</p>
         {theme === 'colorful' && (
           <div className="absolute inset-0 pointer-events-none" style={{
             background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-            opacity: 0.07,
+            opacity: 0.10,
             mixBlendMode: 'overlay'
           }} />
         )}

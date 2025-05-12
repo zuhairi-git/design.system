@@ -20,18 +20,18 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
   // Get card styles based on theme and variant
   const getCardStyles = () => {
     if (theme === 'colorful') {
-      return 'border border-[rgba(128,0,255,0.3)] shadow-[0_4px_12px_rgba(255,0,204,0.3)]';
+      return 'bg-[#1a0033] border-[rgba(128,0,255,0.7)] shadow-[0_4px_16px_rgba(255,0,204,0.25)]';
     } else if (theme === 'dark') {
-      return 'bg-neutral-800 border-neutral-700 shadow-md';
+      return 'bg-[#18181b] border-neutral-600 shadow-lg';
     } else {
-      return 'bg-white border-neutral-200 shadow-md';
+      return 'bg-white border-neutral-300 shadow-md';
     }
   };
 
   // Get avatar styles based on theme
   const getAvatarStyles = () => {
     if (theme === 'colorful') {
-      return 'bg-[rgba(128,0,255,0.3)]';
+      return 'bg-[#2d0a4a]';
     } else if (theme === 'dark') {
       return 'bg-neutral-700';
     } else {
@@ -41,26 +41,26 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
 
   // Get text styles based on theme
   const getNameStyles = () => {
-    if (theme === 'colorful') return 'text-[#f0f8ff]';
+    if (theme === 'colorful') return 'text-white';
     if (theme === 'dark') return 'text-white';
     return 'text-neutral-900';
   };
 
   const getTitleStyles = () => {
-    if (theme === 'colorful') return 'text-[#00ffff]';
-    if (theme === 'dark') return 'text-neutral-400';
+    if (theme === 'colorful') return 'text-cyan-300';
+    if (theme === 'dark') return 'text-neutral-300';
     return 'text-neutral-500';
   };
 
   const getDescriptionStyles = () => {
-    if (theme === 'colorful') return 'text-[#f0f8ff]/90';
-    if (theme === 'dark') return 'text-neutral-300';
-    return 'text-neutral-600';
+    if (theme === 'colorful') return 'text-white/90';
+    if (theme === 'dark') return 'text-neutral-200';
+    return 'text-neutral-700';
   };
 
   // Get social icon styles based on theme
   const getSocialIconStyles = () => {
-    if (theme === 'colorful') return 'bg-[rgba(128,0,255,0.3)] text-[#00ffff]';
+    if (theme === 'colorful') return 'bg-[#2d0a4a] text-cyan-300';
     if (theme === 'dark') return 'bg-neutral-700 text-neutral-300';
     return 'bg-neutral-100 text-neutral-600';
   };
@@ -75,7 +75,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
           <div className={`rounded-xl border overflow-hidden ${getCardStyles()}`} style={bgStyle}>
             <div className="p-5 flex items-center">
               <div className={`w-12 h-12 rounded-full ${getAvatarStyles()} mr-4 overflow-hidden flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${theme === 'colorful' ? 'text-[#00ffff]' : theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-6 w-6 ${theme === 'colorful' ? 'text-cyan-300' : theme === 'dark' ? 'text-neutral-300' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
@@ -92,7 +92,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
           <div className={`rounded-xl border overflow-hidden ${getCardStyles()}`} style={bgStyle}>
             <div className="flex">
               <div className={`${getAvatarStyles()} w-24 flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-10 w-10 ${theme === 'colorful' ? 'text-[#00ffff]' : theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-10 w-10 ${theme === 'colorful' ? 'text-cyan-300' : theme === 'dark' ? 'text-neutral-300' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
@@ -110,7 +110,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
           <div className={`rounded-xl border overflow-hidden ${getCardStyles()}`} style={bgStyle}>
             <div className="p-6 flex flex-col items-center text-center">
               <div className={`w-24 h-24 rounded-full ${getAvatarStyles()} mb-4 overflow-hidden flex items-center justify-center`}>
-                <svg xmlns="http://www.w3.org/2000/svg" className={`h-12 w-12 ${theme === 'colorful' ? 'text-[#00ffff]' : theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className={`h-12 w-12 ${theme === 'colorful' ? 'text-cyan-300' : theme === 'dark' ? 'text-neutral-300' : 'text-neutral-500'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
@@ -142,11 +142,11 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
 
   return (
     <>
-      {getLayout()}
+      <div className="relative">{getLayout()}</div>
       {theme === 'colorful' && (
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-          opacity: 0.07,
+          opacity: 0.10,
           mixBlendMode: 'overlay'
         }} />
       )}

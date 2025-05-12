@@ -21,11 +21,11 @@ function MediaCard({ title, description, imagePath, theme, variant = 'basic' }: 
   // Get card styles based on theme and variant
   const getCardStyles = () => {
     if (theme === 'colorful') {
-      return 'border border-[rgba(128,0,255,0.3)] shadow-[0_4px_12px_rgba(255,0,204,0.3)]';
+      return 'bg-[#1a0033] border-[rgba(128,0,255,0.7)] shadow-[0_4px_16px_rgba(255,0,204,0.25)]';
     } else if (theme === 'dark') {
-      return variant !== 'overlay' ? 'bg-neutral-800 border-neutral-700 shadow-md' : '';
+      return variant !== 'overlay' ? 'bg-[#18181b] border-neutral-600 shadow-lg' : '';
     } else {
-      return variant !== 'overlay' ? 'bg-white border-neutral-200 shadow-md' : '';
+      return variant !== 'overlay' ? 'bg-white border-neutral-300 shadow-md' : '';
     }
   };
 
@@ -34,7 +34,7 @@ function MediaCard({ title, description, imagePath, theme, variant = 'basic' }: 
     if (variant === 'overlay') {
       return 'text-white drop-shadow-md';
     } else if (theme === 'colorful') {
-      return 'text-[#f0f8ff]';
+      return 'text-white';
     } else if (theme === 'dark') {
       return 'text-white';
     }
@@ -45,11 +45,11 @@ function MediaCard({ title, description, imagePath, theme, variant = 'basic' }: 
     if (variant === 'overlay') {
       return 'text-white/90 drop-shadow-md';
     } else if (theme === 'colorful') {
-      return 'text-[#f0f8ff]/90';
+      return 'text-white/90';
     } else if (theme === 'dark') {
-      return 'text-neutral-300';
+      return 'text-neutral-200';
     }
-    return 'text-neutral-600';
+    return 'text-neutral-700';
   };
 
   const getBgOverlayStyles = () => {
@@ -138,11 +138,11 @@ function MediaCard({ title, description, imagePath, theme, variant = 'basic' }: 
 
   return (
     <>
-      {getLayout()}
+      <div className="relative">{getLayout()}</div>
       {theme === 'colorful' && variant !== 'overlay' && (
         <div className="absolute inset-0 pointer-events-none" style={{
           background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-          opacity: 0.07,
+          opacity: 0.10,
           mixBlendMode: 'overlay'
         }} />
       )}
