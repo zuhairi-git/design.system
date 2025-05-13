@@ -6,8 +6,6 @@ import AnimatedSection from '@/components/AnimatedSection';
 import CodeSnippet from '@/components/CodeSnippet';
 
 // Import local images
-import gridImage1 from '@/img/brooke-lark-V4MBq8kue3U-unsplash.jpg';
-import gridImage2 from '@/img/brooke-lark-lcZ9NxhOSlo-unsplash.jpg';
 import galleryImage1 from '@/img/brooke-lark-pXEsx3kRuNc-unsplash.jpg';
 import galleryImage2 from '@/img/brooke-lark-GTMGG-xvxdU-unsplash.jpg';
 import galleryImage3 from '@/img/brooke-lark-rS26chimPaA-unsplash.jpg';

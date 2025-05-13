@@ -111,12 +111,12 @@ function DashboardCard({
     } else if (theme === 'dark') {
       return {
         bg: 'bg-neutral-700',
-        fill: 'bg-purple-500'
+        fill: 'bg-blue-500'
       };
     } else {
       return {
         bg: 'bg-neutral-200',
-        fill: 'bg-purple-600'
+        fill: 'bg-blue-600'
       };
     }
   };
