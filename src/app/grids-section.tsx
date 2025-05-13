@@ -91,10 +91,9 @@ export default function GridsSection() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-6 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600">Harmonious</span> Grid System
           </h2>
-          
-          <p className="font-body text-lg md:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl leading-relaxed mb-8">
+            <p className="font-body text-lg md:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl leading-relaxed mb-8">
             A grid system creates the invisible architecture that brings visual <span className="italic">harmony</span> and <span className="italic">balance</span> to your layouts. 
-            It's the foundation that enables both aesthetic beauty and functional clarity.
+            It&apos;s the foundation that enables both aesthetic beauty and functional clarity.
           </p>
           
           <div className="flex flex-col lg:flex-row gap-8 mb-12">
@@ -296,10 +295,9 @@ export default function GridsSection() {
         {/* Real-world grid examples */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <h3 className="font-heading font-semibold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-4">Visual Harmony in Practice</h3>
-            <p className="text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
+            <h3 className="font-heading font-semibold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-4">Visual Harmony in Practice</h3>            <p className="text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
               From digital layouts to architectural design, grid systems provide the underlying structure that creates visual balance.
-              Here's how different grid arrangements create distinct visual experiences:
+              Here&apos;s how different grid arrangements create distinct visual experiences:
             </p>
           </div>
           
@@ -751,9 +749,8 @@ export default function GridsSection() {
                 
                 <div className="md:w-2/3">
                   <h3 className="font-heading font-semibold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-4 text-center md:text-left">The Art of Grid Design</h3>
-                  <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                    A harmonious grid system isn't just about technical implementation—it's about creating visual rhythm and balance 
-                    that guides the user's eye naturally through the content. The principles below will help you create designs that feel 
+                  <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">                    A harmonious grid system isn&apos;t just about technical implementation—it&apos;s about creating visual rhythm and balance 
+                    that guides the user&apos;s eye naturally through the content. The principles below will help you create designs that feel 
                     intentional, refined, and emotionally resonant.
                   </p>
                 </div>
@@ -856,10 +853,9 @@ export default function GridsSection() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-2 text-center md:text-left">Designer's Insight</h4>
-                    <p className="text-neutral-700 dark:text-neutral-300 italic">
-                      "The most sophisticated designs often appear simple—they achieve harmony through disciplined use of grid systems. 
-                      Their elegance comes not from adding more elements, but from finding the perfect placement for every essential one."
+                    <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-2 text-center md:text-left">Designer&apos;s Insight</h4>                    <p className="text-neutral-700 dark:text-neutral-300 italic">
+                      &quot;The most sophisticated designs often appear simple—they achieve harmony through disciplined use of grid systems. 
+                      Their elegance comes not from adding more elements, but from finding the perfect placement for every essential one.&quot;
                     </p>
                   </div>
                 </div>
