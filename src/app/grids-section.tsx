@@ -224,18 +224,18 @@ export default function GridsSection() {
                 <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-3">Magazine Layout</h4>
                 <div className="aspect-[4/3] bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-3">
                   <div className="grid grid-cols-6 gap-3 h-full">
-                    <div className="col-span-6 p-4 h-1/4 bg-blue-100 dark:bg-blue-900/40 rounded-md flex items-center justify-center text-blue-800 dark:text-blue-300 text-sm">
+                    <div className="col-span-6 p-4 h-4/4 bg-blue-100 dark:bg-blue-900/40 rounded-md flex items-center justify-center text-blue-800 dark:text-blue-300 text-sm">
                       Featured Article Header
                     </div>
-                    <div className="col-span-4 h-2/4 bg-blue-200 dark:bg-blue-800/50 rounded-md flex items-center justify-center text-blue-800 dark:text-blue-300">
+                    <div className="col-span-4 h-4/4 bg-blue-200 dark:bg-blue-800/50 rounded-md flex items-center justify-center text-blue-800 dark:text-blue-300">
                       Main Story
                     </div>
-                    <div className="col-span-2 h-2/4 bg-blue-100 dark:bg-blue-900/40 rounded-md flex flex-col p-2 text-xs text-blue-800 dark:text-blue-300">
+                    <div className="col-span-2 h-4/4 bg-blue-100 dark:bg-blue-900/40 rounded-md flex flex-col p-2 text-xs text-blue-800 dark:text-blue-300">
                       <div className="h-1/3 mb-1 bg-blue-50 dark:bg-blue-950/50 rounded"></div>
                       <div className="h-1/3 mb-1 bg-blue-50 dark:bg-blue-950/50 rounded"></div>
                       <div className="h-1/3 bg-blue-50 dark:bg-blue-950/50 rounded"></div>
                     </div>
-                    <div className="col-span-6 h-1/4 bg-blue-300 dark:bg-blue-700/60 rounded-md grid grid-cols-3 gap-2 p-2">
+                    <div className="col-span-6 h-4/4 bg-blue-300 dark:bg-blue-700/60 rounded-md grid grid-cols-3 gap-2 p-2">
                       <div className="bg-blue-200/70 dark:bg-blue-800/70 rounded"></div>
                       <div className="bg-blue-200/70 dark:bg-blue-800/70 rounded"></div>
                       <div className="bg-blue-200/70 dark:bg-blue-800/70 rounded"></div>
@@ -256,7 +256,7 @@ export default function GridsSection() {
                 <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-3">E-commerce Grid</h4>
                 <div className="aspect-[4/3] bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 mb-3">
                   <div className="grid grid-cols-4 gap-3 h-full">
-                    <div className="col-span-4 p-4 h-1/5 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-sm">
+                    <div className="col-span-4 p-4 h-5/5 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-sm">
                       Category Filter Bar
                     </div>
                     
