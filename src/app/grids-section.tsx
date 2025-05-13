@@ -434,15 +434,27 @@ export default function GridsSection() {
                           Mobile
                         </span>
                       </div>
-                      
-                      <div className="w-36 h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
-                        <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-lg p-1.5 overflow-y-auto">
+                        <div className="w-36 h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
+                        <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-lg p-1.5 overflow-hidden">
                           <div className="grid grid-cols-1 gap-3">
-                            <div className="h-10 bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-900/60 dark:to-primary-800/60 rounded-md shadow-sm"></div>
-                            <div className="h-16 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="h-16 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="h-16 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="h-16 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
+                            <div className="h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
+                              Filter
+                            </div>
+                            
+                            {Array(3).fill(null).map((_, i) => (
+                              <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded-md flex flex-col overflow-hidden">
+                                <div className="h-14 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
+                                <div className="p-1.5">
+                                  <div className="h-1.5 w-3/4 bg-emerald-100 dark:bg-emerald-900/60 rounded-full mb-0.5"></div>
+                                  <div className="h-1.5 w-1/2 bg-emerald-100 dark:bg-emerald-900/60 rounded-full mb-0.5"></div>
+                                  <div className="h-1.5 w-1/3 bg-emerald-400 dark:bg-emerald-500/60 rounded-full"></div>
+                                </div>
+                              </div>
+                            ))}
+                            
+                            <div className="h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
+                              More
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -467,16 +479,26 @@ export default function GridsSection() {
                           Tablet
                         </span>
                       </div>
-                      
-                      <div className="w-48 h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
-                        <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-md p-1.5 overflow-y-auto">
+                        <div className="w-48 h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
+                        <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-md p-1.5 overflow-hidden">
                           <div className="grid grid-cols-2 gap-3">
-                            <div className="col-span-2 h-10 bg-gradient-to-r from-primary-200 to-primary-300 dark:from-primary-800/60 dark:to-primary-700/60 rounded-md shadow-sm"></div>
-                            <div className="h-14 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="h-14 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="h-14 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="h-14 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded-md shadow-sm"></div>
-                            <div className="col-span-2 h-10 bg-gradient-to-r from-primary-200 to-primary-300 dark:from-primary-800/60 dark:to-primary-700/60 rounded-md shadow-sm"></div>
+                            <div className="col-span-2 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
+                              Product Filters
+                            </div>
+                            
+                            {Array(4).fill(null).map((_, i) => (
+                              <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded-md flex flex-col overflow-hidden">
+                                <div className="h-12 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
+                                <div className="p-1">
+                                  <div className="h-1.5 w-3/4 bg-emerald-100 dark:bg-emerald-900/60 rounded-full mb-0.5"></div>
+                                  <div className="h-1.5 w-1/2 bg-emerald-100 dark:bg-emerald-900/60 rounded-full"></div>
+                                </div>
+                              </div>
+                            ))}
+                            
+                            <div className="col-span-2 h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
+                              Load More
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -501,20 +523,38 @@ export default function GridsSection() {
                           Desktop
                         </span>
                       </div>
-                      
-                      <div className="h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded shadow-lg p-1.5 overflow-hidden">
-                        <div className="bg-white dark:bg-neutral-900 h-full w-full rounded p-1.5 overflow-y-auto">
+                        <div className="h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded shadow-lg p-1.5 overflow-hidden">
+                        <div className="bg-white dark:bg-neutral-900 h-full w-full rounded p-1.5 overflow-hidden">
                           <div className="grid grid-cols-4 gap-2">
-                            <div className="col-span-4 h-8 bg-gradient-to-r from-primary-300 to-primary-400 dark:from-primary-700/60 dark:to-primary-600/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="h-12 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-950/60 dark:to-primary-900/60 rounded shadow-sm"></div>
-                            <div className="col-span-4 h-8 bg-gradient-to-r from-primary-200 to-primary-300 dark:from-primary-800/60 dark:to-primary-700/60 rounded shadow-sm"></div>
+                            <div className="col-span-4 h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs font-medium">
+                              <div className="flex items-center space-x-4">
+                                <span>All Categories</span>
+                                <span>New Arrivals</span>
+                                <span>Featured</span>
+                                <span>On Sale</span>
+                              </div>
+                            </div>
+                            
+                            {Array(8).fill(null).map((_, i) => (
+                              <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded overflow-hidden flex flex-col">
+                                <div className="h-10 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
+                                <div className="p-1">
+                                  <div className="h-1 w-3/4 bg-emerald-100 dark:bg-emerald-900/60 rounded-full mb-0.5"></div>
+                                  <div className="h-1 w-1/2 bg-emerald-100 dark:bg-emerald-900/60 rounded-full mb-0.5"></div>
+                                  <div className="h-1 w-1/4 bg-emerald-400 dark:bg-emerald-500/60 rounded-full"></div>
+                                </div>
+                              </div>
+                            ))}
+                            
+                            <div className="col-span-4 h-6 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
+                              <div className="flex items-center space-x-2">
+                                <span>1</span>
+                                <span>2</span>
+                                <span className="px-2 bg-emerald-300/50 dark:bg-emerald-700/50 rounded">3</span>
+                                <span>4</span>
+                                <span>5</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -547,18 +587,17 @@ export default function GridsSection() {
                     <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
                       Our responsive grid system intelligently adapts to create the most visually harmonious layout for each device:
                     </p>
-                    <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
-                      <div className="bg-gradient-to-r from-primary-50 to-white dark:from-primary-900/30 dark:to-neutral-800/50 p-3 rounded">
+                    <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">                      <div className="bg-gradient-to-r from-primary-50 to-white dark:from-primary-900/30 dark:to-neutral-800/50 p-3 rounded">
                         <h4 className="text-primary-700 dark:text-primary-300 font-medium text-sm">Mobile Experience</h4>
-                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Streamlined single column focuses attention on content hierarchy</p>
+                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Single-column product display optimized for browsing on small screens</p>
                       </div>
                       <div className="bg-gradient-to-r from-primary-50 to-white dark:from-primary-900/30 dark:to-neutral-800/50 p-3 rounded">
                         <h4 className="text-primary-700 dark:text-primary-300 font-medium text-sm">Tablet Experience</h4>
-                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Balanced dual-column creates visual rhythm without overwhelming</p>
+                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Dual-column product grid balancing details and product visibility</p>
                       </div>
                       <div className="bg-gradient-to-r from-primary-50 to-white dark:from-primary-900/30 dark:to-neutral-800/50 p-3 rounded">
                         <h4 className="text-primary-700 dark:text-primary-300 font-medium text-sm">Desktop Experience</h4>
-                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Multi-column layouts leverage the full canvas for rich experiences</p>
+                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Rich four-column e-commerce grid showcasing multiple products at once</p>
                       </div>
                     </div>
                   </div>
