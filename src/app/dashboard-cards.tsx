@@ -151,8 +151,7 @@ function DashboardCard({
               </div>
             </div>
           </div>
-        );
-        case 'chart':
+        );      case 'chart':
         return (
           <div className={`rounded-xl overflow-hidden p-6 ${getCardStyles()}`} style={bgStyle}>
             <div className="flex items-center justify-between mb-4">
@@ -175,21 +174,126 @@ function DashboardCard({
                 </p>
               </div>
               
-              <div className="flex items-end h-16 space-x-1">
-                {/* Simplified chart bars */}
-                {[40, 70, 30, 80, 60, 85].map((height, index) => (
-                  <div 
-                    key={index}
-                    className={`w-4 rounded-t-sm ${
-                      theme === 'colorful' 
-                        ? 'bg-gradient-to-t from-[#00ffff] to-[#ff00cc]' 
-                        : theme === 'dark' 
-                          ? 'bg-green-500'
-                          : 'bg-green-600'
-                    }`}
-                    style={{ height: `${height}%` }}
-                  />
-                ))}
+              <div className="relative h-16 w-28">
+                {/* Sparkline Chart with Smooth Curve and Dots */}
+                <svg viewBox="0 0 100 50" className="h-full w-full overflow-visible">
+                  {/* Define gradient for path fill */}
+                  <defs>
+                    <linearGradient id="sparklineGradient" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stopColor={
+                        theme === 'colorful' ? '#ff00cc' : 
+                        theme === 'dark' ? 'rgb(34, 197, 94)' : 
+                        'rgb(22, 163, 74)'
+                      } stopOpacity="0.3" />
+                      <stop offset="100%" stopColor={
+                        theme === 'colorful' ? '#ff00cc' : 
+                        theme === 'dark' ? 'rgb(34, 197, 94)' : 
+                        'rgb(22, 163, 74)'
+                      } stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  
+                  {/* Background Grid */}
+                  <g className="opacity-20">
+                    {[10, 20, 30, 40].map(y => (
+                      <line 
+                        key={`grid-${y}`} 
+                        x1="0" 
+                        y1={y} 
+                        x2="100" 
+                        y2={y} 
+                        stroke={theme === 'light' ? "#9ca3af" : "#6b7280"} 
+                        strokeWidth="0.5" 
+                        strokeDasharray="1,1"
+                      />
+                    ))}
+                  </g>
+                  
+                  {/* Smooth Line */}
+                  {(() => {
+                    const points = [
+                      [0, 30],
+                      [20, 20], 
+                      [40, 35], 
+                      [60, 15], 
+                      [80, 25], 
+                      [100, 10]
+                    ];
+                    
+                    const pathD = points.reduce((path, point, i) => {
+                      if (i === 0) return `M ${point[0]} ${point[1]}`;
+                      
+                      // Calculate control points for smooth curve
+                      const prev = points[i-1];
+                      const cp1x = prev[0] + (point[0] - prev[0]) / 2;
+                      const cp1y = prev[1];
+                      const cp2x = prev[0] + (point[0] - prev[0]) / 2;
+                      const cp2y = point[1];
+                      
+                      return `${path} C ${cp1x},${cp1y} ${cp2x},${cp2y} ${point[0]},${point[1]}`;
+                    }, "");
+                    
+                    // For fill, add points to create closed path
+                    const fillPathD = `${pathD} L 100,50 L 0,50 Z`;
+                    
+                    return (
+                      <>
+                        {/* Fill under the curve */}
+                        <path 
+                          d={fillPathD}
+                          fill="url(#sparklineGradient)" 
+                        />
+                        
+                        {/* Stroke line */}
+                        <path 
+                          d={pathD}
+                          fill="none" 
+                          stroke={
+                            theme === 'colorful' 
+                              ? '#ff00cc' 
+                              : theme === 'dark' 
+                                ? 'rgb(34, 197, 94)' 
+                                : 'rgb(22, 163, 74)'
+                          } 
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        
+                        {/* Data Points */}
+                        {points.map((point, idx) => (
+                          <circle 
+                            key={idx} 
+                            cx={point[0]} 
+                            cy={point[1]} 
+                            r="2"
+                            className={
+                              theme === 'colorful' 
+                                ? 'fill-white stroke-[#ff00cc] stroke-2' 
+                                : theme === 'dark' 
+                                  ? 'fill-neutral-900 stroke-green-500 stroke-2'
+                                  : 'fill-white stroke-green-600 stroke-2'
+                            }
+                          />
+                        ))}
+                        
+                        {/* Highlight last point */}
+                        <circle 
+                          cx="100" 
+                          cy="10" 
+                          r="3"
+                          className={
+                            theme === 'colorful' 
+                              ? 'fill-white stroke-[#ff00cc] stroke-2' 
+                              : theme === 'dark' 
+                                ? 'fill-neutral-900 stroke-green-500 stroke-2'
+                                : 'fill-white stroke-green-600 stroke-2'
+                          }
+                        />
+                      </>
+                    );
+                  })()}
+                </svg>
               </div>
             </div>
           </div>
