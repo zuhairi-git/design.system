@@ -100,7 +100,7 @@ export default function GridsSection() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="font-heading font-semibold text-2xl text-neutral-950 dark:text-white mb-4 flex items-center">
-                  <span className="inline-block w-8 h-8 bg-primary-100 dark:bg-primary-900/70 rounded-full flex items-center justify-center text-primary-700 dark:text-primary-300 mr-3 shadow-sm">
+                  <span className="w-10 h-10 rounded-full bg-primary-50 dark:bg-primary-900/60 shadow-sm flex items-center justify-center mr-3">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
                     </svg>
@@ -779,174 +779,282 @@ export default function GridsSection() {
             </div>
           </div>
         </div>
-        
-        {/* Developer Tools Section */}
+          {/* Developer Resources Section */}
         <div className="mb-16">
-          <div className="relative bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800/60 rounded-2xl shadow-lg overflow-hidden border border-neutral-200/70 dark:border-neutral-700/40">
-            <div className="absolute top-0 right-0 w-1/3 h-full opacity-20 pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-full h-full text-primary-500/20 dark:text-primary-300/10" fill="currentColor">
-                <rect x="0" y="0" width="100" height="100" fill="none" stroke="currentColor" strokeWidth="1" />
-                <rect x="25" y="25" width="50" height="50" fill="none" stroke="currentColor" strokeWidth="1" />
-                <rect x="50" y="0" width="50" height="100" fill="none" stroke="currentColor" strokeWidth="1" />
-                <rect x="0" y="50" width="100" height="50" fill="none" stroke="currentColor" strokeWidth="1" />
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40 rounded-full shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
               </svg>
+              Developer Resources
             </div>
-            
-            <div className="relative p-8 lg:p-10">
-              <div className="flex items-center justify-center md:justify-start mb-8">
-                <div className="w-12 h-12 bg-white dark:bg-neutral-800 rounded-lg shadow-md p-2.5 mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full text-primary-600 dark:text-primary-400">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
-                  </svg>
+            <h3 className="font-heading font-semibold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-4">
+              Grid System Implementation
+            </h3>
+            <p className="text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
+              Everything you need to implement our harmonious grid system in your projects.
+              These tools and techniques will help you build consistent, responsive layouts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Card 1: Core Tailwind Classes */}
+            <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-800/80 rounded-xl shadow-xl border border-neutral-100 dark:border-neutral-800/50 overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
+              <div className="h-2 bg-gradient-to-r from-primary-400 to-primary-600 dark:from-primary-500 dark:to-primary-700"></div>
+              <div className="p-6 md:p-8">
+                <div className="mb-6 flex items-center">
+                  <div className="w-12 h-12 bg-primary-100/70 dark:bg-primary-900/50 rounded-lg shadow-inner flex items-center justify-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <h4 className="font-heading font-medium text-xl text-neutral-900 dark:text-white">Core Grid Classes</h4>
                 </div>
-                
-                <div>
-                  <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">Developer Resources</div>
-                  <h3 className="font-heading font-semibold text-2xl text-neutral-900 dark:text-white">Grid System Implementation</h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                  {[
+                    { class: "grid-cols-{n}", desc: "Define n equal columns" },
+                    { class: "col-span-{n}", desc: "Make element span n cols" },
+                    { class: "col-start-{n}", desc: "Start at column n" },
+                    { class: "col-end-{n}", desc: "End at column n" },
+                    { class: "gap-{size}", desc: "Set item spacing" },
+                    { class: "grid-flow-{dir}", desc: "Control item placement" }
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white dark:bg-neutral-800/70 rounded-lg p-3 border border-neutral-200/80 dark:border-neutral-700/50 shadow-sm">
+                      <div className="font-mono text-sm text-primary-700 dark:text-primary-300 mb-1 flex items-center">
+                        <span className="w-2 h-2 bg-primary-400 dark:bg-primary-500 rounded-full mr-2"></span>
+                        {item.class}
+                      </div>
+                      <p className="text-xs text-neutral-600 dark:text-neutral-400">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="rounded-lg bg-neutral-50 dark:bg-neutral-900/80 p-4 border border-neutral-200/80 dark:border-neutral-700/50">
+                  <div className="flex items-center mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-primary-600 dark:text-primary-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h5 className="font-medium text-neutral-900 dark:text-white text-sm">Pro Tip</h5>
+                  </div>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400">
+                    Use the 12-column system for most layouts as it provides the most flexible division options.
+                  </p>
                 </div>
               </div>
-              
-              <div className="md:ml-16">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <div className="lg:col-span-7">
-                    <div className="bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm rounded-xl p-6 border border-neutral-200/80 dark:border-neutral-800/50 shadow-sm">
-                      <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-4 flex items-center">
-                        <span className="w-6 h-6 inline-flex items-center justify-center bg-primary-100 dark:bg-primary-900/60 rounded text-primary-700 dark:text-primary-300 mr-2 text-xs">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                          </svg>
-                        </span>
-                        Tailwind CSS Grid Classes
-                      </h4>
-                      
-                      <div className="space-y-4 mb-5">
-                        <div className="grid grid-cols-12 gap-2">
-                          <div className="col-span-4 bg-neutral-100 dark:bg-neutral-800 rounded-md p-3 shadow-sm">
-                            <code className="text-xs md:text-sm font-mono text-primary-700 dark:text-primary-300">grid-cols-{'{n}'}</code>
-                            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5">Define grid with n equal columns</p>
-                          </div>
-                          <div className="col-span-4 bg-neutral-100 dark:bg-neutral-800 rounded-md p-3 shadow-sm">
-                            <code className="text-xs md:text-sm font-mono text-primary-700 dark:text-primary-300">col-span-{'{n}'}</code>
-                            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5">Make element span n columns</p>
-                          </div>
-                          <div className="col-span-4 bg-neutral-100 dark:bg-neutral-800 rounded-md p-3 shadow-sm">
-                            <code className="text-xs md:text-sm font-mono text-primary-700 dark:text-primary-300">col-start-{'{n}'}</code>
-                            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5">Start element at column n</p>
-                          </div>
-                          <div className="col-span-4 bg-neutral-100 dark:bg-neutral-800 rounded-md p-3 shadow-sm">
-                            <code className="text-xs md:text-sm font-mono text-primary-700 dark:text-primary-300">col-end-{'{n}'}</code>
-                            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5">End element at column n</p>
-                          </div>
-                          <div className="col-span-4 bg-neutral-100 dark:bg-neutral-800 rounded-md p-3 shadow-sm">
-                            <code className="text-xs md:text-sm font-mono text-primary-700 dark:text-primary-300">gap-{'{size}'}</code>
-                            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5">Set grid item spacing</p>
-                          </div>
-                          <div className="col-span-4 bg-neutral-100 dark:bg-neutral-800 rounded-md p-3 shadow-sm">
-                            <code className="text-xs md:text-sm font-mono text-primary-700 dark:text-primary-300">auto-cols-{'{type}'}</code>
-                            <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1.5">Auto-size column width</p>
-                          </div>
-                        </div>
+            </div>
+
+            {/* Card 2: Responsive Implementation */}
+            <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-800/80 rounded-xl shadow-xl border border-neutral-100 dark:border-neutral-800/50 overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
+              <div className="h-2 bg-gradient-to-r from-emerald-400 to-emerald-600 dark:from-emerald-500 dark:to-emerald-700"></div>
+              <div className="p-6 md:p-8">
+                <div className="mb-6 flex items-center">
+                  <div className="w-12 h-12 bg-emerald-100/70 dark:bg-emerald-900/50 rounded-lg shadow-inner flex items-center justify-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </div>
+                  <h4 className="font-heading font-medium text-xl text-neutral-900 dark:text-white">Responsive Implementation</h4>
+                </div>
+
+                <div className="bg-neutral-50 dark:bg-neutral-900/70 rounded-lg p-4 mb-6 border border-neutral-200 dark:border-neutral-700/60">
+                  <div className="flex items-center justify-between text-xs font-medium mb-2">
+                    <span className="text-neutral-600 dark:text-neutral-400">Breakpoint Prefixes</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">Screen Sizes</span>
+                  </div>
+                  <div className="space-y-2">
+                    {[
+                      { prefix: "sm:", size: "640px+" },
+                      { prefix: "md:", size: "768px+" },
+                      { prefix: "lg:", size: "1024px+" },
+                      { prefix: "xl:", size: "1280px+" },
+                      { prefix: "2xl:", size: "1536px+" }
+                    ].map((bp, i) => (
+                      <div key={i} className="flex items-center justify-between bg-white dark:bg-neutral-800 p-2 rounded">
+                        <code className="text-xs font-mono text-emerald-700 dark:text-emerald-300">{bp.prefix}</code>
+                        <span className="text-xs text-neutral-600 dark:text-neutral-400">{bp.size}</span>
                       </div>
-                      
-                      <div className="bg-neutral-50 dark:bg-neutral-800/80 rounded-lg p-4 border border-neutral-200/80 dark:border-neutral-700/50">
-                        <h5 className="font-medium text-neutral-900 dark:text-white mb-2 text-sm">Responsive Grid Implementation</h5>
-                        <pre className="bg-neutral-100 dark:bg-neutral-900 p-3 rounded text-xs overflow-x-auto">
-                          <code className="text-neutral-800 dark:text-neutral-300 font-mono">
-                            &lt;div class=&quot;grid <span className="text-primary-600 dark:text-primary-400">grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4</span>&quot;&gt;
-                              <span className="text-neutral-500 dark:text-neutral-400">  &lt;!-- Grid items adjust automatically to screen size --&gt;</span>
-                            &lt;/div&gt;
+                    ))}
+                  </div>
+                </div>
+
+                <div className="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700/70 bg-white dark:bg-neutral-900/70">
+                  <div className="border-b border-neutral-200 dark:border-neutral-700/50 px-3 py-2 bg-neutral-50 dark:bg-neutral-800/50 text-xs font-medium text-neutral-700 dark:text-neutral-300 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                    Responsive Example
+                  </div>
+                  <pre className="p-3 text-xs overflow-x-auto">
+                    <code className="font-mono text-neutral-800 dark:text-neutral-300">
+                      &lt;div class=&quot;<span className="text-emerald-600 dark:text-emerald-400">grid</span> 
+      <span className="text-primary-600 dark:text-primary-400">grid-cols-1</span> 
+      <span className="text-emerald-600 dark:text-emerald-400">sm:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-2</span> 
+      <span className="text-emerald-600 dark:text-emerald-400">md:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-3</span> 
+      <span className="text-emerald-600 dark:text-emerald-400">lg:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-4</span> 
+      <span className="text-emerald-600 dark:text-emerald-400">gap-4</span>&quot;&gt;
+        &lt;!-- Content adapts to all screen sizes --&gt;
+      &lt;/div&gt;
+                    </code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Advanced Techniques */}
+            <div className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-800/80 rounded-xl shadow-xl border border-neutral-100 dark:border-neutral-800/50 overflow-hidden transform transition-all hover:shadow-2xl hover:-translate-y-1 duration-300">
+              <div className="h-2 bg-gradient-to-r from-purple-400 to-purple-600 dark:from-purple-500 dark:to-purple-700"></div>
+              <div className="p-6 md:p-8">
+                <div className="mb-6 flex items-center">
+                  <div className="w-12 h-12 bg-purple-100/70 dark:bg-purple-900/50 rounded-lg shadow-inner flex items-center justify-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                  </div>
+                  <h4 className="font-heading font-medium text-xl text-neutral-900 dark:text-white">Advanced Techniques</h4>
+                </div>
+
+                <div className="space-y-3.5 mb-6">
+                  {[
+                    {
+                      title: "Grid Template Areas",
+                      desc: "Name grid areas for semantic layouts",
+                      code: "grid-template-areas: 'header header' 'sidebar main';"
+                    },
+                    {
+                      title: "Auto-Fit & Minmax",
+                      desc: "Dynamic column count based on container width",
+                      code: "grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));"
+                    },
+                    {
+                      title: "Grid Template Alignment",
+                      desc: "Control item positioning within their grid cells",
+                      code: "place-items: center stretch;"
+                    }
+                  ].map((technique, i) => (
+                    <div key={i} className="bg-white dark:bg-neutral-800/70 rounded-lg border border-neutral-200/80 dark:border-neutral-700/50 shadow-sm overflow-hidden">
+                      <div className="p-3 border-b border-neutral-200/80 dark:border-neutral-700/50">
+                        <div className="flex items-center">
+                          <div className="w-4 h-4 rounded-full bg-purple-100 dark:bg-purple-900/60 flex items-center justify-center text-purple-600 dark:text-purple-400 mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
+                              <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                            </svg>
+                          </div>
+                          <h5 className="font-medium text-neutral-900 dark:text-white text-sm">{technique.title}</h5>
+                        </div>
+                        <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1 pl-6">{technique.desc}</p>
+                      </div>
+                      <div className="bg-neutral-50 dark:bg-neutral-900/70 p-2">
+                        <pre className="text-xs overflow-x-auto">
+                          <code className="font-mono text-purple-700 dark:text-purple-300">
+                            {technique.code}
                           </code>
                         </pre>
                       </div>
                     </div>
-                    
-                    <div className="mt-4 text-center">
-                      <a href="#" className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors">
-                        <span>View complete documentation</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      </a>
+                  ))}
+                </div>
+
+                <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4 border border-purple-100 dark:border-purple-800/30">
+                  <div className="flex items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-600 dark:text-purple-400 mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    <div>
+                      <h5 className="font-medium text-purple-900 dark:text-purple-200 text-sm mb-1">Expert Insight</h5>
+                      <p className="text-xs text-purple-700 dark:text-purple-300">
+                        Combine CSS Grid with CSS Variables to create dynamic, themable layouts that can adapt to user preferences.
+                      </p>
                     </div>
                   </div>
-                  
-                  <div className="lg:col-span-5">
-                    <div className="h-full flex flex-col">
-                      <div className="bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm rounded-xl p-6 flex-1 border border-neutral-200/80 dark:border-neutral-800/50 shadow-sm">
-                        <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-4 flex items-center">
-                          <span className="w-6 h-6 inline-flex items-center justify-center bg-primary-100 dark:bg-primary-900/60 rounded text-primary-700 dark:text-primary-300 mr-2 text-xs">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-                              <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Documentation Section */}
+          <div className="mt-10">
+            <div className="bg-gradient-to-br from-white to-neutral-50/80 dark:from-neutral-900 dark:to-neutral-800/60 rounded-xl shadow-lg overflow-hidden border border-neutral-200/60 dark:border-neutral-700/40">
+              <div className="md:flex">
+                <div className="md:w-1/3 bg-gradient-to-br from-primary-50 to-primary-100/50 dark:from-primary-900/20 dark:to-primary-800/10 p-6 md:p-8 flex flex-col justify-between">
+                  <div>
+                    <div className="inline-flex items-center px-3 py-1 mb-4 text-xs font-medium rounded-full bg-white/60 dark:bg-neutral-800/60 text-primary-700 dark:text-primary-300 shadow-sm">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      Documentation
+                    </div>
+                    <h4 className="font-heading font-semibold text-xl md:text-2xl text-neutral-900 dark:text-white mb-3">Engineering Guidelines</h4>
+                    <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
+                      Follow these best practices to maintain a consistent, accessible grid system across your entire application.
+                    </p>
+                  </div>
+
+                  <a href="#" className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 group">
+                    <span>View full documentation</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1.5 transition-transform transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+
+                <div className="md:w-2/3 p-6 md:p-8">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {[
+                      {
+                        title: "Semantic Markup",
+                        desc: "Use appropriate HTML elements to maintain accessibility and SEO"
+                      },
+                      {
+                        title: "Mobile-First Approach",
+                        desc: "Start with mobile layouts and progressively enhance for larger screens"
+                      },
+                      {
+                        title: "Consistent Spacing",
+                        desc: "Use the design system's spacing scale for harmonious proportions"
+                      },
+                      {
+                        title: "Content-Driven Breakpoints",
+                        desc: "Let content needs determine your breakpoints, not device sizes"
+                      },
+                      {
+                        title: "Progressive Enhancement",
+                        desc: "Ensure layouts work without CSS Grid for older browsers"
+                      },
+                      {
+                        title: "Maintenance Strategy",
+                        desc: "Document grid patterns for team consistency and onboarding"
+                      }
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        <div className="flex-shrink-0 mt-1">
+                          <span className="flex items-center justify-center w-5 h-5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
+                              <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                             </svg>
                           </span>
-                          Engineering Best Practices
-                        </h4>
-                        
-                        <ul className="space-y-3">
-                          <li className="flex items-start">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 mr-3 flex-shrink-0 mt-0.5">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                              </svg>
-                            </span>
-                            <div>
-                              <h5 className="font-medium text-neutral-900 dark:text-white text-sm">Use responsive prefixes strategically</h5>
-                              <p className="text-neutral-600 dark:text-neutral-400 text-sm">Plan your layout for all breakpoints: <code className="text-xs bg-neutral-100 dark:bg-neutral-800 px-1 rounded">sm:, md:, lg:, xl:</code></p>
-                            </div>
-                          </li>
-                          
-                          <li className="flex items-start">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 mr-3 flex-shrink-0 mt-0.5">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                              </svg>
-                            </span>
-                            <div>
-                              <h5 className="font-medium text-neutral-900 dark:text-white text-sm">Combine with Flexbox when needed</h5>
-                              <p className="text-neutral-600 dark:text-neutral-400 text-sm">Use Grid for layout structure and Flexbox for alignment within grid cells</p>
-                            </div>
-                          </li>
-                          
-                          <li className="flex items-start">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 mr-3 flex-shrink-0 mt-0.5">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                              </svg>
-                            </span>
-                            <div>
-                              <h5 className="font-medium text-neutral-900 dark:text-white text-sm">Consider minmax and auto-fit</h5>
-                              <p className="text-neutral-600 dark:text-neutral-400 text-sm">Create fully responsive layouts with dynamic column counts</p>
-                            </div>
-                          </li>
-                          
-                          <li className="flex items-start">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 mr-3 flex-shrink-0 mt-0.5">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                              </svg>
-                            </span>
-                            <div>
-                              <h5 className="font-medium text-neutral-900 dark:text-white text-sm">Maintain consistent gap spacing</h5>
-                              <p className="text-neutral-600 dark:text-neutral-400 text-sm">Use the spacing scale for harmonious proportions throughout</p>
-                            </div>
-                          </li>
-                          
-                          <li className="flex items-start">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 mr-3 flex-shrink-0 mt-0.5">
-                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                              </svg>
-                            </span>
-                            <div>
-                              <h5 className="font-medium text-neutral-900 dark:text-white text-sm">Follow semantic HTML principles</h5>
-                              <p className="text-neutral-600 dark:text-neutral-400 text-sm">Grid layout should enhance, not compromise, the document structure</p>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                        </div>
+                        <div className="ml-3">
+                          <h5 className="font-medium text-neutral-900 dark:text-white text-sm">{item.title}</h5>
+                          <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">{item.desc}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8 flex items-center space-x-4">
+                    <a href="#" className="flex items-center justify-center px-4 py-2 bg-primary-50 hover:bg-primary-100 dark:bg-primary-900/30 dark:hover:bg-primary-900/50 rounded-lg text-primary-700 dark:text-primary-300 text-sm font-medium transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                      </svg>
+                      Download Templates
+                    </a>
+                    <a href="#" className="flex items-center justify-center px-4 py-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-lg text-neutral-700 dark:text-neutral-300 text-sm font-medium transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Get Support
+                    </a>
                   </div>
                 </div>
               </div>
