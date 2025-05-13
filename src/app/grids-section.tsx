@@ -433,8 +433,7 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Mobile
                         </span>
-                      </div>
-                        <div className="w-36 h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
+                      </div>                        <div className="w-36 h-72 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-lg p-1.5 overflow-hidden">
                           <div className="grid grid-cols-1 gap-3">
                             <div className="h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
@@ -475,8 +474,7 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Tablet
                         </span>
-                      </div>
-                        <div className="w-48 h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
+                      </div>                        <div className="w-48 h-76 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-md p-1.5 overflow-hidden">
                           <div className="grid grid-cols-2 gap-3">
                             <div className="col-span-2 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
@@ -519,8 +517,8 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Desktop
                         </span>
-                      </div>
-                        <div className="h-64 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded shadow-lg p-1.5 overflow-hidden">
+                      </div>                        
+                      <div className="h-60 mx-auto mt-10 bg-neutral-900 dark:bg-neutral-950 rounded shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded p-1.5 overflow-hidden">
                           <div className="grid grid-cols-4 gap-2">
                             <div className="col-span-4 h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs font-medium">
