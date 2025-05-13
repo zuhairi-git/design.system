@@ -441,7 +441,7 @@ export default function GridsSection() {
                               Filter
                             </div>
                             
-                            {Array(3).fill(null).map((_, i) => (
+                            {Array(2).fill(null).map((_, i) => (
                               <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded-md flex flex-col overflow-hidden">
                                 <div className="h-14 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
                                 <div className="p-1.5">
@@ -452,9 +452,6 @@ export default function GridsSection() {
                               </div>
                             ))}
                             
-                            <div className="h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
-                              More
-                            </div>
                           </div>
                         </div>
                       </div>
