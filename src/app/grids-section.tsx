@@ -89,97 +89,13 @@ export default function GridsSection() {
           </div>
           
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-6 tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600">Harmonious</span> Grid System
+            <span className="bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600">Harmonious</span> Grid System
           </h2>
             <p className="font-body text-lg md:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl leading-relaxed mb-8">
             A grid system creates the invisible architecture that brings visual <span className="italic">harmony</span> and <span className="italic">balance</span> to your layouts. 
             It&apos;s the foundation that enables both aesthetic beauty and functional clarity.
           </p>
           
-          <div className="flex flex-col lg:flex-row gap-8 mb-12">
-            <div className="flex-1 flex flex-col transform transition-all duration-500 hover:translate-y-[-5px]">
-              <div className="bg-white/90 dark:bg-neutral-900/90 rounded-xl mb-4 overflow-hidden shadow-md relative group h-64 sm:h-72">
-                <div className="absolute inset-0 bg-gradient-to-br from-error-100/40 to-error-300/40 dark:from-error-900/40 dark:to-error-800/30 z-10"></div>
-                <Image 
-                  src={gridImage1}
-                  alt="Content without grid structure" 
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-black/30 flex flex-col p-6 z-20">
-                  <div className="flex flex-col h-full justify-between">
-                    <div>
-                      <div className="bg-white/90 dark:bg-neutral-800/90 p-3 mb-3 rounded-lg shadow-sm w-[80%] transform -rotate-1">News headline with inconsistent sizing</div>
-                      <div className="flex mb-3 gap-3">
-                        <div className="bg-white/90 dark:bg-neutral-800/90 p-3 rounded-lg shadow-sm w-1/3 transform rotate-1">Image</div>
-                        <div className="bg-white/90 dark:bg-neutral-800/90 p-3 rounded-lg shadow-sm w-1/2 transform -rotate-[0.5deg]">Misaligned text</div>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="bg-white/90 dark:bg-neutral-800/90 p-3 rounded-lg shadow-sm mb-3 transform rotate-[0.5deg]">Inconsistent spacing</div>
-                      <div className="bg-white/90 dark:bg-neutral-800/90 p-3 rounded-lg shadow-sm w-[70%] ml-auto transform -rotate-1">Poor alignment</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4 z-30">
-                  <span className="bg-error-50 text-error-600 dark:bg-error-900/70 dark:text-error-200 text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">
-                    Unbalanced
-                  </span>
-                </div>
-              </div>
-              <div className="text-center">
-                <h4 className="font-medium text-neutral-800 dark:text-neutral-200">Without a Grid System</h4>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Visual discord and misalignment</p>
-              </div>
-            </div>
-            
-            <div className="flex-1 flex flex-col transform transition-all duration-500 hover:translate-y-[-5px]">
-              <div className="bg-white/90 dark:bg-neutral-900/90 rounded-xl mb-4 overflow-hidden shadow-md relative group h-64 sm:h-72">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-100/40 to-primary-300/40 dark:from-primary-900/40 dark:to-primary-800/30 z-10"></div>
-                <Image 
-                  src={gridImage2}
-                  alt="Content with grid structure" 
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 z-20">
-                  <div className="grid grid-cols-12 grid-rows-6 h-full gap-1 p-2 pointer-events-none">
-                    {Array(12*6).fill(null).map((_, i) => (
-                      <div key={i} className="border border-dashed border-primary-400/20 dark:border-primary-300/10 rounded-sm"></div>
-                    ))}
-                  </div>
-                  <div className="absolute inset-0 bg-black/15 p-6">
-                    <div className="grid grid-cols-12 h-full gap-3">
-                      <div className="col-span-12 flex items-start">
-                        <div className="bg-white/95 dark:bg-neutral-800/95 p-3 rounded-lg shadow-sm w-10/12 mx-auto text-center">Perfectly aligned headline</div>
-                      </div>
-                      <div className="col-span-8 flex items-center justify-center">
-                        <div className="bg-white/95 dark:bg-neutral-800/95 p-3 rounded-lg shadow-sm w-full h-full flex items-center justify-center">Primary content</div>
-                      </div>
-                      <div className="col-span-4 flex items-center">
-                        <div className="bg-white/95 dark:bg-neutral-800/95 p-3 rounded-lg shadow-sm w-full h-full flex items-center justify-center">Sidebar</div>
-                      </div>
-                      <div className="col-span-12 flex items-end">
-                        <div className="bg-white/95 dark:bg-neutral-800/95 p-3 rounded-lg shadow-sm w-full text-center">Consistent spacing and perfect alignment</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute top-4 right-4 z-30">
-                  <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">
-                    Harmonious
-                  </span>
-                </div>
-              </div>
-              <div className="text-center">
-                <h4 className="font-medium text-neutral-800 dark:text-neutral-200">With a Grid System</h4>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Visual rhythm and balanced proportions</p>
-              </div>
-            </div>
-          </div>
         </div>        {/* Golden ratio grid system explanation */}
         <div className="mb-16 overflow-hidden">
           <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-neutral-100 dark:border-neutral-800/70">
@@ -431,7 +347,8 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Mobile
                         </span>
-                      </div>                        <div className="w-36 h-72 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
+                      </div>                        
+                      <div className="w-36 h-68 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-lg p-1.5 overflow-hidden">
                           <div className="grid grid-cols-1 gap-3">
                             <div className="h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
@@ -472,7 +389,8 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Tablet
                         </span>
-                      </div>                        <div className="w-48 h-76 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
+                      </div>                        
+                      <div className="w-48 h-70 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-md p-1.5 overflow-hidden">
                           <div className="grid grid-cols-2 gap-3">
                             <div className="col-span-2 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
