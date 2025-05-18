@@ -251,14 +251,21 @@ html {
 
 @keyframes particle-float {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg) scale(0.8);
     opacity: 0;
   }
+  15% {
+    opacity: 0.4;
+  }
   50% {
-    opacity: 0.8;
+    opacity: 1;
+    transform: translateY(-50px) rotate(180deg) scale(1.2);
+  }
+  85% {
+    opacity: 0.4;
   }
   100% {
-    transform: translateY(-80px) rotate(360deg);
+    transform: translateY(-100px) rotate(360deg) scale(0.8);
     opacity: 0;
   }
 }

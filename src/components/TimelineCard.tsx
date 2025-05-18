@@ -38,34 +38,45 @@ export default function TimelineCard({
     }));
     setParticles(newParticles);
   }, [particleCount]);
-  
-  // Get card styles based on theme with dimensional aesthetic
+    // Get card styles based on theme with improved visibility for dark theme
   const getCardStyles = () => {
     if (theme === 'colorful') {
       return 'bg-gradient-to-br from-[#120025] to-[#000428] border border-fuchsia-500/20 backdrop-blur-xl shadow-[0_12px_28px_-5px_rgba(255,0,204,0.4)]';
     } else if (theme === 'dark') {
-      return 'bg-gradient-to-br from-[#080f1d] to-[#020617] border border-blue-500/20 backdrop-blur-xl shadow-[0_12px_28px_-5px_rgba(59,130,246,0.3)]';
+      // Lightened the dark theme colors slightly to make animations more visible
+      return 'bg-gradient-to-br from-[#0a1425] to-[#040a20] border border-blue-500/30 backdrop-blur-xl shadow-[0_12px_28px_-5px_rgba(59,130,246,0.35)]';
     } else {
       return 'bg-gradient-to-br from-white to-slate-100 border border-blue-500/20 backdrop-blur-xl shadow-[0_12px_28px_-5px_rgba(59,130,246,0.3)]';
     }
-  };  // Get icon background styles based on theme - holographic design
+  };// Get icon background styles based on theme - holographic design with even brighter hover effect
   const getIconBgStyles = () => {
     if (theme === 'colorful') {
-      return 'bg-gradient-to-br from-fuchsia-500/30 to-purple-900/30 backdrop-blur-lg backdrop-filter border border-fuchsia-400/30';
+      return isHovered 
+        ? 'bg-gradient-to-br from-fuchsia-400/70 to-purple-700/70 backdrop-blur-lg backdrop-filter border border-fuchsia-300/70'
+        : 'bg-gradient-to-br from-fuchsia-500/30 to-purple-900/30 backdrop-blur-lg backdrop-filter border border-fuchsia-400/30';
     } else if (theme === 'dark') {
-      return 'bg-gradient-to-br from-blue-500/20 to-indigo-900/20 backdrop-blur-lg backdrop-filter border border-blue-400/30';
+      return isHovered
+        ? 'bg-gradient-to-br from-blue-400/60 to-indigo-700/60 backdrop-blur-lg backdrop-filter border border-blue-300/70'
+        : 'bg-gradient-to-br from-blue-500/20 to-indigo-900/20 backdrop-blur-lg backdrop-filter border border-blue-400/30';
     } else {
-      return 'bg-gradient-to-br from-blue-500/15 to-sky-500/15 backdrop-blur-lg backdrop-filter border border-blue-300/30';
+      return isHovered
+        ? 'bg-gradient-to-br from-blue-400/50 to-sky-400/50 backdrop-blur-lg backdrop-filter border border-blue-400/70'
+        : 'bg-gradient-to-br from-blue-500/15 to-sky-500/15 backdrop-blur-lg backdrop-filter border border-blue-300/30';
     }
-  };
-  // Get icon color styles based on theme with glow effect
+  };  // Get icon color styles based on theme with substantially brighter glow effect
   const getIconColorStyles = () => {
     if (theme === 'colorful') {
-      return 'text-fuchsia-300 drop-shadow-[0_0_12px_rgba(255,0,204,0.6)]';
+      return isHovered
+        ? 'text-white drop-shadow-[0_0_20px_rgba(255,0,204,1)]'
+        : 'text-fuchsia-300 drop-shadow-[0_0_12px_rgba(255,0,204,0.6)]';
     } else if (theme === 'dark') {
-      return 'text-blue-300 drop-shadow-[0_0_12px_rgba(59,130,246,0.6)]';
+      return isHovered
+        ? 'text-white drop-shadow-[0_0_20px_rgba(59,130,246,1)]'
+        : 'text-blue-300 drop-shadow-[0_0_12px_rgba(59,130,246,0.6)]';
     } else {
-      return 'text-blue-500 drop-shadow-[0_0_12px_rgba(59,130,246,0.4)]';
+      return isHovered
+        ? 'text-blue-600 drop-shadow-[0_0_20px_rgba(59,130,246,0.9)]'
+        : 'text-blue-500 drop-shadow-[0_0_12px_rgba(59,130,246,0.4)]';
     }
   };// Get title style based on theme - with dimensional aesthetics
   const getTitleStyles = () => {
@@ -98,52 +109,51 @@ export default function TimelineCard({
       return 'text-slate-600/90 group-hover:text-slate-800 transition-all duration-500 tracking-wide leading-relaxed';
     }
   };
-  
-  // Get orbital particle color based on theme
+    // Get orbital particle color based on theme - enhanced visibility for dark theme
   const getParticleColor = () => {
     if (theme === 'colorful') {
       return 'bg-gradient-to-br from-fuchsia-400 to-purple-600';
     } else if (theme === 'dark') {
-      return 'bg-gradient-to-br from-blue-400 to-indigo-600';
+      // Use brighter colors for dark theme particles for better visibility
+      return 'bg-gradient-to-br from-blue-300 to-indigo-500';
     } else {
       return 'bg-gradient-to-br from-blue-400 to-sky-600';
     }
   };
-    // No longer needed - removed unused function
-  // Custom styles for the card
+    // No longer needed - removed unused function  // Enhanced custom styles for the card with more visible hover effect
   const cardCustomStyles = {
     boxShadow: isHovered ? (
       theme === 'colorful' 
-        ? '0 15px 30px -10px rgba(255,0,204,0.4), 0 0 0 1px rgba(217, 70, 239, 0.1), inset 0 0 20px rgba(217, 70, 239, 0.03)'
+        ? '0 15px 35px -10px rgba(255,0,204,0.5), 0 0 0 1px rgba(217, 70, 239, 0.2), inset 0 0 25px rgba(217, 70, 239, 0.05)'
         : theme === 'dark'
-          ? '0 15px 30px -10px rgba(59,130,246,0.3), 0 0 0 1px rgba(59,130,246, 0.1), inset 0 0 20px rgba(59,130,246, 0.03)'
-          : '0 15px 30px -10px rgba(59,130,246,0.2), 0 0 0 1px rgba(59,130,246, 0.05), inset 0 0 20px rgba(59,130,246, 0.02)'
+          ? '0 15px 35px -10px rgba(59,130,246,0.4), 0 0 0 1px rgba(59,130,246, 0.2), inset 0 0 25px rgba(59,130,246, 0.05)'
+          : '0 15px 35px -10px rgba(59,130,246,0.3), 0 0 0 1px rgba(59,130,246, 0.15), inset 0 0 25px rgba(59,130,246, 0.04)'
     ) : '',
+    transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)'
   };
     return (
-    <div className="group perspective-1000">
-      <div 
-        className={`relative rounded-2xl overflow-hidden ${getCardStyles()} transition-all duration-300`}
+    <div className="group perspective-1000">      <div 
+        className={`relative rounded-2xl overflow-hidden ${getCardStyles()} transition-all duration-500`}
         style={cardCustomStyles}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-      >
-          {/* Floating particles (visible on hover) */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {isHovered && particles.map((particle, index) => (
+      >          {/* Floating particles (visible on hover) with enhanced visibility */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">          {isHovered && particles.map((particle, index) => (
             <div 
               key={index} 
               className={`absolute rounded-full opacity-0 ${getParticleColor()} transition-all duration-300`}
               style={{
                 left: `${particle.x}%`, 
                 bottom: `${particle.y}%`,
-                width: `${particle.size}px`, 
-                height: `${particle.size}px`,
-                animation: `particle-float ${1.5 + particle.delay}s forwards ease-out`,
-                animationDelay: `${particle.delay}s`,
+                width: `${theme === 'dark' ? particle.size * 1.6 : particle.size}px`, // Larger particles for dark theme
+                height: `${theme === 'dark' ? particle.size * 1.6 : particle.size}px`, // Larger particles for dark theme
+                animation: `particle-float ${5 + particle.delay}s forwards cubic-bezier(0.165, 0.84, 0.44, 1)`, // Longer animation with easing
+                animationDelay: `${particle.delay * 0.8}s`, // Slightly reduced delay for more dynamic feel
                 boxShadow: theme === 'colorful' 
-                  ? '0 0 6px rgba(217, 70, 239, 0.6)'
-                  : '0 0 6px rgba(59, 130, 246, 0.6)'
+                  ? '0 0 14px rgba(217, 70, 239, 0.95)'
+                  : theme === 'dark'
+                    ? '0 0 20px rgba(147, 197, 253, 0.95), 0 0 30px rgba(59, 130, 246, 0.4)' // Much enhanced glow for dark theme
+                    : '0 0 14px rgba(59, 130, 246, 0.85)'
               }}
             />
           ))}
@@ -151,10 +161,16 @@ export default function TimelineCard({
 
         <div className="px-6 pt-5 pb-6">          {/* Icon with fixed positioning to prevent cutoff */}
           <div className="mb-4 flex justify-center mt-2">
-            <div className="relative">
-                <div className={`relative flex items-center justify-center w-14 h-14 rounded-full ${getIconBgStyles()} ${getIconColorStyles()} shadow-xl border backdrop-blur-3xl ${
-                theme === 'colorful' ? 'border-fuchsia-300/40' : theme === 'dark' ? 'border-blue-300/40' : 'border-blue-300/40'
-              } transition-all duration-300 z-10`}>
+            <div className="relative">                <div 
+                  className={`relative flex items-center justify-center w-14 h-14 rounded-full ${getIconBgStyles()} ${getIconColorStyles()} shadow-xl border backdrop-blur-3xl ${
+                    theme === 'colorful' ? 'border-fuchsia-300/40' : theme === 'dark' ? 'border-blue-300/40' : 'border-blue-300/40'
+                  } will-change-transform z-10`}
+                  style={{
+                    transform: isHovered ? 'scale(1.25) rotate(5deg)' : 'scale(1) rotate(0deg)', // Enhanced scale with slight rotation
+                    transition: 'transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease, background 0.5s ease, border-color 0.5s ease', // Elastic "bounce" effect
+                    filter: isHovered ? `drop-shadow(0 0 10px ${theme === 'colorful' ? 'rgba(217, 70, 239, 0.6)' : theme === 'dark' ? 'rgba(59, 130, 246, 0.6)' : 'rgba(59, 130, 246, 0.4)'})` : 'none' // Dynamic glow on hover
+                  }}
+                >
                 {MaterialIcon ? (
                   <MaterialIcon className="text-[28px]" />
                 ) : icon ? (
