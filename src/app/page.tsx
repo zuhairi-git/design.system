@@ -18,6 +18,7 @@ import InteractiveCardsSection from "./interactive-cards";
 import MediaCardsSection from "./media-cards";
 import DashboardCardsSection from "./dashboard-cards";
 import ProfileCardsSection from "./profile-cards";
+import TimelineCardsSection from "./timeline-cards";
 import AccessibilityUtilitiesSection from "./accessibility-utilities";
 import ResponsiveUtilitiesSection from "./responsive-utilities";
 import SpacingSection from "./spacing";
@@ -697,10 +698,10 @@ export default function Home() {
               {/* Tints Section */}
             <TintsSection />
               {/* Card Variants Sections */}
-            <BasicCardsSection />
-            <InteractiveCardsSection />            <MediaCardsSection />
+            <BasicCardsSection />            <InteractiveCardsSection />            <MediaCardsSection />
             <DashboardCardsSection />
             <ProfileCardsSection />
+            <TimelineCardsSection />
             
             {/* Foundations Sections */}
             <SpacingSection />

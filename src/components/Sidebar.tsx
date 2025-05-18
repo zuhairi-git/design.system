@@ -71,8 +71,7 @@ const navCategories: NavCategory[] = [
     ],
     isExpanded: true
   },
-  {
-    id: 'card-variants',
+  {    id: 'card-variants',
     label: 'Card Variants',
     icon: '/card.svg',
     items: [
@@ -80,7 +79,8 @@ const navCategories: NavCategory[] = [
       { id: 'interactive-cards', label: 'Interactive Cards' },
       { id: 'media-cards', label: 'Media Cards' },
       { id: 'dashboard-cards', label: 'Dashboard Cards' },
-      { id: 'profile-cards', label: 'Profile Cards' }
+      { id: 'profile-cards', label: 'Profile Cards' },
+      { id: 'timeline-cards', label: 'Timeline Cards' }
     ],
     isExpanded: true
   },
