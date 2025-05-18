@@ -76,11 +76,10 @@ export default function TimelineCardsSection() {
         </div>
 
         <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg border border-neutral-200/50 dark:border-neutral-800/50">
-          <h3 className="font-heading text-xl font-semibold text-neutral-900 dark:text-white mb-4">Code Example</h3>
-          <CodeSnippet 
+          <h3 className="font-heading text-xl font-semibold text-neutral-900 dark:text-white mb-4">Code Example</h3>          <CodeSnippet 
             code={`<TimelineCard
   theme="light" // Options: 'light', 'dark', 'colorful'
-  materialIcon={RocketLaunchIcon} // Material UI icon
+  materialIcon={RocketLaunchIcon} // Material UI icon (when using this, the icon prop becomes optional)
   title="Product Designer | Product Owner"
   date="2023 – Present"
   location="Webropol, Helsinki, Finland"

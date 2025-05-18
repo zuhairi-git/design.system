@@ -213,13 +213,14 @@ html {
   }
 }
 
-.cosmic-shimmer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transform: translateX(-100%);
-  animation: shimmer 3s infinite;
+/* Timeline card futuristic animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg) scale(1.5);
+  }
+  to {
+    transform: rotate(360deg) scale(1.5);
+  }
 }
 
 @keyframes shimmer {
@@ -228,29 +229,68 @@ html {
   }
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
-    background-position: 100% 50%;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
   }
   100% {
-    background-position: 0% 50%;
+    transform: translateY(-80px) rotate(360deg);
+    opacity: 0;
   }
 }
 
-/* Cosmic title effect with text glow from theme-colors.txt */
-.cosmic-title {
-  text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
-  animation: pulse 3s ease-in-out infinite;
-}
-
-@keyframes pulse {
+@keyframes dimension-shift {
   0%, 100% {
-    text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
   }
-  50% {
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  25% {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
   }
+  75% {
+    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-dimension {
+  animation: dimension-shift 8s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
 }
