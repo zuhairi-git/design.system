@@ -3,7 +3,6 @@
 import React from 'react';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'; 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import DateRangeIcon from '@mui/icons-material/DateRange';
 import { getCardBackground } from "@/utils/cardThemes";
 
 // Timeline Card component with theme support
@@ -98,33 +97,33 @@ export default function TimelineCard({
   return (
     <>
       <div className={`relative rounded-xl border overflow-hidden group ${getCardStyles()} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`} style={bgStyle}>
-        <div className="p-6">
-          {/* Title and Icon */}
-          <div className="flex items-start mb-4">
-            <div className={`flex items-center justify-center w-10 h-10 rounded-lg mr-3 ${getIconBgStyles()} ${getIconColorStyles()}`}>
+        <div className="p-6">          {/* Structure with larger icon and properly aligned content */}
+          <div className="flex">
+            <div className={`flex items-center justify-center w-12 h-12 rounded-lg mr-4 shrink-0 self-start mt-0.5 ${getIconBgStyles()} ${getIconColorStyles()}`}>
               {MaterialIcon ? (
-                <MaterialIcon fontSize="medium" className="text-[22px]" />
+                <MaterialIcon fontSize="medium" className="text-[28px]" />
               ) : (
-                <span className="text-xl">{icon}</span>
+                <span className="text-2xl">{icon}</span>
               )}
             </div>
-            <h3 className={`font-heading text-lg font-bold ${getTitleStyles()} flex-1`}>{title}</h3>
-          </div>
-          
-          {/* Date and Location */}
-          <div className="mb-4 space-y-2">
-            <div className={`flex items-center ${getMetaStyles()}`}>
-              <DateRangeIcon className="h-4 w-4 mr-2" />
-              <span className="font-body text-sm">{date}</span>
+            <div className="flex-1">
+              {/* Title and Date */}
+              <div className="mb-2">
+                <h3 className={`font-heading text-lg font-bold ${getTitleStyles()}`}>{title}</h3>
+                <div className={`font-body text-sm mt-1 ${getMetaStyles()}`}>{date}</div>
+              </div>
+                {/* Location */}
+              <div className="mb-3">
+                <div className={`flex items-center ${getMetaStyles()}`}>
+                  <LocationOnIcon className="h-4 w-4 mr-2 flex-shrink-0" />
+                  <span className="font-body text-sm">{location}</span>
+                </div>
+              </div>
+              
+              {/* Description */}
+              <p className={`font-body text-sm leading-relaxed ${getDescriptionStyles()}`}>{description}</p>
             </div>
-            <div className={`flex items-center ${getMetaStyles()}`}>
-              <LocationOnIcon className="h-4 w-4 mr-2" />
-              <span className="font-body text-sm">{location}</span>
-            </div>
           </div>
-          
-          {/* Description */}
-          <p className={`font-body text-sm ${getDescriptionStyles()}`}>{description}</p>
         </div>
       </div>
       
