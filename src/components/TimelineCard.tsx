@@ -93,27 +93,22 @@ export default function TimelineCard({
   };
 
   const bgStyle = theme === 'colorful' ? getCardBackground('colorful') : {};
-
   return (
     <>
-      <div className={`relative rounded-xl border overflow-hidden group ${getCardStyles()} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`} style={bgStyle}>
-        <div className="p-6">          {/* Structure with larger icon and properly aligned content */}
-          <div className="flex">
-            <div className={`flex items-center justify-center w-12 h-12 rounded-lg mr-4 shrink-0 self-start mt-0.5 ${getIconBgStyles()} ${getIconColorStyles()}`}>
+      <div className={`relative rounded-lg border overflow-hidden group ${getCardStyles()} transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`} style={bgStyle}>
+        <div className="p-5">          {/* Structure with larger icon and properly aligned content */}          <div className="flex">
+            <div className={`flex items-center justify-center w-11 h-11 rounded-lg mr-3.5 shrink-0 self-start mt-0.5 ${getIconBgStyles()} ${getIconColorStyles()}`}>
               {MaterialIcon ? (
-                <MaterialIcon fontSize="medium" className="text-[28px]" />
+                <MaterialIcon fontSize="medium" className="text-[26px]" />
               ) : (
-                <span className="text-2xl">{icon}</span>
+                <span className="text-xl">{icon}</span>
               )}
-            </div>
-            <div className="flex-1">
-              {/* Title and Date */}
-              <div className="mb-2">
+            </div><div className="flex-1">              {/* Title and Date */}
+              <div className="mb-4">
                 <h3 className={`font-heading text-lg font-bold ${getTitleStyles()}`}>{title}</h3>
-                <div className={`font-body text-sm mt-1 ${getMetaStyles()}`}>{date}</div>
-              </div>
-                {/* Location */}
-              <div className="mb-3">
+                <div className={`font-body text-xs ${getMetaStyles()}`}>{date}</div>
+              </div>{/* Location */}
+              <div className="mb-2.5 mt-2">
                 <div className={`flex items-center ${getMetaStyles()}`}>
                   <LocationOnIcon className="h-4 w-4 mr-2 flex-shrink-0" />
                   <span className="font-body text-sm">{location}</span>
