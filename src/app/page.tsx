@@ -9,6 +9,8 @@ import FeatureCard from "@/components/FeatureCard";
 import FixCardLinks from "@/components/FixCardLinks";
 import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
 import ButtonsSection from "./buttons-section";
+import TabsPillsSection from "./tabs-pills-section";
+import BadgesSection from "./badges-section";
 import TintsSection from "./tints-section";
 import GridsSection from "./grids-section";
 import BreakpointsSection from "./breakpoints-section";
@@ -157,16 +159,28 @@ export default function Home() {
                       materialIcon: () => <SpaceBarRoundedIcon className="align-middle" />
                     },
                     {
-                      title: "Cards",
-                      description: "Multiple card variants with different themes and styles",
-                      link: "#cards",
-                      materialIcon: () => <StyleRoundedIcon className="align-middle" />
-                    },
-                    {
                       title: "Buttons",
                       description: "Button styles and variations across different themes",
                       link: "#buttons",
                       materialIcon: () => <SmartButtonRoundedIcon className="align-middle" />
+                    },
+                    {
+                      title: "Tabs & Pills",
+                      description: "Navigation components with accessibility support",
+                      link: "#tabs-pills",
+                      materialIcon: () => <DevicesRoundedIcon className="align-middle" />
+                    },
+                    {
+                      title: "Badges",
+                      description: "Status indicators and notification components",
+                      link: "#badges",
+                      materialIcon: () => <StyleRoundedIcon className="align-middle" />
+                    },
+                    {
+                      title: "Cards",
+                      description: "Multiple card variants with different themes and styles",
+                      link: "#cards",
+                      materialIcon: () => <StyleRoundedIcon className="align-middle" />
                     },
                     {
                       title: "Breakpoints",
@@ -186,7 +200,7 @@ export default function Home() {
                       link: "#tints",
                       materialIcon: () => <OpacityRoundedIcon className="align-middle" />
                     }
-                  ].map((item, index) => (                    <FeatureCard
+                  ].map((item, index) => (<FeatureCard
                       key={index}
                       title={item.title}
                       description={item.description}
@@ -635,8 +649,14 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </AnimatedSection>                {/* Buttons Section */}
+            </AnimatedSection>            {/* Buttons Section */}
             <ButtonsSection />
+              
+            {/* Tabs & Pills Section */}
+            <TabsPillsSection />
+              
+            {/* Badges Section */}
+            <BadgesSection />
               
             {/* Cards Section */}
             <CardsSection />

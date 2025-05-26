@@ -57,14 +57,15 @@ const navCategories: NavCategory[] = [
       { id: 'grids', label: 'Grid System' }
     ],
     isExpanded: true
-  },
-  {
+  },  {
     id: 'components',
     label: 'Components',
     icon: '/components.svg',
     items: [
       { id: 'buttons', label: 'Buttons' },
       { id: 'cards', label: 'Cards & Containers' },
+      { id: 'tabs-pills', label: 'Tabs & Pills' },
+      { id: 'badges', label: 'Badges' },
       { id: 'inputs', label: 'Form Inputs' },
       { id: 'navigation', label: 'Navigation' },
       { id: 'feedback', label: 'Feedback Elements' }

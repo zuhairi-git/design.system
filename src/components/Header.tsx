@@ -85,7 +85,7 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
   };  const navLinks = [
     { id: 'overview', label: 'Home' },
     { id: 'foundations', label: 'Foundations', submenu: ['colors', 'typography', 'spacing', 'grids'] },
-    { id: 'components', label: 'Components', submenu: ['buttons', 'cards'] },
+    { id: 'components', label: 'Components', submenu: ['buttons', 'tabs-pills', 'badges', 'cards'] },
     { id: 'patterns', label: 'Patterns', submenu: ['layouts', 'navigation', 'forms'] },
     { id: 'utilities', label: 'Utilities', submenu: ['breakpoints', 'shadows', 'tints'] }
   ];
