@@ -60,11 +60,11 @@ const navCategories: NavCategory[] = [
   },  {
     id: 'components',
     label: 'Components',
-    icon: '/components.svg',
-    items: [
+    icon: '/components.svg',    items: [
       { id: 'buttons', label: 'Buttons' },
       { id: 'cards', label: 'Cards & Containers' },
       { id: 'tabs-pills', label: 'Tabs & Pills' },
+      { id: 'accordions', label: 'Accordions' },
       { id: 'badges', label: 'Badges' },
       { id: 'inputs', label: 'Form Inputs' },
       { id: 'navigation', label: 'Navigation' },

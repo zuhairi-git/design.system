@@ -10,6 +10,7 @@ import FixCardLinks from "@/components/FixCardLinks";
 import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
 import ButtonsSection from "./buttons-section";
 import TabsPillsSection from "./tabs-pills-section";
+import AccordionSection from "./accordions-section";
 import BadgesSection from "./badges-section";
 import TintsSection from "./tints-section";
 import GridsSection from "./grids-section";
@@ -33,6 +34,7 @@ import SmartButtonRoundedIcon from '@mui/icons-material/SmartButtonRounded';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import BlurOnRoundedIcon from '@mui/icons-material/BlurOnRounded';
 import OpacityRoundedIcon from '@mui/icons-material/OpacityRounded';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function Home() {
   // State for sidebar toggle
@@ -163,12 +165,17 @@ export default function Home() {
                       description: "Button styles and variations across different themes",
                       link: "#buttons",
                       materialIcon: () => <SmartButtonRoundedIcon className="align-middle" />
-                    },
-                    {
+                    },                    {
                       title: "Tabs & Pills",
                       description: "Navigation components with accessibility support",
                       link: "#tabs-pills",
                       materialIcon: () => <DevicesRoundedIcon className="align-middle" />
+                    },
+                    {
+                      title: "Accordions",
+                      description: "Collapsible content sections with icons, badges, and nested tabs",
+                      link: "#accordions",
+                      materialIcon: () => <ExpandMoreIcon className="align-middle" />
                     },
                     {
                       title: "Badges",
@@ -651,9 +658,11 @@ export default function Home() {
               </div>
             </AnimatedSection>            {/* Buttons Section */}
             <ButtonsSection />
-              
-            {/* Tabs & Pills Section */}
+                {/* Tabs & Pills Section */}
             <TabsPillsSection />
+              
+            {/* Accordions Section */}
+            <AccordionSection />
               
             {/* Badges Section */}
             <BadgesSection />
