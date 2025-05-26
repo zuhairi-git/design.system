@@ -96,12 +96,11 @@ export default function BadgesSection() {
                 <li>• Use appropriate font sizes for different badge sizes</li>
                 <li>• Consider icon placement and spacing</li>
               </ul>
-            </div>
-            <div>
+            </div>            <div>
               <h4 className="font-medium text-emerald-900 dark:text-emerald-100 mb-2">Accessibility</h4>
               <ul className="space-y-1 text-emerald-800 dark:text-emerald-200">
                 <li>• Provide aria-label for screen readers</li>
-                <li>• Don't rely solely on color for meaning</li>
+                <li>• Don&apos;t rely solely on color for meaning</li>
                 <li>• Ensure adequate touch targets (minimum 44px)</li>
               </ul>
             </div>
