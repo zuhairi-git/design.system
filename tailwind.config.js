@@ -122,6 +122,19 @@ module.exports = {
         'xl': '0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)',
       },
     },
-  },
-  plugins: [],
+  },  plugins: [],
+  safelist: [
+    // Headless UI data attributes
+    'data-open',
+    'data-closed',
+    'data-hover',
+    'data-focus',
+    'data-active',
+    'data-disabled',
+    'data-checked',
+    'data-selected',
+    'data-enter',
+    'data-leave',
+    'data-autofocus'
+  ]
 }

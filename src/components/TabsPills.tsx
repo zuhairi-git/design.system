@@ -1,19 +1,32 @@
 'use client';
 
 import { Tab } from '@headlessui/react';
+import { useState } from 'react';
+import { useUniqueId, useAnnouncement } from '../utils/headlessPatterns';
+import {
+  getFocusRingClasses,
+  getColorfulContainerClasses,
+  getColorfulTextClass
+} from '../utils/headlessThemeIntegration';
 
 type TabsPillsProps = {
   theme?: 'light' | 'dark' | 'colorful';
   variant?: 'tabs' | 'pills';
   items?: string[];
   size?: 'sm' | 'md' | 'lg';
+  defaultIndex?: number;
+  onChange?: (index: number) => void;
+  ariaLabel?: string;
 };
 
 export default function TabsPills({ 
   theme = 'light', 
   variant = 'tabs',
   items = ['Overview', 'Features', 'Pricing', 'Support'],
-  size = 'md'
+  size = 'md',
+  defaultIndex = 0,
+  onChange,
+  ariaLabel
 }: TabsPillsProps) {
   // Size configurations
   const sizeClasses = {
@@ -38,34 +51,51 @@ export default function TabsPills({
   const themeClasses = {
     light: {
       container: 'bg-white border border-gray-200',
-      tab: 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2',
+      tab: 'text-gray-600 data-hover:text-gray-900 data-hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
       activeTab: 'text-blue-600 bg-blue-50 border-blue-200',
-      pill: 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2',
-      activePill: 'text-white bg-blue-600 shadow-md hover:bg-blue-700',
+      pill: 'text-gray-600 data-hover:text-gray-900 data-hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+      activePill: 'text-white bg-blue-600 shadow-md data-hover:bg-blue-700',
       content: 'bg-gray-50/50',
       border: 'border-gray-200'
     },
     dark: {
       container: 'bg-gray-900 border border-gray-700',
-      tab: 'text-gray-400 hover:text-gray-100 hover:bg-gray-800/50 ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-blue-400 ui-focus-visible:ring-offset-2 ui-focus-visible:ring-offset-gray-900',
+      tab: 'text-gray-400 data-hover:text-gray-100 data-hover:bg-gray-800/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900',
       activeTab: 'text-blue-400 bg-blue-900/30 border-blue-700',
-      pill: 'text-gray-400 hover:text-gray-100 hover:bg-gray-800 ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-blue-400 ui-focus-visible:ring-offset-2 ui-focus-visible:ring-offset-gray-900',
-      activePill: 'text-white bg-blue-600 shadow-lg hover:bg-blue-700',
+      pill: 'text-gray-400 data-hover:text-gray-100 data-hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900',
+      activePill: 'text-white bg-blue-600 shadow-lg data-hover:bg-blue-700',
       content: 'bg-gray-800/30',
       border: 'border-gray-700'
-    },
-    colorful: {
-      container: 'bg-gradient-to-br from-cyan-50 via-purple-50 to-blue-50 border border-purple-200',
-      tab: 'text-purple-600 hover:text-purple-800 hover:bg-purple-100/50 ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-pink-500 ui-focus-visible:ring-offset-2',
-      activeTab: 'text-purple-700 bg-gradient-to-r from-cyan-100 to-purple-100 border-purple-300 shadow-sm',
-      pill: 'text-purple-600 hover:text-purple-800 hover:bg-purple-100 ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-pink-500 ui-focus-visible:ring-offset-2',
-      activePill: 'text-white bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500 shadow-lg hover:shadow-xl',
-      content: 'bg-gradient-to-r from-purple-50/80 to-pink-50/80',
-      border: 'border-purple-200'
+    },    colorful: {
+      container: getColorfulContainerClasses('default'),
+      tab: `${getColorfulTextClass('primary')} data-hover:text-[#f0f8ff] data-hover:bg-[rgba(128,0,255,0.15)] ${getFocusRingClasses('colorful')}`,
+      activeTab: `${getColorfulTextClass('primary')} bg-gradient-to-r from-blue-500/20 to-purple-500/20 border-purple-500/50 shadow-sm`,
+      pill: `${getColorfulTextClass('primary')} data-hover:text-[#f0f8ff] data-hover:bg-[rgba(128,0,255,0.2)] ${getFocusRingClasses('colorful')}`,
+      activePill: 'text-white bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 shadow-lg data-hover:shadow-xl',
+      content: 'bg-gradient-to-r from-blue-900/10 to-purple-900/10',
+      border: 'border-[rgba(128,0,255,0.3)]'
     }
   };
   const currentTheme = themeClasses[theme];
   const currentSize = sizeClasses[size];
+  
+  // Generate unique IDs for ARIA relationships
+  const tabsId = useUniqueId('tabs');
+  
+  // Announcements for screen readers
+  const announce = useAnnouncement();
+    // Track selected index for announcements and accessibility
+  const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
+  
+  // Handle tab change
+  const handleChange = (index: number) => {
+    // Only announce if the index has changed
+    if (index !== selectedIndex) {
+      setSelectedIndex(index);
+      onChange?.(index);
+      announce(`${items[index]} tab selected`, false);
+    }
+  };
 
   if (variant === 'pills') {
     return (
@@ -73,7 +103,14 @@ export default function TabsPills({
         <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
           Pills Navigation ({theme} theme)
         </h3>
-        <Tab.Group>
+        <Tab.Group 
+          defaultIndex={defaultIndex}
+          onChange={handleChange}
+          as="div"
+          role="tablist"
+          aria-label={ariaLabel || "Navigation Pills"}
+          id={tabsId}
+        >
           <Tab.List className="flex flex-wrap gap-2">
             {items.map((item, index) => (
               <Tab
@@ -83,6 +120,8 @@ export default function TabsPills({
                     selected ? currentTheme.activePill : currentTheme.pill
                   }`
                 }
+                id={`${tabsId}-tab-${index}`}
+                aria-controls={`${tabsId}-panel-${index}`}
               >
                 {item}
               </Tab>
@@ -93,12 +132,14 @@ export default function TabsPills({
             {items.map((item, index) => (
               <Tab.Panel 
                 key={index}
-                className={`${currentSize.content} rounded-lg ${currentTheme.content} ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2`}
-              >
-                <h4 className="font-medium text-gray-900 dark:text-white mb-2">
+                className={`${currentSize.content} rounded-lg ${currentTheme.content} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2`}
+                id={`${tabsId}-panel-${index}`}
+                aria-labelledby={`${tabsId}-tab-${index}`}
+                tabIndex={0}
+              >                <h4 className={`font-medium ${theme === 'colorful' ? getColorfulTextClass('primary') : 'text-gray-900 dark:text-white'} mb-2`}>
                   {item} Content
                 </h4>
-                <p className={`${currentSize.text} text-gray-600 dark:text-gray-400`}>
+                <p className={`${currentSize.text} ${theme === 'colorful' ? getColorfulTextClass('secondary') : 'text-gray-600 dark:text-gray-400'}`}>
                   This is the content for the {item.toLowerCase()} section. 
                   Pills provide a clean, rounded navigation style perfect for categories and filters.
                 </p>
@@ -116,7 +157,14 @@ export default function TabsPills({
         Tab Navigation ({theme} theme)
       </h3>
       
-      <Tab.Group>
+      <Tab.Group 
+        defaultIndex={defaultIndex}
+        onChange={handleChange}
+        as="div"
+        role="tablist"
+        aria-label={ariaLabel || "Navigation Tabs"}
+        id={tabsId}
+      >
         <Tab.List className={`flex ${currentTheme.border} border-b`}>
           {items.map((item, index) => (
             <Tab
@@ -128,6 +176,8 @@ export default function TabsPills({
                     : `${currentTheme.tab} border-transparent`
                 }`
               }
+              id={`${tabsId}-tab-${index}`}
+              aria-controls={`${tabsId}-panel-${index}`}
             >
               {item}
             </Tab>
@@ -138,12 +188,14 @@ export default function TabsPills({
           {items.map((item, index) => (
             <Tab.Panel 
               key={index}
-              className={`${currentSize.content} rounded-lg ${currentTheme.content} ui-focus-visible:outline-none ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2`}
-            >
-              <h4 className="font-medium text-gray-900 dark:text-white mb-2">
+              className={`${currentSize.content} rounded-lg ${currentTheme.content} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2`}
+              id={`${tabsId}-panel-${index}`}
+              aria-labelledby={`${tabsId}-tab-${index}`}
+              tabIndex={0}
+            >              <h4 className={`font-medium ${theme === 'colorful' ? getColorfulTextClass('primary') : 'text-gray-900 dark:text-white'} mb-2`}>
                 {item} Content
               </h4>
-              <p className={`${currentSize.text} text-gray-600 dark:text-gray-400`}>
+              <p className={`${currentSize.text} ${theme === 'colorful' ? getColorfulTextClass('secondary') : 'text-gray-600 dark:text-gray-400'}`}>
                 This is the content for the {item.toLowerCase()} section. 
                 Tabs provide clear navigation between related content sections.
               </p>
@@ -152,7 +204,8 @@ export default function TabsPills({
         </Tab.Panels>
       </Tab.Group>
     </div>
-  );}
+  );
+}
 
 // Comprehensive showcase component
 export function TabsPillsShowcase() {

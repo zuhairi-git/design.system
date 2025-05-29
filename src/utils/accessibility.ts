@@ -2,6 +2,9 @@
  * Accessibility utilities following WCAG 2.1 guidelines and Headless UI best practices
  */
 
+import { useUniqueId } from './headlessPatterns';
+import { useState, useEffect, useCallback, useRef } from 'react';
+
 // Focus management utilities
 export const focusManager = {
   /**
@@ -9,17 +12,17 @@ export const focusManager = {
    */
   getFocusableElements: (container: HTMLElement): HTMLElement[] => {
     const focusableSelectors = [
-      'a[href]',
-      'area[href]',
-      'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
-      'select:not([disabled]):not([aria-hidden])',
-      'textarea:not([disabled]):not([aria-hidden])',
-      'button:not([disabled]):not([aria-hidden])',
-      'iframe',
-      'object',
-      'embed',
-      '[contenteditable]',
-      '[tabindex]:not([tabindex^="-"])',
+      'a[href]:not([tabindex="-1"])',
+      'area[href]:not([tabindex="-1"])',
+      'input:not([disabled]):not([type="hidden"]):not([aria-hidden]):not([tabindex="-1"])',
+      'select:not([disabled]):not([aria-hidden]):not([tabindex="-1"])',
+      'textarea:not([disabled]):not([aria-hidden]):not([tabindex="-1"])',
+      'button:not([disabled]):not([aria-hidden]):not([tabindex="-1"])',
+      'iframe:not([tabindex="-1"])',
+      'object:not([tabindex="-1"])',
+      'embed:not([tabindex="-1"])',
+      '[contenteditable]:not([tabindex="-1"])',
+      '[tabindex]:not([tabindex="-1"])',
     ].join(',');
 
     return Array.from(container.querySelectorAll(focusableSelectors)).filter(
@@ -81,7 +84,7 @@ export const focusManager = {
   },
 };
 
-// Focus management utilities for complex components
+// Focus management utilities for complex components - Updated for Headless UI compatibility
 export const manageFocus = {
   /**
    * Set focus to the first focusable element within a container
@@ -147,7 +150,7 @@ export const manageFocus = {
   },
 };
 
-// Keyboard navigation utilities
+// Enhanced keyboard navigation utilities with Headless UI compatibility
 export const keyboardNavigation = {
   /**
    * Standard keyboard navigation for lists/menus
@@ -212,94 +215,42 @@ export const keyboardNavigation = {
         case ' ':
           event.preventDefault();
           onSelect?.(items[currentIndex]);
-          break;
+          return;
       }
 
-      if (nextIndex !== currentIndex && items[nextIndex]) {
+      if (nextIndex !== currentIndex && nextIndex >= 0 && nextIndex < items.length) {
         items[nextIndex].focus();
+        onSelect?.(items[nextIndex]);
       }
     };
 
     container.addEventListener('keydown', handleKeydown);
-    return () => container.removeEventListener('keydown', handleKeydown);
-  },
-};
-
-// ARIA utilities
-export const ariaUtils = {
-  /**
-   * Generate unique IDs for ARIA relationships
-   */
-  generateId: (prefix = 'headlessui') => {
-    return `${prefix}-${Math.random().toString(36).substr(2, 9)}`;
+    return () => {
+      container.removeEventListener('keydown', handleKeydown);
+    };
   },
 
   /**
-   * Announce content to screen readers
+   * Enhanced navigation for tabbed interfaces
    */
-  announce: (message: string, priority: 'polite' | 'assertive' = 'polite') => {
-    const announcer = document.createElement('div');
-    announcer.setAttribute('aria-live', priority);
-    announcer.setAttribute('aria-atomic', 'true');
-    announcer.className = 'sr-only';
-    document.body.appendChild(announcer);
-
-    setTimeout(() => {
-      announcer.textContent = message;
-    }, 100);
-
-    setTimeout(() => {
-      document.body.removeChild(announcer);
-    }, 2000);
+  createTabNavigation: (container: HTMLElement, options = {}) => {
+    return keyboardNavigation.createArrowNavigation(
+      container,
+      '[role="tab"]',
+      { orientation: 'horizontal', ...options }
+    );
   },
 
   /**
-   * Set up proper ARIA relationships for accordions
+   * Enhanced navigation for menu interfaces
    */
-  setupAccordion: (
-    triggerId: string,
-    panelId: string,
-    isExpanded: boolean
-  ) => ({
-    trigger: {
-      'aria-expanded': isExpanded,
-      'aria-controls': panelId,
-      id: triggerId,
-    },
-    panel: {
-      'aria-labelledby': triggerId,
-      id: panelId,
-      role: 'region',
-    },
-  }),
-};
-
-// Screen reader utilities
-export const screenReader = {
-  /**
-   * Screen reader only text
-   */
-  srOnly: 'absolute left-[-10000px] top-auto w-px h-px overflow-hidden',
-
-  /**
-   * Create skip links for keyboard navigation
-   */
-  createSkipLink: (target: string, text: string) => ({
-    href: `#${target}`,
-    className: `
-      absolute left-[-10000px] top-auto w-px h-px overflow-hidden
-      focus:left-2 focus:top-2 focus:w-auto focus:h-auto focus:overflow-visible
-      focus:z-50 focus:bg-white focus:text-black focus:p-2 focus:rounded focus:shadow-lg
-      focus:no-underline
-    `,
-    children: text,
-    onFocus: () => {
-      const targetElement = document.getElementById(target);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    },
-  }),
+  createMenuNavigation: (container: HTMLElement, options = {}) => {
+    return keyboardNavigation.createArrowNavigation(
+      container,
+      '[role="menuitem"]:not([aria-disabled="true"])',
+      { orientation: 'vertical', ...options }
+    );
+  },
 };
 
 // Color contrast utilities
@@ -311,12 +262,12 @@ export const colorContrast = {
     const getLuminance = (color: string) => {
       const rgb = hexToRgb(color);
       if (!rgb) return 0;
-      
+
       const [r, g, b] = [rgb.r, rgb.g, rgb.b].map((c) => {
         c = c / 255;
         return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
       });
-      
+
       return 0.2126 * r + 0.7152 * g + 0.0722 * b;
     };
 
@@ -335,7 +286,7 @@ export const colorContrast = {
     const l2 = getLuminance(background);
     const brightest = Math.max(l1, l2);
     const darkest = Math.min(l1, l2);
-    
+
     return (brightest + 0.05) / (darkest + 0.05);
   },
 
@@ -349,7 +300,7 @@ export const colorContrast = {
     size: 'normal' | 'large' = 'normal'
   ): boolean => {
     const ratio = colorContrast.getContrastRatio(foreground, background);
-    
+
     if (level === 'AAA') {
       return size === 'large' ? ratio >= 4.5 : ratio >= 7;
     } else {
@@ -358,12 +309,13 @@ export const colorContrast = {
   },
 };
 
-// Responsive utilities for accessibility
+// Responsive utilities for accessibility - Updated for improved compatibility
 export const responsive = {
   /**
    * Check if user prefers reduced motion
    */
   prefersReducedMotion: () => {
+    if (typeof window === 'undefined') return false;
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   },
 
@@ -378,11 +330,35 @@ export const responsive = {
    * Check if user prefers high contrast
    */
   prefersHighContrast: () => {
+    if (typeof window === 'undefined') return false;
     return window.matchMedia('(prefers-contrast: high)').matches;
+  },
+
+  /**
+   * Hook to monitor reduced motion preference
+   */
+  useReducedMotion: () => {
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+      typeof window !== 'undefined'
+        ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        : false
+    );
+
+    useEffect(() => {
+      if (typeof window === 'undefined') return;
+
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }, []);
+
+    return prefersReducedMotion;
   },
 };
 
-// Common accessibility patterns
+// Common accessibility patterns enhanced for Headless UI
 export const patterns = {
   /**
    * Modal accessibility pattern
@@ -403,7 +379,7 @@ export const patterns = {
   }),
 
   /**
-   * Button patterns
+   * Button patterns enhanced for Headless UI
    */
   button: {
     primary: {
@@ -417,42 +393,100 @@ export const patterns = {
       'aria-expanded': expanded,
       'aria-haspopup': true,
     }),
+    disclosure: (expanded: boolean) => ({
+      'aria-expanded': expanded,
+      'aria-controls': 'disclosure-panel',
+    }),
+  },
+
+  /**
+   * Navigation patterns for Headless UI
+   */
+  navigation: {
+    tabs: (selectedIndex: number) => ({
+      role: 'tablist',
+      'aria-orientation': 'horizontal',
+      tab: (index: number) => ({
+        role: 'tab',
+        'aria-selected': index === selectedIndex,
+        'aria-controls': `tab-panel-${index}`,
+        id: `tab-${index}`,
+        tabIndex: index === selectedIndex ? 0 : -1,
+      }),
+      panel: (index: number) => ({
+        role: 'tabpanel',
+        'aria-labelledby': `tab-${index}`,
+        id: `tab-panel-${index}`,
+        tabIndex: 0,
+      }),
+    }),
+
+    menu: {
+      role: 'menu',
+      'aria-orientation': 'vertical',
+      item: (disabled: boolean) => ({
+        role: 'menuitem',
+        'aria-disabled': disabled,
+        tabIndex: disabled ? -1 : 0,
+      }),
+    },
   },
 };
 
 /**
- * Custom hook for accessibility utilities in components
+ * Enhanced hook for accessibility utilities in components
  */
 export function useAccessibility() {
+  const uniqueId = useUniqueId();
+
+  const announceToScreenReader = useCallback((message: string, assertive: boolean = false) => {
+    const announcerElement = document.createElement('div');
+    announcerElement.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
+    announcerElement.setAttribute('aria-atomic', 'true');
+    announcerElement.className = 'sr-only';
+    announcerElement.textContent = message;
+
+    document.body.appendChild(announcerElement);
+
+    setTimeout(() => {
+      document.body.removeChild(announcerElement);
+    }, 3000);
+  }, []);
+
   return {
     // Generate accessible badge label
     getBadgeLabel: (variant: string, status: string, count?: number, customLabel?: string) => {
       if (customLabel) return customLabel;
-      
+
       if (variant === 'notification') {
         return `${count !== undefined ? count : 'New'} ${status} notifications`;
       }
-      
+
       if (variant === 'count') {
         return `Count: ${count !== undefined ? count : '0'}`;
       }
-      
+
       return `${status} badge`;
     },
-    
+
     // Generate accessible button attributes
     getButtonAttributes: (label: string, pressed?: boolean, expanded?: boolean) => ({
       'aria-label': label,
       'aria-pressed': pressed,
       'aria-expanded': expanded,
-      tabIndex: 0
+      tabIndex: 0,
     }),
-    
+
     // Generate live region attributes for dynamic content
     getLiveRegionAttributes: (priority: 'polite' | 'assertive' = 'polite') => ({
       'aria-live': priority,
-      'aria-atomic': 'true'
-    })
+      'aria-atomic': 'true',
+    }),
+
+    // Enhanced functionality
+    uniqueId,
+    announceToScreenReader,
+    prefersReducedMotion: responsive.useReducedMotion(),
   };
 }
 
@@ -465,11 +499,40 @@ export function announceLiveRegion(message: string, priority: 'polite' | 'assert
   announcement.setAttribute('aria-atomic', 'true');
   announcement.className = 'sr-only';
   announcement.textContent = message;
-  
+
   document.body.appendChild(announcement);
-  
+
   // Remove after announcement is made
   setTimeout(() => {
     document.body.removeChild(announcement);
   }, 1000);
+}
+
+/**
+ * Custom hook for managing focus traps in modals, dialogs, etc.
+ * Compatible with Headless UI components
+ */
+export function useFocusTrap() {
+  const [trapElement, setTrapElement] = useState<HTMLElement | null>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!trapElement) return;
+
+    // Store previously focused element
+    previousFocusRef.current = document.activeElement as HTMLElement;
+
+    // Setup trap
+    const cleanup = focusManager.trapFocus(trapElement);
+
+    return () => {
+      cleanup();
+      // Restore focus when trap is removed
+      if (previousFocusRef.current) {
+        setTimeout(() => previousFocusRef.current?.focus(), 0);
+      }
+    };
+  }, [trapElement]);
+
+  return setTrapElement;
 }

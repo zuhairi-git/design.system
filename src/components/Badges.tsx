@@ -9,6 +9,8 @@ import {
   ArrowTrendingUpIcon
 } from '@heroicons/react/24/outline';
 import { useAccessibility } from '../utils/accessibility';
+import { useUniqueId } from '../utils/headlessPatterns';
+// Import headless theme integration utilities if needed later
 
 type BadgeProps = {
   theme?: 'light' | 'dark' | 'colorful';
@@ -20,6 +22,7 @@ type BadgeProps = {
   size?: 'sm' | 'md' | 'lg';
   pulse?: boolean;
   ariaLabel?: string;
+  ariaLive?: 'polite' | 'assertive' | 'off';
 };
 
 export default function Badge({ 
@@ -31,12 +34,14 @@ export default function Badge({
   showIcon = true,
   size = 'md',
   pulse = false,
-  ariaLabel
+  ariaLabel,
+  ariaLive = 'polite',
 }: BadgeProps) {
   const { getBadgeLabel } = useAccessibility();
+  const badgeId = useUniqueId('badge');
 
   // Generate accessible label
-  const accessibleLabel = getBadgeLabel(variant, status, count, ariaLabel);
+  const accessibleLabel = ariaLabel || getBadgeLabel(variant, status, count, ariaLabel);
 
   // Size configurations
   const sizeClasses = {
@@ -51,6 +56,7 @@ export default function Badge({
     md: 'h-4 w-4',
     lg: 'h-5 w-5'
   };
+  
   // Status icons
   const statusIcons = {
     success: CheckCircleIcon,
@@ -60,6 +66,7 @@ export default function Badge({
     new: StarIcon,
     hot: ArrowTrendingUpIcon
   };
+  
   // Theme and status configurations based on theme-colors.txt
   const getClasses = () => {
     const baseClasses = `inline-flex items-center font-medium rounded-full transition-all duration-200 ${sizeClasses[size]} ${
@@ -68,49 +75,50 @@ export default function Badge({
     
     if (theme === 'light') {
       const lightVariants = {
-        success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100',
-        error: 'bg-red-50 text-red-700 border border-red-200 hover:bg-red-100',
-        warning: 'bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100',
-        info: 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100',
-        new: 'bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100',
-        hot: 'bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100'
+        success: 'bg-emerald-50 text-emerald-700 border border-emerald-200 data-hover:bg-emerald-100',
+        error: 'bg-red-50 text-red-700 border border-red-200 data-hover:bg-red-100',
+        warning: 'bg-amber-50 text-amber-700 border border-amber-200 data-hover:bg-amber-100',
+        info: 'bg-blue-50 text-blue-700 border border-blue-200 data-hover:bg-blue-100',
+        new: 'bg-purple-50 text-purple-700 border border-purple-200 data-hover:bg-purple-100',
+        hot: 'bg-orange-50 text-orange-700 border border-orange-200 data-hover:bg-orange-100'
       };
       return `${baseClasses} ${lightVariants[status]}`;
     }
 
     if (theme === 'dark') {
       const darkVariants = {
-        success: 'bg-emerald-900/30 text-emerald-400 border border-emerald-700/50 hover:bg-emerald-900/50',
-        error: 'bg-red-900/30 text-red-400 border border-red-700/50 hover:bg-red-900/50',
-        warning: 'bg-amber-900/30 text-amber-400 border border-amber-700/50 hover:bg-amber-900/50',
-        info: 'bg-blue-900/30 text-blue-400 border border-blue-700/50 hover:bg-blue-900/50',
-        new: 'bg-purple-900/30 text-purple-400 border border-purple-700/50 hover:bg-purple-900/50',
-        hot: 'bg-orange-900/30 text-orange-400 border border-orange-700/50 hover:bg-orange-900/50'
+        success: 'bg-emerald-900/30 text-emerald-400 border border-emerald-700/50 data-hover:bg-emerald-900/50',
+        error: 'bg-red-900/30 text-red-400 border border-red-700/50 data-hover:bg-red-900/50',
+        warning: 'bg-amber-900/30 text-amber-400 border border-amber-700/50 data-hover:bg-amber-900/50',
+        info: 'bg-blue-900/30 text-blue-400 border border-blue-700/50 data-hover:bg-blue-900/50',
+        new: 'bg-purple-900/30 text-purple-400 border border-purple-700/50 data-hover:bg-purple-900/50',
+        hot: 'bg-orange-900/30 text-orange-400 border border-orange-700/50 data-hover:bg-orange-900/50'
       };
       return `${baseClasses} ${darkVariants[status]}`;
-    }
-
-    // Colorful theme with cosmic gradients
+    }    // Colorful theme with cosmic gradients from our color theme
     const colorfulVariants = {
-      success: 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40',
-      error: 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg shadow-red-500/25 hover:shadow-red-500/40',
-      warning: 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40',
-      info: 'bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40',
-      new: 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40',
-      hot: 'bg-gradient-to-r from-orange-400 to-red-500 text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40'
+      success: 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white shadow-lg shadow-emerald-500/25 data-hover:shadow-emerald-500/40',
+      error: 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg shadow-red-500/25 data-hover:shadow-red-500/40',
+      warning: 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-amber-500/25 data-hover:shadow-amber-500/40',
+      info: 'bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-lg shadow-blue-500/25 data-hover:shadow-blue-500/40',
+      new: 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-purple-500/25 data-hover:shadow-purple-500/40',
+      hot: 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-pink-500/25 data-hover:shadow-pink-500/40'
     };
     return `${baseClasses} ${colorfulVariants[status]}`;
   };
+  
   const IconComponent = statusIcons[status];
+  
   if (variant === 'notification') {
     return (
-      <span className="relative inline-flex" role="group" aria-label="Button with notification badge">
+      <span className="relative inline-flex" role="group" aria-labelledby={badgeId}>
         {children}
         <span 
+          id={badgeId}
           className={`absolute -top-1 -right-1 ${getClasses()} min-w-[1.25rem] h-5 flex items-center justify-center`}
           role="status"
           aria-label={accessibleLabel}
-          aria-live="polite"
+          aria-live={ariaLive}
         >
           <span className="sr-only">{accessibleLabel}</span>
           <span aria-hidden="true">
@@ -124,9 +132,11 @@ export default function Badge({
   if (variant === 'count') {
     return (
       <span 
+        id={badgeId}
         className={`${getClasses()} min-w-[1.5rem] justify-center`}
         role="status"
         aria-label={accessibleLabel}
+        aria-live={ariaLive}
       >
         <span className="sr-only">{accessibleLabel}</span>
         <span aria-hidden="true">
@@ -135,12 +145,15 @@ export default function Badge({
       </span>
     );
   }
+  
   if (variant === 'featured') {
     return (
       <span 
+        id={badgeId}
         className={`${getClasses()} ${pulse ? 'animate-pulse' : ''}`}
         role="status"
         aria-label={accessibleLabel}
+        aria-live={ariaLive}
       >
         {showIcon && IconComponent && (
           <IconComponent className={`${iconSizes[size]} mr-1`} aria-hidden="true" />
@@ -152,9 +165,11 @@ export default function Badge({
 
   return (
     <span 
+      id={badgeId}
       className={getClasses()}
       role="status"
       aria-label={accessibleLabel}
+      aria-live={ariaLive}
     >
       {showIcon && IconComponent && (
         <IconComponent className={`${iconSizes[size]} mr-1`} aria-hidden="true" />

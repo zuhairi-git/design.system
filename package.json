@@ -4,13 +4,14 @@
   "private": true,
   "engines": {
     "node": ">=18.18.0"
-  },
-  "scripts": {
+  },  "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "wrangler pages publish out --project-name alux-design-system"
+    "deploy": "wrangler pages publish out --project-name alux-design-system",
+    "update-headless": "node scripts/update-components-to-headless.js",
+    "update-colorful-theme": "node scripts/update-components-to-colorful-theme.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

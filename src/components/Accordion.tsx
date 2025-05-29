@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Disclosure, Transition } from '@headlessui/react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -10,12 +10,23 @@ import WarningIcon from '@mui/icons-material/Warning';
 import ErrorIcon from '@mui/icons-material/Error';
 import TabsPills from './TabsPills';
 import Badge from './Badges';
+import { useUniqueId } from '../utils/headlessPatterns';
+import { 
+  getFocusRingClasses,
+  getColorfulContainerClasses,
+  getColorfulHeaderClasses,
+  getColorfulContentClasses,
+  getColorfulTextClass,
+  getThemeIconColors,
+  getColorfulOverlayStyles
+} from '../utils/headlessThemeIntegration';
 
 type AccordionItem = {
   id: string;
   title: string;
   content: string | React.ReactNode;
-  icon?: React.ReactNode;  badge?: {
+  icon?: React.ReactNode;  
+  badge?: {
     text: string;
     variant: 'success' | 'error' | 'warning' | 'info' | 'new' | 'hot';
   };
@@ -42,6 +53,45 @@ export default function Accordion({
 }: AccordionProps) {
   // For non-multiple mode, we track which item should be open
   const [openItem, setOpenItem] = useState<string | null>(null);
+  
+  // Generate unique IDs for ARIA relationships
+  const accordionId = useUniqueId('accordion');
+  
+  // Track focus state for keyboard navigation
+  const accordionRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const container = accordionRef.current;
+    if (!container) return;
+    
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Only handle keyboard navigation when not in an input, textarea, etc.
+      if (
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLTextAreaElement ||
+        event.target instanceof HTMLSelectElement
+      ) {
+        return;
+      }
+      
+      // Handle Home/End keys
+      if (event.key === 'Home') {
+        event.preventDefault();
+        const firstButton = container.querySelector('[role="button"]:not([disabled])') as HTMLElement;
+        firstButton?.focus();
+      } else if (event.key === 'End') {
+        event.preventDefault();
+        const buttons = container.querySelectorAll('[role="button"]:not([disabled])');
+        const lastButton = buttons[buttons.length - 1] as HTMLElement;
+        lastButton?.focus();
+      }
+    };
+    
+    container.addEventListener('keydown', handleKeyDown);
+    return () => {
+      container.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [items]);
 
   // Size configurations
   const sizeClasses = {
@@ -64,89 +114,82 @@ export default function Accordion({
       chevron: 'w-6 h-6'
     }
   };
-
-  // Variant styles with enhanced theme support matching colorful card patterns
+  // Variant styles with enhanced theme support using the headlessThemeIntegration utility
   const getVariantStyles = (theme: string) => {
     const baseStyles = {
       default: {
         container: theme === 'colorful' 
-          ? 'border border-[rgba(128,0,255,0.3)] rounded-lg overflow-hidden shadow-[0_4px_16px_rgba(255,0,204,0.25)]'
+          ? `${getColorfulContainerClasses('default')} overflow-hidden`
           : 'border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden',
         header: theme === 'colorful'
-          ? 'bg-[#1a0033] border-b border-[rgba(128,0,255,0.3)] hover:bg-[rgba(26,0,51,0.8)]'
-          : 'bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700',
+          ? getColorfulHeaderClasses('default')
+          : 'bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 data-hover:bg-gray-50 dark:data-hover:bg-gray-700',
         content: theme === 'colorful'
-          ? 'bg-[#1a0033] border-t border-[rgba(128,0,255,0.3)]'
+          ? getColorfulContentClasses('default')
           : 'bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700'
       },
       bordered: {
         container: theme === 'colorful'
-          ? 'border-2 border-[rgba(128,0,255,0.7)] rounded-xl overflow-hidden shadow-[0_4px_16px_rgba(255,0,204,0.25)]'
+          ? `${getColorfulContainerClasses('bordered')} overflow-hidden`
           : 'border-2 border-gray-300 dark:border-gray-600 rounded-xl overflow-hidden',
         header: theme === 'colorful'
-          ? 'bg-[#1a0033] border-b-2 border-[rgba(128,0,255,0.7)] hover:bg-[rgba(26,0,51,0.8)]'
-          : 'bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 border-b-2 border-gray-300 dark:border-gray-600 hover:from-gray-100 hover:to-gray-50 dark:hover:from-gray-700 dark:hover:to-gray-600',
+          ? getColorfulHeaderClasses('bordered')
+          : 'bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 border-b-2 border-gray-300 dark:border-gray-600 data-hover:from-gray-100 data-hover:to-gray-50 dark:data-hover:from-gray-700 dark:data-hover:to-gray-600',
         content: theme === 'colorful'
-          ? 'bg-[#1a0033] border-t-2 border-[rgba(128,0,255,0.7)]'
+          ? getColorfulContentClasses('bordered')
           : 'bg-white dark:bg-gray-800 border-t-2 border-gray-300 dark:border-gray-600'
       },
       filled: {
         container: theme === 'colorful'
-          ? 'bg-[#1a0033] rounded-lg overflow-hidden shadow-[0_4px_16px_rgba(255,0,204,0.25)]'
+          ? `${getColorfulContainerClasses('filled')} overflow-hidden`
           : 'bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden',
         header: theme === 'colorful'
-          ? 'bg-[#1a0033] hover:bg-[rgba(26,0,51,0.8)]'
-          : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700',
+          ? getColorfulHeaderClasses('filled')
+          : 'bg-gray-100 dark:bg-gray-800 data-hover:bg-gray-200 dark:data-hover:bg-gray-700',
         content: theme === 'colorful'
-          ? 'bg-[#1a0033]'
+          ? getColorfulContentClasses('filled')
           : 'bg-white dark:bg-gray-900'
       },
       minimal: {
         container: 'border-0',
         header: theme === 'colorful'
-          ? 'hover:bg-[rgba(128,0,255,0.1)] rounded-lg'
-          : 'hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg',
+          ? getColorfulHeaderClasses('minimal')
+          : 'data-hover:bg-gray-50 dark:data-hover:bg-gray-800 rounded-lg',
         content: theme === 'colorful'
-          ? 'bg-transparent border-l-4 border-[rgba(128,0,255,0.7)] ml-4'
+          ? getColorfulContentClasses('minimal')
           : 'bg-transparent dark:bg-transparent border-l-4 border-gray-200 dark:border-gray-700 ml-4'
       }
-    };    return baseStyles;
+    };    
+    return baseStyles;
   };
   
-  const variantStyles = getVariantStyles(theme);
-
-  // Focus styles based on theme matching colorful card styling
+  const variantStyles = getVariantStyles(theme);  // Focus styles based on theme using our headless theme integration utility
   const getFocusStyles = (theme: string) => {
-    switch (theme) {
-      case 'colorful':
-        return 'focus:outline-none focus:ring-2 focus:ring-[rgba(255,0,204,0.5)] focus:ring-offset-2 focus:ring-offset-[#1a0033]';
-      case 'dark':
-        return 'focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-900';
-      default:
-        return 'focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2';
-    }
-  };
-
-  // Icon colors based on theme matching colorful card styling
+    return getFocusRingClasses(theme as 'light' | 'dark' | 'colorful');
+  };  // Icon colors based on theme using our headless theme integration utility
   const getIconColors = (theme: string) => {
-    switch (theme) {
-      case 'colorful':
-        return 'text-fuchsia-400';
-      case 'dark':
-        return 'text-gray-300';
-      default:
-        return 'text-gray-500 dark:text-gray-400';
-    }
+    return getThemeIconColors(theme as 'light' | 'dark' | 'colorful');
   };
 
   const themeClasses = {
     light: 'text-gray-900 dark:text-gray-100',
     dark: 'text-gray-100',
-    colorful: 'text-[#f0f8ff]'  };
+    colorful: 'text-[#f0f8ff]'  
+  };
+  
   return (
-    <div className={`space-y-2 ${themeClasses[theme]}`}>
+    <div 
+      className={`space-y-2 ${themeClasses[theme]}`} 
+      ref={accordionRef} 
+      id={accordionId}
+      data-testid="accordion"
+    >
       {items.map((item) => {
-        const IconComponent = iconPosition === 'left' ? ChevronRightIcon : ExpandMoreIcon;        if (allowMultiple) {
+        const panelId = `${accordionId}-panel-${item.id}`;
+        const buttonId = `${accordionId}-button-${item.id}`;
+        const IconComponent = iconPosition === 'left' ? ChevronRightIcon : ExpandMoreIcon;        
+        
+        if (allowMultiple) {
           // Use individual Disclosure for multiple open items
           return (
             <Disclosure key={item.id}>
@@ -154,6 +197,9 @@ export default function Accordion({
                 <div className={`relative ${variantStyles[variant].container} ${variant === 'minimal' ? 'mb-4' : ''}`}>
                   <Disclosure.Button
                     disabled={item.disabled}
+                    id={buttonId}
+                    aria-controls={panelId}
+                    aria-expanded={open}
                     className={`
                       w-full flex items-center justify-between 
                       ${sizeClasses[size].header} 
@@ -165,7 +211,7 @@ export default function Accordion({
                   >
                     <div className="flex items-center space-x-3">
                       {item.icon && iconPosition === 'left' && (
-                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
                           {item.icon}
                         </div>
                       )}
@@ -182,7 +228,7 @@ export default function Accordion({
                       )}
                       
                       {item.icon && iconPosition === 'right' && (
-                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
                           {item.icon}
                         </div>
                       )}
@@ -194,6 +240,7 @@ export default function Accordion({
                         transition-transform duration-200 
                         ${open ? 'rotate-90' : ''}
                       `}
+                      aria-hidden="true"
                     />
                   </Disclosure.Button>
                   
@@ -206,14 +253,16 @@ export default function Accordion({
                     leaveTo="transform scale-95 opacity-0"
                   >
                     <Disclosure.Panel 
+                      id={panelId}
                       className={`
                         ${sizeClasses[size].content} 
                         ${variantStyles[variant].content}
                       `}
+                      static={false}
                     >
                       {item.hasNestedTabs ? (
                         <div className="space-y-4">
-                          <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'} mb-4`}>
+                          <div className={`${theme === 'colorful' ? getColorfulTextClass('secondary') : 'text-gray-700 dark:text-gray-300'} mb-4`}>
                             {typeof item.content === 'string' ? item.content : item.content}
                           </div>
                           <TabsPills 
@@ -224,20 +273,15 @@ export default function Accordion({
                           />
                         </div>
                       ) : (
-                        <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'}`}>
+                        <div className={`${theme === 'colorful' ? getColorfulTextClass('secondary') : 'text-gray-700 dark:text-gray-300'}`}>
                           {typeof item.content === 'string' ? item.content : item.content}
                         </div>
                       )}
                     </Disclosure.Panel>
                   </Transition>
-                  
-                  {/* Colorful theme overlay effect matching colorful cards */}
+                    {/* Colorful theme overlay effect using our headless theme integration utility */}
                   {theme === 'colorful' && (
-                    <div className="absolute inset-0 pointer-events-none" style={{
-                      background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-                      opacity: 0.10,
-                      mixBlendMode: 'overlay'
-                    }} />
+                    <div {...getColorfulOverlayStyles('overlay', 0.10)} />
                   )}
                 </div>
               )}
@@ -262,10 +306,12 @@ export default function Accordion({
                 aria-expanded={isItemOpen}
                 aria-controls={`accordion-content-${item.id}`}
                 id={`accordion-header-${item.id}`}
+                data-hover={isItemOpen || undefined}
+                type="button"
               >
                 <div className="flex items-center space-x-3">
                   {item.icon && iconPosition === 'left' && (
-                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
                       {item.icon}
                     </div>
                   )}
@@ -282,7 +328,7 @@ export default function Accordion({
                   )}
                   
                   {item.icon && iconPosition === 'right' && (
-                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
                       {item.icon}
                     </div>
                   )}
@@ -294,6 +340,7 @@ export default function Accordion({
                     transition-transform duration-200 
                     ${isItemOpen ? 'rotate-90' : ''}
                   `}
+                  aria-hidden="true"
                 />
               </button>
               
@@ -317,7 +364,7 @@ export default function Accordion({
                 >
                   {item.hasNestedTabs ? (
                     <div className="space-y-4">
-                      <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'} mb-4`}>
+                      <div className={`${theme === 'colorful' ? getColorfulTextClass('secondary') : 'text-gray-700 dark:text-gray-300'} mb-4`}>
                         {typeof item.content === 'string' ? item.content : item.content}
                       </div>
                       <TabsPills 
@@ -328,20 +375,15 @@ export default function Accordion({
                       />
                     </div>
                   ) : (
-                    <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'}`}>
+                    <div className={`${theme === 'colorful' ? getColorfulTextClass('secondary') : 'text-gray-700 dark:text-gray-300'}`}>
                       {typeof item.content === 'string' ? item.content : item.content}
                     </div>
                   )}
                 </div>
               </Transition>
-              
-              {/* Colorful theme overlay effect matching colorful cards */}
+                {/* Colorful theme overlay effect using our headless theme integration utility */}
               {theme === 'colorful' && (
-                <div className="absolute inset-0 pointer-events-none" style={{
-                  background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-                  opacity: 0.10,
-                  mixBlendMode: 'overlay'
-                }} />
+                <div {...getColorfulOverlayStyles('overlay', 0.10)} />
               )}
             </div>
           );
@@ -353,6 +395,7 @@ export default function Accordion({
 
 // Showcase component for the design system
 export function AccordionShowcase() {
+  // Showcase implementation remains the same
   const sampleItems: AccordionItem[] = [
     {
       id: 'getting-started',
@@ -406,7 +449,10 @@ export function AccordionShowcase() {
           Default Accordion
         </h3>
         <Accordion items={sampleItems} />
-      </div>      {/* Bordered Variant */}
+      </div>      
+      
+      {/* Other showcase components remain the same */}
+      {/* Bordered Variant */}
       <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
         <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
           <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400">
@@ -417,14 +463,11 @@ export function AccordionShowcase() {
           Bordered Accordion (Multiple Open)
         </h3>
         <Accordion items={sampleItems} variant="bordered" allowMultiple />
-      </div>      {/* Colorful Theme Variant */}
-      <div className="bg-[#1a0033] p-8 rounded-xl border border-[rgba(128,0,255,0.3)] shadow-[0_4px_16px_rgba(255,0,204,0.25)] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-          opacity: 0.10,
-          mixBlendMode: 'overlay'
-        }} />
-        <h3 className="font-heading font-semibold text-xl text-[#f0f8ff] mb-6 flex items-center relative z-10">
+      </div>      
+      
+      {/* Colorful Theme Variant */}      <div className={`${getColorfulContainerClasses('default')} p-8 relative overflow-hidden`}>
+        <div {...getColorfulOverlayStyles('overlay', 0.10)} />
+        <h3 className={`font-heading font-semibold text-xl ${getColorfulTextClass('primary')} mb-6 flex items-center relative z-10`}>
           <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-500/20 text-fuchsia-400">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4z" />
@@ -448,7 +491,9 @@ export function AccordionShowcase() {
           Filled Accordion (Large Size)
         </h3>
         <Accordion items={sampleItems.slice(0, 3)} variant="filled" size="lg" />
-      </div>      {/* Minimal Variant */}
+      </div>      
+      
+      {/* Minimal Variant */}
       <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
         <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
           <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400">
@@ -464,14 +509,11 @@ export function AccordionShowcase() {
           iconPosition="right" 
           allowMultiple 
         />
-      </div>      {/* Colorful Bordered Variant */}
-      <div className="bg-[#1a0033] p-8 rounded-xl border border-[rgba(128,0,255,0.3)] shadow-[0_4px_16px_rgba(255,0,204,0.25)] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-          opacity: 0.10,
-          mixBlendMode: 'overlay'
-        }} />
-        <h3 className="font-heading font-semibold text-xl text-[#f0f8ff] mb-6 flex items-center relative z-10">
+      </div>      
+      
+      {/* Colorful Bordered Variant */}      <div className={`${getColorfulContainerClasses('bordered')} p-8 relative overflow-hidden`}>
+        <div {...getColorfulOverlayStyles('overlay', 0.10)} />
+        <h3 className={`font-heading font-semibold text-xl ${getColorfulTextClass('primary')} mb-6 flex items-center relative z-10`}>
           <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-500/20 text-fuchsia-400">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
