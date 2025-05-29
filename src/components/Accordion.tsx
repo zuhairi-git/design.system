@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Disclosure, Transition } from '@headlessui/react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import InfoIcon from '@mui/icons-material/Info';
@@ -39,22 +40,8 @@ export default function Accordion({
   size = 'md',
   theme = 'light'
 }: AccordionProps) {
-  const [openItems, setOpenItems] = useState<string[]>([]);
-
-  const toggleItem = (itemId: string) => {
-    if (allowMultiple) {
-      setOpenItems(prev => 
-        prev.includes(itemId) 
-          ? prev.filter(id => id !== itemId)
-          : [...prev, itemId]
-      );    } else {
-      setOpenItems(prev => 
-        prev.includes(itemId) ? [] : [itemId]
-      );
-    }
-  };
-
-  const isOpen = (itemId: string) => openItems.includes(itemId);
+  // For non-multiple mode, we track which item should be open
+  const [openItem, setOpenItem] = useState<string | null>(null);
 
   // Size configurations
   const sizeClasses = {
@@ -156,102 +143,209 @@ export default function Accordion({
     light: 'text-gray-900 dark:text-gray-100',
     dark: 'text-gray-100',
     colorful: 'text-[#f0f8ff]'  };
-
-  return (    <div className={`space-y-2 ${themeClasses[theme]}`}>
+  return (
+    <div className={`space-y-2 ${themeClasses[theme]}`}>
       {items.map((item) => {
-        const isItemOpen = isOpen(item.id);
-        const IconComponent = iconPosition === 'left' ? ChevronRightIcon : ExpandMoreIcon;
-        
-        return (
-          <div 
-            key={item.id} 
-            className={`relative ${variantStyles[variant].container} ${variant === 'minimal' ? 'mb-4' : ''}`}
-          >
-            <button
-              onClick={() => !item.disabled && toggleItem(item.id)}
-              disabled={item.disabled}
-              className={`
-                w-full flex items-center justify-between 
-                ${sizeClasses[size].header} 
-                ${variantStyles[variant].header}
-                ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-                transition-all duration-200 ${getFocusStyles(theme)}
-              `}
-              aria-expanded={isItemOpen}
-              aria-controls={`accordion-content-${item.id}`}
-            >
-              <div className="flex items-center space-x-3">
-                {item.icon && iconPosition === 'left' && (
-                  <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
-                    {item.icon}
-                  </div>
-                )}
-                
-                <span className="font-medium text-left">{item.title}</span>
-                  {item.badge && (
-                  <Badge 
-                    theme={theme}
-                    status={item.badge.variant}
-                    size={size === 'lg' ? 'md' : 'sm'}
+        const IconComponent = iconPosition === 'left' ? ChevronRightIcon : ExpandMoreIcon;        if (allowMultiple) {
+          // Use individual Disclosure for multiple open items
+          return (
+            <Disclosure key={item.id}>
+              {({ open }) => (
+                <div className={`relative ${variantStyles[variant].container} ${variant === 'minimal' ? 'mb-4' : ''}`}>
+                  <Disclosure.Button
+                    disabled={item.disabled}
+                    className={`
+                      w-full flex items-center justify-between 
+                      ${sizeClasses[size].header} 
+                      ${variantStyles[variant].header}
+                      ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                      transition-all duration-200 ${getFocusStyles(theme)}
+                      disabled:pointer-events-none
+                    `}
                   >
-                    {item.badge.text}
-                  </Badge>
-                )}
-                
-                {item.icon && iconPosition === 'right' && (
-                  <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
-                    {item.icon}
-                  </div>
-                )}
-              </div>
-              
-              <IconComponent 
+                    <div className="flex items-center space-x-3">
+                      {item.icon && iconPosition === 'left' && (
+                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                          {item.icon}
+                        </div>
+                      )}
+                      
+                      <span className="font-medium text-left">{item.title}</span>
+                      {item.badge && (
+                        <Badge 
+                          theme={theme}
+                          status={item.badge.variant}
+                          size={size === 'lg' ? 'md' : 'sm'}
+                        >
+                          {item.badge.text}
+                        </Badge>
+                      )}
+                      
+                      {item.icon && iconPosition === 'right' && (
+                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                          {item.icon}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <IconComponent 
+                      className={`
+                        ${sizeClasses[size].chevron} ${getIconColors(theme)}
+                        transition-transform duration-200 
+                        ${open ? 'rotate-90' : ''}
+                      `}
+                    />
+                  </Disclosure.Button>
+                  
+                  <Transition
+                    enter="transition duration-200 ease-out"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leave="transition duration-200 ease-out"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
+                  >
+                    <Disclosure.Panel 
+                      className={`
+                        ${sizeClasses[size].content} 
+                        ${variantStyles[variant].content}
+                      `}
+                    >
+                      {item.hasNestedTabs ? (
+                        <div className="space-y-4">
+                          <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'} mb-4`}>
+                            {typeof item.content === 'string' ? item.content : item.content}
+                          </div>
+                          <TabsPills 
+                            variant="pills" 
+                            size="sm"
+                            items={['Overview', 'Details', 'Examples']}
+                            theme={theme}
+                          />
+                        </div>
+                      ) : (
+                        <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'}`}>
+                          {typeof item.content === 'string' ? item.content : item.content}
+                        </div>
+                      )}
+                    </Disclosure.Panel>
+                  </Transition>
+                  
+                  {/* Colorful theme overlay effect matching colorful cards */}
+                  {theme === 'colorful' && (
+                    <div className="absolute inset-0 pointer-events-none" style={{
+                      background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+                      opacity: 0.10,
+                      mixBlendMode: 'overlay'
+                    }} />
+                  )}
+                </div>
+              )}
+            </Disclosure>
+          );
+        } else {
+          // Single open item mode - control externally
+          const isItemOpen = openItem === item.id;
+          
+          return (
+            <div key={item.id} className={`relative ${variantStyles[variant].container} ${variant === 'minimal' ? 'mb-4' : ''}`}>
+              <button
+                onClick={() => !item.disabled && setOpenItem(isItemOpen ? null : item.id)}
+                disabled={item.disabled}
                 className={`
-                  ${sizeClasses[size].chevron} ${getIconColors(theme)}
-                  transition-transform duration-200 
-                  ${isItemOpen ? 'rotate-90' : ''}
+                  w-full flex items-center justify-between 
+                  ${sizeClasses[size].header} 
+                  ${variantStyles[variant].header}
+                  ${item.disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+                  transition-all duration-200 ${getFocusStyles(theme)}
                 `}
-              />
-            </button>
-            
-            {isItemOpen && (
-              <div 
-                id={`accordion-content-${item.id}`}
-                className={`
-                  ${sizeClasses[size].content} 
-                  ${variantStyles[variant].content}
-                  animate-in slide-in-from-top-2 duration-200
-                `}              >
-                {item.hasNestedTabs ? (
-                  <div className="space-y-4">
-                    <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'} mb-4`}>
+                aria-expanded={isItemOpen}
+                aria-controls={`accordion-content-${item.id}`}
+                id={`accordion-header-${item.id}`}
+              >
+                <div className="flex items-center space-x-3">
+                  {item.icon && iconPosition === 'left' && (
+                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                      {item.icon}
+                    </div>
+                  )}
+                  
+                  <span className="font-medium text-left">{item.title}</span>
+                  {item.badge && (
+                    <Badge 
+                      theme={theme}
+                      status={item.badge.variant}
+                      size={size === 'lg' ? 'md' : 'sm'}
+                    >
+                      {item.badge.text}
+                    </Badge>
+                  )}
+                  
+                  {item.icon && iconPosition === 'right' && (
+                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`}>
+                      {item.icon}
+                    </div>
+                  )}
+                </div>
+                
+                <IconComponent 
+                  className={`
+                    ${sizeClasses[size].chevron} ${getIconColors(theme)}
+                    transition-transform duration-200 
+                    ${isItemOpen ? 'rotate-90' : ''}
+                  `}
+                />
+              </button>
+              
+              <Transition
+                show={isItemOpen}
+                enter="transition duration-200 ease-out"
+                enterFrom="transform scale-95 opacity-0"
+                enterTo="transform scale-100 opacity-100"
+                leave="transition duration-200 ease-out"
+                leaveFrom="transform scale-100 opacity-100"
+                leaveTo="transform scale-95 opacity-0"
+              >
+                <div 
+                  id={`accordion-content-${item.id}`}
+                  role="region"
+                  aria-labelledby={`accordion-header-${item.id}`}
+                  className={`
+                    ${sizeClasses[size].content} 
+                    ${variantStyles[variant].content}
+                  `}
+                >
+                  {item.hasNestedTabs ? (
+                    <div className="space-y-4">
+                      <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'} mb-4`}>
+                        {typeof item.content === 'string' ? item.content : item.content}
+                      </div>
+                      <TabsPills 
+                        variant="pills" 
+                        size="sm"
+                        items={['Overview', 'Details', 'Examples']}
+                        theme={theme}
+                      />
+                    </div>
+                  ) : (
+                    <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'}`}>
                       {typeof item.content === 'string' ? item.content : item.content}
                     </div>
-                    <TabsPills 
-                      variant="pills" 
-                      size="sm"
-                      items={['Overview', 'Details', 'Examples']}
-                      theme={theme}
-                    />
-                  </div>
-                ) : (
-                  <div className={`${theme === 'colorful' ? 'text-[#f0f8ff]/90' : 'text-gray-700 dark:text-gray-300'}`}>
-                    {typeof item.content === 'string' ? item.content : item.content}
-                  </div>
-                )}
-              </div>
-            )}
-            
-            {/* Colorful theme overlay effect matching colorful cards */}
-            {theme === 'colorful' && (
-              <div className="absolute inset-0 pointer-events-none" style={{
-                background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
-                opacity: 0.10,
-                mixBlendMode: 'overlay'
-              }} />
-            )}
-          </div>
-        );
+                  )}
+                </div>
+              </Transition>
+              
+              {/* Colorful theme overlay effect matching colorful cards */}
+              {theme === 'colorful' && (
+                <div className="absolute inset-0 pointer-events-none" style={{
+                  background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+                  opacity: 0.10,
+                  mixBlendMode: 'overlay'
+                }} />
+              )}
+            </div>
+          );
+        }
       })}
     </div>
   );

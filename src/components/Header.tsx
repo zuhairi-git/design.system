@@ -2,23 +2,25 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-// Image import removed as it's not being used
+import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 import { useSidebar } from './Sidebar';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
-// Removed unused import
-// import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { 
+  Bars3Icon, 
+  ChevronDownIcon 
+} from '@heroicons/react/24/outline';
+import { useAccessibility } from '../utils/accessibility';
 
 type HeaderProps = {
   title: string;
 };
 
-export default function Header({ title }: HeaderProps) {  // Initialize these on the client-side only to avoid hydration mismatch
+export default function Header({ title }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
-    // Access sidebar context for the toggle button
-  const { toggleSidebar } = useSidebar(); // Only use toggleSidebar, isOpen is not needed here
+  const { toggleSidebar } = useSidebar();
+  const { getButtonAttributes } = useAccessibility();
   
   // Mark when component is mounted on client
   useEffect(() => {
@@ -88,8 +90,7 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
     { id: 'components', label: 'Components', submenu: ['buttons', 'tabs-pills', 'badges', 'cards'] },
     { id: 'patterns', label: 'Patterns', submenu: ['layouts', 'navigation', 'forms'] },
     { id: 'utilities', label: 'Utilities', submenu: ['breakpoints', 'shadows', 'tints'] }
-  ];
-  return (
+  ];  return (
     <>
       <header 
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
@@ -97,69 +98,100 @@ export default function Header({ title }: HeaderProps) {  // Initialize these on
             ? 'border-b border-neutral-200 dark:border-neutral-800/80 shadow-md backdrop-blur-xl bg-white/90 dark:bg-neutral-900/95' 
             : 'bg-transparent'
         }`}
+        role="banner"
+        aria-label="Site header"
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Left side - Hamburger menu, Logo & Title */}
             <div className="flex items-center">              {/* Hamburger Menu Toggle for Sidebar */}
               <button 
                 onClick={toggleSidebar}
-                className="mr-3 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/70 transition-all duration-200"
+                className="mr-3 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/70 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"
                 aria-label="Toggle sidebar"
+                aria-expanded="false"
               >
-                <MenuRoundedIcon className="h-5 w-5 align-middle" />
-              </button>
-                <Link 
+                <Bars3Icon className="h-5 w-5" aria-hidden="true" />
+              </button>                <Link 
                 href="#overview" 
-                className="flex items-center group" 
+                className="flex items-center group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg" 
                 onClick={() => handleNavLinkClick('overview')}
+                aria-label="Go to homepage"
               >
                 <h1 className="font-heading font-bold text-xl text-neutral-950 dark:text-white">
                   {title || "Alux"}
                 </h1>
               </Link>
             </div>            {/* Desktop navigation */}
-            <nav className="hidden md:flex items-center space-x-1">
+            <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
               {navLinks.map(link => (
-                <div key={link.id} className="relative group">
+                link.submenu ? (
+                  <Menu as="div" key={link.id} className="relative">
+                    <Menu.Button 
+                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2 ${
+                        isClient && (activeSection === link.id || (link.submenu && link.submenu.includes(activeSection || '')))
+                          ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
+                          : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/40'
+                      }`}
+                      {...getButtonAttributes(`${link.label} menu`)}
+                    >
+                      <span>{link.label}</span>
+                      <ChevronDownIcon className="h-4 w-4 ml-1 ui-open:rotate-180 transition-transform" aria-hidden="true" />
+                    </Menu.Button>
+                    
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="absolute left-0 mt-1 w-48 origin-top-left bg-white dark:bg-neutral-800 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-neutral-200 dark:border-neutral-700 z-50">
+                        <div className="py-1">
+                          {link.submenu.map(subId => {
+                            const subLabel = navLinks.find(item => item.id === subId)?.label || 
+                                            subId.charAt(0).toUpperCase() + subId.slice(1);
+                            return (
+                              <Menu.Item key={subId}>
+                                {({ active }) => (
+                                  <Link
+                                    href={`#${subId}`}
+                                    onClick={() => handleNavLinkClick(subId)}
+                                    className={`block px-4 py-2 text-sm transition-colors ${
+                                      active
+                                        ? 'bg-neutral-100 text-neutral-900 dark:bg-neutral-700 dark:text-white'
+                                        : isClient && activeSection === subId
+                                          ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30'
+                                          : 'text-neutral-700 dark:text-neutral-300'
+                                    }`}
+                                  >
+                                    {subLabel}
+                                  </Link>
+                                )}
+                              </Menu.Item>
+                            );
+                          })}
+                        </div>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                ) : (
                   <Link 
-                    href={link.submenu ? `#${link.submenu[0]}` : `#${link.id}`}
-                    onClick={() => handleNavLinkClick(link.submenu ? link.submenu[0] : link.id)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center ${
-                      isClient && (activeSection === link.id || (link.submenu && link.submenu.includes(activeSection || '')))
+                    key={link.id}
+                    href={`#${link.id}`}
+                    onClick={() => handleNavLinkClick(link.id)}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                      isClient && activeSection === link.id
                         ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30 shadow-sm' 
                         : 'text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100/80 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/40'
                     }`}
                   >
                     {link.label}
-                    {link.submenu && (
-                      <ExpandMoreRoundedIcon className="h-4 w-4 ml-1 align-middle" />
-                    )}
                   </Link>
-                  
-                  {link.submenu && (
-                    <div className="absolute left-0 mt-1 w-48 bg-white dark:bg-neutral-800 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-neutral-200 dark:border-neutral-700">
-                      {link.submenu.map(subId => {
-                        const subLabel = navLinks.find(item => item.id === subId)?.label || 
-                                        subId.charAt(0).toUpperCase() + subId.slice(1);
-                        return (
-                          <Link
-                            key={subId}
-                            href={`#${subId}`}
-                            onClick={() => handleNavLinkClick(subId)}
-                            className={`block px-4 py-2 text-sm transition-colors ${
-                              isClient && activeSection === subId
-                                ? 'text-primary-700 bg-primary-50/70 dark:text-primary-400 dark:bg-primary-900/30'
-                                : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-primary-400 dark:hover:bg-neutral-700/50'
-                            }`}
-                          >
-                            {subLabel}
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              ))}            </nav>              {/* Right side buttons */}            <div className="flex items-center">
+                )
+              ))}
+            </nav>{/* Right side buttons */}            <div className="flex items-center">
                 {/* Theme toggle removed */}
                 {/* Mobile menu button - completely removed from rendering */}
               {/* We're using the sidebar toggle instead of a separate mobile menu button

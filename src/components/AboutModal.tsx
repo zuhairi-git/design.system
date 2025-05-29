@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
+import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,57 +11,52 @@ type AboutModalProps = {
 };
 
 export default function AboutModal({ isOpen, onCloseAction: onClose }: AboutModalProps) {
-  // Close modal when Escape key is pressed
-  useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscKey);
-      // Prevent scrolling on body when modal is open
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscKey);
-      document.body.style.overflow = '';
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
   return (
-    <>
-      {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      
-      {/* Modal */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-        <div 
-          className="relative bg-white dark:bg-neutral-900 rounded-xl shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-          onClick={(e) => e.stopPropagation()}
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-            aria-label="Close modal"
-          >
-            <svg className="w-5 h-5 text-neutral-700 dark:text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-          
-          {/* Content */}
-          <div className="p-6 sm:p-8">
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 text-left align-middle shadow-xl transition-all">
+                <div className="flex items-center justify-between mb-6">
+                  <Dialog.Title as="h3" className="text-2xl font-semibold text-neutral-900 dark:text-white">
+                    About ALUX Design System
+                  </Dialog.Title>
+                  
+                  {/* Close button */}
+                  <button
+                    onClick={onClose}
+                    className="rounded-lg p-2 text-neutral-500 hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    aria-label="Close modal"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>                  </button>
+                </div>
+
+                {/* Content */}
+                <div className="max-h-[70vh] overflow-y-auto">
+                  <div className="flex flex-col sm:flex-row gap-6 sm:gap-8">
               {/* Image and social links */}
               <div className="flex flex-col items-center">
                 <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-primary-100 dark:border-primary-900">
@@ -139,21 +135,22 @@ export default function AboutModal({ isOpen, onCloseAction: onClose }: AboutModa
                     </p>
                   </div>
                 </div>
-                
-                {/* Portfolio link */}
+                  {/* Portfolio link */}
                 <Link 
                   href="https://alux.space/portfolio" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-block mt-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
-                >
-                  View Portfolio
+                  className="inline-block mt-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                >                  View Portfolio
                 </Link>
               </div>
             </div>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
         </div>
-      </div>
-    </>
+      </Dialog>
+    </Transition>
   );
 }

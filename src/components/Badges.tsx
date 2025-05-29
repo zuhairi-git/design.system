@@ -1,11 +1,14 @@
 'use client';
 
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
-import StarRoundedIcon from '@mui/icons-material/StarRounded';
-import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
+import { 
+  CheckCircleIcon,
+  XMarkIcon,
+  InformationCircleIcon,
+  ExclamationTriangleIcon,
+  StarIcon,
+  ArrowTrendingUpIcon
+} from '@heroicons/react/24/outline';
+import { useAccessibility } from '../utils/accessibility';
 
 type BadgeProps = {
   theme?: 'light' | 'dark' | 'colorful';
@@ -30,6 +33,10 @@ export default function Badge({
   pulse = false,
   ariaLabel
 }: BadgeProps) {
+  const { getBadgeLabel } = useAccessibility();
+
+  // Generate accessible label
+  const accessibleLabel = getBadgeLabel(variant, status, count, ariaLabel);
 
   // Size configurations
   const sizeClasses = {
@@ -44,15 +51,14 @@ export default function Badge({
     md: 'h-4 w-4',
     lg: 'h-5 w-5'
   };
-
   // Status icons
   const statusIcons = {
-    success: CheckRoundedIcon,
-    error: CloseRoundedIcon,
-    warning: WarningRoundedIcon,
-    info: InfoRoundedIcon,
-    new: StarRoundedIcon,
-    hot: TrendingUpRoundedIcon
+    success: CheckCircleIcon,
+    error: XMarkIcon,
+    warning: ExclamationTriangleIcon,
+    info: InformationCircleIcon,
+    new: StarIcon,
+    hot: ArrowTrendingUpIcon
   };
   // Theme and status configurations based on theme-colors.txt
   const getClasses = () => {
@@ -96,16 +102,20 @@ export default function Badge({
     return `${baseClasses} ${colorfulVariants[status]}`;
   };
   const IconComponent = statusIcons[status];
-
   if (variant === 'notification') {
     return (
-      <span className="relative inline-flex">
+      <span className="relative inline-flex" role="group" aria-label="Button with notification badge">
         {children}
         <span 
           className={`absolute -top-1 -right-1 ${getClasses()} min-w-[1.25rem] h-5 flex items-center justify-center`}
-          aria-label={ariaLabel || `${count !== undefined ? count : 'New'} notifications`}
+          role="status"
+          aria-label={accessibleLabel}
+          aria-live="polite"
         >
-          {count !== undefined ? (count > 99 ? '99+' : count) : '!'}
+          <span className="sr-only">{accessibleLabel}</span>
+          <span aria-hidden="true">
+            {count !== undefined ? (count > 99 ? '99+' : count) : '!'}
+          </span>
         </span>
       </span>
     );
@@ -115,23 +125,27 @@ export default function Badge({
     return (
       <span 
         className={`${getClasses()} min-w-[1.5rem] justify-center`}
-        aria-label={ariaLabel || `Count: ${count !== undefined ? count : '0'}`}
+        role="status"
+        aria-label={accessibleLabel}
       >
-        {count !== undefined ? (count > 999 ? '999+' : count) : '0'}
+        <span className="sr-only">{accessibleLabel}</span>
+        <span aria-hidden="true">
+          {count !== undefined ? (count > 999 ? '999+' : count) : '0'}
+        </span>
       </span>
     );
   }
-
   if (variant === 'featured') {
     return (
       <span 
         className={`${getClasses()} ${pulse ? 'animate-pulse' : ''}`}
-        aria-label={ariaLabel}
+        role="status"
+        aria-label={accessibleLabel}
       >
         {showIcon && IconComponent && (
           <IconComponent className={`${iconSizes[size]} mr-1`} aria-hidden="true" />
         )}
-        {children}
+        <span>{children}</span>
       </span>
     );
   }
@@ -139,12 +153,13 @@ export default function Badge({
   return (
     <span 
       className={getClasses()}
-      aria-label={ariaLabel}
+      role="status"
+      aria-label={accessibleLabel}
     >
       {showIcon && IconComponent && (
         <IconComponent className={`${iconSizes[size]} mr-1`} aria-hidden="true" />
       )}
-      {children}
+      <span>{children}</span>
     </span>
   );
 }
@@ -152,16 +167,20 @@ export default function Badge({
 // Badge showcase component
 export function BadgeShowcase() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" role="main" aria-labelledby="badge-showcase-title">
+      <header className="sr-only">
+        <h2 id="badge-showcase-title">Badge Component Showcase</h2>
+      </header>
+      
       {/* Light Theme */}
-      <div className="p-6 bg-white rounded-xl border border-neutral-200">
-        <h3 className="text-lg font-semibold mb-4 text-neutral-900">
+      <section className="p-6 bg-white rounded-xl border border-neutral-200" aria-labelledby="light-theme-title">
+        <h3 id="light-theme-title" className="text-lg font-semibold mb-4 text-neutral-900">
           Badges - Light Theme
         </h3>
         
         <div className="space-y-4">
-          <div>
-            <h4 className="text-sm font-medium mb-2 text-neutral-600">Status Badges</h4>
+          <div role="group" aria-labelledby="status-badges-light">
+            <h4 id="status-badges-light" className="text-sm font-medium mb-2 text-neutral-600">Status Badges</h4>
             <div className="flex flex-wrap gap-2">
               <Badge theme="light" status="success">Success</Badge>
               <Badge theme="light" status="error">Error</Badge>
@@ -172,20 +191,30 @@ export function BadgeShowcase() {
             </div>
           </div>
           
-          <div>
-            <h4 className="text-sm font-medium mb-2 text-neutral-600">Notification Badges</h4>
+          <div role="group" aria-labelledby="notification-badges-light">
+            <h4 id="notification-badges-light" className="text-sm font-medium mb-2 text-neutral-600">Notification Badges</h4>
             <div className="flex flex-wrap gap-4">
               <Badge theme="light" variant="notification" status="error" count={5}>
-                <button className="p-2 bg-neutral-100 rounded-lg">Messages</button>
+                <button 
+                  className="p-2 bg-neutral-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  aria-describedby="messages-badge"
+                >
+                  Messages
+                </button>
               </Badge>
               <Badge theme="light" variant="notification" status="info">
-                <button className="p-2 bg-neutral-100 rounded-lg">Notifications</button>
+                <button 
+                  className="p-2 bg-neutral-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  aria-describedby="notifications-badge"
+                >
+                  Notifications
+                </button>
               </Badge>
             </div>
           </div>
           
-          <div>
-            <h4 className="text-sm font-medium mb-2 text-neutral-600">Count Badges</h4>
+          <div role="group" aria-labelledby="count-badges-light">
+            <h4 id="count-badges-light" className="text-sm font-medium mb-2 text-neutral-600">Count Badges</h4>
             <div className="flex flex-wrap gap-2">
               <Badge theme="light" variant="count" status="success" count={42} />
               <Badge theme="light" variant="count" status="info" count={128} />
@@ -193,7 +222,7 @@ export function BadgeShowcase() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Dark Theme */}
       <div className="p-6 bg-neutral-900 rounded-xl border border-neutral-700">
