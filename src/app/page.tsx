@@ -123,7 +123,10 @@ export default function Home() {
                   </h1>
                   
                   <p className="font-body text-lg sm:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mb-10 leading-relaxed">
-                    A simple design system featuring a set of guidelines, components, and resources to create consistent and beautiful user interfaces.
+                    A lightweight design system that provides clear guidelines, reusable components, and helpful resources for building consistent and visually appealing user interfaces. 
+                  </p>
+                  <p className="font-body text-lg sm:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mb-10 leading-relaxed">
+                    Built using Tailwind CSS and Headless UI.                  
                   </p>
                   
                   <div className="flex flex-wrap gap-3 mb-14">
