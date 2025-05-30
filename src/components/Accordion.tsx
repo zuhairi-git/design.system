@@ -91,26 +91,22 @@ export default function Accordion({
     return () => {
       container.removeEventListener('keydown', handleKeyDown);
     };
-  }, [items]);
-  // Size configurations
+  }, [items]);  // Size configurations
   const sizeClasses = {
     sm: {
       header: 'px-3 py-2 text-sm',
       content: 'px-3 py-3 text-sm',
-      chevron: 'w-4 h-4',
-      icon: 'w-4 h-4'
+      chevron: 'w-4 h-4'
     },
     md: {
       header: 'px-4 py-3 text-base',
       content: 'px-4 py-4 text-sm',
-      chevron: 'w-5 h-5',
-      icon: 'w-5 h-5'
+      chevron: 'w-5 h-5'
     },
     lg: {
       header: 'px-6 py-4 text-lg',
       content: 'px-6 py-5 text-base',
-      chevron: 'w-6 h-6',
-      icon: 'w-6 h-6'
+      chevron: 'w-6 h-6'
     }
   };
   // Variant styles with enhanced theme support using the headlessThemeIntegration utility
@@ -193,8 +189,7 @@ export default function Accordion({
           return (
             <Disclosure key={item.id}>
               {({ open }) => (
-                <div className={`relative ${variantStyles[variant].container} ${variant === 'minimal' ? 'mb-4' : ''}`}>
-                  <Disclosure.Button
+                <div className={`relative ${variantStyles[variant].container} ${variant === 'minimal' ? 'mb-4' : ''}`}>                  <Disclosure.Button
                     disabled={item.disabled}
                     id={buttonId}
                     aria-controls={panelId}
@@ -210,7 +205,7 @@ export default function Accordion({
                   >
                     <div className="flex items-center space-x-3">
                       {item.icon && iconPosition === 'left' && (
-                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
+                        <div className={`flex items-center ${getIconColors(theme)}`} aria-hidden="true">
                           {item.icon}
                         </div>
                       )}
@@ -227,7 +222,7 @@ export default function Accordion({
                       )}
                       
                       {item.icon && iconPosition === 'right' && (
-                        <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
+                        <div className={`flex items-center ${getIconColors(theme)}`} aria-hidden="true">
                           {item.icon}
                         </div>
                       )}
@@ -310,7 +305,7 @@ export default function Accordion({
               >
                 <div className="flex items-center space-x-3">
                   {item.icon && iconPosition === 'left' && (
-                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
+                    <div className={`flex items-center ${getIconColors(theme)}`} aria-hidden="true">
                       {item.icon}
                     </div>
                   )}
@@ -327,7 +322,7 @@ export default function Accordion({
                   )}
                   
                   {item.icon && iconPosition === 'right' && (
-                    <div className={`${sizeClasses[size].icon} ${getIconColors(theme)}`} aria-hidden="true">
+                    <div className={`flex items-center ${getIconColors(theme)}`} aria-hidden="true">
                       {item.icon}
                     </div>
                   )}
@@ -400,36 +395,32 @@ export function AccordionShowcase() {
       id: 'getting-started',
       title: 'Getting Started',
       content: 'Learn the basics of our design system and how to implement components in your project.',
-      icon: <InfoIcon className="w-5 h-5" />,
+      icon: <InfoIcon />,
       badge: { text: 'New', variant: 'info' }
     },
     {
       id: 'components',
-      title: 'Components Library',
-      content: 'Explore our comprehensive collection of UI components with examples and usage guidelines.',
-      icon: <CheckCircleIcon className="w-5 h-5" />,
+      title: 'Components Library',      content: 'Explore our comprehensive collection of UI components with examples and usage guidelines.',
+      icon: <CheckCircleIcon />,
       badge: { text: '50+ Components', variant: 'success' },
       hasNestedTabs: true
     },
     {
       id: 'customization',
-      title: 'Theme Customization',
-      content: 'Customize colors, typography, and spacing to match your brand identity.',
-      icon: <WarningIcon className="w-5 h-5" />,
+      title: 'Theme Customization',      content: 'Customize colors, typography, and spacing to match your brand identity.',
+      icon: <WarningIcon />,
       badge: { text: 'Advanced', variant: 'warning' }
     },
     {
       id: 'accessibility',
-      title: 'Accessibility Guidelines',
-      content: 'Follow WCAG 2.1 standards and best practices for inclusive design.',
-      icon: <CheckCircleIcon className="w-5 h-5" />,
+      title: 'Accessibility Guidelines',      content: 'Follow WCAG 2.1 standards and best practices for inclusive design.',
+      icon: <CheckCircleIcon />,
       badge: { text: 'WCAG 2.1', variant: 'success' }
     },
     {
       id: 'migration',
-      title: 'Migration Guide',
-      content: 'Step-by-step instructions for migrating from older versions.',
-      icon: <ErrorIcon className="w-5 h-5" />,
+      title: 'Migration Guide',      content: 'Step-by-step instructions for migrating from older versions.',
+      icon: <ErrorIcon />,
       badge: { text: 'Coming Soon', variant: 'info' },
       disabled: true
     }
