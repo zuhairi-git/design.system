@@ -2,16 +2,17 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Combobox, Menu, Transition } from '@headlessui/react';
+import { Combobox, Menu, Transition, Disclosure } from '@headlessui/react';
 import { Fragment } from 'react';
 import { 
   ChevronDownIcon,
+  ChevronRightIcon,
   MagnifyingGlassIcon,
   XMarkIcon,
-  CommandLineIcon,
   BookmarkIcon,
   ClockIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  Bars3Icon
 } from '@heroicons/react/24/outline';
 import { useAccessibility } from '../utils/accessibility';
 import SidebarToggle from './SidebarToggle';
@@ -38,6 +39,7 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
   const [isClient, setIsClient] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchFocused, setSearchFocused] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const { getButtonAttributes } = useAccessibility();
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -334,11 +336,10 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                       )}
 
                       {/* No Results */}
-                      {searchQuery.trim() && filteredSuggestions.length === 0 && (
-                        <div className="p-6 text-center">
+                      {searchQuery.trim() && filteredSuggestions.length === 0 && (                        <div className="p-6 text-center">
                           <MagnifyingGlassIcon className="h-8 w-8 text-neutral-300 dark:text-neutral-600 mx-auto mb-2" />
                           <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                            No results found for "{searchQuery}"
+                            No results found for &ldquo;{searchQuery}&rdquo;
                           </p>
                           <p className="text-xs text-neutral-400 dark:text-neutral-500 mt-1">
                             Try searching for components, colors, or patterns
@@ -432,20 +433,15 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                   </Link>
                 )
               ))}
-            </nav>
-
-            {/* Right: Quick Actions */}
+            </nav>            {/* Right: Quick Actions */}
             <div className="flex items-center space-x-2">
-              {/* Mobile Search Toggle */}
+              {/* Mobile Menu Toggle */}
               <button 
-                className="md:hidden p-2.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                onClick={() => {
-                  searchInputRef.current?.focus();
-                  setSearchFocused(true);
-                }}
-                aria-label="Open search"
+                className="lg:hidden p-2.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
               >
-                <MagnifyingGlassIcon className="h-5 w-5" />
+                <Bars3Icon className="h-5 w-5" />
               </button>
 
               {/* Bookmarks / Favorites */}
@@ -458,9 +454,7 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* Mobile Search Overlay */}
+        </div>        {/* Mobile Search Overlay */}
         <div className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 transition-all duration-300 ${
           searchFocused ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}>
@@ -470,7 +464,7 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
               <input
                 type="text"
                 className="w-full pl-10 pr-10 py-3 border border-neutral-300 dark:border-neutral-600 rounded-lg bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                placeholder="Search design system..."
+                placeholder="Search design system&hellip;"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={(e) => {
@@ -488,6 +482,120 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                 </button>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 shadow-lg transition-all duration-300 ${
+          mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}>
+          <div className="p-4 space-y-2">            {/* Mobile Search */}
+            <div className="relative mb-4">
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
+              <input
+                type="text"
+                className="w-full pl-10 pr-10 py-3 border border-neutral-300 dark:border-neutral-600 rounded-lg bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                placeholder="Search design system&hellip;"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && searchQuery.trim()) {
+                    handleSearchSubmit();
+                    setMobileMenuOpen(false);
+                  }
+                }}
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                >
+                  <XMarkIcon className="h-4 w-4 text-neutral-400" />
+                </button>
+              )}
+            </div>
+
+            {/* Mobile Navigation Items with Accordions */}
+            {navLinks.map(link => (
+              link.submenu ? (
+                <Disclosure key={link.id}>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
+                        <span>{link.label}</span>
+                        <ChevronRightIcon 
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            open ? 'rotate-90' : ''
+                          }`}
+                        />
+                      </Disclosure.Button>
+                      
+                      <Transition
+                        enter="transition duration-200 ease-out"
+                        enterFrom="transform scale-95 opacity-0"
+                        enterTo="transform scale-100 opacity-100"
+                        leave="transition duration-150 ease-in"
+                        leaveFrom="transform scale-100 opacity-100"
+                        leaveTo="transform scale-95 opacity-0"
+                      >
+                        <Disclosure.Panel className="mt-2 ml-4 space-y-1">
+                          {link.submenu.map(subId => {
+                            const subLabel = subId.charAt(0).toUpperCase() + subId.slice(1).replace('-', ' & ');
+                            const suggestion = searchSuggestions.find(s => s.id === subId);
+                            
+                            return (
+                              <Link
+                                key={subId}
+                                href={`#${subId}`}
+                                onClick={() => {
+                                  handleNavLinkClick(subId);
+                                  setMobileMenuOpen(false);
+                                }}
+                                className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${
+                                  isClient && activeSection === subId
+                                    ? 'text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30'
+                                    : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/50'
+                                }`}
+                              >
+                                {suggestion?.icon && (
+                                  <span className="text-base" role="img" aria-hidden="true">
+                                    {suggestion.icon}
+                                  </span>
+                                )}
+                                <div>
+                                  <div className="font-medium">{subLabel}</div>
+                                  {suggestion?.description && (
+                                    <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                                      {suggestion.description}
+                                    </div>
+                                  )}
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </Disclosure.Panel>
+                      </Transition>
+                    </>
+                  )}
+                </Disclosure>
+              ) : (
+                <Link 
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={() => {
+                    handleNavLinkClick(link.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                    isClient && activeSection === link.id
+                      ? 'text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30'
+                      : 'text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            ))}
           </div>
         </div>
       </header>
