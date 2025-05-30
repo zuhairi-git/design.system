@@ -141,9 +141,13 @@ export default function Sidebar() {
       item.label.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })).filter(category => category.items.length > 0);
-
   // Function to handle scroll and highlight active section
   useEffect(() => {
+    // Don't add scroll listener if sidebar is open on mobile (body is fixed)
+    if (isOpen && typeof window !== 'undefined' && window.innerWidth < 768) {
+      return;
+    }
+
     const handleScroll = () => {
       const sections = allSections.map(id => document.getElementById(id));
       const scrollPosition = window.scrollY + 100; // Add offset for header
@@ -163,7 +167,7 @@ export default function Sidebar() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [allSections]);
+  }, [allSections, isOpen]);
   return (
     <>
       {/* Mobile Navigation Toggle - bottom right corner */}

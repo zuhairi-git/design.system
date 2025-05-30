@@ -25,7 +25,7 @@ import TimelineCardsSection from "./timeline-cards";
 import AccessibilityUtilitiesSection from "./accessibility-utilities";
 import ResponsiveUtilitiesSection from "./responsive-utilities";
 import SpacingSection from "./spacing";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PaletteRoundedIcon from '@mui/icons-material/PaletteRounded';
 import TextFieldsRoundedIcon from '@mui/icons-material/TextFieldsRounded';
 import SpaceBarRoundedIcon from '@mui/icons-material/SpaceBarRounded';
@@ -41,6 +41,8 @@ export default function Home() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   // State to track if we're on mobile view
   const [isMobile, setIsMobile] = useState(true);
+  // Ref to track scroll position when sidebar opens
+  const scrollPositionRef = useRef(0);
 
   // Check if we're on mobile when component mounts
   useEffect(() => {
@@ -55,50 +57,48 @@ export default function Home() {
       return () => window.removeEventListener('resize', handleResize);
     }
   }, []);
-
   // Toggle sidebar function
   const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
-  // Prevent content shifting on mobile when sidebar is open
+    // Prevent rapid toggling that could cause issues
+    setSidebarOpen(prev => !prev);
+  };// Prevent content shifting on mobile when sidebar is open
   useEffect(() => {
-    // Get the current scroll position before the body is locked
-    let scrollPosition = 0;
+    if (typeof window === 'undefined') return;
     
-    const handleSidebarToggle = () => {
-      if (typeof window === 'undefined') return;
+    if (isSidebarOpen && isMobile) {
+      // Store current scroll position before applying styles
+      scrollPositionRef.current = window.scrollY;
       
-      if (isSidebarOpen && isMobile) {
-        // Store current scroll position
-        scrollPosition = window.scrollY;
-        
-        // Apply styles to prevent content shifting
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollPosition}px`;
-        document.body.style.width = '100%';
-      } else {
-        // Reset styles when closing sidebar
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        
-        // Restore scroll position
-        if (scrollPosition > 0) {
-          window.scrollTo(0, scrollPosition);
-        }
-      }
-    };
-    
-    handleSidebarToggle();
-    
-    return () => {
-      // Clean up styles when unmounting
+      // Apply styles to prevent content shifting
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPositionRef.current}px`;
+      document.body.style.width = '100%';
+    } else if (!isSidebarOpen && scrollPositionRef.current > 0) {
+      // Only reset styles and restore scroll if we had stored a position
+      const scrollPos = scrollPositionRef.current;
+      
+      // Reset styles first
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
+      
+      // Restore scroll position after a minimal delay to ensure styles are applied
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollPos);
+        scrollPositionRef.current = 0; // Reset after restoring
+      });
+    }
+    
+    // Cleanup function to ensure styles are always reset
+    return () => {
+      if (typeof window !== 'undefined' && document.body.style.position === 'fixed') {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+      }
     };
   }, [isSidebarOpen, isMobile]);
 
