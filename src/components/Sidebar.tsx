@@ -173,12 +173,9 @@ export default function Sidebar() {
         {...getButtonAttributes('Toggle menu')}
       >
         <Bars3Icon className="h-5 w-5" aria-hidden="true" />
-      </button>
-
-      {/* Headless UI Dialog for mobile sidebar */}
-      <Dialog 
+      </button>      {/* Headless UI Dialog for mobile sidebar */}      <Dialog 
         open={isOpen} 
-        onClose={toggleSidebar}
+        onClose={() => {}} // Disable automatic close on backdrop click
         className="relative z-40 md:hidden"
       >
         {/* Backdrop */}
@@ -191,7 +188,10 @@ export default function Sidebar() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-neutral-950/25 transition-opacity" />
+          <div 
+            className="fixed inset-0 bg-neutral-950/25 transition-opacity" 
+            onClick={toggleSidebar}
+          />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
@@ -277,9 +277,11 @@ function SidebarContent({
   toggleSidebar: () => void;
   isClient: boolean;
   isMobile: boolean;
-}) {
-  return (
-    <div className="h-full bg-white/95 dark:bg-neutral-900/95 flex flex-col">      {/* Header */}
+}) {  return (
+    <div 
+      className="h-full bg-white/95 dark:bg-neutral-900/95 flex flex-col overflow-hidden"
+      onClick={(e) => e.stopPropagation()}
+    >{/* Header */}
       <div className="h-16 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between px-4">
         {isMobile ? (
           <Dialog.Title className="font-heading font-semibold text-neutral-950 dark:text-neutral-50">
@@ -300,32 +302,31 @@ function SidebarContent({
           </button>
         )}
       </div>
-      
-      {/* Search */}
-      <div className="p-4 border-b border-neutral-200 dark:border-neutral-800">
+        {/* Search */}
+      <div className="p-4 border-b border-neutral-200 dark:border-neutral-800" onClick={(e) => e.stopPropagation()}>
         <div className="relative">
           <label htmlFor="sidebar-search" className="sr-only">
             Search navigation
-          </label>
-          <input
+          </label>          <input
             id="sidebar-search"
             type="text"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            onFocus={(e) => e.stopPropagation()}
             className="w-full p-2.5 pl-10 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800/50 text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:text-white transition-all"
             role="searchbox"
             aria-label="Search navigation items"
           />
           <MagnifyingGlassIcon className="h-4 w-4 absolute left-3.5 top-3.5 text-neutral-500 dark:text-neutral-400" aria-hidden="true" />
         </div>
-      </div>
-      
-      {/* Navigation */}
+      </div>      {/* Navigation */}
       <nav 
-        className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700 scrollbar-track-transparent pb-16"
+        className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700 scrollbar-track-transparent pb-16 min-h-0"
         role="navigation"
         aria-label="Main navigation"
+        onClick={(e) => e.stopPropagation()}
       >
         {filteredCategories.length > 0 ? (
           <div className="py-2">
@@ -333,7 +334,7 @@ function SidebarContent({
               <Disclosure key={category.id} defaultOpen={category.isExpanded}>
                 {({ open }) => (
                   <div className="mb-4">
-                    <Disclosure.Button className="w-full flex items-center justify-between px-6 py-2 text-sm font-semibold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2 transition-colors">
+                    <Disclosure.Button className="w-full flex items-center justify-between px-6 py-2 text-sm font-semibold text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ui-focus-visible:ring-2 ui-focus-visible:ring-blue-500 ui-focus-visible:ring-offset-2 transition-colors" onClick={(e) => e.stopPropagation()}>
                       <div className="flex items-center">
                         <Image src={category.icon} width={16} height={16} alt="" className="mr-2 opacity-70" />
                         <span>{category.label}</span>
@@ -355,10 +356,10 @@ function SidebarContent({
                       <Disclosure.Panel className="mt-1 ml-6 space-y-1 border-l border-neutral-200 dark:border-neutral-700 pl-2">
                         <ul role="list">
                           {category.items.map((item) => (
-                            <li key={item.id}>
-                              <Link
+                            <li key={item.id}>                              <Link
                                 href={`#${item.id}`}
-                                onClick={() => {
+                                onClick={(e) => {
+                                  e.stopPropagation();
                                   setActiveSection(item.id);
                                   if (isMobile) {
                                     toggleSidebar();

@@ -5,7 +5,7 @@
  * with consistent accessibility features and data handling.
  */
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useId } from 'react';
 
 // Type definition for data fetching options
 type FetchOptions<T> = {
@@ -177,8 +177,8 @@ export function useComponentState<T>(initialState: T) {
  * Create unique IDs for ARIA relationships
  */
 export function useUniqueId(prefix = 'headlessui') {
-  const [id] = useState(() => `${prefix}-${Math.random().toString(36).substr(2, 9)}`);
-  return id;
+  const id = useId();
+  return `${prefix}-${id}`;
 }
 
 /**
