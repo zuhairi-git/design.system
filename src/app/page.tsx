@@ -1,7 +1,6 @@
 'use client';
 
 import Header from "@/components/Header";
-import Sidebar, { SidebarContext } from "@/components/Sidebar";
 import ColorCard from "@/components/ColorCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import ColorExtractor from "@/components/ColorExtractor";
@@ -25,7 +24,6 @@ import TimelineCardsSection from "./timeline-cards";
 import AccessibilityUtilitiesSection from "./accessibility-utilities";
 import ResponsiveUtilitiesSection from "./responsive-utilities";
 import SpacingSection from "./spacing";
-import { useState, useEffect, useRef } from 'react';
 import PaletteRoundedIcon from '@mui/icons-material/PaletteRounded';
 import TextFieldsRoundedIcon from '@mui/icons-material/TextFieldsRounded';
 import SpaceBarRoundedIcon from '@mui/icons-material/SpaceBarRounded';
@@ -37,78 +35,10 @@ import OpacityRoundedIcon from '@mui/icons-material/OpacityRounded';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function Home() {
-  // State for sidebar toggle
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-  // State to track if we're on mobile view
-  const [isMobile, setIsMobile] = useState(true);
-  // Ref to track scroll position when sidebar opens
-  const scrollPositionRef = useRef(0);
-
-  // Check if we're on mobile when component mounts
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth < 768);
-      
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-      };
-      
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
-  }, []);
-  // Toggle sidebar function
-  const toggleSidebar = () => {
-    // Prevent rapid toggling that could cause issues
-    setSidebarOpen(prev => !prev);
-  };// Prevent content shifting on mobile when sidebar is open
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    if (isSidebarOpen && isMobile) {
-      // Store current scroll position before applying styles
-      scrollPositionRef.current = window.scrollY;
-      
-      // Apply styles to prevent content shifting
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPositionRef.current}px`;
-      document.body.style.width = '100%';
-    } else if (!isSidebarOpen && scrollPositionRef.current > 0) {
-      // Only reset styles and restore scroll if we had stored a position
-      const scrollPos = scrollPositionRef.current;
-      
-      // Reset styles first
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      
-      // Restore scroll position after a minimal delay to ensure styles are applied
-      requestAnimationFrame(() => {
-        window.scrollTo(0, scrollPos);
-        scrollPositionRef.current = 0; // Reset after restoring
-      });
-    }
-    
-    // Cleanup function to ensure styles are always reset
-    return () => {
-      if (typeof window !== 'undefined' && document.body.style.position === 'fixed') {
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-      }
-    };
-  }, [isSidebarOpen, isMobile]);
-
   return (
-    <SidebarContext.Provider value={{ isOpen: isSidebarOpen, toggleSidebar }}>
-      <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
-        <FixCardLinks />      
-        <Header title="Alux Design System" />        <div className="flex flex-1 pt-0 relative">
-          <Sidebar />
-            <main className={`flex-1 w-full p-0 overflow-x-hidden max-w-[100vw] transition-all duration-300 ${isSidebarOpen ? 'md:pl-[280px]' : 'md:pl-0'}`}>
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">        <FixCardLinks />      
+        <Header title="Alux Design System" />
+        <main className="flex-1 w-full p-0 overflow-x-hidden max-w-[100vw]">
             {/* Overview Section */}
             <AnimatedSection id="overview" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="slide-up">
               <div className="max-w-7xl mx-auto">
@@ -741,10 +671,7 @@ export default function Home() {
             {/* Utilities Sections */}
             <AccessibilityUtilitiesSection />
             <ResponsiveUtilitiesSection />
-            
-          </main>
-        </div>
+              </main>
       </div>
-    </SidebarContext.Provider>
   );
 }

@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { useSidebar } from './Sidebar';
 import { 
-  Bars3Icon, 
   ChevronDownIcon 
 } from '@heroicons/react/24/outline';
 import { useAccessibility } from '../utils/accessibility';
@@ -16,10 +14,8 @@ type HeaderProps = {
 };
 
 export default function Header({ title }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
-  const { toggleSidebar } = useSidebar();
   const { getButtonAttributes } = useAccessibility();
   
   // Mark when component is mounted on client
@@ -60,8 +56,7 @@ export default function Header({ title }: HeaderProps) {
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('scroll', detectActiveSection);
-    
-    // Initial check
+      // Initial check
     handleScroll();
     detectActiveSection();
     
@@ -70,21 +65,10 @@ export default function Header({ title }: HeaderProps) {
       window.removeEventListener('scroll', detectActiveSection);
     };
   }, []);
-  // Mobile menu toggle function is no longer used since we're using the sidebar toggle
-  // Removed unused function
-  // const toggleMobileMenu = () => {
-  //   setMobileMenuOpen(!mobileMenuOpen);
-  //   if (!mobileMenuOpen) {
-  //     document.body.style.overflow = 'hidden';
-  //   } else {
-  //     document.body.style.overflow = '';
-  //   }
-  // };
-  // Handle navigation link clicks
+    // Handle navigation link clicks
   const handleNavLinkClick = (sectionId: string) => {
     setActiveSection(sectionId);
-    // We no longer need the mobile menu state handling since we're using the sidebar
-  };  const navLinks = [
+  };const navLinks = [
     { id: 'overview', label: 'Home' },
     { id: 'foundations', label: 'Foundations', submenu: ['colors', 'typography', 'spacing', 'grids'] },
     { id: 'components', label: 'Components', submenu: ['buttons', 'tabs-pills', 'badges', 'cards'] },
@@ -101,17 +85,9 @@ export default function Header({ title }: HeaderProps) {
         role="banner"
         aria-label="Site header"
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">          <div className="flex items-center justify-between h-16 sm:h-20">
-            {/* Left side - Hamburger menu, Logo & Title */}
-            <div className="flex items-center">              {/* Hamburger Menu Toggle for Sidebar */}
-              <button 
-                onClick={toggleSidebar}
-                className="mr-3 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700/70 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"
-                aria-label="Toggle sidebar"
-                aria-expanded="false"
-              >
-                <Bars3Icon className="h-5 w-5" aria-hidden="true" />
-              </button>                <Link 
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">          <div className="flex items-center justify-between h-16 sm:h-20">            {/* Left side - Logo & Title */}
+            <div className="flex items-center">
+              <Link 
                 href="#overview" 
                 className="flex items-center group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg" 
                 onClick={() => handleNavLinkClick('overview')}
@@ -121,7 +97,7 @@ export default function Header({ title }: HeaderProps) {
                   {title || "Alux"}
                 </h1>
               </Link>
-            </div>            {/* Desktop navigation */}
+            </div>{/* Desktop navigation */}
             <nav className="hidden md:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
               {navLinks.map(link => (
                 link.submenu ? (
@@ -191,19 +167,7 @@ export default function Header({ title }: HeaderProps) {
                   </Link>
                 )
               ))}
-            </nav>{/* Right side buttons */}            <div className="flex items-center">
-                {/* Theme toggle removed */}
-                {/* Mobile menu button - completely removed from rendering */}
-              {/* We're using the sidebar toggle instead of a separate mobile menu button
-              {mobileMenuOpen && (
-                <button
-                  className="hidden"
-                  aria-expanded="true"
-                >
-                  <span className="sr-only">Close menu</span>
-                  <CloseRoundedIcon className="h-5 w-5 align-middle" />
-                </button>
-              )} */}            </div>
+            </nav>{/* Right side buttons */}            <div className="flex items-center">                {/* Theme toggle removed */}</div>
           </div>
         </div>
       </header>

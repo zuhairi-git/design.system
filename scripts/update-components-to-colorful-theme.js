@@ -21,9 +21,7 @@ const config = {
     'ThemeCard.tsx',
     'ColorCard.tsx',
     'TimelineCard.tsx',
-    'TypographyCard.tsx',
-    'Header.tsx',
-    'Sidebar.tsx',
+    'TypographyCard.tsx',    'Header.tsx',
     'AnimatedSection.tsx',
     // Add more component files as needed
   ],
