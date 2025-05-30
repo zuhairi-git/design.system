@@ -25,6 +25,8 @@ import TimelineCardsSection from "./timeline-cards";
 import AccessibilityUtilitiesSection from "./accessibility-utilities";
 import ResponsiveUtilitiesSection from "./responsive-utilities";
 import SpacingSection from "./spacing";
+import NavigationSection from "./navigation-section";
+import FormsSection from "./forms-section";
 import PaletteRoundedIcon from '@mui/icons-material/PaletteRounded';
 import TextFieldsRoundedIcon from '@mui/icons-material/TextFieldsRounded';
 import SpaceBarRoundedIcon from '@mui/icons-material/SpaceBarRounded';
@@ -611,9 +613,14 @@ export default function Home() {
             <ButtonsSection />
                 {/* Tabs & Pills Section */}
             <TabsPillsSection />
-              
-            {/* Accordions Section */}
+                {/* Accordions Section */}
             <AccordionSection />
+              
+            {/* Navigation Section */}
+            <NavigationSection />
+              
+            {/* Forms Section */}
+            <FormsSection />
               
             {/* Badges Section */}
             <BadgesSection />
