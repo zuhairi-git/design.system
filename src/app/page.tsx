@@ -1,6 +1,7 @@
 'use client';
 
 import Header from "@/components/Header";
+import Sidebar, { useSidebar } from "@/components/Sidebar";
 import ColorCard from "@/components/ColorCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import ColorExtractor from "@/components/ColorExtractor";
@@ -35,10 +36,27 @@ import OpacityRoundedIcon from '@mui/icons-material/OpacityRounded';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function Home() {
+  const sidebar = useSidebar();
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">        <FixCardLinks />      
-        <Header title="Alux Design System" />
-        <main className="flex-1 w-full p-0 overflow-x-hidden max-w-[100vw]">
+    <div className="min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
+      <FixCardLinks />
+      
+      {/* Sidebar - Always fixed position */}
+      <Sidebar 
+        isOpen={sidebar.isOpen} 
+        onToggle={sidebar.toggle}
+      />
+      
+      {/* Main Content - Offset by sidebar width on desktop when open */}
+      <div className={`flex flex-col min-h-screen transition-all duration-300 ${
+        sidebar.isOpen ? 'md:ml-80' : ''
+      }`}>
+        <Header 
+          title="Alux Design System" 
+          onSidebarToggle={sidebar.toggle}
+        />
+        
+        <main className="flex-1 w-full p-0 overflow-x-hidden">
             {/* Overview Section */}
             <AnimatedSection id="overview" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="slide-up">
               <div className="max-w-7xl mx-auto">
@@ -665,13 +683,13 @@ export default function Home() {
             <ProfileCardsSection />
             <TimelineCardsSection />
             
-            {/* Foundations Sections */}
-            <SpacingSection />
+            {/* Foundations Sections */}            <SpacingSection />
             
             {/* Utilities Sections */}
             <AccessibilityUtilitiesSection />
             <ResponsiveUtilitiesSection />
-              </main>
+        </main>
       </div>
+    </div>
   );
 }

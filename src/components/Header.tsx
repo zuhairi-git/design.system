@@ -8,12 +8,14 @@ import {
   ChevronDownIcon 
 } from '@heroicons/react/24/outline';
 import { useAccessibility } from '../utils/accessibility';
+import SidebarToggle from './SidebarToggle';
 
 type HeaderProps = {
   title: string;
+  onSidebarToggle?: () => void;
 };
 
-export default function Header({ title }: HeaderProps) {
+export default function Header({ title, onSidebarToggle }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);  const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
   const { getButtonAttributes } = useAccessibility();
@@ -85,8 +87,14 @@ export default function Header({ title }: HeaderProps) {
         role="banner"
         aria-label="Site header"
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">          <div className="flex items-center justify-between h-16 sm:h-20">            {/* Left side - Logo & Title */}
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">          <div className="flex items-center justify-between h-16 sm:h-20">            {/* Left side - Sidebar Toggle & Logo & Title */}
             <div className="flex items-center">
+              {onSidebarToggle && (
+                <SidebarToggle 
+                  onClick={onSidebarToggle}
+                  className="mr-3 md:hidden"
+                />
+              )}
               <Link 
                 href="#overview" 
                 className="flex items-center group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg" 
