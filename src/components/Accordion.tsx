@@ -98,19 +98,16 @@ export default function Accordion({
     sm: {
       header: 'px-3 py-2 text-sm',
       content: 'px-3 py-3 text-sm',
-      icon: 'w-4 h-4',
       chevron: 'w-4 h-4'
     },
     md: {
       header: 'px-4 py-3 text-base',
       content: 'px-4 py-4 text-sm',
-      icon: 'w-5 h-5',
       chevron: 'w-5 h-5'
     },
     lg: {
       header: 'px-6 py-4 text-lg',
       content: 'px-6 py-5 text-base',
-      icon: 'w-6 h-6',
       chevron: 'w-6 h-6'
     }
   };
