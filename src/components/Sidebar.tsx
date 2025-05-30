@@ -117,14 +117,21 @@ const navigationItems: NavigationItem[] = [
         href: '#badges',
         description: 'Status indicators and labels',
         tags: ['badges', 'status', 'labels']
-      },
-      {
+      },      {
         id: 'cards',
         label: 'Cards',
         icon: CubeIcon,
         href: '#cards',
         description: 'Card layouts and containers',
         tags: ['cards', 'containers', 'layout']
+      },
+      {
+        id: 'accordions',
+        label: 'Accordions',
+        icon: CubeIcon,
+        href: '#accordions',
+        description: 'Collapsible content sections',
+        tags: ['accordions', 'collapse', 'expand', 'disclosure']
       }
     ]
   },

@@ -43,7 +43,6 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const { getButtonAttributes } = useAccessibility();
   const searchInputRef = useRef<HTMLInputElement>(null);
-
   // Search suggestions data
   const searchSuggestions: SearchSuggestion[] = [
     { id: 'colors', label: 'Colors', category: 'Foundations', href: '#colors', icon: '🎨', description: 'Color palette and theming' },
@@ -51,12 +50,13 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
     { id: 'buttons', label: 'Buttons', category: 'Components', href: '#buttons', icon: '🔘', description: 'Interactive button components' },
     { id: 'cards', label: 'Cards', category: 'Components', href: '#cards', icon: '🃏', description: 'Content container components' },
     { id: 'badges', label: 'Badges', category: 'Components', href: '#badges', icon: '🏷️', description: 'Status and label indicators' },
+    { id: 'accordions', label: 'Accordions', category: 'Components', href: '#accordions', icon: '📂', description: 'Collapsible content sections' },
     { id: 'spacing', label: 'Spacing', category: 'Utilities', href: '#spacing', icon: '📏', description: 'Margin and padding utilities' },
     { id: 'grids', label: 'Grid System', category: 'Foundations', href: '#grids', icon: '⚏', description: 'Layout grid system' },
     { id: 'tabs-pills', label: 'Tabs & Pills', category: 'Components', href: '#tabs-pills', icon: '📑', description: 'Navigation tabs and pills' },
     { id: 'breakpoints', label: 'Breakpoints', category: 'Utilities', href: '#breakpoints', icon: '📱', description: 'Responsive breakpoints' },
     { id: 'accessibility', label: 'Accessibility', category: 'Guidelines', href: '#accessibility', icon: '♿', description: 'Accessibility best practices' }
-  ];  // Filter search suggestions based on query
+  ];// Filter search suggestions based on query
   const filteredSuggestions = searchQuery.trim()
     ? searchSuggestions.filter(suggestion => {
         const searchableText = [
@@ -174,14 +174,13 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
   const handleNavLinkClick = (sectionId: string) => {
     setActiveSection(sectionId);
   };
-
   const navLinks = [
     { id: 'overview', label: 'Home' },
     { id: 'foundations', label: 'Foundations', submenu: ['colors', 'typography', 'spacing', 'grids'] },
-    { id: 'components', label: 'Components', submenu: ['buttons', 'tabs-pills', 'badges', 'cards'] },
+    { id: 'components', label: 'Components', submenu: ['buttons', 'tabs-pills', 'badges', 'cards', 'accordions'] },
     { id: 'patterns', label: 'Patterns', submenu: ['layouts', 'navigation', 'forms'] },
     { id: 'utilities', label: 'Utilities', submenu: ['breakpoints', 'shadows', 'tints'] }
-  ];  return (
+  ];return (
     <>
       <header 
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
