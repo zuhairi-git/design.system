@@ -92,23 +92,25 @@ export default function Accordion({
       container.removeEventListener('keydown', handleKeyDown);
     };
   }, [items]);
-
   // Size configurations
   const sizeClasses = {
     sm: {
       header: 'px-3 py-2 text-sm',
       content: 'px-3 py-3 text-sm',
-      chevron: 'w-4 h-4'
+      chevron: 'w-4 h-4',
+      icon: 'w-4 h-4'
     },
     md: {
       header: 'px-4 py-3 text-base',
       content: 'px-4 py-4 text-sm',
-      chevron: 'w-5 h-5'
+      chevron: 'w-5 h-5',
+      icon: 'w-5 h-5'
     },
     lg: {
       header: 'px-6 py-4 text-lg',
       content: 'px-6 py-5 text-base',
-      chevron: 'w-6 h-6'
+      chevron: 'w-6 h-6',
+      icon: 'w-6 h-6'
     }
   };
   // Variant styles with enhanced theme support using the headlessThemeIntegration utility
