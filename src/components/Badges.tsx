@@ -83,9 +83,7 @@ export default function Badge({
         hot: 'bg-orange-50 text-orange-700 border border-orange-200 data-hover:bg-orange-100'
       };
       return `${baseClasses} ${lightVariants[status]}`;
-    }
-
-    if (theme === 'dark') {
+    }    if (theme === 'dark') {
       const darkVariants = {
         success: 'bg-emerald-900/30 text-emerald-400 border border-emerald-700/50 data-hover:bg-emerald-900/50',
         error: 'bg-red-900/30 text-red-400 border border-red-700/50 data-hover:bg-red-900/50',
@@ -95,14 +93,16 @@ export default function Badge({
         hot: 'bg-orange-900/30 text-orange-400 border border-orange-700/50 data-hover:bg-orange-900/50'
       };
       return `${baseClasses} ${darkVariants[status]}`;
-    }    // Colorful theme with cosmic gradients from our color theme
+    }
+
+    // Colorful theme - using dark theme styling with gradient backgrounds
     const colorfulVariants = {
-      success: 'bg-gradient-to-r from-emerald-400 to-teal-500 text-white shadow-lg shadow-emerald-500/25 data-hover:shadow-emerald-500/40',
-      error: 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg shadow-red-500/25 data-hover:shadow-red-500/40',
-      warning: 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-amber-500/25 data-hover:shadow-amber-500/40',
-      info: 'bg-gradient-to-r from-cyan-400 to-blue-500 text-white shadow-lg shadow-blue-500/25 data-hover:shadow-blue-500/40',
-      new: 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-purple-500/25 data-hover:shadow-purple-500/40',
-      hot: 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-pink-500/25 data-hover:shadow-pink-500/40'
+      success: 'bg-emerald-900/30 text-emerald-400 border border-emerald-700/50 data-hover:bg-emerald-900/50',
+      error: 'bg-red-900/30 text-red-400 border border-red-700/50 data-hover:bg-red-900/50',
+      warning: 'bg-amber-900/30 text-amber-400 border border-amber-700/50 data-hover:bg-amber-900/50',
+      info: 'bg-blue-900/30 text-blue-400 border border-blue-700/50 data-hover:bg-blue-900/50',
+      new: 'bg-purple-900/30 text-purple-400 border border-purple-700/50 data-hover:bg-purple-900/50',
+      hot: 'bg-orange-900/30 text-orange-400 border border-orange-700/50 data-hover:bg-orange-900/50'
     };
     return `${baseClasses} ${colorfulVariants[status]}`;
   };
@@ -265,17 +265,15 @@ export function BadgeShowcase() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Colorful Theme */}
-      <div className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-200">
-        <h3 className="text-lg font-semibold mb-4 text-purple-900">
+      </div>      {/* Colorful Theme */}
+      <div className="p-6 rounded-xl border border-[rgba(128,0,255,0.3)] bg-[#1a0033] rounded-lg shadow-[0_4px_16px_rgba(255,0,204,0.25)]">
+        <h3 className="text-lg font-semibold mb-4 text-white">
           Badges - Colorful Theme
         </h3>
         
         <div className="space-y-4">
           <div>
-            <h4 className="text-sm font-medium mb-2 text-purple-700">Gradient Status Badges</h4>
+            <h4 className="text-sm font-medium mb-2 text-neutral-400">Gradient Status Badges</h4>
             <div className="flex flex-wrap gap-2">
               <Badge theme="colorful" status="success">Success</Badge>
               <Badge theme="colorful" status="error">Error</Badge>
@@ -287,16 +285,15 @@ export function BadgeShowcase() {
           </div>
           
           <div>
-            <h4 className="text-sm font-medium mb-2 text-purple-700">Different Sizes</h4>
+            <h4 className="text-sm font-medium mb-2 text-neutral-400">Different Sizes</h4>
             <div className="flex flex-wrap gap-2 items-center">
               <Badge theme="colorful" status="success" size="sm">Small</Badge>
               <Badge theme="colorful" status="info" size="md">Medium</Badge>
               <Badge theme="colorful" status="warning" size="lg">Large</Badge>
             </div>
           </div>
-          
-          <div>
-            <h4 className="text-sm font-medium mb-2 text-purple-700">Podcast Player Inspired</h4>
+            <div>
+            <h4 className="text-sm font-medium mb-2 text-neutral-400">Podcast Player Inspired</h4>
             <div className="flex flex-wrap gap-2 items-center">
               <Badge theme="colorful" status="hot" showIcon={false}>Live</Badge>
               <Badge theme="colorful" status="new">Now Playing</Badge>
