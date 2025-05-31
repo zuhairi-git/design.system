@@ -196,9 +196,8 @@ export default function ColorAccessibilityGuide() {
               <VisibilityRoundedIcon className="h-5 w-5" />
             </div>
             <h4 className="font-heading font-medium text-lg text-green-900 dark:text-green-100">Color Blindness</h4>
-          </div>
-          <div className="space-y-2 text-sm text-green-800 dark:text-green-200">
-            <p>• Don't rely only on color</p>
+          </div>          <div className="space-y-2 text-sm text-green-800 dark:text-green-200">
+            <p>• Don&apos;t rely only on color</p>
             <p>• Use icons and patterns</p>
             <p>• Test with simulators</p>
             <p>• Provide alternative cues</p>

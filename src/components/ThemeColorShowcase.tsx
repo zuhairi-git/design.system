@@ -5,7 +5,6 @@ import PaletteRoundedIcon from '@mui/icons-material/PaletteRounded';
 import BlurOnRoundedIcon from '@mui/icons-material/BlurOnRounded';
 import OpacityRoundedIcon from '@mui/icons-material/OpacityRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
-import ColorCard from './ColorCard';
 
 // Utility function to calculate contrast ratio
 const hexToRgb = (hex: string) => {
@@ -42,15 +41,6 @@ const getContrastRatio = (color1: string, color2: string) => {
 
 interface ThemeShowcaseProps {
   theme: 'light' | 'dark' | 'colorful';
-}
-
-interface ColorPalette {
-  name: string;
-  colors: Array<{
-    shade: string;
-    color: string;
-    name: string;
-  }>;
 }
 
 const themeData = {
@@ -321,11 +311,9 @@ export default function ThemeColorShowcase({ theme }: ThemeShowcaseProps) {
               </h4>
               
               <div className="grid gap-4">
-                {palette.colors.map((colorItem, colorIndex) => {
-                  // Get background and foreground colors for contrast calculation
+                {palette.colors.map((colorItem, colorIndex) => {                  // Get background and foreground colors for contrast calculation
                   const bgColors = data.palettes[0]?.colors || [];
                   const bgColor = bgColors.find(c => c.shade === 'Background')?.name || '#ffffff';
-                  const fgColor = bgColors.find(c => c.shade === 'Foreground')?.name || '#000000';
                   
                   // Calculate contrast ratios if this is a text color
                   const isTextColor = colorItem.shade.includes('Foreground') || colorItem.shade.includes('Primary');
