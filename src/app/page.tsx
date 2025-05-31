@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Sidebar, { useSidebar } from "@/components/Sidebar";
 import AnimatedSection from "@/components/AnimatedSection";
+import BackToTopButton from "@/components/BackToTopButton";
 
 import FeatureCard from "@/components/FeatureCard";
 import FixCardLinks from "@/components/FixCardLinks";
@@ -695,8 +696,7 @@ export default function Home() {
           <TintsSection />
           {/* Card Variants Sections */}
           <BasicCardsSection /> <InteractiveCardsSection />{" "}
-          <MediaCardsSection />
-          <DashboardCardsSection />
+          <MediaCardsSection />          <DashboardCardsSection />
           <ProfileCardsSection />
           <TimelineCardsSection />
           {/* Foundations Sections */} <SpacingSection />
@@ -705,6 +705,9 @@ export default function Home() {
           <ResponsiveUtilitiesSection />
         </main>
       </div>
+      
+      {/* Back to Top Button */}
+      <BackToTopButton />
     </div>
   );
 }
