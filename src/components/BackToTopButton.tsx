@@ -11,18 +11,15 @@ interface BackToTopButtonProps {
 
 export default function BackToTopButton({ 
   className = '', 
-  threshold = 100 
+  threshold = 200 
 }: BackToTopButtonProps) {
-  const [isVisible, setIsVisible] = useState(true); // Always visible for testing
-  const { getButtonAttributes } = useAccessibility();
-  useEffect(() => {
+  const [isVisible, setIsVisible] = useState(false);
+  const { getButtonAttributes } = useAccessibility();  useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > threshold) {
         setIsVisible(true);
-        console.log('Back to top button should be visible');
       } else {
         setIsVisible(false);
-        console.log('Back to top button hidden');
       }
     };
 
@@ -39,19 +36,16 @@ export default function BackToTopButton({
       top: 0,
       behavior: 'smooth'
     });
-  };
-  if (!isVisible) {
-    // For testing - always show the button
-    // return null;
-  }
-  return (
+  };  if (!isVisible) {
+    return null;
+  }return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-[9999] w-16 h-16 rounded-full bg-red-500 hover:bg-red-600 text-white shadow-xl flex items-center justify-center"
+      className="fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-b from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white shadow-lg flex items-center justify-center transition-all duration-300"
       {...getButtonAttributes('Back to top')}
       aria-label="Back to top"
     >
-      <ArrowUpIcon className="w-8 h-8" />
+      <ArrowUpIcon className="w-6 h-6" />
     </button>
   );
 }
