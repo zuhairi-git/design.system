@@ -7,7 +7,7 @@ import BackToTopButton from "@/components/BackToTopButton";
 
 import FeatureCard from "@/components/FeatureCard";
 import FixCardLinks from "@/components/FixCardLinks";
-import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
+import DynamicTypography from "@/components/DynamicTypography";
 import ThemeColorShowcase from "@/components/ThemeColorShowcase";
 import ColorAccessibilityGuide from "@/components/ColorAccessibilityGuide";
 import ButtonsSection from "./buttons-section";
@@ -44,11 +44,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
       <FixCardLinks />
-
       {/* Sidebar - Always fixed position */}
       <Sidebar isOpen={sidebar.isOpen} onToggle={sidebar.toggle} />
-
-      {/* Main Content - Offset by sidebar width on desktop when open */}      <div
+      {/* Main Content - Offset by sidebar width on desktop when open */}{" "}
+      <div
         className={`flex flex-col min-h-screen transition-all duration-300 ${
           sidebar.isOpen ? "md:ml-80" : ""
         }`}
@@ -324,7 +323,8 @@ export default function Home() {
                     <div className="w-4 h-4 rounded bg-violet-400"></div>
                     <div className="w-4 h-4 rounded bg-pink-400"></div>
                     <div className="w-4 h-4 rounded bg-cyan-400"></div>
-                  </div>                  <div className="text-xs text-slate-300">
+                  </div>{" "}
+                  <div className="text-xs text-slate-300">
                     Creative workflows • Immersive experiences
                   </div>
                 </div>
@@ -431,7 +431,9 @@ export default function Home() {
                     <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">
                       Theme Detection
                     </h4>
-                    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">                      <div className="text-purple-600 dark:text-purple-400">
+                    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                      {" "}
+                      <div className="text-purple-600 dark:text-purple-400">
                         useTheme()
                       </div>
                       <div className="text-neutral-600 dark:text-neutral-400">
@@ -475,9 +477,8 @@ export default function Home() {
                     below to see how they affect the text appearance.
                   </p>
                 </div>
-              </div>
-              <div className="mb-12">
-                <DynamicTypographyPreview
+              </div>              <div className="mb-12">
+                <DynamicTypography
                   title="Heading Typography"
                   description="Customize and preview heading styles with different properties"
                   fontFamilies={["Poppins", "Roboto"]}
@@ -489,7 +490,6 @@ export default function Home() {
                   language="en"
                 />
               </div>
-
               <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-10 mb-4 flex items-center">
                 <TextFieldsRoundedIcon className="h-4 w-4 align-middle" />
                 Body Text Fonts
@@ -497,9 +497,8 @@ export default function Home() {
               <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">
                 Our design system includes support for different body fonts in
                 multiple languages.
-              </p>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-                <DynamicTypographyPreview
+              </p>{" "}              <div className="space-y-8 mb-16">
+                <DynamicTypography
                   title="English Body Typography"
                   description="Customize and preview body text styles for English and Latin languages"
                   fontFamilies={["Roboto", "Poppins"]}
@@ -509,9 +508,7 @@ export default function Home() {
                   defaultLineHeight="1.5"
                   sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow. A wizard's job is to vex chumps quickly in fog. How vexingly quick daft zebras jump! The five boxing wizards jump quickly."
                   language="en"
-                />
-
-                <DynamicTypographyPreview
+                />                <DynamicTypography
                   title="Arabic Typography"
                   description="Customize and preview text styles for RTL languages like Arabic"
                   fontFamilies={["Tajwal"]}
@@ -524,12 +521,11 @@ export default function Home() {
                 />
               </div>
             </div>
-          </AnimatedSection>          {/* Spacing Section */}
+          </AnimatedSection>{" "}
+          {/* Spacing Section */}
           <SpacingSection />
-          
           {/* Grids Section */}
           <GridsSection />
-
           {/* Components Section */}
           {/* Buttons Section */}
           <ButtonsSection />
@@ -547,14 +543,13 @@ export default function Home() {
           <ProfileCardsSection />
           <TimelineCardsSection />
           {/* Accordions Section */}
-          <AccordionSection />          {/* Patterns Section */}
+          <AccordionSection /> {/* Patterns Section */}
           {/* Layouts Section */}
           <LayoutsSection />
           {/* Navigation Section */}
           <NavigationSection />
           {/* Forms Section */}
           <FormsSection />
-
           {/* Utilities Section */}
           {/* Breakpoints Section */}
           <BreakpointsSection />
@@ -639,15 +634,14 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </AnimatedSection>          {/* Tints Section */}
+          </AnimatedSection>{" "}
+          {/* Tints Section */}
           <TintsSection />
-
           {/* Resources Section */}
           {/* Accessibility Utilities Section */}
           <AccessibilityUtilitiesSection />
         </main>
       </div>
-      
       {/* Back to Top Button */}
       <BackToTopButton />
     </div>
