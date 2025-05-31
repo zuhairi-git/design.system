@@ -302,12 +302,11 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
             Special Effects
           </h3>
 
-          <div className="p-6 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 rounded-lg border border-indigo-500/20 backdrop-blur-md">
-            <div className="flex flex-wrap gap-6 mb-4">
+          <div className="p-6 bg-gradient-to-br from-indigo-900/20 to-blue-900/20 rounded-lg border border-indigo-500/20 backdrop-blur-md">            <div className="flex flex-wrap gap-6 mb-4">
               <button
-                className="cosmic-shimmer px-8 py-4 rounded-full font-medium transition-all duration-300 text-white border border-transparent shadow-lg relative overflow-hidden"
+                className="cosmic-shimmer px-8 py-4 rounded-full font-medium transition-all duration-300 text-white shadow-lg relative overflow-hidden"
                 style={{
-                  backgroundImage: 'linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)',
+                  background: 'linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)',
                   backgroundSize: '200% 200%',
                   animation: 'gradientShift 3s ease infinite'
                 }}
@@ -318,10 +317,9 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
                 Hover Scale
               </button>
             </div>
-            <div className="bg-neutral-950/40 p-4 rounded-md overflow-auto mt-4">
-              <pre className="text-xs text-neutral-100 font-mono">
+            <div className="bg-neutral-950/40 p-4 rounded-md overflow-auto mt-4">              <pre className="text-xs text-neutral-100 font-mono">
                 {`/* Cosmic Shimmer */
-backgroundImage: 'linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)'
+background: 'linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)'
 backgroundSize: '200% 200%'
 animation: 'gradientShift 3s ease infinite'
 
