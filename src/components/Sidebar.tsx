@@ -486,7 +486,7 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
             <h2 className="text-lg font-semibold text-neutral-900 dark:text-white">
-              Navigation
+              Alux Design System
             </h2>
             <button
               onClick={onToggle}

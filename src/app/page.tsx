@@ -48,13 +48,12 @@ export default function Home() {
       {/* Sidebar - Always fixed position */}
       <Sidebar isOpen={sidebar.isOpen} onToggle={sidebar.toggle} />
 
-      {/* Main Content - Offset by sidebar width on desktop when open */}
-      <div
+      {/* Main Content - Offset by sidebar width on desktop when open */}      <div
         className={`flex flex-col min-h-screen transition-all duration-300 ${
           sidebar.isOpen ? "md:ml-80" : ""
         }`}
       >
-        <Header title="Alux Design System" onSidebarToggle={sidebar.toggle} />
+        <Header onSidebarToggle={sidebar.toggle} />
 
         <main className="flex-1 w-full p-0 overflow-x-hidden">
           {/* Overview Section */}
