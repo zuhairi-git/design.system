@@ -419,7 +419,7 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
                 leaveFrom="opacity-100 max-h-96 translate-y-0"
                 leaveTo="opacity-0 max-h-0 -translate-y-1"
               >
-                <Disclosure.Panel className="mt-2 ml-6 space-y-1 overflow-hidden border-l border-neutral-200 dark:border-neutral-700 pl-3">
+                <Disclosure.Panel className="mt-2 ml-6 space-y-2 overflow-hidden border-l border-neutral-200 dark:border-neutral-700 pl-3">
                   {item.children?.map(child => renderNavigationItem(child, level + 1))}
                 </Disclosure.Panel>
               </Transition>
