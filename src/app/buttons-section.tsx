@@ -25,34 +25,33 @@ export default function ButtonsSection() {
           </h3>
           <div className="space-y-6">
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Primary Button Sizes</h4>
-              <div className="flex flex-wrap items-center gap-4 mb-4">
-                <button className="px-3 py-1.5 text-xs font-medium rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Primary Button Sizes</h4>              <div className="flex flex-wrap items-center gap-4 mb-4">
+                <button className="px-3 py-1.5 text-xs font-medium rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
                   Small
                 </button>
-                <button className="px-4 py-2 text-sm font-medium rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
+                <button className="px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
                   Medium
                 </button>
-                <button className="px-6 py-3 text-base font-medium rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
+                <button className="px-6 py-3 text-base font-medium rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
                   Large
                 </button>
-                <button className="px-8 py-4 text-lg font-medium rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
+                <button className="px-8 py-4 text-lg font-medium rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300">
                   Extra Large
                 </button>
               </div>
               <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto">
                 <pre className="text-xs text-neutral-800 dark:text-neutral-200 font-mono">
 {`/* Small */
-px-3 py-1.5 text-xs font-medium rounded-lg
+px-3 py-1.5 text-xs font-medium rounded-full
 
 /* Medium */
-px-4 py-2 text-sm font-medium rounded-lg
+px-4 py-2 text-sm font-medium rounded-full
 
 /* Large */
-px-6 py-3 text-base font-medium rounded-lg
+px-6 py-3 text-base font-medium rounded-full
 
 /* Extra Large */
-px-8 py-4 text-lg font-medium rounded-lg`}
+px-8 py-4 text-lg font-medium rounded-full`}
                 </pre>
               </div>
             </div>
@@ -73,9 +72,8 @@ px-8 py-4 text-lg font-medium rounded-lg`}
           <div className="space-y-8">
             {/* Primary Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Primary</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Primary</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
                   Primary Button
                 </button>
                 <button className="px-6 py-3 font-medium rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
@@ -91,9 +89,8 @@ px-8 py-4 text-lg font-medium rounded-lg`}
 
             {/* Secondary Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Secondary</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-900 dark:text-white transition-all duration-300 shadow-sm hover:shadow-md">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Secondary</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-900 dark:text-white transition-all duration-300 shadow-sm hover:shadow-md">
                   Secondary Button
                 </button>
                 <button className="px-6 py-3 font-medium rounded-full bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-900 dark:text-white transition-all duration-300 shadow-sm hover:shadow-md">
@@ -109,9 +106,8 @@ px-8 py-4 text-lg font-medium rounded-lg`}
 
             {/* Tertiary Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Tertiary</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Tertiary</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300">
                   Tertiary Button
                 </button>
                 <button className="px-6 py-3 font-medium rounded-full bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-all duration-300">
@@ -127,9 +123,8 @@ px-8 py-4 text-lg font-medium rounded-lg`}
 
             {/* Outline Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Outline</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-transparent border-2 border-blue-600 hover:bg-blue-600 text-blue-600 hover:text-white transition-all duration-300">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Outline</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-transparent border-2 border-blue-600 hover:bg-blue-600 text-blue-600 hover:text-white transition-all duration-300">
                   Outline Button
                 </button>
                 <button className="px-6 py-3 font-medium rounded-full bg-transparent border-2 border-purple-600 hover:bg-purple-600 text-purple-600 hover:text-white transition-all duration-300">
@@ -159,15 +154,14 @@ px-8 py-4 text-lg font-medium rounded-lg`}
           <div className="space-y-8">
             {/* Info Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Info</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Info</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
                   Info Button
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-transparent border-2 border-blue-600 hover:bg-blue-600 text-blue-600 hover:text-white transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-transparent border-2 border-blue-600 hover:bg-blue-600 text-blue-600 hover:text-white transition-all duration-300">
                   Info Outline
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-300 transition-all duration-300">
                   Info Light
                 </button>
               </div>
@@ -182,15 +176,14 @@ px-8 py-4 text-lg font-medium rounded-lg`}
 
             {/* Success Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Success</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-green-600 hover:bg-green-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Success</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-green-600 hover:bg-green-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
                   Success Button
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-transparent border-2 border-green-600 hover:bg-green-600 text-green-600 hover:text-white transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-transparent border-2 border-green-600 hover:bg-green-600 text-green-600 hover:text-white transition-all duration-300">
                   Success Outline
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-900/50 text-green-700 dark:text-green-300 transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-green-50 dark:bg-green-900/30 hover:bg-green-100 dark:hover:bg-green-900/50 text-green-700 dark:text-green-300 transition-all duration-300">
                   Success Light
                 </button>
               </div>
@@ -205,15 +198,14 @@ px-8 py-4 text-lg font-medium rounded-lg`}
 
             {/* Warning Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Warning</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-amber-600 hover:bg-amber-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Warning</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-amber-600 hover:bg-amber-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
                   Warning Button
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-transparent border-2 border-amber-600 hover:bg-amber-600 text-amber-600 hover:text-white transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-transparent border-2 border-amber-600 hover:bg-amber-600 text-amber-600 hover:text-white transition-all duration-300">
                   Warning Outline
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-amber-50 dark:bg-amber-900/30 hover:bg-amber-100 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-amber-50 dark:bg-amber-900/30 hover:bg-amber-100 dark:hover:bg-amber-900/50 text-amber-700 dark:text-amber-300 transition-all duration-300">
                   Warning Light
                 </button>
               </div>
@@ -228,15 +220,14 @@ px-8 py-4 text-lg font-medium rounded-lg`}
 
             {/* Danger Buttons */}
             <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Danger</h4>
-              <div className="flex flex-wrap gap-4 mb-4">
-                <button className="px-6 py-3 font-medium rounded-lg bg-red-600 hover:bg-red-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
+              <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Danger</h4>              <div className="flex flex-wrap gap-4 mb-4">
+                <button className="px-6 py-3 font-medium rounded-full bg-red-600 hover:bg-red-700 text-white transition-all duration-300 shadow-md hover:shadow-lg">
                   Danger Button
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-transparent border-2 border-red-600 hover:bg-red-600 text-red-600 hover:text-white transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-transparent border-2 border-red-600 hover:bg-red-600 text-red-600 hover:text-white transition-all duration-300">
                   Danger Outline
                 </button>
-                <button className="px-6 py-3 font-medium rounded-lg bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 transition-all duration-300">
+                <button className="px-6 py-3 font-medium rounded-full bg-red-50 dark:bg-red-900/30 hover:bg-red-100 dark:hover:bg-red-900/50 text-red-700 dark:text-red-300 transition-all duration-300">
                   Danger Light
                 </button>
               </div>
@@ -273,12 +264,9 @@ px-8 py-4 text-lg font-medium rounded-lg`}
                 }}
               >
                 <span className="relative z-10">Cosmic Button</span>
-              </button>
-              <button className="px-6 py-3 font-medium rounded-lg bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              </button>              
+              <button className="px-6 py-3 font-medium rounded-full bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                 Hover Scale
-              </button>
-              <button className="px-6 py-3 font-medium rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:rotate-2">
-                Hover Rotate
               </button>
             </div>
             <div className="bg-neutral-950/40 p-4 rounded-md overflow-auto mt-4">

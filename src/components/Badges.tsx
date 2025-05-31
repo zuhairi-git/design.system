@@ -208,10 +208,9 @@ export function BadgeShowcase() {
           
           <div role="group" aria-labelledby="notification-badges-light">
             <h4 id="notification-badges-light" className="text-sm font-medium mb-2 text-neutral-600">Notification Badges</h4>
-            <div className="flex flex-wrap gap-4">
-              <Badge theme="light" variant="notification" status="error" count={5}>
+            <div className="flex flex-wrap gap-4">              <Badge theme="light" variant="notification" status="error" count={5}>
                 <button 
-                  className="p-2 bg-neutral-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="p-2 bg-neutral-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   aria-describedby="messages-badge"
                 >
                   Messages
@@ -219,7 +218,7 @@ export function BadgeShowcase() {
               </Badge>
               <Badge theme="light" variant="notification" status="info">
                 <button 
-                  className="p-2 bg-neutral-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="p-2 bg-neutral-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   aria-describedby="notifications-badge"
                 >
                   Notifications

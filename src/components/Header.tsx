@@ -242,13 +242,12 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                     />
                     
                     <div className="absolute right-3 flex items-center space-x-2">
-                      {searchQuery && (
-                        <button
+                      {searchQuery && (                        <button
                           onClick={() => {
                             setSearchQuery('');
                             searchInputRef.current?.focus();
                           }}
-                          className="p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
+                          className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
                           aria-label="Clear search"
                         >
                           <XMarkIcon className="h-4 w-4 text-neutral-400" />
@@ -318,14 +317,13 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                               Clear
                             </button>
                           </div>
-                          {recentSearches.map((recent, index) => (
-                            <button
+                          {recentSearches.map((recent, index) => (                            <button
                               key={index}
                               onClick={() => {
                                 setSearchQuery(recent);
                                 searchInputRef.current?.focus();
                               }}
-                              className="flex items-center space-x-3 w-full p-3 rounded-lg text-left hover:bg-neutral-50 dark:hover:bg-neutral-700/50 transition-colors"
+                              className="flex items-center space-x-3 w-full p-3 rounded-full text-left hover:bg-neutral-50 dark:hover:bg-neutral-700/50 transition-colors"
                             >
                               <ClockIcon className="h-4 w-4 text-neutral-400" />
                               <span className="text-sm text-neutral-700 dark:text-neutral-300">{recent}</span>
@@ -433,10 +431,9 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                 )
               ))}
             </nav>            {/* Right: Quick Actions */}
-            <div className="flex items-center space-x-2">
-              {/* Mobile Menu Toggle */}
+            <div className="flex items-center space-x-2">              {/* Mobile Menu Toggle */}
               <button 
-                className="lg:hidden p-2.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                className="lg:hidden p-2.5 rounded-full text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle mobile menu"
               >
@@ -445,7 +442,7 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
 
               {/* Bookmarks / Favorites */}
               <button 
-                className="hidden sm:flex p-2.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                className="hidden sm:flex p-2.5 rounded-full text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
                 aria-label="Bookmarked items"
                 title="Quick access to bookmarked components"
               >
@@ -501,13 +498,12 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                   if (e.key === 'Enter' && searchQuery.trim()) {
                     handleSearchSubmit();
                     setMobileMenuOpen(false);
-                  }
-                }}
+                  }                }}
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700"
                 >
                   <XMarkIcon className="h-4 w-4 text-neutral-400" />
                 </button>
@@ -520,7 +516,7 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                 <Disclosure key={link.id}>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
+                      <Disclosure.Button className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
                         <span>{link.label}</span>
                         <ChevronRightIcon 
                           className={`h-4 w-4 transition-transform duration-200 ${
