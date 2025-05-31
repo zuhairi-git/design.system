@@ -3,13 +3,17 @@
 import React from 'react';
 import AccessibilityGuide from '../components/AccessibilityGuide';
 import CodeSnippet from '../components/CodeSnippet';
+import AnimatedSection from '../components/AnimatedSection';
 import { useAccessibility } from '../utils/accessibility';
 
 export default function AccessibilityUtilitiesPage() {
   const { announceToScreenReader, prefersReducedMotion } = useAccessibility();  return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <main className="flex-1 p-6 lg:p-8">
-        <div className="max-w-4xl mx-auto space-y-8">
+    <AnimatedSection
+      id="accessibility-utilities"
+      className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900"
+      animation="fade-in"
+    >
+      <div className="max-w-4xl mx-auto space-y-8">
             <div>
               <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
                 Accessibility Utilities
@@ -240,10 +244,8 @@ const duration = responsive.getAnimationDuration(300); // 0 if reduced motion is
                   />
                 </div>
               </div>
-            </div>
-              <AccessibilityGuide />
+            </div>              <AccessibilityGuide />
         </div>
-      </main>
-    </div>
+    </AnimatedSection>
   );
 }

@@ -18,7 +18,6 @@ import {
   PuzzlePieceIcon,
   WrenchScrewdriverIcon,
   BookOpenIcon,
-  CodeBracketIcon,
   CommandLineIcon,
   DocumentTextIcon,
   RectangleGroupIcon,
@@ -233,22 +232,13 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
       icon: BookOpenIcon,
       description: "Additional resources and documentation",
       tags: ["resources", "docs", "help"],
-      children: [
-        {
-          id: "accessibility",
+      children: [        {
+          id: "accessibility-utilities",
           label: "Accessibility",
           icon: BookOpenIcon,
-          href: "#accessibility",
+          href: "#accessibility-utilities",
           description: "Accessibility guidelines and best practices",
           tags: ["accessibility", "a11y", "inclusive"],
-        },
-        {
-          id: "code-examples",
-          label: "Code Examples",
-          icon: CodeBracketIcon,
-          href: "#code-examples",
-          description: "Implementation examples and snippets",
-          tags: ["code", "examples", "implementation"],
         },
       ],
     },

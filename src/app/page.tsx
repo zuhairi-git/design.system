@@ -25,7 +25,6 @@ import DashboardCardsSection from "./dashboard-cards";
 import ProfileCardsSection from "./profile-cards";
 import TimelineCardsSection from "./timeline-cards";
 import AccessibilityUtilitiesSection from "./accessibility-utilities";
-import ResponsiveUtilitiesSection from "./responsive-utilities";
 import SpacingSection from "./spacing";
 import NavigationSection from "./navigation-section";
 import FormsSection from "./forms-section";
@@ -524,22 +523,38 @@ export default function Home() {
                 />
               </div>
             </div>
-          </AnimatedSection>          {/* Buttons Section */}
+          </AnimatedSection>          {/* Spacing Section */}
+          <SpacingSection />
+          
+          {/* Grids Section */}
+          <GridsSection />
+
+          {/* Components Section */}
+          {/* Buttons Section */}
           <ButtonsSection />
           {/* Tabs & Pills Section */}
           <TabsPillsSection />
-          {/* Accordions Section */}
-          <AccordionSection />
-          {/* Navigation Section */}
-          <NavigationSection />
-          {/* Forms Section */}
-          <FormsSection />
           {/* Badges Section */}
           <BadgesSection />
           {/* Cards Section */}
           <CardsSection />
-          {/* Grids Section */}
-          <GridsSection />
+          {/* Card Variants Sections */}
+          <BasicCardsSection />
+          <InteractiveCardsSection />
+          <MediaCardsSection />
+          <DashboardCardsSection />
+          <ProfileCardsSection />
+          <TimelineCardsSection />
+          {/* Accordions Section */}
+          <AccordionSection />
+
+          {/* Patterns Section */}
+          {/* Navigation Section */}
+          <NavigationSection />
+          {/* Forms Section */}
+          <FormsSection />
+
+          {/* Utilities Section */}
           {/* Breakpoints Section */}
           <BreakpointsSection />
           {/* Shadows Section */}
@@ -623,18 +638,12 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </AnimatedSection>
-          {/* Tints Section */}
+          </AnimatedSection>          {/* Tints Section */}
           <TintsSection />
-          {/* Card Variants Sections */}
-          <BasicCardsSection /> <InteractiveCardsSection />{" "}
-          <MediaCardsSection />          <DashboardCardsSection />
-          <ProfileCardsSection />
-          <TimelineCardsSection />
-          {/* Foundations Sections */} <SpacingSection />
-          {/* Utilities Sections */}
+
+          {/* Resources Section */}
+          {/* Accessibility Utilities Section */}
           <AccessibilityUtilitiesSection />
-          <ResponsiveUtilitiesSection />
         </main>
       </div>
       
