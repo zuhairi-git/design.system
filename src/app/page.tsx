@@ -525,74 +525,7 @@ export default function Home() {
                 />
               </div>
             </div>
-          </AnimatedSection>
-          {/* Spacing Section */}
-          <AnimatedSection
-            id="spacing"
-            className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60"
-            animation="fade-in"
-          >
-            <div className="max-w-7xl mx-auto">
-              <div className="mb-10">
-                <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                  <SpaceBarRoundedIcon className="mr-2 align-middle" /> Grid
-                  System
-                </div>
-                <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
-                  Spacing
-                </h2>
-                <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                  Our spacing system follows a 4-point grid, providing
-                  consistent spacing across the UI.
-                </p>
-              </div>
-
-              <div className="relative bg-white/80 dark:bg-neutral-900/80 rounded-xl shadow-lg p-8 mb-12 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50">
-                <div className="flex flex-wrap gap-4 mb-6">
-                  <div className="w-full md:w-auto">
-                    <span className="inline-flex h-8 items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 px-3 text-sm font-medium text-neutral-900 dark:text-neutral-100 shadow-sm">
-                      Base 4px Grid
-                    </span>
-                  </div>
-                  <div className="w-full md:w-auto">
-                    <span className="inline-flex h-8 items-center justify-center rounded-md bg-primary-50 dark:bg-primary-900/30 px-3 text-sm font-medium text-primary-700 dark:text-primary-300">
-                      4 × <em>n</em> spacing scale
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                  {[4, 8, 12, 16, 20, 24, 32, 40, 48, 64].map(
-                    (space, index) => (
-                      <div
-                        key={index}
-                        className="bg-neutral-50 dark:bg-neutral-800/50 rounded-lg border border-neutral-200/70 dark:border-neutral-700/50 overflow-hidden hover:shadow-md transition-shadow"
-                      >
-                        <div className="flex items-center justify-between p-3 border-b border-neutral-200/70 dark:border-neutral-700/50">
-                          <p className="font-heading font-semibold text-neutral-950 dark:text-white text-sm">
-                            {space}px
-                          </p>
-                          <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400">
-                            space-{index + 1}
-                          </p>
-                        </div>
-                        <div className="bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 h-20 w-full flex items-center justify-center p-2">
-                          <div
-                            className="bg-primary-500 dark:bg-primary-400 rounded shadow-sm"
-                            style={{
-                              width: `${space}px`,
-                              height: `${space}px`,
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>{" "}
-          {/* Buttons Section */}
+          </AnimatedSection>          {/* Buttons Section */}
           <ButtonsSection />
           {/* Tabs & Pills Section */}
           <TabsPillsSection />
