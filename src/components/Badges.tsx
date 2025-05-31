@@ -93,16 +93,14 @@ export default function Badge({
         hot: 'bg-orange-900/30 text-orange-400 border border-orange-700/50 data-hover:bg-orange-900/50'
       };
       return `${baseClasses} ${darkVariants[status]}`;
-    }
-
-    // Colorful theme - using dark theme styling with gradient backgrounds
+    }    // Colorful theme - enhanced colors while maintaining accessibility
     const colorfulVariants = {
-      success: 'bg-emerald-900/30 text-emerald-400 border border-emerald-700/50 data-hover:bg-emerald-900/50',
-      error: 'bg-red-900/30 text-red-400 border border-red-700/50 data-hover:bg-red-900/50',
-      warning: 'bg-amber-900/30 text-amber-400 border border-amber-700/50 data-hover:bg-amber-900/50',
-      info: 'bg-blue-900/30 text-blue-400 border border-blue-700/50 data-hover:bg-blue-900/50',
-      new: 'bg-purple-900/30 text-purple-400 border border-purple-700/50 data-hover:bg-purple-900/50',
-      hot: 'bg-orange-900/30 text-orange-400 border border-orange-700/50 data-hover:bg-orange-900/50'
+      success: 'bg-gradient-to-r from-emerald-800/40 to-teal-800/40 text-emerald-300 border border-emerald-500/60 data-hover:bg-gradient-to-r data-hover:from-emerald-800/60 data-hover:to-teal-800/60 shadow-sm shadow-emerald-500/20',
+      error: 'bg-gradient-to-r from-red-800/40 to-pink-800/40 text-red-300 border border-red-500/60 data-hover:bg-gradient-to-r data-hover:from-red-800/60 data-hover:to-pink-800/60 shadow-sm shadow-red-500/20',
+      warning: 'bg-gradient-to-r from-amber-800/40 to-orange-800/40 text-amber-300 border border-amber-500/60 data-hover:bg-gradient-to-r data-hover:from-amber-800/60 data-hover:to-orange-800/60 shadow-sm shadow-amber-500/20',
+      info: 'bg-gradient-to-r from-cyan-800/40 to-blue-800/40 text-cyan-300 border border-cyan-500/60 data-hover:bg-gradient-to-r data-hover:from-cyan-800/60 data-hover:to-blue-800/60 shadow-sm shadow-cyan-500/20',
+      new: 'bg-gradient-to-r from-purple-800/40 to-indigo-800/40 text-purple-300 border border-purple-500/60 data-hover:bg-gradient-to-r data-hover:from-purple-800/60 data-hover:to-indigo-800/60 shadow-sm shadow-purple-500/20',
+      hot: 'bg-gradient-to-r from-pink-800/40 to-rose-800/40 text-pink-300 border border-pink-500/60 data-hover:bg-gradient-to-r data-hover:from-pink-800/60 data-hover:to-rose-800/60 shadow-sm shadow-pink-500/20'
     };
     return `${baseClasses} ${colorfulVariants[status]}`;
   };
