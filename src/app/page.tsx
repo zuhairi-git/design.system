@@ -89,7 +89,7 @@ export default function Home() {
                 <div className="flex flex-wrap gap-3 mb-14">
                   <a
                     href="#colors"
-                    className="cosmic-shimmer inline-block px-5 py-2.5 rounded-lg font-medium transition-all duration-300 text-white border border-transparent shadow-lg relative overflow-hidden"
+                    className="cosmic-shimmer inline-block px-5 py-2.5 rounded-full font-medium transition-all duration-300 text-white border border-transparent shadow-lg relative overflow-hidden"
                     style={{
                       backgroundImage:
                         "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
@@ -101,7 +101,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="px-5 py-2.5 text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 border border-primary-200 dark:border-primary-800/40 rounded-lg font-medium transition-colors"
+                    className="px-5 py-2.5 text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 border border-primary-200 dark:border-primary-800/40 rounded-full font-medium transition-colors"
                   >
                     Learn More
                   </a>
