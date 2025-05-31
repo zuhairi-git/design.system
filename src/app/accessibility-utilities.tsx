@@ -2,14 +2,12 @@
 
 import React from 'react';
 import AccessibilityGuide from '../components/AccessibilityGuide';
-import Header from '../components/Header';
 import CodeSnippet from '../components/CodeSnippet';
 import { useAccessibility } from '../utils/accessibility';
 
 export default function AccessibilityUtilitiesPage() {
   const { announceToScreenReader, prefersReducedMotion } = useAccessibility();  return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Header />
       <main className="flex-1 p-6 lg:p-8">
         <div className="max-w-4xl mx-auto space-y-8">
             <div>
