@@ -8,6 +8,8 @@ import ColorExtractor from "@/components/ColorExtractor";
 import FeatureCard from "@/components/FeatureCard";
 import FixCardLinks from "@/components/FixCardLinks";
 import DynamicTypographyPreview from "@/components/DynamicTypographyPreview";
+import ThemeColorShowcase from "@/components/ThemeColorShowcase";
+import ColorAccessibilityGuide from "@/components/ColorAccessibilityGuide";
 import ButtonsSection from "./buttons-section";
 import TabsPillsSection from "./tabs-pills-section";
 import AccordionSection from "./accordions-section";
@@ -171,336 +173,184 @@ export default function Home() {
                 </div>
               </div>
             </AnimatedSection>
-            
-            {/* Colors Section */}
+              {/* Colors Section */}
             <AnimatedSection id="colors" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60" animation="fade-in">
-              <div className="max-w-7xl mx-auto">                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
-                  <div>
-                    <div className="inline-flex items-center px-2.5 py-1 mb-3 text-xs font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                      <PaletteRoundedIcon className="h-3.5 w-3.5 mr-1.5 align-middle" /> Color System
+              <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+                    <PaletteRoundedIcon className="h-4 w-4 mr-2" /> Color System
+                  </div>                  <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Design Colors</h2>
+                  <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-4xl mx-auto">
+                    Our enhanced adaptive color system provides three distinct themes with improved contrast ratios and WCAG compliance. 
+                    Each theme has been carefully designed for accessibility while maintaining visual appeal and brand consistency.
+                  </p>
+                  <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
+                    <span className="px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full">
+                      ✓ WCAG AAA Compliant
+                    </span>
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full">
+                      ✓ High Contrast Ratios
+                    </span>
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 rounded-full">
+                      ✓ Color Blind Friendly
+                    </span>
+                  </div>
+                </div>                {/* Theme Overview Cards */}
+                <div className="grid md:grid-cols-3 gap-6 mb-16">
+                  <div className="group relative bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 rounded-lg">
+                        <PaletteRoundedIcon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white">Light Theme</h3>
                     </div>
-                    <h2 className="font-heading font-bold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-3">Colors</h2>
-                    <p className="font-body text-base text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                      Our color system is designed to be accessible and flexible, with theme-specific palettes for light, dark, and colorful modes.
+                    <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">
+                      Clean and professional palette perfect for productivity applications and daytime use.
                     </p>
+                    <div className="flex gap-2 mb-3">
+                      <div className="w-4 h-4 rounded bg-white border-2 border-slate-200"></div>
+                      <div className="w-4 h-4 rounded bg-blue-600"></div>
+                      <div className="w-4 h-4 rounded bg-slate-900"></div>
+                      <div className="w-4 h-4 rounded bg-slate-100"></div>
+                    </div>
+                    <div className="text-xs text-neutral-500 dark:text-neutral-400">
+                      WCAG AAA compliant • High contrast
+                    </div>
+                  </div>
+
+                  <div className="group relative bg-slate-900 rounded-xl p-6 border border-slate-700 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-blue-950 text-blue-400 rounded-lg">
+                        <BlurOnRoundedIcon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-heading font-semibold text-lg text-slate-50">Dark Theme</h3>
+                    </div>
+                    <p className="font-body text-sm text-slate-300 mb-4">
+                      Sophisticated dark palette that reduces eye strain and enhances focus during extended use.
+                    </p>
+                    <div className="flex gap-2 mb-3">
+                      <div className="w-4 h-4 rounded bg-slate-950 border-2 border-slate-600"></div>
+                      <div className="w-4 h-4 rounded bg-blue-400"></div>
+                      <div className="w-4 h-4 rounded bg-slate-50"></div>
+                      <div className="w-4 h-4 rounded bg-slate-800"></div>
+                    </div>
+                    <div className="text-xs text-slate-400">
+                      Eye-strain reduction • Developer friendly
+                    </div>
+                  </div>
+
+                  <div className="group relative rounded-xl p-6 border border-violet-500/30 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 hover:-translate-y-1"
+                       style={{
+                         background: "linear-gradient(135deg, rgba(30, 5, 60, 0.9), rgba(15, 20, 45, 0.9))"
+                       }}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-violet-500/20 text-violet-400 rounded-lg">
+                        <OpacityRoundedIcon className="h-5 w-5" />
+                      </div>
+                      <h3 className="font-heading font-semibold text-lg text-slate-50">Colorful Theme</h3>
+                    </div>
+                    <p className="font-body text-sm text-slate-200/90 mb-4">
+                      Vibrant, gradient-rich palette for creative applications and immersive user experiences.
+                    </p>
+                    <div className="flex gap-2 mb-3">
+                      <div className="w-4 h-4 rounded bg-slate-950 border-2 border-violet-500/50"></div>
+                      <div className="w-4 h-4 rounded bg-violet-400"></div>
+                      <div className="w-4 h-4 rounded bg-pink-400"></div>
+                      <div className="w-4 h-4 rounded bg-cyan-400"></div>
+                    </div>
+                    <div className="text-xs text-slate-300">
+                      Creative workflows • Immersive experiences
+                    </div>
                   </div>
                 </div>
-                
-                <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg mb-14 border border-neutral-200/50 dark:border-neutral-800/50">
+
+                {/* Interactive Color Tool */}
+                <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-lg mb-16 border border-neutral-200/50 dark:border-neutral-800/50">
+                  <div className="text-center mb-6">
+                    <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-2">Color Extraction Tool</h3>
+                    <p className="font-body text-sm text-neutral-700 dark:text-neutral-300">
+                      Upload an image to extract its color palette and see how colors work together
+                    </p>
+                  </div>
                   <ColorExtractor 
                     title="Color Picker" 
                     description="Upload or drag an image to extract its color palette" 
                   />
                 </div>
-                
-                <div className="mb-16">                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
-                    <PaletteRoundedIcon className="h-3.5 w-3.5 align-middle" />
-                    Light Theme
-                  </h3>
-                  <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Clean and professional color palette for default light mode.</p>
+                  {/* Theme Color Showcases */}
+                <div className="space-y-12">
+                  <ThemeColorShowcase theme="light" />
                   
-                  {/* Light Theme Card Preview */}
-                  <div className="mb-6 flex flex-col md:flex-row gap-4">
-                    <div className="w-full md:w-1/2 lg:w-1/3 group">
-                      <div 
-                        className="relative p-6 rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
-                        style={{
-                          background: "linear-gradient(to bottom, rgba(253, 253, 253, 0.9), rgba(243, 244, 246, 0.9))",
-                          border: "1px solid rgba(229, 231, 235, 0.5)",
-                          boxShadow: "0 4px 12px rgba(168, 85, 247, 0.1)"
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <h4 className="font-heading text-base font-medium text-neutral-900 mb-1">Light Theme Card</h4>
-                            <p className="font-body text-sm text-neutral-700">Clean and professional styling</p>
-                          </div>
-                          <div className="bg-blue-500/10 text-blue-500 p-2 rounded-lg">
-                            <PaletteRoundedIcon className="align-middle" />
-                          </div>
-                        </div>
-                        <div className="mt-4 pt-4 border-t border-neutral-200/40">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-500">
-                            <span className="text-[10px]">Light Theme Card</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
+                  
+                  <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-700">
+                    <ThemeColorShowcase theme="dark" />
                   </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
-                    <ColorCard 
-                      shade="Background" 
-                      color="bg-white" 
-                      name="#ffffff"
-                    />
-                    <ColorCard 
-                      shade="Foreground" 
-                      color="text-neutral-800"
-                      name="#1f2937"
-                    />
-                    <ColorCard 
-                      shade="Primary" 
-                      color="text-blue-500"
-                      name="#3b82f6"
-                    />
-                    <ColorCard 
-                      shade="Primary Hover" 
-                      color="text-blue-600"
-                      name="#2563eb"
-                    />
-                    <ColorCard 
-                      shade="Primary Glow" 
-                      color="shadow-blue-200/20"
-                      name="rgba(59, 130, 246, 0.2)"
-                    />
-                    <div className="col-span-1 md:col-span-3 card overflow-hidden p-0 rounded-xl">
-                      <div 
-                        className="h-24 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
-                      ></div>
-                      <div className="p-3 bg-white dark:bg-neutral-800">
-                        <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Gradient</p>
-                        <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #3b82f6 via #a855f7 to #3b82f6</p>
-                      </div>
-                    </div>
-                  </div>
-                
-                  <h4 className="font-heading font-medium text-base text-neutral-950 dark:text-white mt-6 mb-2">Card Styling</h4>                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
-                    <ColorCard 
-                      shade="Card From" 
-                      color="bg-neutral-50/90"
-                      name="rgba(253, 253, 253, 0.9)"
-                    />
-                    <ColorCard 
-                      shade="Card To" 
-                      color="bg-neutral-100/90"
-                      name="rgba(243, 244, 246, 0.9)"
-                    />
-                    <ColorCard 
-                      shade="Card Border" 
-                      color="border-neutral-200/50"
-                      name="rgba(229, 231, 235, 0.5)"
-                    />
-                    <ColorCard 
-                      shade="Card Border Hover" 
-                      color="border-blue-300/50"
-                      name="rgba(96, 165, 250, 0.5)"
-                    />
-                    <ColorCard 
-                      shade="Card Shadow" 
-                      color="shadow-purple-500/10"
-                      name="rgba(168, 85, 247, 0.1)"
-                    />
-                  </div>
-                </div>                <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mt-12 mb-3 flex items-center">
-                  <BlurOnRoundedIcon className="h-3.5 w-3.5 align-middle" />
-                  Dark Theme
-                </h3>
-                <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Sophisticated dark palette for late night browsing.</p>
-                
-                {/* Dark Theme Card Preview */}
-                <div className="mb-6 flex flex-col md:flex-row gap-4">
-                  <div className="w-full md:w-1/2 lg:w-1/3 group">
-                    <div 
-                      className="relative p-6 rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
-                      style={{
-                        background: "linear-gradient(to bottom, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9))",
-                        border: "1px solid rgba(75, 85, 99, 0.5)",
-                        boxShadow: "0 4px 12px rgba(59, 130, 246, 0.2)"
-                      }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="font-heading text-base font-medium text-white mb-1">Dark Theme Card</h4>
-                          <p className="font-body text-sm text-neutral-300">Preview of the dark theme card styling</p>
-                        </div>
-                        <div className="bg-blue-500/10 text-blue-400 p-2 rounded-lg">
-                          <BlurOnRoundedIcon className="align-middle" />
-                        </div>
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-neutral-700/50">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-400">
-                          <span className="text-[10px]">Dark Theme Card</span>
-                        </div>
-                      </div>
-                    </div>
+                  
+                  <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
+                  
+                  <div 
+                    className="rounded-xl p-8 border border-purple-500/30"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(20, 10, 50, 0.95), rgba(10, 5, 30, 0.95))"
+                    }}
+                  >
+                    <ThemeColorShowcase theme="colorful" />
                   </div>
                 </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
-                  <ColorCard 
-                    shade="Background" 
-                    color="bg-neutral-900" 
-                    name="#0a0a0a"
-                  />
-                  <ColorCard 
-                    shade="Foreground" 
-                    color="text-neutral-100"
-                    name="#ededed"
-                  />
-                  <ColorCard 
-                    shade="Primary" 
-                    color="text-blue-500"
-                    name="#3b82f6"
-                  />
-                  <ColorCard 
-                    shade="Primary Hover" 
-                    color="text-blue-600"
-                    name="#2563eb"
-                  />                  <ColorCard 
-                    shade="Primary Glow" 
-                    color="shadow-blue-500/20"
-                    name="rgba(59, 130, 246, 0.2)"
-                  />
-                  <div className="col-span-1 md:col-span-3 card overflow-hidden p-0 rounded-xl">
-                    <div 
-                      className="h-24 w-full bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500"
-                    ></div>
-                    <div className="p-3 bg-white dark:bg-neutral-800">
-                      <p className="font-body text-sm font-medium text-neutral-950 dark:text-white">Gradient</p>
-                      <p className="font-body text-xs text-neutral-700 dark:text-neutral-400">from #3b82f6 via #a855f7 to #3b82f6</p>
-                    </div>
-                  </div>                </div>
 
-                  <h4 className="font-heading font-medium text-base text-neutral-950 dark:text-white mt-6 mb-2">Card Styling</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
-                    <ColorCard 
-                      shade="Card From" 
-                      color="bg-neutral-800/90"
-                      name="rgba(31, 41, 55, 0.9)"
-                    />
-                    <ColorCard 
-                      shade="Card To" 
-                      color="bg-neutral-900/90"
-                      name="rgba(17, 24, 39, 0.9)"
-                    />
-                    <ColorCard 
-                      shade="Card Border" 
-                      color="border-neutral-700/50"
-                      name="rgba(75, 85, 99, 0.5)"
-                    />
-                    <ColorCard 
-                      shade="Card Border Hover" 
-                      color="border-blue-300/50"
-                      name="rgba(96, 165, 250, 0.5)"
-                    />
-                    <ColorCard 
-                      shade="Card Shadow" 
-                      color="shadow-blue-500/20"
-                      name="rgba(59, 130, 246, 0.2)"
-                    />
+                {/* Implementation Guide */}
+                <div className="mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-xl p-8 border border-blue-200/50 dark:border-blue-800/50">
+                  <div className="text-center mb-8">
+                    <h3 className="font-heading font-semibold text-2xl text-neutral-950 dark:text-white mb-3">
+                      Implementation Guide
+                    </h3>
+                    <p className="font-body text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
+                      Quick reference for implementing our color system in your projects
+                    </p>
                   </div>
-                
-                <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
-                  <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3 flex items-center">
-                  <OpacityRoundedIcon className="h-3.5 w-3.5 align-middle" />
-                  Colorful Theme
-                </h3>
-                <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">Vibrant, creative palette for immersive, colorful interfaces.</p>
-                
-                {/* Colorful Theme Card Preview */}
-                <div className="mb-6 flex flex-col md:flex-row gap-4">
-                  <div className="w-full md:w-1/2 lg:w-1/3 group">
-                    <div 
-                      className="relative p-6 rounded-xl overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg"
-                      style={{
-                        background: "linear-gradient(to bottom, rgba(20, 10, 50, 0.8), rgba(10, 5, 30, 0.8))",
-                        border: "1px solid rgba(128, 0, 255, 0.3)",
-                        boxShadow: "0 4px 12px rgba(255, 0, 204, 0.3)"
-                      }}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="font-heading text-base font-medium text-blue-50 mb-1">Colorful Theme Card</h4>
-                          <p className="font-body text-sm text-blue-200/80">Creative and vibrant card styling</p>
-                        </div>
-                        <div className="bg-fuchsia-500/10 text-fuchsia-400 p-2 rounded-lg">
-                          <OpacityRoundedIcon className="align-middle" />
-                        </div>
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-purple-500/30">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-cyan-400">
-                          <span className="text-[10px]">Colorful Theme Card</span>
-                        </div>
+                  
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-lg p-6 border border-white/20 dark:border-neutral-800/20">                      <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">CSS Variables</h4>
+                      <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                        <div className="text-neutral-600 dark:text-neutral-400">/* Light theme */</div>
+                        <div className="text-blue-600 dark:text-blue-400">--primary: #2563eb;</div>
+                        <div className="text-blue-600 dark:text-blue-400">--background: #ffffff;</div>
+                        <div className="text-blue-600 dark:text-blue-400">--foreground: #0f172a;</div>
+                        <div className="text-neutral-600 dark:text-neutral-400 mt-2">/* Dark theme */</div>
+                        <div className="text-blue-600 dark:text-blue-400">--primary: #60a5fa;</div>
+                        <div className="text-blue-600 dark:text-blue-400">--background: #020617;</div>
+                        <div className="text-blue-600 dark:text-blue-400">--foreground: #f8fafc;</div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
-                  <ColorCard 
-                    shade="Background" 
-                    color="bg-indigo-950" 
-                    name="#050023"
-                  />
-                  <ColorCard 
-                    shade="Foreground" 
-                    color="text-blue-50"
-                    name="#f0f8ff"
-                  />
-                  <ColorCard 
-                    shade="Primary" 
-                    color="text-fuchsia-600"
-                    name="#ff00cc"
-                  />
-                  <ColorCard 
-                    shade="Primary Hover" 
-                    color="text-fuchsia-700"
-                    name="#d100ff"
-                  />
-                  <ColorCard 
-                    shade="Primary Glow" 
-                    color="shadow-fuchsia-500/30"
-                    name="rgba(255, 0, 204, 0.3)"
-                  />                  <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 overflow-hidden rounded-lg border border-purple-500/30 shadow-lg shadow-fuchsia-500/30">
-                    <div 
-                      className="h-20 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-600 to-blue-500 relative"
-                    >
-                      <div className="absolute inset-0 bg-[url('/public/stars.png')] mix-blend-overlay opacity-30"></div>
+                    
+                    <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-lg p-6 border border-white/20 dark:border-neutral-800/20">                      <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">Tailwind Classes</h4>
+                      <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                        <div className="text-emerald-600 dark:text-emerald-400">bg-blue-600</div>
+                        <div className="text-emerald-600 dark:text-emerald-400">text-slate-900</div>
+                        <div className="text-emerald-600 dark:text-emerald-400">border-slate-200</div>
+                        <div className="text-neutral-600 dark:text-neutral-400 mt-2">/* Dark mode */</div>
+                        <div className="text-emerald-600 dark:text-emerald-400">dark:bg-blue-400</div>
+                        <div className="text-emerald-600 dark:text-emerald-400">dark:bg-slate-950</div>
+                        <div className="text-emerald-600 dark:text-emerald-400">dark:text-slate-50</div>
+                      </div>
                     </div>
-                    <div className="p-2.5 bg-indigo-950/80">
-                      <p className="font-body text-xs font-medium text-blue-100">Cosmic Gradient</p>
-                      <p className="font-body text-[10px] mt-0.5 text-blue-200/70 font-mono">linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)</p>
-                    </div>
+                    
+                    <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-lg p-6 border border-white/20 dark:border-neutral-800/20">
+                      <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">Theme Detection</h4>
+                      <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                        <div className="text-purple-600 dark:text-purple-400">useTheme()</div>
+                        <div className="text-neutral-600 dark:text-neutral-400">// Returns: light | dark</div>
+                        <div className="text-neutral-600 dark:text-neutral-400 mt-2">// Or manually:</div>
+                        <div className="text-orange-600 dark:text-orange-400">prefers-color-scheme</div>
+                      </div>                    </div>
                   </div>
                 </div>
-                
-                <h4 className="font-heading font-medium text-base text-neutral-950 dark:text-white mt-6 mb-2">Card Styling</h4>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-8">
-                  <ColorCard 
-                    shade="Card From" 
-                    color="bg-indigo-950/80"
-                    name="rgba(20, 10, 50, 0.8)"
-                  />
-                  <ColorCard 
-                    shade="Card To" 
-                    color="bg-indigo-950/80"
-                    name="rgba(10, 5, 30, 0.8)"
-                  />
-                  <ColorCard 
-                    shade="Card Border" 
-                    color="border-purple-500/30"
-                    name="rgba(128, 0, 255, 0.3)"
-                  />
-                  <ColorCard 
-                    shade="Card Border Hover" 
-                    color="border-cyan-400/60"
-                    name="rgba(0, 255, 255, 0.6)"
-                  />
-                  <ColorCard 
-                    shade="Card Shadow" 
-                    color="shadow-fuchsia-500/30"
-                    name="rgba(255, 0, 204, 0.3)"
-                  />
-                </div>
-                  <div className="p-4 bg-gradient-to-br from-indigo-950/80 to-[rgba(10,5,30,0.8)] border border-purple-500/30 hover:border-cyan-400/60 rounded-lg shadow-lg shadow-fuchsia-500/30 mt-2 mb-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <div className="h-3 w-3 rounded-full bg-pink-400"></div>
-                    <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
-                    <div className="h-3 w-3 rounded-full bg-cyan-400"></div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs font-mono text-blue-100">Card preview with all styles applied</p>
-                    <span className="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-fuchsia-400">Cosmic Theme Card</span>
-                  </div>
+
+                {/* Color Accessibility Guide */}
+                <div className="mt-16">
+                  <ColorAccessibilityGuide />
                 </div>
               </div>
             </AnimatedSection>
