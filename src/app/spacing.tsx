@@ -424,18 +424,16 @@ export default function SpacingSection() {
                 <div>
                   <p className="font-medium text-neutral-900 dark:text-white text-sm">
                     Avoid arbitrary values
-                  </p>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
-                    Don't use custom spacing outside the scale
+                  </p>                  <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
+                    Don&apos;t use custom spacing outside the scale
                   </p>
                 </div>
               </div>
               
               <div className="flex items-start">
                 <span className="text-red-500 text-lg mr-3 flex-shrink-0">✗</span>
-                <div>
-                  <p className="font-medium text-neutral-900 dark:text-white text-sm">
-                    Don't overcrowd interfaces
+                <div>                  <p className="font-medium text-neutral-900 dark:text-white text-sm">
+                    Don&apos;t overcrowd interfaces
                   </p>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
                     Ensure adequate breathing room between elements

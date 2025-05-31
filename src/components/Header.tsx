@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Combobox, Menu, Transition, Disclosure } from '@headlessui/react';
-import { Fragment } from 'react';
 import { 
   ChevronDownIcon,
   ChevronRightIcon,
@@ -12,7 +11,17 @@ import {
   BookmarkIcon,
   ClockIcon,
   ArrowRightIcon,
-  Bars3Icon
+  Bars3Icon,
+  HomeIcon,
+  SwatchIcon,
+  CubeIcon,
+  PuzzlePieceIcon,
+  WrenchScrewdriverIcon,
+  BookOpenIcon,
+  CodeBracketIcon,
+  CommandLineIcon,
+  DocumentTextIcon,
+  RectangleGroupIcon
 } from '@heroicons/react/24/outline';
 import { useAccessibility } from '../utils/accessibility';
 import SidebarToggle from './SidebarToggle';
@@ -23,9 +32,20 @@ interface SearchSuggestion {
   label: string;
   category: string;
   href: string;
-  icon?: string;
+  icon: React.ComponentType<{ className?: string }>;
   description?: string;
   keywords?: string[];
+}
+
+// Navigation structure matching sidebar
+interface NavigationItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  href?: string;
+  children?: NavigationItem[];
+  description?: string;
+  tags?: string[];
 }
 
 type HeaderProps = {
@@ -42,21 +62,229 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const { getButtonAttributes } = useAccessibility();
-  const searchInputRef = useRef<HTMLInputElement>(null);
-  // Search suggestions data
-  const searchSuggestions: SearchSuggestion[] = [
-    { id: 'colors', label: 'Colors', category: 'Foundations', href: '#colors', icon: '🎨', description: 'Color palette and theming' },
-    { id: 'typography', label: 'Typography', category: 'Foundations', href: '#typography', icon: '✍️', description: 'Font styles and text formatting' },
-    { id: 'buttons', label: 'Buttons', category: 'Components', href: '#buttons', icon: '🔘', description: 'Interactive button components' },
-    { id: 'cards', label: 'Cards', category: 'Components', href: '#cards', icon: '🃏', description: 'Content container components' },
-    { id: 'badges', label: 'Badges', category: 'Components', href: '#badges', icon: '🏷️', description: 'Status and label indicators' },
-    { id: 'accordions', label: 'Accordions', category: 'Components', href: '#accordions', icon: '📂', description: 'Collapsible content sections' },
-    { id: 'spacing', label: 'Spacing', category: 'Utilities', href: '#spacing', icon: '📏', description: 'Margin and padding utilities' },
-    { id: 'grids', label: 'Grid System', category: 'Foundations', href: '#grids', icon: '⚏', description: 'Layout grid system' },
-    { id: 'tabs-pills', label: 'Tabs & Pills', category: 'Components', href: '#tabs-pills', icon: '📑', description: 'Navigation tabs and pills' },
-    { id: 'breakpoints', label: 'Breakpoints', category: 'Utilities', href: '#breakpoints', icon: '📱', description: 'Responsive breakpoints' },
-    { id: 'accessibility', label: 'Accessibility', category: 'Guidelines', href: '#accessibility', icon: '♿', description: 'Accessibility best practices' }
-  ];// Filter search suggestions based on query
+  const searchInputRef = useRef<HTMLInputElement>(null);  // Navigation structure matching sidebar exactly
+  const navigationItems: NavigationItem[] = [
+    {
+      id: 'overview',
+      label: 'Overview',
+      icon: HomeIcon,
+      href: '#overview',
+      description: 'Design system overview and getting started',
+      tags: ['home', 'overview', 'introduction']
+    },
+    {
+      id: 'foundations',
+      label: 'Foundations',
+      icon: SwatchIcon,
+      description: 'Core design principles and tokens',
+      tags: ['foundations', 'design', 'tokens'],
+      children: [
+        {
+          id: 'colors',
+          label: 'Colors',
+          icon: SwatchIcon,
+          href: '#colors',
+          description: 'Color palette and usage guidelines',
+          tags: ['colors', 'palette', 'theme']
+        },
+        {
+          id: 'typography',
+          label: 'Typography',
+          icon: DocumentTextIcon,
+          href: '#typography',
+          description: 'Font families, sizes, and text styles',
+          tags: ['typography', 'fonts', 'text']
+        },
+        {
+          id: 'spacing',
+          label: 'Spacing',
+          icon: RectangleGroupIcon,
+          href: '#spacing',
+          description: 'Spacing scale and layout principles',
+          tags: ['spacing', 'layout', 'margins', 'padding']
+        },
+        {
+          id: 'grids',
+          label: 'Grids',
+          icon: RectangleGroupIcon,
+          href: '#grids',
+          description: 'Grid systems and responsive layouts',
+          tags: ['grids', 'layout', 'responsive']
+        }
+      ]
+    },
+    {
+      id: 'components',
+      label: 'Components',
+      icon: CubeIcon,
+      description: 'Reusable UI components',
+      tags: ['components', 'ui', 'elements'],
+      children: [
+        {
+          id: 'buttons',
+          label: 'Buttons',
+          icon: CubeIcon,
+          href: '#buttons',
+          description: 'Button variants and interactive elements',
+          tags: ['buttons', 'actions', 'interactive']
+        },
+        {
+          id: 'tabs-pills',
+          label: 'Tabs & Pills',
+          icon: CubeIcon,
+          href: '#tabs-pills',
+          description: 'Navigation tabs and pill components',
+          tags: ['tabs', 'pills', 'navigation']
+        },
+        {
+          id: 'badges',
+          label: 'Badges',
+          icon: CubeIcon,
+          href: '#badges',
+          description: 'Status indicators and labels',
+          tags: ['badges', 'status', 'labels']
+        },
+        {
+          id: 'cards',
+          label: 'Cards',
+          icon: CubeIcon,
+          href: '#cards',
+          description: 'Card layouts and containers',
+          tags: ['cards', 'containers', 'layout']
+        },
+        {
+          id: 'accordions',
+          label: 'Accordions',
+          icon: CubeIcon,
+          href: '#accordions',
+          description: 'Collapsible content sections',
+          tags: ['accordions', 'collapse', 'expand', 'disclosure']
+        }
+      ]
+    },
+    {
+      id: 'patterns',
+      label: 'Patterns',
+      icon: PuzzlePieceIcon,
+      description: 'Design patterns and templates',
+      tags: ['patterns', 'templates', 'examples'],
+      children: [
+        {
+          id: 'layouts',
+          label: 'Layouts',
+          icon: RectangleGroupIcon,
+          href: '#layouts',
+          description: 'Common layout patterns',
+          tags: ['layouts', 'structure', 'templates']
+        },
+        {
+          id: 'navigation',
+          label: 'Navigation',
+          icon: Bars3Icon,
+          href: '#navigation',
+          description: 'Navigation patterns and menus',
+          tags: ['navigation', 'menus', 'routing']
+        },
+        {
+          id: 'forms',
+          label: 'Forms',
+          icon: DocumentTextIcon,
+          href: '#forms',
+          description: 'Form layouts and validation',
+          tags: ['forms', 'inputs', 'validation']
+        }
+      ]
+    },
+    {
+      id: 'utilities',
+      label: 'Utilities',
+      icon: WrenchScrewdriverIcon,
+      description: 'Utility classes and helpers',
+      tags: ['utilities', 'helpers', 'tools'],
+      children: [
+        {
+          id: 'breakpoints',
+          label: 'Breakpoints',
+          icon: CommandLineIcon,
+          href: '#breakpoints',
+          description: 'Responsive breakpoint utilities',
+          tags: ['breakpoints', 'responsive', 'mobile']
+        },
+        {
+          id: 'shadows',
+          label: 'Shadows',
+          icon: CommandLineIcon,
+          href: '#shadows',
+          description: 'Shadow and elevation utilities',
+          tags: ['shadows', 'elevation', 'depth']
+        },
+        {
+          id: 'tints',
+          label: 'Tints',
+          icon: CommandLineIcon,
+          href: '#tints',
+          description: 'Color tint and opacity utilities',
+          tags: ['tints', 'opacity', 'colors']
+        }
+      ]
+    },
+    {
+      id: 'resources',
+      label: 'Resources',
+      icon: BookOpenIcon,
+      description: 'Additional resources and documentation',
+      tags: ['resources', 'docs', 'help'],
+      children: [
+        {
+          id: 'accessibility',
+          label: 'Accessibility',
+          icon: BookOpenIcon,
+          href: '#accessibility',
+          description: 'Accessibility guidelines and best practices',
+          tags: ['accessibility', 'a11y', 'inclusive']
+        },
+        {
+          id: 'code-examples',
+          label: 'Code Examples',
+          icon: CodeBracketIcon,
+          href: '#code-examples',
+          description: 'Implementation examples and snippets',
+          tags: ['code', 'examples', 'implementation']
+        }
+      ]
+    }
+  ];
+
+  // Search suggestions based on navigation structure
+  const searchSuggestions: SearchSuggestion[] = navigationItems.reduce((acc, item) => {
+    if (item.href) {
+      acc.push({
+        id: item.id,
+        label: item.label,
+        category: 'Main',
+        href: item.href,
+        icon: item.icon,
+        description: item.description,
+        keywords: item.tags
+      });
+    }
+    if (item.children) {
+      item.children.forEach(child => {
+        if (child.href) {
+          acc.push({
+            id: child.id,
+            label: child.label,
+            category: item.label,
+            href: child.href,
+            icon: child.icon,
+            description: child.description,
+            keywords: child.tags
+          });
+        }
+      });
+    }
+    return acc;
+  }, [] as SearchSuggestion[]);// Filter search suggestions based on query
   const filteredSuggestions = searchQuery.trim()
     ? searchSuggestions.filter(suggestion => {
         const searchableText = [
@@ -174,13 +402,13 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
   const handleNavLinkClick = (sectionId: string) => {
     setActiveSection(sectionId);
   };
-  const navLinks = [
-    { id: 'overview', label: 'Home' },
-    { id: 'foundations', label: 'Foundations', submenu: ['colors', 'typography', 'spacing', 'grids'] },
-    { id: 'components', label: 'Components', submenu: ['buttons', 'tabs-pills', 'badges', 'cards', 'accordions'] },
-    { id: 'patterns', label: 'Patterns', submenu: ['layouts', 'navigation', 'forms'] },
-    { id: 'utilities', label: 'Utilities', submenu: ['breakpoints', 'shadows', 'tints'] }
-  ];return (
+  // Create nav links from navigation structure
+  const navLinks = navigationItems.map(item => ({
+    id: item.id,
+    label: item.label,
+    icon: item.icon,
+    submenu: item.children?.map(child => child.id) || undefined
+  }));return (
     <>
       <header 
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -283,9 +511,8 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                               }
                               onClick={() => handleSearchSubmit(suggestion)}
                             >
-                              <div className="flex items-center space-x-3">
-                                <span className="text-lg" role="img" aria-hidden="true">
-                                  {suggestion.icon}
+                              <div className="flex items-center space-x-3">                                <span className="w-5 h-5 text-neutral-500 dark:text-neutral-400" aria-hidden="true">
+                                  <suggestion.icon className="w-full h-full" />
                                 </span>
                                 <div>
                                   <div className="font-medium text-sm">{suggestion.label}</div>
@@ -347,44 +574,42 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                   )}
                 </div>
               </Combobox>
-            </div>
-
-            {/* Right: Desktop Navigation */}
+            </div>            {/* Right: Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1" role="navigation" aria-label="Main navigation">
               {navLinks.map(link => (
                 link.submenu ? (
                   <Menu as="div" key={link.id} className="relative">
                     <Menu.Button 
-                      className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                      className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                         isClient && (activeSection === link.id || (link.submenu && link.submenu.includes(activeSection || '')))
                           ? 'text-primary-700 bg-primary-50 dark:text-primary-300 dark:bg-primary-900/30 shadow-sm' 
                           : 'text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50'
                       }`}
                       {...getButtonAttributes(`${link.label} menu`)}
                     >
+                      <link.icon className="w-4 h-4" aria-hidden="true" />
                       <span>{link.label}</span>
-                      <ChevronDownIcon className="h-4 w-4 ml-2 ui-open:rotate-180 transition-transform duration-200" aria-hidden="true" />
+                      <ChevronDownIcon className="h-4 w-4 ui-open:rotate-180 transition-transform duration-200" aria-hidden="true" />
                     </Menu.Button>
-                    
-                    <Transition
-                      as={Fragment}
+                      <Transition
                       enter="transition ease-out duration-200"
                       enterFrom="transform opacity-0 scale-95 translate-y-1"
                       enterTo="transform opacity-100 scale-100 translate-y-0"
                       leave="transition ease-in duration-150"
                       leaveFrom="transform opacity-100 scale-100 translate-y-0"
                       leaveTo="transform opacity-0 scale-95 translate-y-1"
-                    >
-                      <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 p-1">
-                        {link.submenu.map(subId => {
-                          const subLabel = subId.charAt(0).toUpperCase() + subId.slice(1).replace('-', ' & ');
-                          const suggestion = searchSuggestions.find(s => s.id === subId);
+                    ><Menu.Items className="absolute right-0 mt-2 w-64 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 p-1">
+                        {link.submenu?.map(subId => {
+                          const navItem = navigationItems.find(nav => nav.id === link.id);
+                          const subItem = navItem?.children?.find(child => child.id === subId);
+                          
+                          if (!subItem) return null;
                           
                           return (
                             <Menu.Item key={subId}>
                               {({ active }) => (
                                 <Link
-                                  href={`#${subId}`}
+                                  href={subItem.href || `#${subId}`}
                                   onClick={() => handleNavLinkClick(subId)}
                                   className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${
                                     active
@@ -394,16 +619,12 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                                         : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50'
                                   }`}
                                 >
-                                  {suggestion?.icon && (
-                                    <span className="text-base" role="img" aria-hidden="true">
-                                      {suggestion.icon}
-                                    </span>
-                                  )}
+                                  <subItem.icon className="w-4 h-4 text-neutral-500 dark:text-neutral-400" aria-hidden="true" />
                                   <div className="flex-1">
-                                    <div className="font-medium">{subLabel}</div>
-                                    {suggestion?.description && (
+                                    <div className="font-medium">{subItem.label}</div>
+                                    {subItem.description && (
                                       <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-                                        {suggestion.description}
+                                        {subItem.description}
                                       </div>
                                     )}
                                   </div>
@@ -414,19 +635,19 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                         })}
                       </Menu.Items>
                     </Transition>
-                  </Menu>
-                ) : (
+                  </Menu>                ) : (
                   <Link 
                     key={link.id}
                     href={`#${link.id}`}
                     onClick={() => handleNavLinkClick(link.id)}
-                    className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
+                    className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                       isClient && activeSection === link.id
                         ? 'text-primary-700 bg-primary-50 dark:text-primary-300 dark:bg-primary-900/30 shadow-sm' 
                         : 'text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50'
                     }`}
                   >
-                    {link.label}
+                    <link.icon className="w-4 h-4" aria-hidden="true" />
+                    <span>{link.label}</span>
                   </Link>
                 )
               ))}
@@ -508,16 +729,17 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                   <XMarkIcon className="h-4 w-4 text-neutral-400" />
                 </button>
               )}
-            </div>
-
-            {/* Mobile Navigation Items with Accordions */}
+            </div>            {/* Mobile Navigation Items with Accordions */}
             {navLinks.map(link => (
               link.submenu ? (
                 <Disclosure key={link.id}>
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
-                        <span>{link.label}</span>
+                      <Disclosure.Button className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
+                        <div className="flex items-center space-x-3">
+                          <link.icon className="w-4 h-4" aria-hidden="true" />
+                          <span>{link.label}</span>
+                        </div>
                         <ChevronRightIcon 
                           className={`h-4 w-4 transition-transform duration-200 ${
                             open ? 'rotate-90' : ''
@@ -532,16 +754,17 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                         leave="transition duration-150 ease-in"
                         leaveFrom="transform scale-100 opacity-100"
                         leaveTo="transform scale-95 opacity-0"
-                      >
-                        <Disclosure.Panel className="mt-2 ml-4 space-y-1">
-                          {link.submenu.map(subId => {
-                            const subLabel = subId.charAt(0).toUpperCase() + subId.slice(1).replace('-', ' & ');
-                            const suggestion = searchSuggestions.find(s => s.id === subId);
+                      >                        <Disclosure.Panel className="mt-2 ml-4 space-y-1">
+                          {link.submenu?.map(subId => {
+                            const navItem = navigationItems.find(nav => nav.id === link.id);
+                            const subItem = navItem?.children?.find(child => child.id === subId);
+                            
+                            if (!subItem) return null;
                             
                             return (
                               <Link
                                 key={subId}
-                                href={`#${subId}`}
+                                href={subItem.href || `#${subId}`}
                                 onClick={() => {
                                   handleNavLinkClick(subId);
                                   setMobileMenuOpen(false);
@@ -552,16 +775,12 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                                     : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/50'
                                 }`}
                               >
-                                {suggestion?.icon && (
-                                  <span className="text-base" role="img" aria-hidden="true">
-                                    {suggestion.icon}
-                                  </span>
-                                )}
+                                <subItem.icon className="w-4 h-4 text-neutral-500 dark:text-neutral-400" aria-hidden="true" />
                                 <div>
-                                  <div className="font-medium">{subLabel}</div>
-                                  {suggestion?.description && (
+                                  <div className="font-medium">{subItem.label}</div>
+                                  {subItem.description && (
                                     <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-                                      {suggestion.description}
+                                      {subItem.description}
                                     </div>
                                   )}
                                 </div>
@@ -581,13 +800,14 @@ export default function Header({ title, onSidebarToggle }: HeaderProps) {
                     handleNavLinkClick(link.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                  className={`flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                     isClient && activeSection === link.id
                       ? 'text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30'
                       : 'text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700'
                   }`}
                 >
-                  {link.label}
+                  <link.icon className="w-4 h-4" aria-hidden="true" />
+                  <span>{link.label}</span>
                 </Link>
               )
             ))}

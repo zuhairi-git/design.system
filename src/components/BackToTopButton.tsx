@@ -38,10 +38,10 @@ export default function BackToTopButton({
     });
   };  if (!isVisible) {
     return null;
-  }return (
+  }  return (
     <button
       onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-b from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white shadow-lg flex items-center justify-center transition-all duration-300"
+      className={`fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-b from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white shadow-lg flex items-center justify-center transition-all duration-300 ${className}`}
       {...getButtonAttributes('Back to top')}
       aria-label="Back to top"
     >
