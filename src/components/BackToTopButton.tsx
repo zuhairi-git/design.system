@@ -1,22 +1,15 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpIcon } from '@heroicons/react/24/outline';
-import { useAccessibility } from '@/utils/accessibility';
 
-interface BackToTopButtonProps {
-  className?: string;
-  threshold?: number;
-}
-
-export default function BackToTopButton({ 
-  className = '', 
-  threshold = 200 
-}: BackToTopButtonProps) {
+const BackToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { getButtonAttributes } = useAccessibility();  useEffect(() => {
+
+  useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > threshold) {
+      if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -24,28 +17,50 @@ export default function BackToTopButton({
     };
 
     window.addEventListener('scroll', toggleVisibility);
-    
-    // Check initial scroll position
-    toggleVisibility();
-
     return () => window.removeEventListener('scroll', toggleVisibility);
-  }, [threshold]);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };  if (!isVisible) {
-    return null;
-  }  return (
-    <button
-      onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full bg-gradient-to-b from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white shadow-lg flex items-center justify-center transition-all duration-300 ${className}`}
-      {...getButtonAttributes('Back to top')}
-      aria-label="Back to top"
-    >
-      <ArrowUpIcon className="w-6 h-6" />
-    </button>
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          onClick={scrollToTop}
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 20 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg 
+                    bg-gradient-to-br from-blue-500 to-purple-500 dark:from-blue-600 dark:to-purple-600 
+                    text-white transition-all duration-300"
+          aria-label="Back to top"
+        >          <div className="relative">
+            <ArrowUpIcon className="w-6 h-6" />
+            
+            {/* Pulse effect */}
+            <motion.div
+              className="absolute inset-0 rounded-full opacity-30 bg-white"
+              animate={{
+                scale: [1, 1.4, 1],
+                opacity: [0.3, 0.1, 0.3],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            />
+          </div>
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
-}
+};
+
+export default BackToTopButton;
