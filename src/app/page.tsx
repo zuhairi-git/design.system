@@ -467,56 +467,24 @@ export default function Home() {
                   <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
                     <TextFieldsRoundedIcon className="align-middle" />{" "}
                     Typography System
-                  </div>{" "}
-                  <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
-                    Dynamic Typography
+                  </div>{" "}                  <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
+                    Typography
                   </h2>
                   <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                    Our interactive typography system lets you customize and
-                    preview different font styles. Try changing the properties
-                    below to see how they affect the text appearance.
+                    Our typography system showcases different font styles and sizes 
+                    for headers and body text in both English and Arabic languages.
                   </p>
                 </div>
-              </div>              <div className="mb-12">
+              </div>              <div className="space-y-8 mb-16">
                 <DynamicTypography
-                  title="Heading Typography"
-                  description="Customize and preview heading styles with different properties"
-                  fontFamilies={["Poppins", "Roboto"]}
-                  defaultFontFamily="Poppins"
-                  defaultFontWeight="700"
-                  defaultFontSize="36px"
-                  defaultLineHeight="1.3"
-                  sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow."
+                  title="English Typography"
+                  description="Typography examples for headers and body text in English"
                   language="en"
                 />
-              </div>
-              <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mt-10 mb-4 flex items-center">
-                <TextFieldsRoundedIcon className="h-4 w-4 align-middle" />
-                Body Text Fonts
-              </h3>
-              <p className="font-body text-neutral-700 dark:text-neutral-300 mb-6">
-                Our design system includes support for different body fonts in
-                multiple languages.
-              </p>{" "}              <div className="space-y-8 mb-16">
+                
                 <DynamicTypography
-                  title="English Body Typography"
-                  description="Customize and preview body text styles for English and Latin languages"
-                  fontFamilies={["Roboto", "Poppins"]}
-                  defaultFontFamily="Roboto"
-                  defaultFontWeight="400"
-                  defaultFontSize="16px"
-                  defaultLineHeight="1.5"
-                  sampleText="The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow. A wizard's job is to vex chumps quickly in fog. How vexingly quick daft zebras jump! The five boxing wizards jump quickly."
-                  language="en"
-                />                <DynamicTypography
                   title="Arabic Typography"
-                  description="Customize and preview text styles for RTL languages like Arabic"
-                  fontFamilies={["Tajwal"]}
-                  defaultFontFamily="Tajwal"
-                  defaultFontWeight="400"
-                  defaultFontSize="16px"
-                  defaultLineHeight="1.6"
-                  sampleText="هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى. حيث يمكنك توليد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق."
+                  description="Typography examples for headers and body text in Arabic with RTL support"
                   language="ar"
                 />
               </div>

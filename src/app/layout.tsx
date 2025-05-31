@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Roboto } from "next/font/google";
+import { Poppins, Roboto, Tajawal } from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -16,7 +16,14 @@ const roboto = Roboto({
   display: "swap",
 });
 
-// Removed Tajawal font that was used for RTL language support
+const tajawal = Tajawal({
+  variable: "--font-tajawal",
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+// Google Font for Arabic content
 
 export const metadata: Metadata = {
   title: "Design System Documentation",
@@ -28,9 +35,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {  return (
-    <html lang="en">
-      <body
-        className={`${poppins.variable} ${roboto.variable} antialiased`}
+    <html lang="en">      <body
+        className={`${poppins.variable} ${roboto.variable} ${tajawal.variable} antialiased`}
       >
         {children}
       </body>
