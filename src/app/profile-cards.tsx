@@ -145,7 +145,7 @@ function ProfileCard({ name, title, description, theme, variant = 'basic' }: Pro
       <div className="relative">{getLayout()}</div>
       {theme === 'colorful' && (
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+          background: "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
           opacity: 0.10,
           mixBlendMode: 'overlay'
         }} />

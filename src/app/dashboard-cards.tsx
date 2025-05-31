@@ -106,7 +106,7 @@ function DashboardCard({
     if (theme === 'colorful') {
       return {
         bg: 'bg-[rgba(128,0,255,0.2)]',
-        fill: 'bg-gradient-to-r from-[#00ffff] to-[#ff00cc]'
+        fill: 'bg-gradient-to-r from-[#3b82f6] to-[#a855f7]'
       };
     } else if (theme === 'dark') {
       return {
@@ -181,12 +181,12 @@ function DashboardCard({
                   <defs>
                     <linearGradient id="sparklineGradient" x1="0" x2="0" y1="0" y2="1">
                       <stop offset="0%" stopColor={
-                        theme === 'colorful' ? '#ff00cc' : 
+                        theme === 'colorful' ? '#a855f7' : 
                         theme === 'dark' ? 'rgb(34, 197, 94)' : 
                         'rgb(22, 163, 74)'
                       } stopOpacity="0.3" />
                       <stop offset="100%" stopColor={
-                        theme === 'colorful' ? '#ff00cc' : 
+                        theme === 'colorful' ? '#a855f7' : 
                         theme === 'dark' ? 'rgb(34, 197, 94)' : 
                         'rgb(22, 163, 74)'
                       } stopOpacity="0" />
@@ -250,7 +250,7 @@ function DashboardCard({
                           fill="none" 
                           stroke={
                             theme === 'colorful' 
-                              ? '#ff00cc' 
+                              ? '#a855f7' 
                               : theme === 'dark' 
                                 ? 'rgb(34, 197, 94)' 
                                 : 'rgb(22, 163, 74)'
@@ -269,7 +269,7 @@ function DashboardCard({
                             r="2"
                             className={
                               theme === 'colorful' 
-                                ? 'fill-white stroke-[#ff00cc] stroke-2' 
+                                ? 'fill-white stroke-[#a855f7] stroke-2' 
                                 : theme === 'dark' 
                                   ? 'fill-neutral-900 stroke-green-500 stroke-2'
                                   : 'fill-white stroke-green-600 stroke-2'
@@ -284,7 +284,7 @@ function DashboardCard({
                           r="3"
                           className={
                             theme === 'colorful' 
-                              ? 'fill-white stroke-[#ff00cc] stroke-2' 
+                              ? 'fill-white stroke-[#a855f7] stroke-2' 
                               : theme === 'dark' 
                                 ? 'fill-neutral-900 stroke-green-500 stroke-2'
                                 : 'fill-white stroke-green-600 stroke-2'
@@ -332,7 +332,7 @@ function DashboardCard({
       {renderVariant()}
       {theme === 'colorful' && (
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+          background: "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
           opacity: 0.07,
           mixBlendMode: 'overlay'
         }} />

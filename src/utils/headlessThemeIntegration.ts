@@ -34,7 +34,7 @@ export function normalizeTheme(theme: string | unknown): ThemeType {
 export function getFocusRingClasses(theme: ThemeType): string {
   switch (theme) {
     case 'colorful':
-      return 'focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a0033]';
+      return 'focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0a2e]';
     case 'dark':
       return 'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900';
     default:
@@ -71,13 +71,13 @@ export function getColorfulTextClass(importance: 'primary' | 'secondary' | 'mute
 export function getColorfulContainerClasses(variant: 'default' | 'bordered' | 'filled' | 'minimal'): string {
   switch (variant) {
     case 'bordered':
-      return 'border-2 border-[rgba(128,0,255,0.7)] bg-[#1a0033] rounded-xl shadow-[0_4px_16px_rgba(255,0,204,0.25)]';
+      return 'border-2 border-violet-400/70 bg-[#0f0a2e] rounded-xl shadow-[0_4px_16px_rgba(168,85,247,0.25)]';
     case 'filled':
-      return 'bg-[#1a0033] rounded-lg shadow-[0_4px_16px_rgba(255,0,204,0.25)]';
+      return 'bg-[#0f0a2e] rounded-lg shadow-[0_4px_16px_rgba(168,85,247,0.25)]';
     case 'minimal':
       return 'bg-transparent';
     default:
-      return 'border border-[rgba(128,0,255,0.3)] bg-[#1a0033] rounded-lg shadow-[0_4px_16px_rgba(255,0,204,0.25)]';
+      return 'border border-violet-400/30 bg-[#0f0a2e] rounded-lg shadow-[0_4px_16px_rgba(168,85,247,0.25)]';
   }
 }
 
@@ -87,11 +87,11 @@ export function getColorfulContainerClasses(variant: 'default' | 'bordered' | 'f
 export function getColorfulInteractiveClasses(state: 'hover' | 'focus' | 'active' | 'disabled'): string {
   switch (state) {
     case 'hover':
-      return 'data-hover:bg-[rgba(26,0,51,0.8)]';
+      return 'data-hover:bg-[rgba(15,10,46,0.8)]';
     case 'focus':
-      return 'data-focus:ring-2 data-focus:ring-[rgba(255,0,204,0.5)]';
+      return 'data-focus:ring-2 data-focus:ring-violet-400/50';
     case 'active':
-      return 'data-active:bg-[rgba(26,0,51,0.9)]';
+      return 'data-active:bg-[rgba(15,10,46,0.9)]';
     case 'disabled':
       return 'data-disabled:opacity-50 data-disabled:cursor-not-allowed';
     default:
@@ -107,7 +107,7 @@ export function getColorfulOverlayStyles(mixBlendMode = 'overlay', opacity = 0.1
   return {
     className: "absolute inset-0 pointer-events-none",
     style: {
-      background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+      background: "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
       opacity,
       mixBlendMode
     },
@@ -119,17 +119,17 @@ export function getColorfulOverlayStyles(mixBlendMode = 'overlay', opacity = 0.1
  * Get colorful theme header styles
  */
 export function getColorfulHeaderClasses(variant: 'default' | 'bordered' | 'filled' | 'minimal'): string {
-  const baseClasses = 'bg-[#1a0033]';
+  const baseClasses = 'bg-[#0f0a2e]';
   
   switch (variant) {
     case 'bordered':
-      return `${baseClasses} border-b-2 border-[rgba(128,0,255,0.7)] data-hover:bg-[rgba(26,0,51,0.8)]`;
+      return `${baseClasses} border-b-2 border-violet-400/70 data-hover:bg-[rgba(15,10,46,0.8)]`;
     case 'filled':
-      return `${baseClasses} data-hover:bg-[rgba(26,0,51,0.8)]`;
+      return `${baseClasses} data-hover:bg-[rgba(15,10,46,0.8)]`;
     case 'minimal':
-      return 'bg-transparent data-hover:bg-[rgba(128,0,255,0.1)] rounded-lg';
+      return 'bg-transparent data-hover:bg-violet-400/10 rounded-lg';
     default:
-      return `${baseClasses} border-b border-[rgba(128,0,255,0.3)] data-hover:bg-[rgba(26,0,51,0.8)]`;
+      return `${baseClasses} border-b border-violet-400/30 data-hover:bg-[rgba(15,10,46,0.8)]`;
   }
 }
 
@@ -139,13 +139,13 @@ export function getColorfulHeaderClasses(variant: 'default' | 'bordered' | 'fill
 export function getColorfulContentClasses(variant: 'default' | 'bordered' | 'filled' | 'minimal'): string {
   switch (variant) {
     case 'bordered':
-      return 'bg-[#1a0033] border-t-2 border-[rgba(128,0,255,0.7)]';
+      return 'bg-[#0f0a2e] border-t-2 border-violet-400/70';
     case 'filled':
-      return 'bg-[#1a0033]';
+      return 'bg-[#0f0a2e]';
     case 'minimal':
-      return 'bg-transparent border-l-4 border-[rgba(128,0,255,0.7)] ml-4';
+      return 'bg-transparent border-l-4 border-violet-400/70 ml-4';
     default:
-      return 'bg-[#1a0033] border-t border-[rgba(128,0,255,0.3)]';
+      return 'bg-[#0f0a2e] border-t border-violet-400/30';
   }
 }
 
@@ -155,7 +155,7 @@ export function getColorfulContentClasses(variant: 'default' | 'bordered' | 'fil
 export function getThemeIconColors(theme: ThemeType): string {
   switch (theme) {
     case 'colorful':
-      return 'text-fuchsia-400';
+      return 'text-violet-400';
     case 'dark':
       return 'text-gray-300';
     default:
@@ -221,18 +221,18 @@ export function getGlassmorphismStyle(strength: 'light' | 'medium' | 'strong'): 
 export function getCssVariables(): Record<string, string> {
   return {
     '--color-primary': colorfulThemeColors.colors.blue[500],
-    '--color-accent': colorfulThemeColors.colors.purple[500], 
+    '--color-accent': colorfulThemeColors.colors.violet[500], 
     '--color-secondary': colorfulThemeColors.colors.indigo[500],
     '--glow-primary': colorfulThemeColors.decorative.glowBlue,
-    '--glow-accent': colorfulThemeColors.decorative.glowPurple,
+    '--glow-accent': colorfulThemeColors.decorative.glowViolet,
     '--border-light': colorfulThemeColors.borders.white,
     '--border-medium': colorfulThemeColors.borders.whiteStrong,
     '--overlay-light': colorfulThemeColors.overlays.glass.light,
     '--overlay-medium': colorfulThemeColors.overlays.glass.medium,
     '--overlay-strong': colorfulThemeColors.overlays.glass.strong,
-    '--gradient-primary': 'linear-gradient(to right, #3b82f6, #9333ea)',
-    '--gradient-secondary': 'linear-gradient(to right, #9333ea, #ec4899)',
-    '--bg-base': '#1a0033',
+    '--gradient-primary': 'linear-gradient(to right, #3b82f6, #a855f7)',
+    '--gradient-secondary': 'linear-gradient(to right, #a855f7, #6366f1)',
+    '--bg-base': '#0f0a2e',
     '--text-primary': '#f0f8ff',
     '--text-secondary': 'rgba(240, 248, 255, 0.9)',
     '--text-muted': 'rgba(240, 248, 255, 0.7)',
@@ -245,12 +245,12 @@ export function getCssVariables(): Record<string, string> {
 export function getBorderClass(variant: 'default' | 'strong' | 'light' | 'white'): string {
   switch (variant) {
     case 'strong':
-      return 'border-[rgba(128,0,255,0.7)]';
+      return 'border-violet-400/70';
     case 'light':
-      return 'border-[rgba(128,0,255,0.2)]';
+      return 'border-violet-400/20';
     case 'white':
-      return 'border-[rgba(255,255,255,0.2)]';
+      return 'border-white/20';
     default:
-      return 'border-[rgba(128,0,255,0.3)]';
+      return 'border-violet-400/30';
   }
 }

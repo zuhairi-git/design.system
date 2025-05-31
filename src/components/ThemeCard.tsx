@@ -132,7 +132,7 @@ export default function ThemeCard({
       {theme === 'colorful' && (
         <div className="absolute inset-0 pointer-events-none" 
              style={{
-               background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+               background: "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
                opacity: 0.15,
                animation: variant === 'gradient' ? 'gradientShift 8s ease infinite' : 'none'
              }}

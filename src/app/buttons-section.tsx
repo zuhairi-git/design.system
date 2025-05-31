@@ -443,7 +443,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
                 className="cosmic-shimmer px-8 py-4 rounded-full font-medium transition-all duration-300 text-white shadow-lg relative overflow-hidden"
                 style={{
                   background:
-                    "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+                    "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
                   backgroundSize: "200% 200%",
                   animation: "gradientShift 3s ease infinite",
                 }}
@@ -458,7 +458,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
               {" "}
               <pre className="text-xs text-neutral-100 font-mono">
                 {`/* Cosmic Shimmer */
-background: 'linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)'
+background: 'linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)'
 backgroundSize: '200% 200%'
 animation: 'gradientShift 3s ease infinite'
 

@@ -1,15 +1,18 @@
 // Colorful Theme Configuration for Design System
 export const colorfulThemeColors = {
-  // Primary Gradients
+  // Primary Gradients - Harmonized color scheme
   gradients: {
-    primary: 'bg-gradient-to-r from-blue-500 to-purple-500',
-    secondary: 'bg-gradient-to-r from-purple-500 to-pink-500',
-    accent: 'bg-gradient-to-r from-blue-400 to-indigo-500',
-    highlight: 'bg-gradient-to-r from-indigo-500 to-purple-600',
+    primary: 'bg-gradient-to-r from-blue-500 to-violet-500',
+    secondary: 'bg-gradient-to-r from-violet-500 to-indigo-500',
+    accent: 'bg-gradient-to-r from-blue-400 to-violet-400',
+    highlight: 'bg-gradient-to-r from-indigo-500 to-blue-600',
     
-    // Background gradients
-    heroBackground: 'bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-indigo-900/20',
-    cardBackground: 'bg-gradient-to-br from-blue-800/10 to-purple-800/10',
+    // Background gradients - more subtle and cohesive
+    heroBackground: 'bg-gradient-to-br from-blue-900/20 via-violet-900/20 to-indigo-900/20',
+    cardBackground: 'bg-gradient-to-br from-blue-800/10 to-violet-800/10',
+    
+    // Cosmic signature gradient - harmonized version
+    cosmic: 'linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)',
     
     // Animated gradients for effects
     animatedGlow: [
@@ -39,16 +42,14 @@ export const colorfulThemeColors = {
       700: 'rgb(29, 78, 216)',
       800: 'rgb(30, 64, 175)',
       900: 'rgb(30, 58, 138)',
-    },
-
-    // Purples
-    purple: {
+    },    // Purples/Violets - Updated naming for consistency
+    violet: {
       50: 'rgb(250, 245, 255)',
       100: 'rgb(243, 232, 255)',
       200: 'rgb(233, 213, 255)',
       300: 'rgb(196, 181, 253)',
-      400: 'rgb(168, 85, 247)',   // Primary purple
-      500: 'rgb(147, 51, 234)',   // Main purple
+      400: 'rgb(168, 85, 247)',   // Primary violet
+      500: 'rgb(147, 51, 234)',   // Main violet
       600: 'rgb(126, 34, 206)',
       700: 'rgb(107, 33, 168)',
       800: 'rgb(88, 28, 135)',
@@ -66,22 +67,9 @@ export const colorfulThemeColors = {
       600: 'rgb(79, 70, 229)',
       700: 'rgb(67, 56, 202)',
       800: 'rgb(55, 48, 163)',
-      900: 'rgb(49, 46, 129)',
-    },
+      900: 'rgb(49, 46, 129)',    },
 
-    // Pinks (for secondary gradients)
-    pink: {
-      50: 'rgb(253, 242, 248)',
-      100: 'rgb(252, 231, 243)',
-      200: 'rgb(251, 207, 232)',
-      300: 'rgb(249, 168, 212)',
-      400: 'rgb(244, 114, 182)',
-      500: 'rgb(236, 72, 153)',
-      600: 'rgb(219, 39, 119)',
-      700: 'rgb(190, 24, 93)',
-      800: 'rgb(157, 23, 77)',
-      900: 'rgb(131, 24, 67)',
-    }
+    // Remove pink colors as they don't fit the harmonized blue-violet-indigo scheme
   },
 
   // Opacity variants for overlays and effects
@@ -92,15 +80,14 @@ export const colorfulThemeColors = {
       medium: 'rgba(255, 255, 255, 0.2)',
       strong: 'rgba(255, 255, 255, 0.3)'
     },
-    
-    // Color overlays
+      // Color overlays - harmonized with blue-violet-indigo scheme
     blue: {
       light: 'rgba(59, 130, 246, 0.1)',
       medium: 'rgba(59, 130, 246, 0.2)',
       strong: 'rgba(59, 130, 246, 0.4)'
     },
     
-    purple: {
+    violet: {
       light: 'rgba(168, 85, 247, 0.1)',
       medium: 'rgba(168, 85, 247, 0.2)',
       strong: 'rgba(168, 85, 247, 0.4)'
@@ -112,29 +99,28 @@ export const colorfulThemeColors = {
       strong: 'rgba(99, 102, 241, 0.4)'
     }
   },
-
-  // Border colors
+  // Border colors - harmonized scheme
   borders: {
     blue: 'rgba(96, 165, 250, 0.3)',
-    purple: 'rgba(168, 85, 247, 0.3)',
+    violet: 'rgba(168, 85, 247, 0.3)',
     indigo: 'rgba(99, 102, 241, 0.3)',
     white: 'rgba(255, 255, 255, 0.1)',
     whiteStrong: 'rgba(255, 255, 255, 0.2)'
   },
 
-  // Decorative elements
+  // Decorative elements - harmonized glow effects
   decorative: {
     // Dot grid patterns
     dotGrid: 'radial-gradient(circle, rgba(96, 165, 250, 0.2) 1px, transparent 1px)',
     
-    // Glow effects
+    // Glow effects - consistent with color scheme
     glowBlue: '0 0 20px rgba(59, 130, 246, 0.3)',
-    glowPurple: '0 0 20px rgba(168, 85, 247, 0.3)',
+    glowViolet: '0 0 20px rgba(168, 85, 247, 0.3)',
     glowIndigo: '0 0 20px rgba(99, 102, 241, 0.3)',
     
     // Animated glow orbs
     orbBlue: 'rgba(59, 130, 246, 0.2)',
-    orbPurple: 'rgba(168, 85, 247, 0.2)',
+    orbViolet: 'rgba(168, 85, 247, 0.2)',
     orbIndigo: 'rgba(99, 102, 241, 0.2)'
   }
 };
@@ -185,11 +171,10 @@ export const colorfulThemeCombinations = {
     ghost: 'bg-transparent border border-white/20',
     text: 'text-white'
   },
-  
-  // Interactive elements
+    // Interactive elements - harmonized with the color scheme
   interactive: {
     hover: colorfulThemeColors.overlays.blue.medium,
-    focus: colorfulThemeColors.overlays.purple.medium,
+    focus: colorfulThemeColors.overlays.violet.medium,
     active: colorfulThemeColors.overlays.indigo.medium
   }
 };

@@ -92,7 +92,7 @@ export default function Home() {
                     className="cosmic-shimmer inline-block px-5 py-2.5 rounded-full font-medium transition-all duration-300 text-white border border-transparent shadow-lg relative overflow-hidden"
                     style={{
                       backgroundImage:
-                        "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+                        "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
                       backgroundSize: "200% 200%",
                       animation: "gradientShift 3s ease infinite",
                     }}

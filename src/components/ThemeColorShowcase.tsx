@@ -110,44 +110,43 @@ const themeData = {
         ]
       }
     ]
-  },
-  colorful: {
+  },  colorful: {
     title: 'Colorful Theme',
-    description: 'Vibrant, gradient-rich palette perfect for creative applications and immersive user experiences.',
+    description: 'Harmonized blue-violet-indigo palette perfect for creative applications and immersive user experiences.',
     icon: OpacityRoundedIcon,
     usage: ['Creative portfolios', 'Gaming interfaces', 'Entertainment apps', 'Art & design tools'],
     preview: {
-      background: 'linear-gradient(135deg, rgba(30, 5, 60, 0.9), rgba(15, 20, 45, 0.9))',
-      border: '1px solid rgba(139, 92, 246, 0.4)',
-      shadow: '0 4px 20px rgba(236, 72, 153, 0.25)',      textPrimary: '#f0f8ff',
+      background: 'linear-gradient(135deg, rgba(15, 10, 46, 0.9), rgba(30, 20, 60, 0.9))',
+      border: '1px solid rgba(167, 139, 250, 0.4)',
+      shadow: '0 4px 20px rgba(168, 85, 247, 0.25)',      textPrimary: '#f0f8ff',
       textSecondary: 'rgba(240, 248, 255, 0.9)'
     },
     palettes: [
       {
         name: 'Core Colors',
         colors: [
-          { shade: 'Background', color: 'bg-slate-950', name: '#0a051a' },
-          { shade: 'Foreground', color: 'text-slate-50', name: '#f8fafc' },
-          { shade: 'Primary', color: 'text-violet-400', name: '#a78bfa' },
-          { shade: 'Primary Hover', color: 'text-violet-300', name: '#c4b5fd' },
+          { shade: 'Background', color: 'bg-slate-950', name: '#0f0a2e' },
+          { shade: 'Foreground', color: 'text-slate-50', name: '#f0f8ff' },
+          { shade: 'Primary', color: 'text-blue-500', name: '#3b82f6' },
+          { shade: 'Primary Hover', color: 'text-violet-400', name: '#a78bfa' },
           { shade: 'Primary Glow', color: 'shadow-violet-400/25', name: 'rgba(167, 139, 250, 0.25)' }
         ]
       },
       {
         name: 'Surface Colors',
         colors: [
-          { shade: 'Card Background', color: 'bg-violet-950/90', name: 'rgba(46, 16, 101, 0.9)' },
-          { shade: 'Card Border', color: 'border-violet-500/25', name: 'rgba(139, 92, 246, 0.25)' },
-          { shade: 'Card Border Hover', color: 'border-pink-400/40', name: 'rgba(244, 114, 182, 0.4)' },
-          { shade: 'Card Shadow', color: 'shadow-pink-500/20', name: 'rgba(236, 72, 153, 0.2)' }
+          { shade: 'Card Background', color: 'bg-violet-950/90', name: 'rgba(15, 10, 46, 0.9)' },
+          { shade: 'Card Border', color: 'border-violet-400/30', name: 'rgba(167, 139, 250, 0.3)' },
+          { shade: 'Card Border Hover', color: 'border-indigo-400/50', name: 'rgba(99, 102, 241, 0.5)' },
+          { shade: 'Card Shadow', color: 'shadow-violet-500/20', name: 'rgba(168, 85, 247, 0.2)' }
         ]
       },
       {
         name: 'Gradient Accents',
         colors: [
-          { shade: 'Gradient Primary', color: 'bg-gradient-to-r from-violet-500 to-fuchsia-500', name: 'linear-gradient(to right, #8b5cf6, #d946ef)' },
-          { shade: 'Gradient Secondary', color: 'bg-gradient-to-r from-cyan-400 to-blue-500', name: 'linear-gradient(to right, #22d3ee, #3b82f6)' },
-          { shade: 'Gradient Accent', color: 'bg-gradient-to-r from-pink-500 to-orange-400', name: 'linear-gradient(to right, #ec4899, #fb923c)' },
+          { shade: 'Gradient Primary', color: 'bg-gradient-to-r from-blue-500 to-violet-500', name: 'linear-gradient(to right, #3b82f6, #a855f7)' },
+          { shade: 'Gradient Secondary', color: 'bg-gradient-to-r from-violet-500 to-indigo-500', name: 'linear-gradient(to right, #a855f7, #6366f1)' },
+          { shade: 'Gradient Cosmic', color: 'bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500', name: 'linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)' },
           { shade: 'Gradient Background', color: 'bg-gradient-to-br from-violet-950/80 to-fuchsia-950/80', name: 'linear-gradient(to bottom right, rgba(46, 16, 101, 0.8), rgba(74, 4, 78, 0.8))' }
         ]
       }
@@ -425,7 +424,7 @@ export default function ThemeColorShowcase({ theme }: ThemeShowcaseProps) {
                   </div>
                   <div className="p-4 bg-indigo-950/80">
                     <p className="font-body text-sm font-medium text-blue-100">Cosmic Gradient</p>
-                    <p className="font-body text-xs mt-1 text-blue-200/70 font-mono">linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)</p>
+                    <p className="font-body text-xs mt-1 text-blue-200/70 font-mono">linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)</p>
                   </div>
                 </div>
                 

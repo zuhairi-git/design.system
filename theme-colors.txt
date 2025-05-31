@@ -53,32 +53,34 @@ bg-theme-dark: #0a0a0a
 ---
 
 ## Colorful Theme
-background: #050023
+background: #0f0a2e
 foreground: #f0f8ff
-primary: #ff00cc
-primary-hover: #d100ff
-gradient-start: #00ffff
-gradient-mid: #ff00cc
-gradient-end: #3b82f6
-primary-glow: rgba(255, 0, 204, 0.3)
+primary: #a78bfa
+primary-hover: #8b5cf6
+gradient-start: #3b82f6
+gradient-mid: #a855f7
+gradient-end: #6366f1
+primary-glow: rgba(167, 139, 250, 0.3)
 
 # Card
-card-from-bg: rgba(20, 10, 50, 0.8)
-card-to-bg: rgba(10, 5, 30, 0.8)
-card-border: rgba(128, 0, 255, 0.3)
-card-border-hover: rgba(0, 255, 255, 0.6)
-card-shadow-color: rgba(255, 0, 204, 0.3)
+card-from-bg: rgba(15, 10, 46, 0.9)
+card-to-bg: rgba(30, 20, 60, 0.8)
+card-border: rgba(167, 139, 250, 0.3)
+card-border-hover: rgba(99, 102, 241, 0.5)
+card-shadow-color: rgba(168, 85, 247, 0.25)
 
 # Text
 text-primary: #f0f8ff
-text-accent: #ff00cc
+text-secondary: rgba(240, 248, 255, 0.9)
+text-muted: rgba(240, 248, 255, 0.7)
+text-accent: #a78bfa
 
 # Gradients & Effects
-cosmic-gradient: linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)
-heading-glow: text-shadow: 0 0 10px rgba(255, 0, 204, 0.3)
+cosmic-gradient: linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)
+heading-glow: text-shadow: 0 0 10px rgba(167, 139, 250, 0.4)
 
 # Other
-bg-theme-dark: #050023
+bg-theme-colorful: #0f0a2e
 
 ---
 

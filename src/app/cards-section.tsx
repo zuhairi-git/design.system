@@ -58,7 +58,7 @@ export default function CardsSection() {
                   variant="default"
                   theme="colorful"
                   title="Cosmic Theme"
-                  description="Vibrant cosmic gradient with cyan, magenta and blue from #00ffff to #ff00cc to #3b82f6."
+                  description="Vibrant cosmic gradient with cyan, magenta and blue from #3b82f6 to #a855f7 to #3b82f6."
                   materialIcon={AutoAwesomeIcon}
                 />
               </div>

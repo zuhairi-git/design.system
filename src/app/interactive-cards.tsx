@@ -72,7 +72,7 @@ function InteractiveCard({ title, description, theme, variant }: InteractiveCard
     
     if (variant === 'hover') {
       if (theme === 'colorful') {
-        style += ' group-hover:text-[#00ffff]';
+        style += ' group-hover:text-[#3b82f6]';
       } else {
         style += ' group-hover:text-primary-600 dark:group-hover:text-primary-400';
       }
@@ -88,7 +88,7 @@ function InteractiveCard({ title, description, theme, variant }: InteractiveCard
   };
   
   const getIconStyles = () => {
-    if (theme === 'colorful') return 'text-[#00ffff]';
+    if (theme === 'colorful') return 'text-[#3b82f6]';
     if (theme === 'dark') return 'text-neutral-400';
     return 'text-neutral-500';
   };
@@ -133,7 +133,7 @@ function InteractiveCard({ title, description, theme, variant }: InteractiveCard
       {renderCard()}
       {theme === 'colorful' && (
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: "linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)",
+          background: "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
           opacity: 0.07,
           mixBlendMode: 'overlay'
         }} />

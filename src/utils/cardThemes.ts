@@ -40,7 +40,7 @@ export function getCardThemeStyles(theme: CardTheme) {
     
     case 'colorful':
       return {
-        background: 'linear-gradient(135deg, #00ffff, #ff00cc, #3b82f6)',
+        background: 'linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)',
         overlay: 'linear-gradient(to bottom right, rgba(20, 10, 50, 0.8), rgba(10, 5, 30, 0.8))',
         border: 'rgba(128, 0, 255, 0.3)',
         text: {
