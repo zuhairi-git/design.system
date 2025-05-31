@@ -26,6 +26,7 @@ import ProfileCardsSection from "./profile-cards";
 import TimelineCardsSection from "./timeline-cards";
 import AccessibilityUtilitiesSection from "./accessibility-utilities";
 import SpacingSection from "./spacing";
+import LayoutsSection from "./layouts-section";
 import NavigationSection from "./navigation-section";
 import FormsSection from "./forms-section";
 import PaletteRoundedIcon from "@mui/icons-material/PaletteRounded";
@@ -546,9 +547,9 @@ export default function Home() {
           <ProfileCardsSection />
           <TimelineCardsSection />
           {/* Accordions Section */}
-          <AccordionSection />
-
-          {/* Patterns Section */}
+          <AccordionSection />          {/* Patterns Section */}
+          {/* Layouts Section */}
+          <LayoutsSection />
           {/* Navigation Section */}
           <NavigationSection />
           {/* Forms Section */}
