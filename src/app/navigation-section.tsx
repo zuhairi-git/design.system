@@ -15,6 +15,7 @@ import {
 } from '@heroicons/react/24/outline';
 import CodeSnippet from '@/components/CodeSnippet';
 import AnimatedSection from '@/components/AnimatedSection';
+import AdvancedNavigation from '@/components/demo/AdvancedNavigation';
 
 export default function NavigationSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -478,6 +479,218 @@ export default function NavigationSection() {
     </Tab.Panel>
   </Tab.Panels>
 </Tab.Group>`}
+            />
+          </div>
+
+          {/* Advanced Interactive Navigation */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-semibold text-neutral-900 dark:text-white mb-4">
+                Advanced Interactive Navigation
+              </h3>
+              <p className="text-neutral-600 dark:text-neutral-400 mb-6">
+                Feature-rich navigation with animations, dropdowns, theme switching, and mobile-first design.
+              </p>
+            </div>            <div className="bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-800 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden">
+              {/* Live Advanced Navigation Demo */}
+              <div className="relative min-h-[80px] overflow-visible">
+                <AdvancedNavigation />
+              </div>
+              
+              {/* Demo Content Area */}
+              <div className="p-8">
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
+                    Interactive Advanced Navigation
+                  </h4>
+                  <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+                    This is a fully interactive navigation component with all the advanced features including 
+                    dropdowns, animations, theme switching, and mobile responsiveness. Try clicking the dropdown arrows 
+                    and mobile menu button to see it in action.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Features List */}
+              <div className="bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 p-6">
+                <h4 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
+                  Key Features
+                </h4>
+                <ul className="space-y-3 text-neutral-600 dark:text-neutral-400">
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    Animated dropdowns with nested navigation
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    Theme switching (Light/Dark/Colorful)
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    Multi-language support with flags
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    Mobile-first responsive design
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                    Smooth scroll animations and transitions
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                    Keyboard navigation and ARIA support
+                  </li>
+                </ul>
+              </div>
+
+              {/* Mobile Preview */}
+              <div className="bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 p-6">
+                <h4 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
+                  Mobile Navigation
+                </h4>
+                <div className="bg-neutral-900 dark:bg-neutral-700 rounded-lg p-4 space-y-3">
+                  {/* Mobile menu items */}
+                  <div className="bg-white/10 rounded-lg p-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                        <HomeIcon className="w-4 h-4 text-blue-400" />
+                      </div>
+                      <span className="text-white font-medium">Home</span>
+                    </div>
+                    <ChevronRightIcon className="w-4 h-4 text-neutral-400" />
+                  </div>
+                  
+                  <div className="bg-white/10 rounded-lg p-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                        <UserIcon className="w-4 h-4 text-purple-400" />
+                      </div>
+                      <span className="text-white font-medium">Portfolio</span>
+                    </div>
+                    <ChevronRightIcon className="w-4 h-4 text-neutral-400" />
+                  </div>
+
+                  <div className="bg-white/5 rounded-lg p-3 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center">
+                      <CogIcon className="w-4 h-4 text-green-400" />
+                    </div>
+                    <span className="text-white font-medium">Design</span>
+                  </div>
+                </div>
+              </div>
+            </div>            <CodeSnippet
+              title="Advanced Navigation Component"
+              code={`'use client';
+
+import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { 
+  HomeIcon, 
+  UserIcon, 
+  ChevronDownIcon,
+  Bars3Icon,
+  XMarkIcon 
+} from '@heroicons/react/24/outline';
+import ThemeSwitch from './ThemeSwitch';
+import LanguageSwitcher from './LanguageSwitcher';
+
+const AdvancedNavigation = () => {
+  const { scrollY } = useScroll();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
+  const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
+
+  // Smooth background transitions based on scroll
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 100],
+    ["rgba(255, 255, 255, 0.8)", "rgba(255, 255, 255, 0.95)"]
+  );
+
+  const backdropBlur = useTransform(
+    scrollY,
+    [0, 100],
+    ["blur(4px)", "blur(12px)"]
+  );
+
+  return (
+    <motion.header
+      className="fixed w-full z-[60]"
+      style={{ backgroundColor, backdropFilter: backdropBlur }}
+    >
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex justify-between items-center">
+          {/* Brand */}
+          <Link href="/" className="text-2xl font-bold">
+            Ali Al-Zuhairi
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            {/* Home Dropdown */}
+            <div className="relative group">
+              <div className="flex items-center gap-2 py-2 px-3 rounded-lg bg-white/50 hover:bg-white/70 border border-gray-200/50 backdrop-blur-sm">
+                <Link href="/" className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                    <HomeIcon className="w-3 h-3 text-blue-500" />
+                  </div>
+                  <span className="font-medium text-sm">Home</span>
+                </Link>
+                <button onClick={() => setHomeDropdownOpen(!homeDropdownOpen)}>
+                  <ChevronDownIcon className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <AnimatePresence>
+                {homeDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg shadow-lg rounded-lg"
+                  >
+                    {/* Dropdown content */}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Theme & Language Controls */}
+            <div className="flex items-center space-x-3">
+              <LanguageSwitcher />
+              <ThemeSwitch />
+            </div>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
+            {menuOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white/95 backdrop-blur-lg"
+          >
+            {/* Mobile navigation content */}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
+  );
+};
+
+export default AdvancedNavigation;`}
             />
           </div>
         </div>
