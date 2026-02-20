@@ -8,7 +8,6 @@ import {
   ChevronRightIcon,
   MagnifyingGlassIcon,
   XMarkIcon,
-  BookmarkIcon,
   ClockIcon,
   ArrowRightIcon,
   Bars3Icon,
@@ -697,14 +696,50 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
               >
                 <Bars3Icon className="h-5 w-5" />
               </button>
-              {/* Bookmarks / Favorites */}
-              <button
-                className="hidden sm:flex p-2.5 rounded-full text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                aria-label="Bookmarked items"
-                title="Quick access to bookmarked components"
-              >
-                <BookmarkIcon className="h-5 w-5" />
-              </button>
+              {/* User Profile Menu */}
+              <Menu as="div" className="relative ml-2">
+                <Menu.Button className="flex rounded-full bg-white dark:bg-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ring-1 ring-neutral-200 dark:ring-neutral-700">
+                  <span className="sr-only">Open user menu</span>
+                  <div className="h-9 w-9 rounded-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+                    <img
+                      className="h-full w-full object-cover"
+                      src="/img/profile/image.png"
+                      alt="Ali Al-Zuahri"
+                    />
+                  </div>
+                </Menu.Button>
+                <Transition
+                  enter="transition ease-out duration-200"
+                  enterFrom="transform opacity-0 scale-95 translate-y-1"
+                  enterTo="transform opacity-100 scale-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="transform opacity-100 scale-100 translate-y-0"
+                  leaveTo="transform opacity-0 scale-95 translate-y-1"
+                >
+                  <Menu.Items className="absolute right-0 mt-2 w-72 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 overflow-hidden">
+                    <div className="px-4 py-3 border-b border-neutral-100 dark:border-neutral-700">
+                      <p className="text-sm font-semibold text-neutral-900 dark:text-white">Ali Al-Zuahri</p>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">Product Owner and Designer</p>
+                    </div>
+                    <div className="py-1">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="https://alux.space/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`block px-4 py-2 text-sm ${
+                              active ? "bg-neutral-50 dark:bg-neutral-700/50 text-neutral-900 dark:text-white" : "text-neutral-700 dark:text-neutral-300"
+                            }`}
+                          >
+                            Visit Website
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
             </div>
           </div>
         </div>{" "}
