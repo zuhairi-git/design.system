@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Combobox, Menu, Transition, Disclosure } from "@headlessui/react";
 import {
   ChevronDownIcon,
-  ChevronRightIcon,
+  Squares2X2Icon,
   MagnifyingGlassIcon,
   XMarkIcon,
   ClockIcon,
@@ -692,9 +692,14 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
               <button
                 className="lg:hidden p-2.5 rounded-full text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/50 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle mobile menu"
+                aria-label={mobileMenuOpen ? "Close top menu" : "Open top menu"}
+                title={mobileMenuOpen ? "Close top menu" : "Open top menu"}
               >
-                <Bars3Icon className="h-5 w-5" />
+                {mobileMenuOpen ? (
+                  <XMarkIcon className="h-5 w-5" />
+                ) : (
+                  <Squares2X2Icon className="h-5 w-5" />
+                )}
               </button>
               {/* User Profile Menu */}
               <Menu as="div" className="relative ml-2">
@@ -819,9 +824,9 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                           <link.icon className="w-4 h-4" aria-hidden="true" />
                           <span>{link.label}</span>
                         </div>
-                        <ChevronRightIcon
+                        <ChevronDownIcon
                           className={`h-4 w-4 transition-transform duration-200 ${
-                            open ? "rotate-90" : ""
+                            open ? "rotate-180" : ""
                           }`}
                         />
                       </Disclosure.Button>
