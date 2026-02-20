@@ -72,7 +72,7 @@ export default function ThemeSwitch() {
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative w-10 h-10 flex items-center justify-center rounded-lg cursor-pointer overflow-hidden ${
+                  className={`relative w-10 h-10 flex items-center justify-center rounded-full cursor-pointer overflow-hidden ${
                     checked 
                       ? getSelectedStyles(themeOption.value)
                       : getUnselectedStyles(theme)
@@ -120,7 +120,7 @@ export default function ThemeSwitch() {
                   {/* Ripple effect on click */}
                   {checked && (
                     <motion.div
-                      className="absolute inset-0 rounded-lg"
+                      className="absolute inset-0 rounded-full"
                       initial={{ scale: 0, opacity: 0.5 }}
                       animate={{ scale: 1.5, opacity: 0 }}
                       transition={{ duration: 0.6 }}

@@ -1,39 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Menu, Disclosure, Tab, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
+import React from 'react';
+import { Disclosure, Tab, Transition } from '@headlessui/react';
 import {
   ChevronRightIcon,
-  Bars3Icon,
-  XMarkIcon,
   HomeIcon,
   UserIcon,
   CogIcon,
-  BellIcon,
-  MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 import CodeSnippet from '@/components/CodeSnippet';
 import AnimatedSection from '@/components/AnimatedSection';
 import AdvancedNavigation from '@/components/demo/AdvancedNavigation';
 
 export default function NavigationSection() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Sample navigation data
-  const navigation = [
-    { name: 'Home', href: '#', icon: HomeIcon, current: true },
-    { name: 'Profile', href: '#', icon: UserIcon, current: false },
-    { name: 'Settings', href: '#', icon: CogIcon, current: false },
-    { name: 'Notifications', href: '#', icon: BellIcon, current: false },
-  ];
-
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
-  ];
-
   const breadcrumbNavigation = [
     { name: 'Home', href: '#', current: false },
     { name: 'Components', href: '#', current: false },
@@ -61,157 +40,90 @@ export default function NavigationSection() {
                 Header Navigation
               </h3>
               <p className="text-neutral-600 dark:text-neutral-400 mb-6">
-                Modern header with dropdown menus, search, and mobile responsiveness.
+                Modern floating navigation bar with rounded profile, dropdowns, and theme controls.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-neutral-800 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden">
-              <div className="bg-white dark:bg-neutral-900 shadow">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                  <div className="flex h-16 justify-between">
-                    <div className="flex">
-                      <div className="flex flex-shrink-0 items-center">
-                        <div className="h-8 w-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>
-                        <span className="ml-2 text-lg font-semibold text-neutral-900 dark:text-white">
-                          Brand
-                        </span>
-                      </div>
-                      <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-                        {navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className={`inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium transition-colors duration-200 ${
-                              item.current
-                                ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-                                : 'border-transparent text-neutral-500 hover:border-neutral-300 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300'
-                            }`}
-                          >
-                            <item.icon className="h-4 w-4 mr-2" />
-                            {item.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="hidden sm:ml-6 sm:flex sm:items-center space-x-4">
-                      {/* Search */}
-                      <div className="relative">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                          <MagnifyingGlassIcon className="h-5 w-5 text-neutral-400" />
-                        </div>
-                        <input
-                          type="text"
-                          className="block w-full rounded-md border-0 bg-neutral-100 dark:bg-neutral-800 py-1.5 pl-10 pr-3 text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:bg-white dark:focus:bg-neutral-700 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6 transition-colors"
-                          placeholder="Search..."
-                        />
-                      </div>
-
-                      {/* User menu */}
-                      <Menu as="div" className="relative ml-3">
-                        <Menu.Button className="flex max-w-xs items-center rounded-full bg-white dark:bg-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-900">
-                          <div className="h-8 w-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                        </Menu.Button>
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-200"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-neutral-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            {userNavigation.map((item) => (
-                              <Menu.Item key={item.name}>
-                                {({ active }) => (
-                                  <a
-                                    href={item.href}
-                                    className={`block px-4 py-2 text-sm transition-colors ${
-                                      active
-                                        ? 'bg-neutral-100 dark:bg-neutral-700 text-neutral-900 dark:text-white'
-                                        : 'text-neutral-700 dark:text-neutral-300'
-                                    }`}
-                                  >
-                                    {item.name}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                            ))}
-                          </Menu.Items>
-                        </Transition>
-                      </Menu>
-                    </div>
-
-                    {/* Mobile menu button */}
-                    <div className="-mr-2 flex items-center sm:hidden">
-                      <button
-                        type="button"
-                        className="inline-flex items-center justify-center rounded-md bg-white dark:bg-neutral-900 p-2 text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                      >
-                        {mobileMenuOpen ? (
-                          <XMarkIcon className="h-6 w-6" />
-                        ) : (
-                          <Bars3Icon className="h-6 w-6" />
-                        )}
-                      </button>
+            <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-8 overflow-hidden">
+              <div className="flex justify-center">
+                <div className="relative z-10 flex items-center justify-between px-2 py-2 rounded-full bg-white dark:bg-neutral-800 shadow-lg border border-neutral-200 dark:border-neutral-700 max-w-4xl w-full">
+                  {/* Brand / Profile */}
+                  <div className="flex-shrink-0 ml-1">
+                    <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white dark:ring-neutral-800 shadow-sm">
+                      <img
+                        src="/img/profile/image.png"
+                        alt="Ali Al-Zuahri"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
-                </div>
 
-                {/* Mobile menu */}
-                <div className={`sm:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`}>
-                  <div className="space-y-1 pb-3 pt-2">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={`block border-l-4 py-2 pl-3 pr-4 text-sm font-medium transition-colors ${
-                          item.current
-                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
-                            : 'border-transparent text-neutral-600 dark:text-neutral-400 hover:border-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:text-neutral-800 dark:hover:text-neutral-200'
-                        }`}
-                      >
-                        <div className="flex items-center">
-                          <item.icon className="h-4 w-4 mr-3" />
-                          {item.name}
-                        </div>
-                      </a>
-                    ))}
+                  {/* Desktop Navigation */}
+                  <nav className="hidden md:flex items-center space-x-1 mx-4">
+                    <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-neutral-900 dark:text-white rounded-full bg-neutral-100 dark:bg-neutral-700">
+                      <span>Home</span>
+                      <ChevronRightIcon className="w-3 h-3 rotate-90" />
+                    </button>
+                    
+                    <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                      <span>Portfolio</span>
+                      <ChevronRightIcon className="w-3 h-3 rotate-90" />
+                    </button>
+
+                    <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                      Blog
+                    </a>
+                    
+                    <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                      Audio Library
+                    </a>
+                    
+                    <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                      Prompts
+                    </a>
+                  </nav>
+
+                  {/* Right Actions */}
+                  <div className="flex items-center gap-2 pl-2 border-l border-neutral-200 dark:border-neutral-700">
+                    <span className="px-2 py-1 text-xs font-medium bg-neutral-100 dark:bg-neutral-700 rounded text-neutral-600 dark:text-neutral-300">
+                      EN
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-500">
+                      <div className="w-4 h-4 rounded-full bg-orange-500"></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <CodeSnippet
-              title="Header Navigation"
-              code={`<div className="bg-white dark:bg-neutral-900 shadow">
-  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div className="flex h-16 justify-between">
-      <div className="flex">
-        <div className="flex flex-shrink-0 items-center">
-          <div className="h-8 w-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg"></div>
-          <span className="ml-2 text-lg font-semibold">Brand</span>
-        </div>
-        <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className={\`inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium \${
-                item.current
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-neutral-500 hover:border-neutral-300'
-              }\`}
-            >
-              <item.icon className="h-4 w-4 mr-2" />
-              {item.name}
-            </a>
-          ))}
-        </div>
-      </div>
+              title="Floating Header Navigation"
+              code={`<div className="flex items-center justify-between px-2 py-2 rounded-full bg-white dark:bg-neutral-800 shadow-lg border border-neutral-200 dark:border-neutral-700 w-full max-w-4xl">
+  {/* Profle Image Brand */}
+  <div className="flex-shrink-0 ml-1">
+    <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white dark:ring-neutral-800 shadow-sm">
+      <img src="/img/profile/image.png" alt="Profile" className="w-full h-full object-cover" />
     </div>
+  </div>
+
+  {/* Navigation Links */}
+  <nav className="hidden md:flex items-center space-x-1 mx-4">
+    <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-neutral-900 dark:text-white rounded-full bg-neutral-100 dark:bg-neutral-700">
+      <span>Home</span>
+      <ChevronDownIcon className="w-3 h-3" />
+    </button>
+    <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900">
+      Portfolio
+    </a>
+    <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900">
+      Blog
+    </a>
+  </nav>
+
+  {/* Right Controls */}
+  <div className="flex items-center gap-2 pl-2 border-l border-neutral-200">
+    <LanguageSwitcher />
+    <ThemeToggle />
   </div>
 </div>`}
             />
