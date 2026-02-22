@@ -852,7 +852,6 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
 
             {/* Mobile Navigation Items with Accordions */}
             {navLinks.map((link) => {
-              const isExpanded = mobileMenuOpen && openMobileSection === link.id;
               return link.submenu ? (
                 <div key={link.id}>
                   <button
