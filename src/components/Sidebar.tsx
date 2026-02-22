@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Transition, Disclosure, Combobox } from '@headlessui/react';
-import { 
+import {
   MagnifyingGlassIcon,
   ChevronDownIcon,
   XMarkIcon,
@@ -52,38 +52,38 @@ const navigationItems: NavigationItem[] = [
     icon: SwatchIcon,
     description: 'Core design principles and tokens',
     tags: ['foundations', 'design', 'tokens'],
-    children: [      {
-        id: 'colors',
-        label: 'Colors',
-        icon: SwatchIcon,
-        href: '#colors',
-        description: 'Color palette and usage guidelines',
-        tags: ['colors', 'palette', 'theme']
-      },
-      {
-        id: 'typography',
-        label: 'Typography',
-        icon: DocumentTextIcon,
-        href: '#typography',
-        description: 'Font families, sizes, and text styles',
-        tags: ['typography', 'fonts', 'text']
-      },
-      {
-        id: 'spacing',
-        label: 'Spacing',
-        icon: RectangleGroupIcon,
-        href: '#spacing',
-        description: 'Spacing scale and layout principles',
-        tags: ['spacing', 'layout', 'margins', 'padding']
-      },
-      {
-        id: 'grids',
-        label: 'Grids',
-        icon: RectangleGroupIcon,
-        href: '#grids',
-        description: 'Grid systems and responsive layouts',
-        tags: ['grids', 'layout', 'responsive']
-      }
+    children: [{
+      id: 'colors',
+      label: 'Colors',
+      icon: SwatchIcon,
+      href: '#colors',
+      description: 'Color palette and usage guidelines',
+      tags: ['colors', 'palette', 'theme']
+    },
+    {
+      id: 'typography',
+      label: 'Typography',
+      icon: DocumentTextIcon,
+      href: '#typography',
+      description: 'Font families, sizes, and text styles',
+      tags: ['typography', 'fonts', 'text']
+    },
+    {
+      id: 'spacing',
+      label: 'Spacing',
+      icon: RectangleGroupIcon,
+      href: '#spacing',
+      description: 'Spacing scale and layout principles',
+      tags: ['spacing', 'layout', 'margins', 'padding']
+    },
+    {
+      id: 'grids',
+      label: 'Grids',
+      icon: RectangleGroupIcon,
+      href: '#grids',
+      description: 'Grid systems and responsive layouts',
+      tags: ['grids', 'layout', 'responsive']
+    }
     ]
   },
   {
@@ -116,7 +116,7 @@ const navigationItems: NavigationItem[] = [
         href: '#badges',
         description: 'Status indicators and labels',
         tags: ['badges', 'status', 'labels']
-      },      {
+      }, {
         id: 'cards',
         label: 'Cards',
         icon: CubeIcon,
@@ -206,14 +206,14 @@ const navigationItems: NavigationItem[] = [
     icon: BookOpenIcon,
     description: 'Additional resources and documentation',
     tags: ['resources', 'docs', 'help'],
-    children: [      {
-        id: 'accessibility-utilities',
-        label: 'Accessibility',
-        icon: BookOpenIcon,
-        href: '#accessibility-utilities',
-        description: 'Accessibility guidelines and best practices',
-        tags: ['accessibility', 'a11y', 'inclusive']
-      }
+    children: [{
+      id: 'accessibility-utilities',
+      label: 'Accessibility',
+      icon: BookOpenIcon,
+      href: '#accessibility-utilities',
+      description: 'Accessibility guidelines and best practices',
+      tags: ['accessibility', 'a11y', 'inclusive']
+    }
     ]
   }
 ];
@@ -252,7 +252,7 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
         item.description || '',
         ...(item.tags || [])
       ].join(' ').toLowerCase();
-      
+
       return searchableText.includes(query);
     });
 
@@ -261,10 +261,10 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
     const topLevel: NavigationItem[] = [];
 
     matchingItems.forEach(item => {
-      const parent = navigationItems.find(nav => 
+      const parent = navigationItems.find(nav =>
         nav.children?.some(child => child.id === item.id)
       );
-      
+
       if (parent && item.href) {
         if (!grouped.has(parent.id)) {
           grouped.set(parent.id, []);
@@ -360,47 +360,43 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
         <Disclosure key={item.id} defaultOpen={isExpanded}>
           {({ open }) => (
             <div className={level > 0 ? 'ml-4' : ''}>              <Disclosure.Button
-                className={`w-full flex items-center justify-between px-3 py-2.5 text-left rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${
-                  isActive
-                    ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100 shadow-sm'
-                    : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
+              className={`w-full flex items-center justify-between px-3 py-2.5 text-left rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${isActive
+                  ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100 shadow-sm'
+                  : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
                 }`}
-                onClick={() => toggleSection(item.id)}
-                {...getButtonAttributes(`Toggle ${item.label} section`)}
-              >
-                <div className="flex items-center min-w-0 flex-1">
-                  <IconComponent className={`h-5 w-5 mr-3 flex-shrink-0 transition-colors duration-200 ${
-                    isActive 
-                      ? 'text-primary-600 dark:text-primary-400' 
-                      : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
+              onClick={() => toggleSection(item.id)}
+              {...getButtonAttributes(`Toggle ${item.label} section`)}
+            >
+              <div className="flex items-center min-w-0 flex-1">
+                <IconComponent className={`h-5 w-5 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
+                    ? 'text-primary-600 dark:text-primary-400'
+                    : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
                   }`} />
-                  <div className="min-w-0 flex-1">
-                    <div className="font-medium text-sm truncate">{item.label}</div>
-                    {item.description && (
-                      <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
-                        {item.description}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  {item.children && (
-                    <div className="bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 text-xs px-1.5 py-0.5 rounded-md font-medium">
-                      {item.children.length}
+                <div className="min-w-0 flex-1">
+                  <div className="font-medium text-sm truncate">{item.label}</div>
+                  {item.description && (
+                    <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
+                      {item.description}
                     </div>
                   )}
-                  <ChevronDownIcon 
-                    className={`h-4 w-4 flex-shrink-0 transition-transform duration-200 ${
-                      open ? 'rotate-180' : ''
-                    } ${
-                      isActive 
-                        ? 'text-primary-600 dark:text-primary-400' 
-                        : 'text-neutral-400'
-                    }`}
-                  />
                 </div>
-              </Disclosure.Button>
-                <Transition
+              </div>
+              <div className="flex items-center space-x-2">
+                {item.children && (
+                  <div className="bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 text-xs px-1.5 py-0.5 rounded-md font-medium">
+                    {item.children.length}
+                  </div>
+                )}
+                <ChevronDownIcon
+                  className={`h-4 w-4 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''
+                    } ${isActive
+                      ? 'text-primary-600 dark:text-primary-400'
+                      : 'text-neutral-400'
+                    }`}
+                />
+              </div>
+            </Disclosure.Button>
+              <Transition
                 show={open}
                 enter="transition-all duration-300 ease-out"
                 enterFrom="opacity-0 max-h-0 -translate-y-1"
@@ -417,21 +413,18 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
           )}
         </Disclosure>
       );
-    }    return (
+    } return (
       <Link
         key={item.id}
         href={item.href || '#'}
-        onClick={() => handleNavClick(item)}        className={`flex items-center px-3 py-2.5 mx-2 rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${
-          level > 0 ? 'ml-2' : ''
-        } ${
-          isActive
+        onClick={() => handleNavClick(item)} className={`flex items-center px-3 py-2.5 mx-2 rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${level > 0 ? 'ml-2' : ''
+          } ${isActive
             ? 'bg-primary-100 text-primary-900 dark:bg-primary-900/30 dark:text-primary-100 shadow-sm'
             : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
-        }`}
-      >        <IconComponent className={`h-4 w-4 mr-3 flex-shrink-0 transition-colors duration-200 ${
-          isActive 
-            ? 'text-primary-600 dark:text-primary-400' 
-            : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
+          }`}
+      >        <IconComponent className={`h-4 w-4 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
+          ? 'text-primary-600 dark:text-primary-400'
+          : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
         }`} />
         <div className="min-w-0 flex-1">
           <div className="font-medium text-sm truncate">{item.label}</div>
@@ -460,94 +453,93 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div 
+        <div
           className="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-40 md:hidden"
           onClick={onToggle}
           aria-hidden="true"
         />
       </Transition>      {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-80 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-        } md:z-40 ${!isOpen ? 'md:hidden' : ''} ${className}`}
+        className={`fixed inset-y-0 left-0 z-50 w-80 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+          } md:z-40 ${!isOpen ? 'md:hidden' : ''} ${className}`}
         role="navigation"
         aria-label="Main navigation sidebar"
       >
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
-            <h2 className="text-lg font-semibold text-neutral-900 dark:text-white">
-              Alux Design System
-            </h2>
-            <button
-              onClick={onToggle}
-              className="md:hidden p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-              {...getButtonAttributes('Close sidebar')}
-            >
-              <XMarkIcon className="h-5 w-5 text-neutral-500" />
-            </button>
-          </div>
+        {/* Header */}
+        <div className="flex items-center justify-between p-4">
+          <h2 className="text-lg font-semibold text-neutral-900 dark:text-white">
+            Alux Design System
+          </h2>
+          <button
+            onClick={onToggle}
+            className="md:hidden p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            {...getButtonAttributes('Close sidebar')}
+          >
+            <XMarkIcon className="h-5 w-5 text-neutral-500" />
+          </button>
+        </div>
 
-          {/* Search */}
-          <div className="p-4 border-b border-neutral-200 dark:border-neutral-800">            <Combobox value={searchQuery} onChange={(value) => setSearchQuery(value || '')}>
-              <div className="relative">
-                <Combobox.Input
-                  ref={searchInputRef}
-                  className="w-full pl-10 pr-4 py-2.5 text-sm border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                  placeholder="Search navigation... (⌘K)"
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  displayValue={(query: string) => query}
-                />
-                <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-400" />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 p-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700"
-                  >
-                    <XMarkIcon className="h-3 w-3 text-neutral-400" />
-                  </button>
-                )}
-              </div>
-            </Combobox>
-            
+        {/* Search */}
+        <div className="p-4 border-b border-neutral-200 dark:border-neutral-800">            <Combobox value={searchQuery} onChange={(value) => setSearchQuery(value || '')}>
+          <div className="relative">
+            <Combobox.Input
+              ref={searchInputRef}
+              className="w-full pl-10 pr-4 py-2.5 text-sm border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              placeholder="Search navigation... (⌘K)"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              displayValue={(query: string) => query}
+            />
+            <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-400" />
             {searchQuery && (
-              <div className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-                {filteredItems.length === 0 ? 'No results found' : 
-                 `${filteredItems.length} result${filteredItems.length !== 1 ? 's' : ''} found`}
-              </div>
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 p-0.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-700"
+              >
+                <XMarkIcon className="h-3 w-3 text-neutral-400" />
+              </button>
             )}
-          </div>          {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto py-4 pl-2 pr-4 space-y-1">
-            {filteredItems.length === 0 ? (
-              <div className="text-center py-8 text-neutral-500 dark:text-neutral-400">
-                <MagnifyingGlassIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                <p className="text-sm">No navigation items found</p>
-                <p className="text-xs mt-1">Try adjusting your search terms</p>
-              </div>
-            ) : (
-              filteredItems.map(item => renderNavigationItem(item))
-            )}
-          </nav>
-
-          {/* Footer */}
-          <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
-            <div className="text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
-              <div className="flex items-center justify-between">
-                <span>Keyboard shortcuts:</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Search</span>
-                <kbd className="px-1.5 py-0.5 text-xs font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded">
-                  ⌘K
-                </kbd>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Clear search</span>
-                <kbd className="px-1.5 py-0.5 text-xs font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded">
-                  Esc
-                </kbd>              </div>
-            </div>
           </div>
-        </aside>
+        </Combobox>
+
+          {searchQuery && (
+            <div className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+              {filteredItems.length === 0 ? 'No results found' :
+                `${filteredItems.length} result${filteredItems.length !== 1 ? 's' : ''} found`}
+            </div>
+          )}
+        </div>          {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto py-4 pl-2 pr-4 space-y-1">
+          {filteredItems.length === 0 ? (
+            <div className="text-center py-8 text-neutral-500 dark:text-neutral-400">
+              <MagnifyingGlassIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
+              <p className="text-sm">No navigation items found</p>
+              <p className="text-xs mt-1">Try adjusting your search terms</p>
+            </div>
+          ) : (
+            filteredItems.map(item => renderNavigationItem(item))
+          )}
+        </nav>
+
+        {/* Footer */}
+        <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
+          <div className="text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+            <div className="flex items-center justify-between">
+              <span>Keyboard shortcuts:</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span>Search</span>
+              <kbd className="px-1.5 py-0.5 text-xs font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded">
+                ⌘K
+              </kbd>
+            </div>
+            <div className="flex items-center justify-between">
+              <span>Clear search</span>
+              <kbd className="px-1.5 py-0.5 text-xs font-mono bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded">
+                Esc
+              </kbd>              </div>
+          </div>
+        </div>
+      </aside>
     </>
   );
 }

@@ -231,14 +231,14 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
       icon: BookOpenIcon,
       description: "Additional resources and documentation",
       tags: ["resources", "docs", "help"],
-      children: [        {
-          id: "accessibility-utilities",
-          label: "Accessibility",
-          icon: BookOpenIcon,
-          href: "#accessibility-utilities",
-          description: "Accessibility guidelines and best practices",
-          tags: ["accessibility", "a11y", "inclusive"],
-        },
+      children: [{
+        id: "accessibility-utilities",
+        label: "Accessibility",
+        icon: BookOpenIcon,
+        href: "#accessibility-utilities",
+        description: "Accessibility guidelines and best practices",
+        tags: ["accessibility", "a11y", "inclusive"],
+      },
       ],
     },
   ];
@@ -278,18 +278,18 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
   ); // Filter search suggestions based on query
   const filteredSuggestions = searchQuery.trim()
     ? searchSuggestions
-        .filter((suggestion) => {
-          const searchableText = [
-            suggestion.label,
-            suggestion.category,
-            suggestion.description || "",
-            ...(suggestion.keywords || []),
-          ]
-            .join(" ")
-            .toLowerCase();
-          return searchableText.includes(searchQuery.toLowerCase());
-        })
-        .slice(0, 6)
+      .filter((suggestion) => {
+        const searchableText = [
+          suggestion.label,
+          suggestion.category,
+          suggestion.description || "",
+          ...(suggestion.keywords || []),
+        ]
+          .join(" ")
+          .toLowerCase();
+        return searchableText.includes(searchQuery.toLowerCase());
+      })
+      .slice(0, 6)
     : [];
 
   // Load recent searches from localStorage
@@ -414,11 +414,10 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          scrolled
-            ? "border-b border-neutral-200/80 dark:border-neutral-700/60 shadow-lg backdrop-blur-xl bg-white/95 dark:bg-neutral-900/95"
-            : "bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md"
-        }`}
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
+          ? "border-b border-neutral-200/80 dark:border-neutral-700/60 shadow-lg backdrop-blur-xl bg-white/95 dark:bg-neutral-900/95"
+          : "bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md"
+          }`}
         role="banner"
         aria-label="Site header"
       >
@@ -438,15 +437,20 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
               {" "}
               <Combobox
                 value={searchQuery}
-                onChange={(value) => setSearchQuery(value || "")}
+                onChange={(value: string | SearchSuggestion | null) => {
+                  if (typeof value === "string") {
+                    setSearchQuery(value);
+                  } else if (value && typeof value === "object") {
+                    handleSearchSubmit(value as SearchSuggestion);
+                  }
+                }}
               >
                 <div className="relative w-full">
                   <div
-                    className={`relative flex items-center transition-all duration-200 ${
-                      searchFocused
-                        ? "ring-2 ring-primary-500 shadow-lg"
-                        : "ring-1 ring-neutral-300 dark:ring-neutral-600 hover:ring-neutral-400 dark:hover:ring-neutral-500"
-                    } rounded-xl bg-white dark:bg-neutral-800/90 backdrop-blur-sm`}
+                    className={`relative flex items-center transition-all duration-200 ${searchFocused
+                      ? "ring-2 ring-primary-500 shadow-lg"
+                      : "ring-1 ring-neutral-300 dark:ring-neutral-600 hover:ring-neutral-400 dark:hover:ring-neutral-500"
+                      } rounded-xl bg-white dark:bg-neutral-800/90 backdrop-blur-sm`}
                   >
                     <MagnifyingGlassIcon className="absolute left-4 h-5 w-5 text-neutral-400 dark:text-neutral-500" />
 
@@ -459,7 +463,10 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                         setTimeout(() => setSearchFocused(false), 150)
                       }
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      displayValue={(query: string) => query}
+                      displayValue={(query: string | SearchSuggestion | null) => {
+                        if (!query) return "";
+                        return typeof query === "string" ? query : query.label;
+                      }}
                     />
 
                     <div className="absolute right-3 flex items-center space-x-2">
@@ -498,10 +505,9 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                                 key={suggestion.id}
                                 value={suggestion}
                                 className={({ active }) =>
-                                  `flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
-                                    active
-                                      ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
-                                      : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50"
+                                  `flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${active
+                                    ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
+                                    : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50"
                                   }`
                                 }
                                 onClick={() => handleSearchSubmit(suggestion)}
@@ -596,14 +602,13 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                 link.submenu ? (
                   <Menu as="div" key={link.id} className="relative">
                     <Menu.Button
-                      className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                        isClient &&
+                      className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${isClient &&
                         (activeSection === link.id ||
                           (link.submenu &&
                             link.submenu.includes(activeSection || "")))
-                          ? "text-primary-700 bg-primary-50 dark:text-primary-300 dark:bg-primary-900/30 shadow-sm"
-                          : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50"
-                      }`}
+                        ? "text-primary-700 bg-primary-50 dark:text-primary-300 dark:bg-primary-900/30 shadow-sm"
+                        : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50"
+                        }`}
                       {...getButtonAttributes(`${link.label} menu`)}
                     >
                       <link.icon className="w-4 h-4" aria-hidden="true" />
@@ -638,13 +643,12 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                                 <Link
                                   href={subItem.href || `#${subId}`}
                                   onClick={() => handleNavLinkClick(subId)}
-                                  className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${
-                                    active
-                                      ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
-                                      : isClient && activeSection === subId
+                                  className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${active
+                                    ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
+                                    : isClient && activeSection === subId
                                       ? "text-primary-600 bg-primary-50/50 dark:text-primary-400 dark:bg-primary-900/20"
                                       : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50"
-                                  }`}
+                                    }`}
                                 >
                                   <subItem.icon
                                     className="w-4 h-4 text-neutral-500 dark:text-neutral-400"
@@ -673,11 +677,10 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                     key={link.id}
                     href={`#${link.id}`}
                     onClick={() => handleNavLinkClick(link.id)}
-                    className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                      isClient && activeSection === link.id
-                        ? "text-primary-700 bg-primary-50 dark:text-primary-300 dark:bg-primary-900/30 shadow-sm"
-                        : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50"
-                    }`}
+                    className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${isClient && activeSection === link.id
+                      ? "text-primary-700 bg-primary-50 dark:text-primary-300 dark:bg-primary-900/30 shadow-sm"
+                      : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/50"
+                      }`}
                   >
                     <link.icon className="w-4 h-4" aria-hidden="true" />
                     <span>{link.label}</span>
@@ -733,9 +736,8 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                             href="https://alux.space/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`block px-4 py-2 text-sm ${
-                              active ? "bg-neutral-50 dark:bg-neutral-700/50 text-neutral-900 dark:text-white" : "text-neutral-700 dark:text-neutral-300"
-                            }`}
+                            className={`block px-4 py-2 text-sm ${active ? "bg-neutral-50 dark:bg-neutral-700/50 text-neutral-900 dark:text-white" : "text-neutral-700 dark:text-neutral-300"
+                              }`}
                           >
                             Visit Website
                           </a>
@@ -749,42 +751,11 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
           </div>
         </div>{" "}
         {/* Mobile Search Overlay */}
-        <div
-          className={`md:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 transition-all duration-300 ${
-            searchFocused ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
-        >
-          <div className="p-4">
-            <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
-              <input
-                type="text"
-                className="w-full pl-10 pr-10 py-3 border border-neutral-300 dark:border-neutral-600 rounded-lg bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                placeholder="Search design system&hellip;"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && searchQuery.trim()) {
-                    handleSearchSubmit();
-                  }
-                }}
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700"
-                >
-                  <XMarkIcon className="h-4 w-4 text-neutral-400" />
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+        {/* Mobile Search Overlay - Removed unused component */}
         {/* Mobile Navigation Menu */}
         <div
-          className={`lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 shadow-lg transition-all duration-300 ${
-            mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
+          className={`lg:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-700 shadow-lg transition-all duration-300 ${mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            }`}
         >
           <div className="p-4 space-y-2">
             {" "}
@@ -812,7 +783,73 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                   <XMarkIcon className="h-4 w-4 text-neutral-400" />
                 </button>
               )}
-            </div>{" "}
+            </div>
+
+            {/* Mobile Search Results */}
+            {searchQuery.trim() && filteredSuggestions.length > 0 && (
+              <div className="mb-4 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-neutral-200 dark:border-neutral-700 overflow-hidden">
+                <div className="text-xs font-medium text-neutral-500 dark:text-neutral-400 px-3 py-2 uppercase tracking-wide bg-neutral-50 dark:bg-neutral-800/50">
+                  Search Results
+                </div>
+                {filteredSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion.id}
+                    onClick={() => {
+                      handleSearchSubmit(suggestion);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex w-full items-center justify-between p-3 text-left transition-colors text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50 border-t border-neutral-100 dark:border-neutral-700/50"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <span className="w-5 h-5 text-neutral-500 dark:text-neutral-400">
+                        <suggestion.icon className="w-full h-full" />
+                      </span>
+                      <div>
+                        <div className="font-medium text-sm">{suggestion.label}</div>
+                        <div className="text-xs text-neutral-500 dark:text-neutral-400">
+                          {suggestion.category}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Mobile Recent Searches */}
+            {!searchQuery.trim() && recentSearches.length > 0 && (
+              <div className="mb-4 bg-white dark:bg-neutral-800 rounded-lg shadow-sm border border-neutral-200 dark:border-neutral-700 overflow-hidden">
+                <div className="flex items-center justify-between px-3 py-2 bg-neutral-50 dark:bg-neutral-800/50">
+                  <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                    Recent Searches
+                  </span>
+                  <button
+                    onClick={() => {
+                      setRecentSearches([]);
+                      localStorage.removeItem("header-recent-searches");
+                    }}
+                    className="text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300"
+                  >
+                    Clear
+                  </button>
+                </div>
+                {recentSearches.map((recent, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSearchQuery(recent);
+                    }}
+                    className="flex w-full items-center space-x-3 p-3 text-left hover:bg-neutral-50 dark:hover:bg-neutral-700/50 transition-colors border-t border-neutral-100 dark:border-neutral-700/50"
+                  >
+                    <ClockIcon className="h-4 w-4 text-neutral-400" />
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">
+                      {recent}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+
             {/* Mobile Navigation Items with Accordions */}
             {navLinks.map((link) =>
               link.submenu ? (
@@ -825,9 +862,8 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                           <span>{link.label}</span>
                         </div>
                         <ChevronDownIcon
-                          className={`h-4 w-4 transition-transform duration-200 ${
-                            open ? "rotate-180" : ""
-                          }`}
+                          className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""
+                            }`}
                         />
                       </Disclosure.Button>
 
@@ -859,11 +895,10 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                                   handleNavLinkClick(subId);
                                   setMobileMenuOpen(false);
                                 }}
-                                className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${
-                                  isClient && activeSection === subId
-                                    ? "text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30"
-                                    : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/50"
-                                }`}
+                                className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${isClient && activeSection === subId
+                                  ? "text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30"
+                                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/50"
+                                  }`}
                               >
                                 <subItem.icon
                                   className="w-4 h-4 text-neutral-500 dark:text-neutral-400"
@@ -895,11 +930,10 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                     handleNavLinkClick(link.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                    isClient && activeSection === link.id
-                      ? "text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30"
-                      : "text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700"
-                  }`}
+                  className={`flex items-center space-x-3 px-4 py-3 text-sm font-medium rounded-lg transition-colors ${isClient && activeSection === link.id
+                    ? "text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30"
+                    : "text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                    }`}
                 >
                   <link.icon className="w-4 h-4" aria-hidden="true" />
                   <span>{link.label}</span>
