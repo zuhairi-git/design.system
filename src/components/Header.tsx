@@ -2,7 +2,16 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Combobox, Menu, Transition, Disclosure } from "@headlessui/react";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxOptions,
+  ComboboxOption,
+  Menu,
+  MenuButton,
+  MenuItems,
+  MenuItem,
+} from "@headlessui/react";
 import {
   ChevronDownIcon,
   Squares2X2Icon,
@@ -57,6 +66,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const { getButtonAttributes } = useAccessibility();
   const searchInputRef = useRef<HTMLInputElement>(null); // Navigation structure matching sidebar exactly
@@ -454,7 +464,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                   >
                     <MagnifyingGlassIcon className="absolute left-4 h-5 w-5 text-neutral-400 dark:text-neutral-500" />
 
-                    <Combobox.Input
+                    <ComboboxInput
                       ref={searchInputRef}
                       className="w-full pl-12 pr-24 py-3.5 text-sm bg-transparent border-0 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none"
                       placeholder="Search components, colors, patterns..."
@@ -493,7 +503,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                   {searchFocused &&
                     (filteredSuggestions.length > 0 ||
                       recentSearches.length > 0) && (
-                      <Combobox.Options className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-neutral-800 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden z-50">
+                      <ComboboxOptions static className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-neutral-800 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 overflow-hidden z-50">
                         {/* Search Results */}
                         {filteredSuggestions.length > 0 && (
                           <div className="p-2">
@@ -501,11 +511,11 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                               Search Results
                             </div>
                             {filteredSuggestions.map((suggestion) => (
-                              <Combobox.Option
+                              <ComboboxOption
                                 key={suggestion.id}
                                 value={suggestion}
-                                className={({ active }) =>
-                                  `flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${active
+                                className={({ focus }) =>
+                                  `flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${focus
                                     ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
                                     : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50"
                                   }`
@@ -531,7 +541,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                                   </div>
                                 </div>
                                 <ArrowRightIcon className="h-4 w-4 opacity-50" />
-                              </Combobox.Option>
+                              </ComboboxOption>
                             ))}
                           </div>
                         )}
@@ -587,7 +597,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                               </p>
                             </div>
                           )}
-                      </Combobox.Options>
+                      </ComboboxOptions>
                     )}
                 </div>
               </Combobox>
@@ -601,7 +611,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
               {navLinks.map((link) =>
                 link.submenu ? (
                   <Menu as="div" key={link.id} className="relative">
-                    <Menu.Button
+                    <MenuButton
                       className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${isClient &&
                         (activeSection === link.id ||
                           (link.submenu &&
@@ -614,63 +624,58 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                       <link.icon className="w-4 h-4" aria-hidden="true" />
                       <span>{link.label}</span>
                       <ChevronDownIcon
-                        className="h-4 w-4 ui-open:rotate-180 transition-transform duration-200"
+                        className="h-4 w-4 transition-transform duration-200 ui-open:rotate-180"
                         aria-hidden="true"
                       />
-                    </Menu.Button>
-                    <Transition
-                      enter="transition ease-out duration-200"
-                      enterFrom="transform opacity-0 scale-95 translate-y-1"
-                      enterTo="transform opacity-100 scale-100 translate-y-0"
-                      leave="transition ease-in duration-150"
-                      leaveFrom="transform opacity-100 scale-100 translate-y-0"
-                      leaveTo="transform opacity-0 scale-95 translate-y-1"
+                    </MenuButton>
+                    <MenuItems
+                      transition
+                      anchor="bottom end"
+                      className="absolute right-0 mt-2 w-64 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 p-1 transition ease-out duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
                     >
-                      <Menu.Items className="absolute right-0 mt-2 w-64 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 p-1">
-                        {link.submenu?.map((subId) => {
-                          const navItem = navigationItems.find(
-                            (nav) => nav.id === link.id
-                          );
-                          const subItem = navItem?.children?.find(
-                            (child) => child.id === subId
-                          );
+                      {link.submenu?.map((subId) => {
+                        const navItem = navigationItems.find(
+                          (nav) => nav.id === link.id
+                        );
+                        const subItem = navItem?.children?.find(
+                          (child) => child.id === subId
+                        );
 
-                          if (!subItem) return null;
+                        if (!subItem) return null;
 
-                          return (
-                            <Menu.Item key={subId}>
-                              {({ active }) => (
-                                <Link
-                                  href={subItem.href || `#${subId}`}
-                                  onClick={() => handleNavLinkClick(subId)}
-                                  className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${active
-                                    ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
-                                    : isClient && activeSection === subId
-                                      ? "text-primary-600 bg-primary-50/50 dark:text-primary-400 dark:bg-primary-900/20"
-                                      : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50"
-                                    }`}
-                                >
-                                  <subItem.icon
-                                    className="w-4 h-4 text-neutral-500 dark:text-neutral-400"
-                                    aria-hidden="true"
-                                  />
-                                  <div className="flex-1">
-                                    <div className="font-medium">
-                                      {subItem.label}
-                                    </div>
-                                    {subItem.description && (
-                                      <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-                                        {subItem.description}
-                                      </div>
-                                    )}
+                        return (
+                          <MenuItem key={subId}>
+                            {({ focus }) => (
+                              <Link
+                                href={subItem.href || `#${subId}`}
+                                onClick={() => handleNavLinkClick(subId)}
+                                className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${focus
+                                  ? "bg-primary-50 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300"
+                                  : isClient && activeSection === subId
+                                    ? "text-primary-600 bg-primary-50/50 dark:text-primary-400 dark:bg-primary-900/20"
+                                    : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-700/50"
+                                  }`}
+                              >
+                                <subItem.icon
+                                  className="w-4 h-4 text-neutral-500 dark:text-neutral-400"
+                                  aria-hidden="true"
+                                />
+                                <div className="flex-1">
+                                  <div className="font-medium">
+                                    {subItem.label}
                                   </div>
-                                </Link>
-                              )}
-                            </Menu.Item>
-                          );
-                        })}
-                      </Menu.Items>
-                    </Transition>
+                                  {subItem.description && (
+                                    <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                                      {subItem.description}
+                                    </div>
+                                  )}
+                                </div>
+                              </Link>
+                            )}
+                          </MenuItem>
+                        );
+                      })}
+                    </MenuItems>
                   </Menu>
                 ) : (
                   <Link
@@ -706,7 +711,7 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
               </button>
               {/* User Profile Menu */}
               <Menu as="div" className="relative ml-2">
-                <Menu.Button className="flex rounded-full bg-white dark:bg-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ring-1 ring-neutral-200 dark:ring-neutral-700">
+                <MenuButton className="flex rounded-full bg-white dark:bg-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ring-1 ring-neutral-200 dark:ring-neutral-700">
                   <span className="sr-only">Open user menu</span>
                   <div className="h-9 w-9 rounded-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                     <img
@@ -715,37 +720,32 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                       alt="Ali Al-Zuahri"
                     />
                   </div>
-                </Menu.Button>
-                <Transition
-                  enter="transition ease-out duration-200"
-                  enterFrom="transform opacity-0 scale-95 translate-y-1"
-                  enterTo="transform opacity-100 scale-100 translate-y-0"
-                  leave="transition ease-in duration-150"
-                  leaveFrom="transform opacity-100 scale-100 translate-y-0"
-                  leaveTo="transform opacity-0 scale-95 translate-y-1"
+                </MenuButton>
+                <MenuItems
+                  transition
+                  anchor="bottom end"
+                  className="absolute right-0 mt-2 w-72 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 overflow-hidden transition ease-out duration-200 data-[closed]:scale-95 data-[closed]:opacity-0"
                 >
-                  <Menu.Items className="absolute right-0 mt-2 w-72 origin-top-right bg-white dark:bg-neutral-800 rounded-xl shadow-lg ring-1 ring-black/5 dark:ring-white/10 focus:outline-none border border-neutral-200/80 dark:border-neutral-700/60 z-50 overflow-hidden">
-                    <div className="px-4 py-3 border-b border-neutral-100 dark:border-neutral-700">
-                      <p className="text-sm font-semibold text-neutral-900 dark:text-white">Ali Al-Zuahri</p>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">Product Owner and Designer</p>
-                    </div>
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="https://alux.space/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`block px-4 py-2 text-sm ${active ? "bg-neutral-50 dark:bg-neutral-700/50 text-neutral-900 dark:text-white" : "text-neutral-700 dark:text-neutral-300"
-                              }`}
-                          >
-                            Visit Website
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
+                  <div className="px-4 py-3 border-b border-neutral-100 dark:border-neutral-700">
+                    <p className="text-sm font-semibold text-neutral-900 dark:text-white">Ali Al-Zuahri</p>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">Product Owner and Designer</p>
+                  </div>
+                  <div className="py-1">
+                    <MenuItem>
+                      {({ focus }) => (
+                        <a
+                          href="https://alux.space/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`block px-4 py-2 text-sm ${focus ? "bg-neutral-50 dark:bg-neutral-700/50 text-neutral-900 dark:text-white" : "text-neutral-700 dark:text-neutral-300"
+                            }`}
+                        >
+                          Visit Website
+                        </a>
+                      )}
+                    </MenuItem>
+                  </div>
+                </MenuItems>
               </Menu>
             </div>
           </div>
@@ -851,77 +851,71 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
             )}
 
             {/* Mobile Navigation Items with Accordions */}
-            {navLinks.map((link) =>
-              link.submenu ? (
-                <Disclosure key={link.id}>
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors">
-                        <div className="flex items-center space-x-3">
-                          <link.icon className="w-4 h-4" aria-hidden="true" />
-                          <span>{link.label}</span>
-                        </div>
-                        <ChevronDownIcon
-                          className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""
-                            }`}
-                        />
-                      </Disclosure.Button>
+            {navLinks.map((link) => {
+              const isExpanded = mobileMenuOpen && openMobileSection === link.id;
+              return link.submenu ? (
+                <div key={link.id}>
+                  <button
+                    type="button"
+                    className="flex items-center justify-between w-full px-4 py-3 text-left text-sm font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
+                    onClick={() => setOpenMobileSection(openMobileSection === link.id ? null : link.id)}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <link.icon className="w-4 h-4" aria-hidden="true" />
+                      <span>{link.label}</span>
+                    </div>
+                    <ChevronDownIcon
+                      className={`h-4 w-4 transition-transform duration-200 ${openMobileSection === link.id ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${openMobileSection === link.id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                  >
+                    <div className="mt-2 ml-4 space-y-1">
+                      {link.submenu?.map((subId) => {
+                        const navItem = navigationItems.find(
+                          (nav) => nav.id === link.id
+                        );
+                        const subItem = navItem?.children?.find(
+                          (child) => child.id === subId
+                        );
 
-                      <Transition
-                        enter="transition duration-200 ease-out"
-                        enterFrom="transform scale-95 opacity-0"
-                        enterTo="transform scale-100 opacity-100"
-                        leave="transition duration-150 ease-in"
-                        leaveFrom="transform scale-100 opacity-100"
-                        leaveTo="transform scale-95 opacity-0"
-                      >
-                        {" "}
-                        <Disclosure.Panel className="mt-2 ml-4 space-y-1">
-                          {link.submenu?.map((subId) => {
-                            const navItem = navigationItems.find(
-                              (nav) => nav.id === link.id
-                            );
-                            const subItem = navItem?.children?.find(
-                              (child) => child.id === subId
-                            );
+                        if (!subItem) return null;
 
-                            if (!subItem) return null;
-
-                            return (
-                              <Link
-                                key={subId}
-                                href={subItem.href || `#${subId}`}
-                                onClick={() => {
-                                  handleNavLinkClick(subId);
-                                  setMobileMenuOpen(false);
-                                }}
-                                className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${isClient && activeSection === subId
-                                  ? "text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30"
-                                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/50"
-                                  }`}
-                              >
-                                <subItem.icon
-                                  className="w-4 h-4 text-neutral-500 dark:text-neutral-400"
-                                  aria-hidden="true"
-                                />
-                                <div>
-                                  <div className="font-medium">
-                                    {subItem.label}
-                                  </div>
-                                  {subItem.description && (
-                                    <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-                                      {subItem.description}
-                                    </div>
-                                  )}
+                        return (
+                          <Link
+                            key={subId}
+                            href={subItem.href || `#${subId}`}
+                            onClick={() => {
+                              handleNavLinkClick(subId);
+                              setMobileMenuOpen(false);
+                            }}
+                            className={`flex items-center space-x-3 px-3 py-2.5 text-sm rounded-lg transition-all duration-150 ${isClient && activeSection === subId
+                              ? "text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/30"
+                              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700/50"
+                              }`}
+                          >
+                            <subItem.icon
+                              className="w-4 h-4 text-neutral-500 dark:text-neutral-400"
+                              aria-hidden="true"
+                            />
+                            <div>
+                              <div className="font-medium">
+                                {subItem.label}
+                              </div>
+                              {subItem.description && (
+                                <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                                  {subItem.description}
                                 </div>
-                              </Link>
-                            );
-                          })}
-                        </Disclosure.Panel>
-                      </Transition>
-                    </>
-                  )}
-                </Disclosure>
+                              )}
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <Link
                   key={link.id}
@@ -938,8 +932,8 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                   <link.icon className="w-4 h-4" aria-hidden="true" />
                   <span>{link.label}</span>
                 </Link>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       </header>

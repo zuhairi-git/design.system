@@ -34,8 +34,10 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {  return (
-    <html lang="en">      <body
+}>) {
+  return (
+    <html lang="en">
+      <body
         className={`${poppins.variable} ${roboto.variable} ${tajawal.variable} antialiased`}
       >
         {children}

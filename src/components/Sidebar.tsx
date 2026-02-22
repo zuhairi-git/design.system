@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { Transition, Disclosure, Combobox } from '@headlessui/react';
+import { Combobox } from '@headlessui/react';
 import {
   MagnifyingGlassIcon,
   ChevronDownIcon,
@@ -357,61 +357,53 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
 
     if (hasChildren) {
       return (
-        <Disclosure key={item.id} defaultOpen={isExpanded}>
-          {({ open }) => (
-            <div className={level > 0 ? 'ml-4' : ''}>              <Disclosure.Button
-              className={`w-full flex items-center justify-between px-3 py-2.5 text-left rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${isActive
-                  ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100 shadow-sm'
-                  : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
-                }`}
-              onClick={() => toggleSection(item.id)}
-              {...getButtonAttributes(`Toggle ${item.label} section`)}
-            >
-              <div className="flex items-center min-w-0 flex-1">
-                <IconComponent className={`h-5 w-5 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
-                    ? 'text-primary-600 dark:text-primary-400'
-                    : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
-                  }`} />
-                <div className="min-w-0 flex-1">
-                  <div className="font-medium text-sm truncate">{item.label}</div>
-                  {item.description && (
-                    <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
-                      {item.description}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="flex items-center space-x-2">
-                {item.children && (
-                  <div className="bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 text-xs px-1.5 py-0.5 rounded-md font-medium">
-                    {item.children.length}
+        <div key={item.id} className={level > 0 ? 'ml-4' : ''}>
+          <button
+            type="button"
+            className={`w-full flex items-center justify-between px-3 py-2.5 text-left rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${isActive
+              ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100 shadow-sm'
+              : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
+              }`}
+            onClick={() => toggleSection(item.id)}
+            {...getButtonAttributes(`Toggle ${item.label} section`)}
+          >
+            <div className="flex items-center min-w-0 flex-1">
+              <IconComponent className={`h-5 w-5 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
+                ? 'text-primary-600 dark:text-primary-400'
+                : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
+                }`} />
+              <div className="min-w-0 flex-1">
+                <div className="font-medium text-sm truncate">{item.label}</div>
+                {item.description && (
+                  <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
+                    {item.description}
                   </div>
                 )}
-                <ChevronDownIcon
-                  className={`h-4 w-4 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''
-                    } ${isActive
-                      ? 'text-primary-600 dark:text-primary-400'
-                      : 'text-neutral-400'
-                    }`}
-                />
               </div>
-            </Disclosure.Button>
-              <Transition
-                show={open}
-                enter="transition-all duration-300 ease-out"
-                enterFrom="opacity-0 max-h-0 -translate-y-1"
-                enterTo="opacity-100 max-h-96 translate-y-0"
-                leave="transition-all duration-200 ease-in"
-                leaveFrom="opacity-100 max-h-96 translate-y-0"
-                leaveTo="opacity-0 max-h-0 -translate-y-1"
-              >
-                <Disclosure.Panel className="mt-2 ml-6 space-y-2 overflow-hidden border-l border-neutral-200 dark:border-neutral-700 p-2">
-                  {item.children?.map(child => renderNavigationItem(child, level + 1))}
-                </Disclosure.Panel>
-              </Transition>
             </div>
-          )}
-        </Disclosure>
+            <div className="flex items-center space-x-2">
+              {item.children && (
+                <div className="bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 text-xs px-1.5 py-0.5 rounded-md font-medium">
+                  {item.children.length}
+                </div>
+              )}
+              <ChevronDownIcon
+                className={`h-4 w-4 flex-shrink-0 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''
+                  } ${isActive
+                    ? 'text-primary-600 dark:text-primary-400'
+                    : 'text-neutral-400'
+                  }`}
+              />
+            </div>
+          </button>
+          <div
+            className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+          >
+            <div className="mt-2 ml-6 space-y-2 border-l border-neutral-200 dark:border-neutral-700 p-2">
+              {item.children?.map(child => renderNavigationItem(child, level + 1))}
+            </div>
+          </div>
+        </div>
       );
     } return (
       <Link
@@ -423,8 +415,8 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
             : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
           }`}
       >        <IconComponent className={`h-4 w-4 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
-          ? 'text-primary-600 dark:text-primary-400'
-          : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
+        ? 'text-primary-600 dark:text-primary-400'
+        : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
         }`} />
         <div className="min-w-0 flex-1">
           <div className="font-medium text-sm truncate">{item.label}</div>
@@ -444,21 +436,12 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
   return (
     <>
       {/* Mobile backdrop */}
-      <Transition
-        show={isOpen}
-        enter="transition-opacity ease-linear duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity ease-linear duration-300"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div
-          className="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-40 md:hidden"
-          onClick={onToggle}
-          aria-hidden="true"
-        />
-      </Transition>      {/* Sidebar */}
+      <div
+        className={`fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-40 md:hidden transition-opacity ease-linear duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={onToggle}
+        aria-hidden="true"
+      />
+      {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 w-80 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
           } md:z-40 ${!isOpen ? 'md:hidden' : ''} ${className}`}
