@@ -3,22 +3,22 @@ import { TabsPillsShowcase } from "@/components/TabsPills";
 
 export default function TabsPillsSection() {
   return (
-    <AnimatedSection id="tabs-pills" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60" animation="slide-up">
+    <AnimatedSection id="tabs-pills" className="ds-section" animation="slide-up">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 rounded-full shadow-sm">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mb-14">
+          <div className="section-label text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/20">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
             Navigation Components
           </div>
           
-          <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
             Tabs & Pills
           </h2>
           
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mb-8 leading-relaxed">
-            Interactive navigation components with keyboard accessibility support. Choose between classic tabs with underline indicators or modern pill-style navigation with rounded corners.
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+            Interactive navigation components with keyboard accessibility. Classic tabs with underline indicators or modern pill-style navigation.
           </p>
         </div>
 

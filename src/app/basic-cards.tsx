@@ -93,20 +93,20 @@ function BasicCard({ title, description, theme, variant = 'basic' }: BasicCardPr
 
 export default function BasicCardsSection() {
   return (
-    <AnimatedSection id="basic-cards" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-950/60 dark:to-neutral-900" animation="fade-in">
+    <AnimatedSection id="basic-cards" className="ds-section" animation="fade-in">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <StyleIcon className="mr-2" fontSize="small" /> Card Variants
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Basic Cards</h2>
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Basic Cards</h2>
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Simple card components for displaying content in a clean, consistent format, available in Light, Dark, and Colorful themes.
           </p>
         </div>
 
         {/* Light theme cards */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="flex items-center mb-4">
             <LightModeIcon className="mr-2 text-amber-500" />
             <h3 className="font-heading font-semibold text-xl">Light Theme Cards</h3>
@@ -133,10 +133,10 @@ export default function BasicCardsSection() {
         </div>
         
         {/* Dark theme cards */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="flex items-center mb-4">
             <DarkModeIcon className="mr-2 text-blue-500" />
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Dark Theme Cards</h3>
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white">Dark Theme Cards</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <BasicCard 
@@ -160,10 +160,10 @@ export default function BasicCardsSection() {
         </div>
         
         {/* Colorful theme cards */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="flex items-center mb-4">
             <AutoAwesomeIcon className="mr-2 text-fuchsia-500" />
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Colorful Theme Cards</h3>
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white">Colorful Theme Cards</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <BasicCard 

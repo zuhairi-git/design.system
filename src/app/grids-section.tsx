@@ -79,10 +79,10 @@ export default function GridsSection() {
     }
   ];
   return (
-    <AnimatedSection id="grids" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50/50 dark:from-neutral-900 dark:to-neutral-950/80" animation="slide-up">
+    <AnimatedSection id="grids" className="ds-section" animation="slide-up">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <div className="inline-flex items-center px-4 py-2 mb-5 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm backdrop-blur-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <span className="mr-2">✨</span> Layout Structure
           </div>
           
@@ -320,7 +320,7 @@ export default function GridsSection() {
             
             <div className="relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-white/70 dark:bg-neutral-900/70 rounded-full shadow-sm backdrop-blur-sm">
+                <div className="section-label text-primary-700 dark:text-primary-300 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                   </svg>
@@ -518,7 +518,7 @@ export default function GridsSection() {
           {/* Advanced Grid Patterns */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40 rounded-full shadow-sm">
+            <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
               </svg>
@@ -782,7 +782,7 @@ export default function GridsSection() {
           {/* Developer Resources Section */}
         <div className="mb-16">
           <div className="text-center mb-10">
-            <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40 rounded-full shadow-sm">
+            <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
               </svg>

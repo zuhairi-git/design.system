@@ -2,8 +2,8 @@
 
 :root {
   /* Base colors */
-  --background: #ffffff;
-  --foreground: #272a2b;
+  --background: #fafbfc;
+  --foreground: #1a1d1e;
   
   /* Primary colors */
   --primary-50: #eefbfd;
@@ -50,35 +50,26 @@
   /* Colorful Theme Variables */
   --colorful-background: #0f0a2e;
   --colorful-foreground: #f0f8ff;
-  
-  /* Primary colorful theme colors */
   --colorful-primary: #3b82f6;
   --colorful-accent: #a855f7;
   --colorful-secondary: #6366f1;
-  
-  /* Colorful theme backgrounds */
   --colorful-bg-base: #0f0a2e;
   --colorful-bg-card: rgba(15, 10, 46, 0.9);
   --colorful-bg-overlay: rgba(168, 85, 247, 0.1);
-  
-  /* Colorful theme borders */
   --colorful-border-default: rgba(167, 139, 250, 0.3);
   --colorful-border-strong: rgba(167, 139, 250, 0.7);
   --colorful-border-hover: rgba(99, 102, 241, 0.5);
-  
-  /* Colorful theme text */
   --colorful-text-primary: #f0f8ff;
   --colorful-text-secondary: rgba(240, 248, 255, 0.9);
   --colorful-text-muted: rgba(240, 248, 255, 0.7);
-  
-  /* Colorful theme shadows */
   --colorful-shadow: 0 4px 16px rgba(168, 85, 247, 0.25);
   --colorful-glow: 0 0 20px rgba(168, 85, 247, 0.3);
-  
-  /* Colorful theme gradients */
   --colorful-gradient-primary: linear-gradient(to right, #3b82f6, #a855f7);
   --colorful-gradient-secondary: linear-gradient(to right, #a855f7, #6366f1);
   --colorful-gradient-cosmic: linear-gradient(135deg, #3b82f6, #a855f7, #6366f1);
+
+  /* Layout spacing */
+  --section-gap: 1px;
 }
 
 @theme inline {
@@ -86,38 +77,68 @@
   --color-foreground: var(--foreground);
   --font-heading: var(--font-poppins);
   --font-body: var(--font-roboto);
+
+  /* Primary */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
+  /* Accent */
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+
+  /* Neutral */
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-950: var(--neutral-950);
+
+  /* Success */
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+
+  /* Warning */
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+
+  /* Error */
+  --color-error-500: var(--error-500);
+  --color-error-600: var(--error-600);
 }
 
 /* Colorful Theme Variables */
 .theme-colorful {
   --background: #0f0a2e;
   --foreground: #f0f8ff;
-  
-  /* Primary colorful theme colors */
   --colorful-primary: #3b82f6;
   --colorful-accent: #a855f7;
   --colorful-secondary: #6366f1;
-  
-  /* Colorful theme backgrounds */
   --colorful-bg-base: #0f0a2e;
   --colorful-bg-card: rgba(15, 10, 46, 0.9);
   --colorful-bg-overlay: rgba(168, 85, 247, 0.1);
-  
-  /* Colorful theme borders */
   --colorful-border-default: rgba(167, 139, 250, 0.3);
   --colorful-border-strong: rgba(167, 139, 250, 0.7);
   --colorful-border-hover: rgba(99, 102, 241, 0.5);
-  
-  /* Colorful theme text */
   --colorful-text-primary: #f0f8ff;
   --colorful-text-secondary: rgba(240, 248, 255, 0.9);
   --colorful-text-muted: rgba(240, 248, 255, 0.7);
-  
-  /* Colorful theme shadows */
   --colorful-shadow: 0 4px 16px rgba(168, 85, 247, 0.25);
   --colorful-glow: 0 0 20px rgba(168, 85, 247, 0.3);
-  
-  /* Colorful theme gradients */
   --colorful-gradient-primary: linear-gradient(to right, #3b82f6, #a855f7);
   --colorful-gradient-secondary: linear-gradient(to right, #a855f7, #6366f1);
   --colorful-gradient-cosmic: linear-gradient(135deg, #3b82f6, #a855f7, #6366f1);
@@ -125,20 +146,31 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #15191a;
+    --background: #111314;
     --foreground: #f3f4f4;
   }
+}
+
+/* ─── Base ────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), sans-serif;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .font-heading {
@@ -157,92 +189,54 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-tajawal), sans-serif;
 }
 
-/* Add smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+/* ─── Scrollbar ───────────────────────────────────────────── */
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--neutral-100);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-300);
-  border-radius: 4px;
+  background: var(--neutral-300);
+  border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-500);
+  background: var(--neutral-400);
 }
 
-/* Animation utilities */
-.transition-all {
-  transition: all 0.3s ease-in-out;
+/* ─── Section Dividers ────────────────────────────────────── */
+
+.section-divider {
+  height: var(--section-gap);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--neutral-200),
+    transparent
+  );
 }
 
-.hover-scale:hover {
-  transform: scale(1.03);
-}
+/* ─── Cards ───────────────────────────────────────────────── */
 
-/* Container classes */
 .card {
+  position: relative;
   background-color: var(--neutral-50);
-  border-radius: 0.5rem;
-  border: 1px solid var(--neutral-300);
-  transition: all 0.3s ease;
+  border-radius: 0.75rem;
+  border: 1px solid var(--neutral-200);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary-300);
+  border-color: var(--neutral-300);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
-.section {
-  padding: 2rem 0;
-  margin-bottom: 2rem;
-}
-
-/* Copy button styles */
-.copy-btn.copied {
-  background-color: var(--primary-500) !important;
-  color: white !important;
-  transform: scale(1.05);
-}
-
-.copy-btn .copy-icon {
-  display: block;
-}
-
-.copy-btn .check-icon {
-  display: none;
-}
-
-.copy-btn.copied .copy-icon {
-  display: none;
-}
-
-.copy-btn.copied .check-icon {
-  display: block;
-}
-
-/* RTL Support removed */
-
-/* Card styles */
-.card {
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-scale:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-/* Make entire card clickable */
 .card a {
   position: relative;
   z-index: 1;
@@ -255,141 +249,147 @@ html {
   cursor: pointer;
 }
 
-.card:hover {
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+/* ─── Copy Button ─────────────────────────────────────────── */
+
+.copy-btn.copied {
+  background-color: var(--primary-500) !important;
+  color: white !important;
 }
 
-/* Cosmic shimmer effect for buttons */
+.copy-btn .copy-icon { display: block; }
+.copy-btn .check-icon { display: none; }
+.copy-btn.copied .copy-icon { display: none; }
+.copy-btn.copied .check-icon { display: block; }
+
+/* ─── Cosmic / Colorful effects ───────────────────────────── */
+
 .cosmic-shimmer {
   position: relative;
   overflow: hidden;
 }
 
-/* Cosmic title effect with text glow from theme-colors.txt */
 .cosmic-title {
   text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
   animation: pulse 3s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
-  }
-  50% {
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-  }
+  0%, 100% { text-shadow: 0 0 10px rgba(255, 0, 204, 0.3); }
+  50% { text-shadow: 0 0 15px rgba(0, 255, 255, 0.4); }
 }
 
-/* Timeline card futuristic animations */
+/* ─── Keyframe Animations ─────────────────────────────────── */
+
 @keyframes spin {
-  from {
-    transform: rotate(0deg) scale(1.5);
-  }
-  to {
-    transform: rotate(360deg) scale(1.5);
-  }
+  from { transform: rotate(0deg) scale(1.5); }
+  to { transform: rotate(360deg) scale(1.5); }
 }
 
 @keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
 }
 
 @keyframes particle-float {
-  0% {
-    transform: translateY(0) rotate(0deg) scale(0.8);
-    opacity: 0;
-  }
-  15% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-50px) rotate(180deg) scale(1.2);
-  }
-  85% {
-    opacity: 0.4;
-  }
-  100% {
-    transform: translateY(-100px) rotate(360deg) scale(0.8);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+  15% { opacity: 0.4; }
+  50% { opacity: 1; transform: translateY(-50px) rotate(180deg) scale(1.2); }
+  85% { opacity: 0.4; }
+  100% { transform: translateY(-100px) rotate(360deg) scale(0.8); opacity: 0; }
 }
 
 @keyframes dimension-shift {
-  0%, 100% {
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
-  }
-  75% {
-    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg);
-  }
+  0%, 100% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+  25% { transform: perspective(1000px) rotateX(2deg) rotateY(-2deg); }
+  75% { transform: perspective(1000px) rotateX(-2deg) rotateY(2deg); }
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-}
-
-.animate-dimension {
-  animation: dimension-shift 8s ease-in-out infinite;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-/* Back to top button animations */
 @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Grid pattern for spacing visualization */
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-shimmer { animation: shimmer 2s infinite; }
+.animate-dimension { animation: dimension-shift 8s ease-in-out infinite; }
+.perspective-1000 { perspective: 1000px; }
+
+/* ─── Utilities ───────────────────────────────────────────── */
+
+.hover-scale:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
 .bg-grid-pattern {
-  background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
   background-size: 4px 4px;
 }
 
 .scale-102 {
   transform: scale(1.02);
+}
+
+/* ─── Section styling ─────────────────────────────────────── */
+
+.ds-section {
+  padding: 4rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .ds-section {
+    padding: 5rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .ds-section {
+    padding: 6rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ds-section {
+    padding: 7rem 5rem;
+  }
+}
+
+/* Section label pill */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  border-radius: 99px;
+  margin-bottom: 1rem;
+}
+
+/* Subsection card container */
+.ds-card-container {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--neutral-200);
+  border-radius: 1rem;
+  padding: 2rem;
+  backdrop-filter: blur(8px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ds-card-container {
+    background: rgba(30, 33, 35, 0.6);
+    border-color: var(--neutral-800);
+  }
 }

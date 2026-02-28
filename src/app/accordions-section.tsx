@@ -3,30 +3,30 @@ import { AccordionShowcase } from "@/components/Accordion";
 
 export default function AccordionSection() {
   return (
-    <AnimatedSection id="accordions" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60" animation="slide-up">
+    <AnimatedSection id="accordions" className="ds-section" animation="slide-up">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 rounded-full shadow-sm">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mb-14">
+          <div className="section-label text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/20">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
             Expandable Components
           </div>
           
-          <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
             Accordions
           </h2>
           
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl mb-8 leading-relaxed">
-            Collapsible content sections with multiple variants, icon support, badges, and nested tab functionality. Perfect for FAQs, documentation, and content organization with full accessibility support.
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+            Collapsible content sections with multiple variants, icon support, badges, and nested tabs.
           </p>
         </div>
 
         <AccordionShowcase />
 
         {/* Code Examples */}
-        <div className="mt-16 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+        <div className="mt-16 bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800">
+          <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">
             <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-gray-100 dark:bg-gray-900/40 text-gray-600 dark:text-gray-400">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />

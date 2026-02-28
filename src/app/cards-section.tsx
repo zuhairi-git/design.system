@@ -21,26 +21,26 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 
 export default function CardsSection() {
   return (
-    <AnimatedSection id="cards" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-950/60 dark:to-neutral-900" animation="slide-up">
+    <AnimatedSection id="cards" className="ds-section" animation="slide-up">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-            <StyleIcon className="mr-2" fontSize="small" /> Card System
+        <div className="mb-14">          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+            <StyleIcon fontSize="small" /> Card System
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Cards</h2>
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-            A flexible card system with multiple variants and themes to showcase content across your interface.
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">Cards</h2>
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+            Flexible card system with multiple variants and themes.
           </p>
         </div>
         
-        <div className="space-y-14">          {/* Theme Cards */}
-          <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
+        <div className="space-y-10">          {/* Theme Cards */}
+          <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800">
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-500 dark:text-blue-400">
                 <LightModeIcon className="h-4 w-4" />
               </span>
               Theme Cards
             </h3>
-            <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">                <ThemeCard 
+            <div className="mb-8 p-5 bg-neutral-50 dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">                <ThemeCard 
                   variant="default"
                   theme="light-enhanced"
                   title="Light Theme"
@@ -74,13 +74,13 @@ export default function CardsSection() {
           </div>
           
           {/* Card Variants */}
-          <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
+          <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800">
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <StyleIcon className="h-4 w-4" />
               </span>
               Card Variants
             </h3>
-            <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="mb-8 p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">                <ThemeCard 
                   variant="minimal"
                   title="Minimal Card"
@@ -124,13 +124,13 @@ export default function CardsSection() {
           </div>
           
           {/* Light Theme Variants */}
-          <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
+          <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800">
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <LightModeIcon className="h-4 w-4" />
               </span>
               Light Theme Variants
             </h3>
-            <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="mb-8 p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <ThemeCard 
                   variant="minimal"
@@ -172,13 +172,13 @@ export default function CardsSection() {
           </div>
           
           {/* Dark Theme Variants */}
-          <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
+          <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800">
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                 <DarkModeIcon className="h-4 w-4" />
               </span>
               Dark Theme Variants
             </h3>
-            <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="mb-8 p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <ThemeCard 
                   variant="minimal"
@@ -220,13 +220,13 @@ export default function CardsSection() {
           </div>
             
           {/* Colorful Theme Variants */}
-          <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-400">
+          <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800">
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">              <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-400">
                 <AutoAwesomeIcon className="h-4 w-4" />
               </span>
               Colorful Theme Variants
             </h3>
-            <div className="mb-8 p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="mb-8 p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <ThemeCard 
                   variant="minimal"

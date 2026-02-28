@@ -554,12 +554,12 @@ export default function LayoutsSection() {
   return (
     <AnimatedSection 
       id="layouts" 
-      className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50/50 dark:from-neutral-900 dark:to-neutral-950/80" 
+      className="ds-section" 
       animation="slide-up"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <div className="inline-flex items-center px-4 py-2 mb-5 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm backdrop-blur-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <RectangleGroupIcon className="w-4 h-4 mr-2" />
             Layout Patterns
           </div>
@@ -579,7 +579,7 @@ export default function LayoutsSection() {
         </div>
 
         {/* Category Filter */}
-        <div className="mb-10">
+        <div className="mb-14">
           <div className="flex flex-wrap gap-3 justify-center">
             <button
               onClick={() => setActivePattern("all")}
@@ -619,7 +619,7 @@ export default function LayoutsSection() {
                       <pattern.icon className="w-6 h-6 text-primary-700 dark:text-primary-300" />
                     </div>
                     <div>
-                      <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">
+                      <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white">
                         {pattern.name}
                       </h3>
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${

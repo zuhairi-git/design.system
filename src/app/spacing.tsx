@@ -67,12 +67,12 @@ export default function SpacingSection() {
   return (
     <AnimatedSection 
       id="spacing" 
-      className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-neutral-950 dark:via-blue-950/20 dark:to-purple-950/20" 
+      className="ds-section" 
       animation="slide-up"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header with gradient */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg">
             <SpaceBarIcon className="mr-2" fontSize="small" /> 
             Enhanced Spacing System

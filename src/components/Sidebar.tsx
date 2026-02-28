@@ -360,20 +360,20 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
         <div key={item.id} className={level > 0 ? 'ml-4' : ''}>
           <button
             type="button"
-            className={`w-full flex items-center justify-between px-3 py-2.5 text-left rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${isActive
-              ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100 shadow-sm'
-              : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
+            className={`w-full flex items-center justify-between px-3 py-2 text-left rounded-lg transition-all duration-150 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${isActive
+              ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100'
+              : 'text-neutral-600 hover:bg-neutral-50 dark:text-neutral-400 dark:hover:bg-neutral-800/50'
               }`}
             onClick={() => toggleSection(item.id)}
             {...getButtonAttributes(`Toggle ${item.label} section`)}
           >
             <div className="flex items-center min-w-0 flex-1">
-              <IconComponent className={`h-5 w-5 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
+              <IconComponent className={`h-4 w-4 mr-2.5 flex-shrink-0 transition-colors duration-150 ${isActive
                 ? 'text-primary-600 dark:text-primary-400'
-                : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
+                : 'text-neutral-400 group-hover:text-neutral-600 dark:text-neutral-500 dark:group-hover:text-neutral-300'
                 }`} />
               <div className="min-w-0 flex-1">
-                <div className="font-medium text-sm truncate">{item.label}</div>
+                <div className="font-medium text-[13px] truncate">{item.label}</div>
                 {item.description && (
                   <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
                     {item.description}
@@ -383,7 +383,7 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
             </div>
             <div className="flex items-center space-x-2">
               {item.children && (
-                <div className="bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 text-xs px-1.5 py-0.5 rounded-md font-medium">
+                <div className="bg-neutral-100 dark:bg-neutral-800 text-neutral-400 dark:text-neutral-500 text-[10px] px-1.5 py-0.5 rounded-md font-medium">
                   {item.children.length}
                 </div>
               )}
@@ -409,25 +409,25 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
       <Link
         key={item.id}
         href={item.href || '#'}
-        onClick={() => handleNavClick(item)} className={`flex items-center px-3 py-2.5 mx-2 rounded-lg transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${level > 0 ? 'ml-2' : ''
+        onClick={() => handleNavClick(item)} className={`flex items-center px-3 py-2 mx-1 rounded-lg transition-all duration-150 group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-900 ${level > 0 ? 'ml-1' : ''
           } ${isActive
-            ? 'bg-primary-100 text-primary-900 dark:bg-primary-900/30 dark:text-primary-100 shadow-sm'
-            : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800/50'
+            ? 'bg-primary-50 text-primary-900 dark:bg-primary-900/20 dark:text-primary-100'
+            : 'text-neutral-500 hover:text-neutral-800 hover:bg-neutral-50 dark:text-neutral-400 dark:hover:text-neutral-200 dark:hover:bg-neutral-800/50'
           }`}
-      >        <IconComponent className={`h-4 w-4 mr-3 flex-shrink-0 transition-colors duration-200 ${isActive
+      >        <IconComponent className={`h-3.5 w-3.5 mr-2.5 flex-shrink-0 transition-colors duration-150 ${isActive
         ? 'text-primary-600 dark:text-primary-400'
-        : 'text-neutral-500 group-hover:text-neutral-700 dark:text-neutral-400 dark:group-hover:text-neutral-200'
+        : 'text-neutral-400 group-hover:text-neutral-500 dark:text-neutral-500 dark:group-hover:text-neutral-400'
         }`} />
         <div className="min-w-0 flex-1">
-          <div className="font-medium text-sm truncate">{item.label}</div>
+          <div className="font-medium text-[13px] truncate">{item.label}</div>
           {item.description && level === 0 && (
-            <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
+            <div className="text-xs text-neutral-400 dark:text-neutral-500 mt-0.5 truncate">
               {item.description}
             </div>
           )}
         </div>
         {isActive && (
-          <div className="w-2 h-2 bg-primary-500 rounded-full ml-2"></div>
+          <div className="w-1.5 h-1.5 bg-primary-500 rounded-full ml-2"></div>
         )}
       </Link>
     );
@@ -443,14 +443,14 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
       />
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-80 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
           } md:z-40 ${!isOpen ? 'md:hidden' : ''} ${className}`}
         role="navigation"
         aria-label="Main navigation sidebar"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4">
-          <h2 className="text-lg font-semibold text-neutral-900 dark:text-white">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-100 dark:border-neutral-800">
+          <h2 className="text-sm font-semibold tracking-tight text-neutral-900 dark:text-white">
             Alux Design System
           </h2>
           <button
@@ -463,12 +463,12 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
         </div>
 
         {/* Search */}
-        <div className="p-4 border-b border-neutral-200 dark:border-neutral-800">            <Combobox value={searchQuery} onChange={(value) => setSearchQuery(value || '')}>
+        <div className="px-4 py-3 border-b border-neutral-100 dark:border-neutral-800">            <Combobox value={searchQuery} onChange={(value) => setSearchQuery(value || '')}>
           <div className="relative">
             <Combobox.Input
               ref={searchInputRef}
-              className="w-full pl-10 pr-4 py-2.5 text-sm border border-neutral-300 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              placeholder="Search navigation... (⌘K)"
+              className="w-full pl-9 pr-4 py-2 text-sm border border-neutral-200 dark:border-neutral-700 rounded-lg bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-transparent transition-shadow"
+              placeholder="Search... (⌘K)"
               onChange={(e) => setSearchQuery(e.target.value)}
               displayValue={(query: string) => query}
             />
@@ -491,7 +491,7 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
             </div>
           )}
         </div>          {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto py-4 pl-2 pr-4 space-y-1">
+        <nav className="flex-1 overflow-y-auto py-3 px-3 space-y-0.5">
           {filteredItems.length === 0 ? (
             <div className="text-center py-8 text-neutral-500 dark:text-neutral-400">
               <MagnifyingGlassIcon className="h-8 w-8 mx-auto mb-2 opacity-50" />
@@ -504,8 +504,8 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
-          <div className="text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+        <div className="px-4 py-3 border-t border-neutral-100 dark:border-neutral-800">
+          <div className="text-xs text-neutral-400 dark:text-neutral-500 space-y-1.5">
             <div className="flex items-center justify-between">
               <span>Keyboard shortcuts:</span>
             </div>

@@ -35,13 +35,13 @@ export default function BreakpointsSection() {
   };
 
   return (
-    <AnimatedSection id="breakpoints" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="slide-up">
+    <AnimatedSection id="breakpoints" className="ds-section" animation="slide-up">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <span className="mr-2">📱</span> Responsive Design
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Breakpoints</h2>          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Breakpoints</h2>          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Our responsive breakpoints ensure layouts adapt seamlessly across different screen sizes, following Tailwind CSS&apos;s
             mobile-first approach.
           </p>
@@ -50,7 +50,7 @@ export default function BreakpointsSection() {
         {/* Visual breakpoints comparison */}
         <div className="relative mb-12 bg-white/90 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden">
           <div className="p-6">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6">Breakpoint Overview</h3>
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6">Breakpoint Overview</h3>
             
             {/* Desktop visualization of breakpoints */}
             <div className="hidden lg:block mb-8 relative">
@@ -144,8 +144,8 @@ export default function BreakpointsSection() {
         </div>
         
         {/* Common responsive patterns */}
-        <div className="mb-10">
-          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6">Common Responsive Patterns</h3>
+        <div className="mb-14">
+          <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6">Common Responsive Patterns</h3>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Responsive Grid */}
@@ -231,7 +231,7 @@ export default function BreakpointsSection() {
         {/* Mobile-first approach */}
         <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden">
           <div className="p-6">
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-4">Mobile-First Approach</h3>            <p className="text-neutral-700 dark:text-neutral-400 mb-4">
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-4">Mobile-First Approach</h3>            <p className="text-neutral-700 dark:text-neutral-400 mb-4">
               Our design system follows Tailwind CSS&apos;s mobile-first approach, where styles are applied to mobile by default and then modified at larger breakpoints:
             </p>
             

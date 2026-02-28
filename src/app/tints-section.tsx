@@ -2,19 +2,19 @@ import AnimatedSection from "@/components/AnimatedSection";
 
 export default function TintsSection() {
   return (
-    <AnimatedSection id="tints" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="slide-up">
+    <AnimatedSection id="tints" className="ds-section" animation="slide-up">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <span className="mr-2">🖌️</span> Transparency System
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Tints</h2>
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Tints</h2>
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Our tint system provides transparent overlays for various UI elements.
           </p>
         </div>
         
-        <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg mb-6">
+        <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { name: "Primary Light", color: "rgba(30, 104, 128, 0.1)", textColor: "text-primary-900 dark:text-primary-700", usage: "Subtle backgrounds" },

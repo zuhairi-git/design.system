@@ -10,7 +10,7 @@ export default function AccessibilityUtilitiesPage() {
   const { announceToScreenReader, prefersReducedMotion } = useAccessibility();  return (
     <AnimatedSection
       id="accessibility-utilities"
-      className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900"
+      className="ds-section"
       animation="fade-in"
     >
       <div className="max-w-4xl mx-auto space-y-8">

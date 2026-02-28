@@ -5,14 +5,14 @@ import DevicesIcon from '@mui/icons-material/Devices';
 
 export default function ResponsiveUtilitiesSection() {
   return (
-    <AnimatedSection id="responsive-utilities" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="fade-in">
+    <AnimatedSection id="responsive-utilities" className="ds-section" animation="fade-in">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <DevicesIcon className="mr-2" fontSize="small" /> Responsive Design
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Responsive Utilities</h2>
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Responsive Utilities</h2>
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Tools and classes to build responsive interfaces that work across all screen sizes.
           </p>
         </div>

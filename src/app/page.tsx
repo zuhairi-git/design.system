@@ -42,14 +42,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Home() {
   const sidebar = useSidebar();
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
+    <div className="min-h-screen bg-[var(--background)]">
       <FixCardLinks />
       {/* Sidebar - Always fixed position */}
       <Sidebar isOpen={sidebar.isOpen} onToggle={sidebar.toggle} />
       {/* Main Content - Offset by sidebar width on desktop when open */}{" "}
       <div
         className={`flex flex-col min-h-screen transition-all duration-300 ${
-          sidebar.isOpen ? "md:ml-80" : ""
+          sidebar.isOpen ? "md:ml-72" : ""
         }`}
       >
         <Header onSidebarToggle={sidebar.toggle} />
@@ -58,17 +58,17 @@ export default function Home() {
           {/* Overview Section */}
           <AnimatedSection
             id="overview"
-            className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20"
+            className="ds-section"
             animation="slide-up"
           >
             <div className="max-w-7xl mx-auto">
-              <div className="mb-10">
-                <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                  <PaletteRoundedIcon className="w-4 h-4 mr-2 align-middle" />
+              <div className="mb-14">
+                <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+                  <PaletteRoundedIcon className="w-4 h-4" />
                   Design Documentation
                 </div>
 
-                <h1 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-neutral-950 dark:text-white mb-5 sm:mb-6">
+                <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl text-neutral-900 dark:text-white mb-6 tracking-tight">
                   Alux{" "}
                   <span className="text-primary-600 dark:text-primary-400">
                     Design
@@ -76,38 +76,32 @@ export default function Home() {
                   System
                 </h1>
 
-                <p className="font-body text-lg sm:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mb-10 leading-relaxed">
-                  A lightweight design system that provides clear guidelines,
+                <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-2xl mb-4 leading-relaxed">
+                  A lightweight design system providing clear guidelines,
                   reusable components, and helpful resources for building
-                  consistent and visually appealing user interfaces.
+                  consistent, visually appealing user interfaces.
                 </p>
-                <p className="font-body text-lg sm:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl mb-10 leading-relaxed">
-                  Built using Tailwind CSS and Headless UI.
+                <p className="font-body text-base text-neutral-400 dark:text-neutral-500 max-w-2xl mb-10">
+                  Built with Tailwind CSS and Headless UI.
                 </p>
 
-                <div className="flex flex-wrap gap-3 mb-14">
+                <div className="flex flex-wrap gap-3 mb-16">
                   <a
                     href="#colors"
-                    className="cosmic-shimmer inline-block px-5 py-2.5 rounded-full font-medium transition-all duration-300 text-white border border-transparent shadow-lg relative overflow-hidden"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(135deg, #3b82f6, #a855f7, #6366f1)",
-                      backgroundSize: "200% 200%",
-                      animation: "gradientShift 3s ease infinite",
-                    }}
+                    className="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 shadow-md hover:shadow-lg transition-all duration-200"
                   >
-                    <span className="relative z-10">Explore Components</span>
+                    Explore Components
                   </a>
                   <a
                     href="#"
-                    className="px-5 py-2.5 text-primary-700 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 border border-primary-200 dark:border-primary-800/40 rounded-full font-medium transition-colors"
+                    className="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-800 hover:bg-primary-100 dark:hover:bg-primary-900/30 transition-all duration-200"
                   >
                     Learn More
                   </a>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 animate-fade-in">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fade-in">
                 {" "}
                 {[
                   {
@@ -217,132 +211,127 @@ export default function Home() {
             </div>
           </AnimatedSection>
           {/* Colors Section */}
+          <div className="section-divider"></div>
           <AnimatedSection
             id="colors"
-            className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60"
+            className="ds-section"
             animation="fade-in"
           >
             <div className="max-w-7xl mx-auto">
               {/* Header */}
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                  <PaletteRoundedIcon className="h-4 w-4 mr-2" /> Color System
-                </div>{" "}
-                <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
+              <div className="mb-14">
+                <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+                  <PaletteRoundedIcon className="h-4 w-4" /> Color System
+                </div>
+                <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
                   Design Colors
                 </h2>
-                <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-4xl mx-auto">
-                  Our enhanced adaptive color system provides three distinct
-                  themes with improved contrast ratios and WCAG compliance. Each
-                  theme has been carefully designed for accessibility while
-                  maintaining visual appeal and brand consistency.
+                <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+                  Our adaptive color system provides three distinct
+                  themes with improved contrast ratios and WCAG compliance.
                 </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
-                  <span className="px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full">
-                    ✓ WCAG AAA Compliant
+                <div className="mt-5 flex flex-wrap gap-2 text-xs font-medium">
+                  <span className="px-3 py-1.5 bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-300 rounded-full">
+                    WCAG AAA
                   </span>
-                  <span className="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full">
-                    ✓ High Contrast Ratios
+                  <span className="px-3 py-1.5 bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300 rounded-full">
+                    High Contrast
                   </span>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 rounded-full">
-                    ✓ Color Blind Friendly
+                  <span className="px-3 py-1.5 bg-purple-50 text-purple-700 dark:bg-purple-900/20 dark:text-purple-300 rounded-full">
+                    Color Blind Friendly
                   </span>
                 </div>
               </div>{" "}
               {/* Theme Overview Cards */}
-              <div className="grid md:grid-cols-3 gap-6 mb-16">
-                <div className="group relative bg-white dark:bg-neutral-900 rounded-xl p-6 border border-neutral-200 dark:border-neutral-800 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="grid md:grid-cols-3 gap-4 mb-16">
+                <div className="group bg-white dark:bg-neutral-900 rounded-2xl p-6 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-md transition-all duration-200">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 rounded-lg">
+                    <div className="p-2 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-lg">
                       <PaletteRoundedIcon className="h-5 w-5" />
                     </div>
-                    <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white">
+                    <h3 className="font-heading font-semibold text-neutral-900 dark:text-white">
                       Light Theme
                     </h3>
                   </div>
-                  <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 mb-4">
+                  <p className="font-body text-sm text-neutral-500 dark:text-neutral-400 mb-4 leading-relaxed">
                     Clean and professional palette perfect for productivity
                     applications and daytime use.
                   </p>
-                  <div className="flex gap-2 mb-3">
-                    <div className="w-4 h-4 rounded bg-white border-2 border-slate-200"></div>
-                    <div className="w-4 h-4 rounded bg-blue-600"></div>
-                    <div className="w-4 h-4 rounded bg-slate-900"></div>
-                    <div className="w-4 h-4 rounded bg-slate-100"></div>
+                  <div className="flex gap-1.5 mb-3">
+                    <div className="w-5 h-5 rounded-md bg-white border border-neutral-200"></div>
+                    <div className="w-5 h-5 rounded-md bg-blue-600"></div>
+                    <div className="w-5 h-5 rounded-md bg-slate-900"></div>
+                    <div className="w-5 h-5 rounded-md bg-slate-100"></div>
                   </div>
-                  <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                    WCAG AAA compliant • High contrast
+                  <div className="text-xs text-neutral-400 dark:text-neutral-500">
+                    WCAG AAA compliant
                   </div>
                 </div>
 
-                <div className="group relative bg-slate-900 rounded-xl p-6 border border-slate-700 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1">
+                <div className="group bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-slate-700 hover:shadow-md transition-all duration-200">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-blue-950 text-blue-400 rounded-lg">
+                    <div className="p-2 bg-blue-950/60 text-blue-400 rounded-lg">
                       <BlurOnRoundedIcon className="h-5 w-5" />
                     </div>
-                    <h3 className="font-heading font-semibold text-lg text-slate-50">
+                    <h3 className="font-heading font-semibold text-slate-50">
                       Dark Theme
                     </h3>
                   </div>
-                  <p className="font-body text-sm text-slate-300 mb-4">
+                  <p className="font-body text-sm text-slate-400 mb-4 leading-relaxed">
                     Sophisticated dark palette that reduces eye strain and
-                    enhances focus during extended use.
+                    enhances focus.
                   </p>
-                  <div className="flex gap-2 mb-3">
-                    <div className="w-4 h-4 rounded bg-slate-950 border-2 border-slate-600"></div>
-                    <div className="w-4 h-4 rounded bg-blue-400"></div>
-                    <div className="w-4 h-4 rounded bg-slate-50"></div>
-                    <div className="w-4 h-4 rounded bg-slate-800"></div>
+                  <div className="flex gap-1.5 mb-3">
+                    <div className="w-5 h-5 rounded-md bg-slate-950 border border-slate-700"></div>
+                    <div className="w-5 h-5 rounded-md bg-blue-400"></div>
+                    <div className="w-5 h-5 rounded-md bg-slate-50"></div>
+                    <div className="w-5 h-5 rounded-md bg-slate-800"></div>
                   </div>
-                  <div className="text-xs text-slate-400">
-                    Eye-strain reduction • Developer friendly
+                  <div className="text-xs text-slate-500">
+                    Developer friendly
                   </div>
                 </div>
 
                 <div
-                  className="group relative rounded-xl p-6 border border-violet-500/30 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 hover:-translate-y-1"
+                  className="group rounded-2xl p-6 border border-violet-500/20 hover:border-violet-500/40 hover:shadow-md transition-all duration-200"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(30, 5, 60, 0.9), rgba(15, 20, 45, 0.9))",
+                      "linear-gradient(135deg, rgba(30, 5, 60, 0.95), rgba(15, 20, 45, 0.95))",
                   }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-violet-500/20 text-violet-400 rounded-lg">
+                    <div className="p-2 bg-violet-500/15 text-violet-400 rounded-lg">
                       <OpacityRoundedIcon className="h-5 w-5" />
                     </div>
-                    <h3 className="font-heading font-semibold text-lg text-slate-50">
+                    <h3 className="font-heading font-semibold text-slate-50">
                       Colorful Theme
                     </h3>
                   </div>
-                  <p className="font-body text-sm text-slate-200/90 mb-4">
+                  <p className="font-body text-sm text-slate-300/80 mb-4 leading-relaxed">
                     Vibrant, gradient-rich palette for creative applications and
-                    immersive user experiences.
+                    immersive experiences.
                   </p>
-                  <div className="flex gap-2 mb-3">
-                    <div className="w-4 h-4 rounded bg-slate-950 border-2 border-violet-500/50"></div>
-                    <div className="w-4 h-4 rounded bg-violet-400"></div>
-                    <div className="w-4 h-4 rounded bg-pink-400"></div>
-                    <div className="w-4 h-4 rounded bg-cyan-400"></div>
-                  </div>{" "}
-                  <div className="text-xs text-slate-300">
-                    Creative workflows • Immersive experiences
+                  <div className="flex gap-1.5 mb-3">
+                    <div className="w-5 h-5 rounded-md bg-slate-950 border border-violet-500/30"></div>
+                    <div className="w-5 h-5 rounded-md bg-violet-400"></div>
+                    <div className="w-5 h-5 rounded-md bg-pink-400"></div>
+                    <div className="w-5 h-5 rounded-md bg-cyan-400"></div>
+                  </div>
+                  <div className="text-xs text-slate-400">
+                    Creative workflows
                   </div>
                 </div>
               </div>
               {/* Theme Color Showcases */}
-              <div className="space-y-12">
+              <div className="space-y-8">
                 <ThemeColorShowcase theme="light" />
 
-                <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
-
-                <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-700">
+                <div className="bg-neutral-900 rounded-2xl p-8 border border-neutral-800">
                   <ThemeColorShowcase theme="dark" />
                 </div>
 
-                <div className="my-8 border-b border-dashed border-neutral-200 dark:border-neutral-800"></div>
-
                 <div
-                  className="rounded-xl p-8 border border-purple-500/30"
+                  className="rounded-2xl p-8 border border-purple-500/20"
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(20, 10, 50, 0.95), rgba(10, 5, 30, 0.95))",
@@ -352,24 +341,23 @@ export default function Home() {
                 </div>
               </div>
               {/* Implementation Guide */}
-              <div className="mt-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-xl p-8 border border-blue-200/50 dark:border-blue-800/50">
-                <div className="text-center mb-8">
-                  <h3 className="font-heading font-semibold text-2xl text-neutral-950 dark:text-white mb-3">
+              <div className="mt-16 bg-neutral-50 dark:bg-neutral-900/50 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-800">
+                <div className="mb-8">
+                  <h3 className="font-heading font-semibold text-xl text-neutral-900 dark:text-white mb-2">
                     Implementation Guide
                   </h3>
-                  <p className="font-body text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
-                    Quick reference for implementing our color system in your
-                    projects
+                  <p className="font-body text-sm text-neutral-500 dark:text-neutral-400 max-w-2xl">
+                    Quick reference for implementing the color system
                   </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-lg p-6 border border-white/20 dark:border-neutral-800/20">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="bg-white dark:bg-neutral-800 rounded-xl p-5 border border-neutral-200 dark:border-neutral-700">
                     {" "}
-                    <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">
+                    <h4 className="font-heading font-medium text-sm text-neutral-900 dark:text-white mb-3">
                       CSS Variables
                     </h4>{" "}
-                    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                    <div className="bg-neutral-50 dark:bg-neutral-900 rounded-lg p-4 text-sm font-mono">
                       <div className="text-neutral-600 dark:text-neutral-400">
                         {/* Light theme */}
                       </div>
@@ -397,12 +385,12 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-lg p-6 border border-white/20 dark:border-neutral-800/20">
+                  <div className="bg-white dark:bg-neutral-800 rounded-xl p-5 border border-neutral-200 dark:border-neutral-700">
                     {" "}
-                    <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">
+                    <h4 className="font-heading font-medium text-sm text-neutral-900 dark:text-white mb-3">
                       Tailwind Classes
                     </h4>
-                    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                    <div className="bg-neutral-50 dark:bg-neutral-900 rounded-lg p-4 text-sm font-mono">
                       <div className="text-emerald-600 dark:text-emerald-400">
                         bg-blue-600
                       </div>{" "}
@@ -427,11 +415,11 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-lg p-6 border border-white/20 dark:border-neutral-800/20">
-                    <h4 className="font-heading font-medium text-lg text-neutral-950 dark:text-white mb-3">
+                  <div className="bg-white dark:bg-neutral-800 rounded-xl p-5 border border-neutral-200 dark:border-neutral-700">
+                    <h4 className="font-heading font-medium text-sm text-neutral-900 dark:text-white mb-3">
                       Theme Detection
                     </h4>
-                    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md p-4 text-sm font-mono">
+                    <div className="bg-neutral-50 dark:bg-neutral-900 rounded-lg p-4 text-sm font-mono">
                       {" "}
                       <div className="text-purple-600 dark:text-purple-400">
                         useTheme()
@@ -456,25 +444,25 @@ export default function Home() {
             </div>
           </AnimatedSection>
           {/* Typography Section */}
+          <div className="section-divider"></div>
           <AnimatedSection
             id="typography"
-            className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20"
+            className="ds-section"
             animation="fade-in"
           >
             <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-                <div>
-                  <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                    <TextFieldsRoundedIcon className="align-middle" />{" "}
-                    Typography System
-                  </div>{" "}                  <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
-                    Typography
-                  </h2>
-                  <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                    Our typography system showcases different font styles and sizes 
-                    for headers and body text in both English and Arabic languages.
-                  </p>
+              <div className="mb-14">
+                <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+                  <TextFieldsRoundedIcon className="align-middle" />
+                  Typography System
                 </div>
+                <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
+                  Typography
+                </h2>
+                <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+                  Typography system showcasing different font styles and sizes
+                  for headers and body text in English and Arabic.
+                </p>
               </div>              <div className="space-y-8 mb-16">
                 <DynamicTypography
                   title="English Typography"
@@ -491,58 +479,75 @@ export default function Home() {
             </div>
           </AnimatedSection>{" "}
           {/* Spacing Section */}
+          <div className="section-divider"></div>
           <SpacingSection />
           {/* Grids Section */}
+          <div className="section-divider"></div>
           <GridsSection />
           {/* Components Section */}
           {/* Buttons Section */}
+          <div className="section-divider"></div>
           <ButtonsSection />
           {/* Tabs & Pills Section */}
+          <div className="section-divider"></div>
           <TabsPillsSection />
           {/* Badges Section */}
+          <div className="section-divider"></div>
           <BadgesSection />
           {/* Cards Section */}
+          <div className="section-divider"></div>
           <CardsSection />
           {/* Card Variants Sections */}
+          <div className="section-divider"></div>
           <BasicCardsSection />
+          <div className="section-divider"></div>
           <InteractiveCardsSection />
+          <div className="section-divider"></div>
           <MediaCardsSection />
+          <div className="section-divider"></div>
           <DashboardCardsSection />
+          <div className="section-divider"></div>
           <ProfileCardsSection />
+          <div className="section-divider"></div>
           <TimelineCardsSection />
           {/* Accordions Section */}
+          <div className="section-divider"></div>
           <AccordionSection /> {/* Patterns Section */}
           {/* Layouts Section */}
+          <div className="section-divider"></div>
           <LayoutsSection />
           {/* Navigation Section */}
+          <div className="section-divider"></div>
           <NavigationSection />
           {/* Forms Section */}
+          <div className="section-divider"></div>
           <FormsSection />
           {/* Utilities Section */}
           {/* Breakpoints Section */}
+          <div className="section-divider"></div>
           <BreakpointsSection />
           {/* Shadows Section */}
+          <div className="section-divider"></div>
           <AnimatedSection
             id="shadows"
-            className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60"
+            className="ds-section"
             animation="slide-up"
           >
             <div className="max-w-7xl mx-auto">
-              <div className="mb-10">
-                <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-                  <BlurOnRoundedIcon className="mr-2 align-middle" /> Elevation
+              <div className="mb-14">
+                <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+                  <BlurOnRoundedIcon className="mr-1 align-middle" /> Elevation
                   System
                 </div>
-                <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
+                <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
                   Drop Shadows
                 </h2>
-                <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                  Our shadow system creates depth and elevation in the
-                  interface.
+                <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+                  Shadow system for depth and elevation in the interface.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
                   {
                     name: "Shadow Small",
@@ -570,31 +575,31 @@ export default function Home() {
                 ].map((shadow, index) => (
                   <div
                     key={index}
-                    className="group hover:-translate-y-1 transition-all duration-300"
+                    className="group hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <div
-                      className="h-52 bg-white dark:bg-neutral-800 rounded-xl mb-4 flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-neutral-50 dark:group-hover:from-neutral-800 dark:group-hover:to-neutral-900 transition-all duration-300"
+                      className="h-48 bg-white dark:bg-neutral-800 rounded-2xl mb-4 flex items-center justify-center border border-neutral-100 dark:border-neutral-700 transition-all duration-200"
                       style={{ boxShadow: shadow.value }}
                     >
                       <div className="text-center p-4">
                         <div className="flex justify-center mb-3">
-                          <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center text-primary-700 dark:text-primary-400">
+                          <div className="w-9 h-9 bg-primary-50 dark:bg-primary-900/20 rounded-lg flex items-center justify-center text-sm text-primary-600 dark:text-primary-400 font-medium">
                             {index + 1}
                           </div>
                         </div>
-                        <span className="font-heading font-medium text-neutral-800 dark:text-neutral-200 block mb-1">
+                        <span className="font-heading font-medium text-sm text-neutral-800 dark:text-neutral-200 block mb-1">
                           {shadow.name}
                         </span>
-                        <span className="font-body text-xs text-neutral-500 dark:text-neutral-400">
+                        <span className="font-body text-xs text-neutral-400 dark:text-neutral-500">
                           {shadow.elevation}
                         </span>
                       </div>
                     </div>
-                    <div className="px-2">
-                      <p className="font-body text-sm text-neutral-700 dark:text-neutral-300 font-medium mb-1">
+                    <div className="px-1">
+                      <p className="font-body text-sm text-neutral-600 dark:text-neutral-300 font-medium mb-1">
                         {shadow.name}
                       </p>
-                      <p className="font-mono text-xs text-neutral-600 dark:text-neutral-400 break-words">
+                      <p className="font-mono text-xs text-neutral-400 dark:text-neutral-500 break-words leading-relaxed">
                         {shadow.value}
                       </p>
                     </div>
@@ -604,9 +609,11 @@ export default function Home() {
             </div>
           </AnimatedSection>{" "}
           {/* Tints Section */}
+          <div className="section-divider"></div>
           <TintsSection />
           {/* Resources Section */}
           {/* Accessibility Utilities Section */}
+          <div className="section-divider"></div>
           <AccessibilityUtilitiesSection />
         </main>
       </div>

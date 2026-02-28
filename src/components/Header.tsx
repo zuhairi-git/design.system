@@ -424,15 +424,15 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled
-          ? "border-b border-neutral-200/80 dark:border-neutral-700/60 shadow-lg backdrop-blur-xl bg-white/95 dark:bg-neutral-900/95"
-          : "bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md"
+        className={`sticky top-0 z-50 w-full transition-all duration-200 ${scrolled
+          ? "border-b border-neutral-200/60 dark:border-neutral-800/60 shadow-sm bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl"
+          : "bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md"
           }`}
         role="banner"
         aria-label="Site header"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-18">
+          <div className="flex items-center justify-between h-16">
             {/* Left: Mobile Menu */}
             <div className="flex items-center space-x-4">
               {onSidebarToggle && (
@@ -458,15 +458,15 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                 <div className="relative w-full">
                   <div
                     className={`relative flex items-center transition-all duration-200 ${searchFocused
-                      ? "ring-2 ring-primary-500 shadow-lg"
-                      : "ring-1 ring-neutral-300 dark:ring-neutral-600 hover:ring-neutral-400 dark:hover:ring-neutral-500"
-                      } rounded-xl bg-white dark:bg-neutral-800/90 backdrop-blur-sm`}
+                      ? "ring-2 ring-primary-500/50 shadow-md shadow-primary-500/5"
+                      : "ring-1 ring-neutral-200 dark:ring-neutral-700 hover:ring-neutral-300 dark:hover:ring-neutral-600"
+                      } rounded-xl bg-neutral-50 dark:bg-neutral-800/80`}
                   >
                     <MagnifyingGlassIcon className="absolute left-4 h-5 w-5 text-neutral-400 dark:text-neutral-500" />
 
                     <ComboboxInput
                       ref={searchInputRef}
-                      className="w-full pl-12 pr-24 py-3.5 text-sm bg-transparent border-0 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none"
+                      className="w-full pl-12 pr-24 py-2.5 text-sm bg-transparent border-0 text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-neutral-500 focus:outline-none"
                       placeholder="Search components, colors, patterns..."
                       onFocus={() => setSearchFocused(true)}
                       onBlur={() =>

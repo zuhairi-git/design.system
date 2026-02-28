@@ -4,25 +4,24 @@ export default function ButtonsSection() {
   return (
     <AnimatedSection
       id="buttons"
-      className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20 bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950/60"
+      className="ds-section"
       animation="slide-up"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
-            <span className="mr-2">👆</span> Button System
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+            <span>👆</span> Button System
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
             Buttons
           </h2>
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-            Our button system offers consistent interactive elements with theme
-            variations.
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
+            Consistent interactive elements with theme variations.
           </p>
         </div>
         {/* Button Sizes */}
-        <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg mb-8">
-          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+        <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 mb-8">
+          <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">
             <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +41,7 @@ export default function ButtonsSection() {
             Button Sizes
           </h3>
           <div className="space-y-6">
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Primary Button Sizes
               </h4>{" "}
@@ -80,8 +79,8 @@ px-8 py-4 text-lg font-medium rounded-full`}
         </div>
 
         {/* Button Variants */}
-        <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg mb-8">
-          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+        <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 mb-8">
+          <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">
             <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +103,7 @@ px-8 py-4 text-lg font-medium rounded-full`}
           <div className="space-y-8">
             {" "}
             {/* Primary Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Primary
               </h4>{" "}
@@ -151,7 +150,7 @@ opacity-0 group-hover:opacity-100 transition-opacity`}
               </div>
             </div>{" "}
             {/* Secondary Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Secondary
               </h4>{" "}
@@ -194,7 +193,7 @@ hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-900 dark:text-white 
               </div>
             </div>{" "}
             {/* Tertiary Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Tertiary
               </h4>{" "}
@@ -243,7 +242,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
               </div>
             </div>
             {/* Outline Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Outline
               </h4>{" "}
@@ -290,8 +289,8 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
         </div>
 
         {/* Status Buttons */}
-        <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg mb-8">
-          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+        <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 mb-8">
+          <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">
             <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +312,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
 
           <div className="space-y-8">
             {/* Info Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Info
               </h4>{" "}
@@ -338,7 +337,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
             </div>
 
             {/* Success Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Success
               </h4>{" "}
@@ -363,7 +362,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
             </div>
 
             {/* Warning Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Warning
               </h4>{" "}
@@ -388,7 +387,7 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
             </div>
 
             {/* Danger Buttons */}
-            <div className="p-6 bg-neutral-50 dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
+            <div className="p-5 bg-neutral-50 dark:bg-neutral-800/60 rounded-xl border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">
                 Danger
               </h4>{" "}
@@ -415,8 +414,8 @@ text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-wh
         </div>
 
         {/* Animation Effects */}
-        <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm p-8 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-lg mb-14">
-          <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white mb-6 flex items-center">
+        <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 mb-14">
+          <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center">
             <span className="inline-flex items-center justify-center w-7 h-7 mr-2 rounded-lg bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

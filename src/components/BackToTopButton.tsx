@@ -32,31 +32,17 @@ const BackToTopButton: React.FC = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          initial={{ opacity: 0, scale: 0.8, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}          className="fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg 
-                    bg-gradient-to-br from-blue-500 to-purple-500 dark:from-blue-600 dark:to-purple-600 
-                    text-white transition-all duration-300"
+          exit={{ opacity: 0, scale: 0.8, y: 10 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="fixed bottom-8 right-8 z-50 w-10 h-10 rounded-full flex items-center justify-center shadow-md
+                    bg-neutral-900 dark:bg-white
+                    text-white dark:text-neutral-900 transition-all duration-200 hover:shadow-lg"
           aria-label="Back to top"
-        >          <div className="relative">
-            <ArrowUpIcon className="w-6 h-6" />
-            
-            {/* Pulse effect */}
-            <motion.div
-              className="absolute inset-0 rounded-full opacity-30 bg-white"
-              animate={{
-                scale: [1, 1.4, 1],
-                opacity: [0.3, 0.1, 0.3],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            />
-          </div>
+        >
+          <ArrowUpIcon className="w-5 h-5" />
         </motion.button>
       )}
     </AnimatePresence>

@@ -89,7 +89,7 @@ export default function ColorAccessibilityGuide() {
   return (
     <div className="mt-16 mb-8">
       <div className="text-center mb-8">
-        <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/30 rounded-full shadow-sm">
+        <div className="section-label text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/30">
           <AccessibilityRoundedIcon className="h-4 w-4 mr-2" />
           Accessibility Guide
         </div>

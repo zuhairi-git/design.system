@@ -144,23 +144,23 @@ function InteractiveCard({ title, description, theme, variant }: InteractiveCard
 
 export default function InteractiveCardsSection() {
   return (
-    <AnimatedSection id="interactive-cards" className="px-5 sm:px-8 py-16 sm:py-20 md:px-12 lg:px-20" animation="fade-in">
+    <AnimatedSection id="interactive-cards" className="ds-section" animation="fade-in">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-10">
-          <div className="inline-flex items-center px-3 py-1.5 mb-4 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full shadow-sm">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
             <TouchAppIcon className="mr-2" fontSize="small" /> Interactive Elements
           </div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-neutral-950 dark:text-white mb-4">Interactive Cards</h2>
-          <p className="font-body text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Interactive Cards</h2>
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Cards with interactive elements that respond to user actions like hover, click, and touch - available in Light, Dark, and Colorful themes.
           </p>
         </div>
 
         {/* Light theme interactive cards */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="flex items-center mb-4">
             <LightModeIcon className="mr-2 text-amber-500" />
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Light Theme Interactive Cards</h3>
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white">Light Theme Interactive Cards</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <InteractiveCard
@@ -185,10 +185,10 @@ export default function InteractiveCardsSection() {
         </div>
         
         {/* Dark theme interactive cards */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="flex items-center mb-4">
             <DarkModeIcon className="mr-2 text-blue-500" />
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Dark Theme Interactive Cards</h3>
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white">Dark Theme Interactive Cards</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <InteractiveCard
@@ -213,10 +213,10 @@ export default function InteractiveCardsSection() {
         </div>
         
         {/* Colorful theme interactive cards */}
-        <div className="mb-12">
+        <div className="mb-14">
           <div className="flex items-center mb-4">
             <AutoAwesomeIcon className="mr-2 text-fuchsia-500" />
-            <h3 className="font-heading font-semibold text-xl text-neutral-950 dark:text-white">Colorful Theme Interactive Cards</h3>
+            <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white">Colorful Theme Interactive Cards</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <InteractiveCard
