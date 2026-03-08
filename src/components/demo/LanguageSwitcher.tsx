@@ -1,9 +1,30 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, LanguageIcon } from '@heroicons/react/24/outline';
+
+const FlagGB = () => (
+  <svg viewBox="0 0 60 30" className="w-5 h-3.5 rounded-sm" aria-hidden="true">
+    <clipPath id="t"><rect width="60" height="30" /></clipPath>
+    <g clipPath="url(#t)">
+      <path d="M0 0v30h60V0z" fill="#00247d" />
+      <path d="M0 0l60 30m0-30L0 30" stroke="#fff" strokeWidth="6" />
+      <path d="M0 0l60 30m0-30L0 30" clipPath="url(#t)" stroke="#cf142b" strokeWidth="4" />
+      <path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10" />
+      <path d="M30 0v30M0 15h60" stroke="#cf142b" strokeWidth="6" />
+    </g>
+  </svg>
+);
+
+const FlagFI = () => (
+  <svg viewBox="0 0 180 110" className="w-5 h-3.5 rounded-sm" aria-hidden="true">
+    <rect width="180" height="110" fill="#fff" />
+    <rect y="40" width="180" height="30" fill="#003580" />
+    <rect x="50" width="30" height="110" fill="#003580" />
+  </svg>
+);
 
 // Mock language context for demo purposes
 const useLanguage = () => {
@@ -23,10 +44,10 @@ export default function LanguageSwitcher() {
   const [announcement, setAnnouncement] = useState('');
 
   // Language configurations with flags and labels
-  const languages = [
-    { code: 'en', flag: '🇬🇧', label: 'English', shortLabel: 'EN' },
-    { code: 'fi', flag: '🇫🇮', label: 'Suomi', shortLabel: 'FI' }
-  ] as const;
+  const languages: { code: string; flag: ReactNode; label: string; shortLabel: string }[] = [
+    { code: 'en', flag: <FlagGB />, label: 'English', shortLabel: 'EN' },
+    { code: 'fi', flag: <FlagFI />, label: 'Suomi', shortLabel: 'FI' }
+  ];
 
   // Get current language
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
@@ -102,7 +123,7 @@ export default function LanguageSwitcher() {
                     <span className="text-lg leading-none">{currentLanguage.flag}</span>
                     <span className="text-sm font-medium">{currentLanguage.shortLabel}</span>
                   </div>
-                  
+
                   {/* Dropdown arrow */}
                   <motion.div
                     animate={{ rotate: open ? 180 : 0 }}
@@ -123,38 +144,38 @@ export default function LanguageSwitcher() {
                 >
                   <Menu.Items static className="focus:outline-none">
                     <div className="p-2">
-                      {languages.map((language, index) => (                        <Menu.Item key={language.code}>
-                          {() => (
-                            <motion.button
-                              onClick={() => handleLanguageChange(language.code)}
-                              className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium ${getItemStyles(locale === language.code)} focus:outline-none`}
-                              whileHover={{ x: 2 }}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.15, delay: index * 0.05 }}
-                            >                              {/* Language flag */}
-                              <span className="text-lg">{language.flag}</span>
-                            
-                              {/* Language details */}
-                              <div className="flex-1 text-left">
-                                <div className="font-medium">{language.label}</div>
-                                <div className="text-xs opacity-75">{language.shortLabel}</div>
-                              </div>
-                              
-                              {/* Selected indicator */}
-                              {locale === language.code && (
-                                <motion.div
-                                  layoutId="language-selected"
-                                  className="w-2 h-2 bg-blue-500 rounded-full"
-                                  initial={false}
-                                  transition={{ duration: 0.2, ease: "easeOut" }}
-                                />
-                              )}
-                            </motion.button>
-                          )}
-                        </Menu.Item>                    ))}
-                  </div>
-                </Menu.Items>
+                      {languages.map((language, index) => (<Menu.Item key={language.code}>
+                        {() => (
+                          <motion.button
+                            onClick={() => handleLanguageChange(language.code)}
+                            className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium ${getItemStyles(locale === language.code)} focus:outline-none`}
+                            whileHover={{ x: 2 }}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.15, delay: index * 0.05 }}
+                          >                              {/* Language flag */}
+                            <span className="text-lg">{language.flag}</span>
+
+                            {/* Language details */}
+                            <div className="flex-1 text-left">
+                              <div className="font-medium">{language.label}</div>
+                              <div className="text-xs opacity-75">{language.shortLabel}</div>
+                            </div>
+
+                            {/* Selected indicator */}
+                            {locale === language.code && (
+                              <motion.div
+                                layoutId="language-selected"
+                                className="w-2 h-2 bg-blue-500 rounded-full"
+                                initial={false}
+                                transition={{ duration: 0.2, ease: "easeOut" }}
+                              />
+                            )}
+                          </motion.button>
+                        )}
+                      </Menu.Item>))}
+                    </div>
+                  </Menu.Items>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -164,9 +185,9 @@ export default function LanguageSwitcher() {
 
       {/* Screen reader announcement */}
       {announcement && (
-        <div 
-          role="status" 
-          aria-live="polite" 
+        <div
+          role="status"
+          aria-live="polite"
           aria-atomic="true"
           className="sr-only"
         >

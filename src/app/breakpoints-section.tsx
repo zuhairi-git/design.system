@@ -3,6 +3,7 @@
 import React from 'react';
 import AnimatedSection from '@/components/AnimatedSection';
 import CodeSnippet from '@/components/CodeSnippet';
+import { DevicePhoneMobileIcon, ChartBarIcon, EyeIcon, ArrowsPointingOutIcon } from '@heroicons/react/24/outline';
 
 export default function BreakpointsSection() {
   // Tailwind breakpoints
@@ -39,28 +40,28 @@ export default function BreakpointsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
-            <span className="mr-2">📱</span> Responsive Design
+            <DevicePhoneMobileIcon className="w-4 h-4 mr-2" /> Responsive Design
           </div>
           <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Breakpoints</h2>          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Our responsive breakpoints ensure layouts adapt seamlessly across different screen sizes, following Tailwind CSS&apos;s
             mobile-first approach.
           </p>
         </div>
-        
+
         {/* Visual breakpoints comparison */}
         <div className="relative mb-12 bg-white/90 dark:bg-neutral-900/90 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden">
           <div className="p-6">
             <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6">Breakpoint Overview</h3>
-            
+
             {/* Desktop visualization of breakpoints */}
             <div className="hidden lg:block mb-8 relative">
               <div className="h-12 bg-neutral-100 dark:bg-neutral-800 rounded-lg relative mb-2">
                 {breakpoints.map((point, index) => (
                   <React.Fragment key={index}>
                     {index > 0 && (
-                      <div 
+                      <div
                         className="absolute h-full border-l-2 border-dashed border-primary-400 dark:border-primary-600 flex flex-col items-center"
-                        style={{ 
+                        style={{
                           left: `${(point.minWidth / 1920) * 100}%`,
                           zIndex: 10
                         }}
@@ -70,10 +71,10 @@ export default function BreakpointsSection() {
                         </div>
                       </div>
                     )}
-                    
-                    <div 
+
+                    <div
                       className={`absolute h-full ${index === 0 ? 'rounded-l-lg' : ''} ${index === breakpoints.length - 1 ? 'rounded-r-lg' : ''}`}
-                      style={{ 
+                      style={{
                         left: `${(point.minWidth / 1920) * 100}%`,
                         right: point.maxWidth ? `${(1 - point.maxWidth / 1920) * 100}%` : 0,
                         background: `rgba(var(--primary-rgb), ${0.1 + index * 0.1})`,
@@ -86,12 +87,12 @@ export default function BreakpointsSection() {
                   </React.Fragment>
                 ))}
               </div>
-              
+
               <div className="flex justify-between mt-2 mb-6 text-xs text-neutral-500 dark:text-neutral-400 px-2">
                 <div>0px</div>
                 <div>1920px</div>
               </div>
-              
+
               <div className="w-full bg-neutral-100 dark:bg-neutral-800 h-10 rounded-lg mb-3 flex items-center">
                 <div className="w-[33.33%] h-full bg-primary-200 dark:bg-primary-800 rounded-l-lg flex items-center justify-center font-mono text-xs text-primary-800 dark:text-primary-300">
                   Mobile
@@ -104,7 +105,7 @@ export default function BreakpointsSection() {
                 </div>
               </div>
             </div>
-            
+
             {/* Responsive breakpoints table */}
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
@@ -118,8 +119,8 @@ export default function BreakpointsSection() {
                 </thead>
                 <tbody>
                   {breakpoints.map((bp, index) => (
-                    <tr 
-                      key={index} 
+                    <tr
+                      key={index}
                       className="border-b border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors"
                     >
                       <td className="py-3 px-4">
@@ -142,22 +143,22 @@ export default function BreakpointsSection() {
             </div>
           </div>
         </div>
-        
+
         {/* Common responsive patterns */}
         <div className="mb-14">
           <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-6">Common Responsive Patterns</h3>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Responsive Grid */}
             <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/70 dark:border-neutral-800/70 rounded-xl overflow-hidden">
               <div className="p-6">
                 <h4 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3">
-                  <span className="mr-2">📊</span> Responsive Grid
+                  <ChartBarIcon className="w-4 h-4 mr-2" /> Responsive Grid
                 </h4>
                 <p className="font-body text-neutral-700 dark:text-neutral-400 mb-4">
                   Adapt the number of columns based on screen width
                 </p>
-                
+
                 {/* Live example */}
                 <div className="mb-5 bg-neutral-100/80 dark:bg-neutral-800/80 p-4 rounded-lg overflow-hidden">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
@@ -168,21 +169,21 @@ export default function BreakpointsSection() {
                     ))}
                   </div>
                 </div>
-                
+
                 <CodeSnippet code={responsiveExamples.grid} language="html" />
               </div>
             </div>
-            
+
             {/* Conditional Visibility */}
             <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/70 dark:border-neutral-800/70 rounded-xl overflow-hidden">
               <div className="p-6">
                 <h4 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3">
-                  <span className="mr-2">👁️</span> Conditional Visibility
+                  <EyeIcon className="w-4 h-4 mr-2" /> Conditional Visibility
                 </h4>
                 <p className="font-body text-neutral-700 dark:text-neutral-400 mb-4">
                   Show or hide elements based on screen size
                 </p>
-                
+
                 {/* Live example */}
                 <div className="mb-5 bg-neutral-100/80 dark:bg-neutral-800/80 p-4 rounded-lg overflow-hidden">
                   <div className="block sm:hidden mb-2 bg-primary-100 dark:bg-primary-900/40 p-2 rounded text-primary-700 dark:text-primary-300 text-center">
@@ -195,21 +196,21 @@ export default function BreakpointsSection() {
                     Desktop only
                   </div>
                 </div>
-                
+
                 <CodeSnippet code={responsiveExamples.visibility} language="html" />
               </div>
             </div>
-            
+
             {/* Responsive Sizing */}
             <div className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/70 dark:border-neutral-800/70 rounded-xl overflow-hidden">
               <div className="p-6">
                 <h4 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white mb-3">
-                  <span className="mr-2">📏</span> Responsive Sizing
+                  <ArrowsPointingOutIcon className="w-4 h-4 mr-2" /> Responsive Sizing
                 </h4>
                 <p className="font-body text-neutral-700 dark:text-neutral-400 mb-4">
                   Adjust element dimensions at different breakpoints
                 </p>
-                
+
                 {/* Live example */}
                 <div className="mb-5 bg-neutral-100/80 dark:bg-neutral-800/80 p-4 rounded-lg overflow-hidden">
                   <div className="flex flex-col gap-3">
@@ -221,20 +222,20 @@ export default function BreakpointsSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 <CodeSnippet code={responsiveExamples.sizing} language="html" />
               </div>
             </div>
           </div>
         </div>
-        
+
         {/* Mobile-first approach */}
         <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden">
           <div className="p-6">
             <h3 className="font-heading font-semibold text-lg text-neutral-900 dark:text-white mb-4">Mobile-First Approach</h3>            <p className="text-neutral-700 dark:text-neutral-400 mb-4">
               Our design system follows Tailwind CSS&apos;s mobile-first approach, where styles are applied to mobile by default and then modified at larger breakpoints:
             </p>
-            
+
             <div className="flex flex-col md:flex-row md:items-center gap-6 mb-6">
               <div className="flex-1 bg-neutral-100 dark:bg-neutral-800 p-4 rounded-lg">
                 <div className="text-center text-neutral-500 dark:text-neutral-400 text-sm mb-2">Without breakpoint prefix</div>
@@ -250,7 +251,7 @@ export default function BreakpointsSection() {
                 </div>
               </div>
             </div>
-            
+
             <p className="text-neutral-700 dark:text-neutral-400">
               This approach allows for clean, maintainable code that builds from small screens up to larger ones, reducing CSS bloat and ensuring a consistent experience across all devices.
             </p>

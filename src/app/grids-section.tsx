@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Image from 'next/image';
 import AnimatedSection from '@/components/AnimatedSection';
 import CodeSnippet from '@/components/CodeSnippet';
+import { ChartBarIcon, DevicePhoneMobileIcon, MagnifyingGlassIcon, CogIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 // Import local images
 import galleryImage1 from '@/img/brooke-lark-pXEsx3kRuNc-unsplash.jpg';
@@ -17,7 +18,7 @@ export default function GridsSection() {
     {
       name: "Balanced Grid",
       category: "foundation",
-      icon: "📊",
+      icon: <ChartBarIcon className="w-5 h-5" />,
       snippet: `<div class="grid grid-cols-3 gap-4">
   <div>Column 1</div>
   <div>Column 2</div>
@@ -28,7 +29,7 @@ export default function GridsSection() {
     {
       name: "Adaptive Grid",
       category: "responsive",
-      icon: "📱",
+      icon: <DevicePhoneMobileIcon className="w-5 h-5" />,
       snippet: `<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
   <div>Item 1</div>
   <div>Item 2</div>
@@ -42,7 +43,7 @@ export default function GridsSection() {
     {
       name: "Focal Grid",
       category: "advanced",
-      icon: "🔍",
+      icon: <MagnifyingGlassIcon className="w-5 h-5" />,
       snippet: `<div class="grid grid-cols-6 gap-4">
   <div class="col-span-4">Primary content focus</div>
   <div class="col-span-2">Secondary content</div>
@@ -55,7 +56,7 @@ export default function GridsSection() {
     {
       name: "Precision Grid",
       category: "expert",
-      icon: "⚙️",
+      icon: <CogIcon className="w-5 h-5" />,
       snippet: `<div class="grid grid-cols-12 gap-4">
   <div class="col-start-1 col-end-9">Main content (spans 8/12)</div>
   <div class="col-start-9 col-end-13">Sidebar (spans 4/12)</div>
@@ -67,7 +68,7 @@ export default function GridsSection() {
     {
       name: "Dynamic Grid",
       category: "modern",
-      icon: "✨",
+      icon: <SparklesIcon className="w-5 h-5" />,
       snippet: `<div class="grid grid-cols-none grid-flow-dense auto-cols-fr gap-4">
   <div class="col-span-2">Featured content</div>
   <div>Standard item</div>
@@ -83,17 +84,17 @@ export default function GridsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
-            <span className="mr-2">✨</span> Layout Structure
+            <SparklesIcon className="w-4 h-4 mr-2" /> Layout Structure
           </div>
-          
+
           <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-neutral-950 dark:text-white mb-6 tracking-tight">
             <span className="bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800 dark:from-primary-400 dark:to-primary-600">Harmonious</span> Grid System
           </h2>
-            <p className="font-body text-lg md:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl leading-relaxed mb-8">
-            A grid system creates the invisible architecture that brings visual <span className="italic">harmony</span> and <span className="italic">balance</span> to your layouts. 
+          <p className="font-body text-lg md:text-xl text-neutral-700 dark:text-neutral-300 max-w-3xl leading-relaxed mb-8">
+            A grid system creates the invisible architecture that brings visual <span className="italic">harmony</span> and <span className="italic">balance</span> to your layouts.
             It&apos;s the foundation that enables both aesthetic beauty and functional clarity.
           </p>
-          
+
         </div>        {/* Golden ratio grid system explanation */}
         <div className="mb-16 overflow-hidden">
           <div className="bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-neutral-100 dark:border-neutral-800/70">
@@ -107,12 +108,12 @@ export default function GridsSection() {
                   </span>
                   The 12-Column Harmony
                 </h3>
-                
+
                 <div className="pl-11">
                   <p className="text-neutral-700 dark:text-neutral-300 mb-6 leading-relaxed">
                     Our system divides the canvas into 12 equal columns—a number chosen for its exceptional <em>mathematical harmony</em>. Being divisible by 2, 3, 4, and 6, it enables balanced layouts with countless proportional possibilities.
                   </p>
-                  
+
                   <div className="space-y-6 mb-8">
                     <div className="flex items-center">
                       <div className="w-12 h-1.5 bg-primary-500/80 dark:bg-primary-400/80 rounded-full mr-3"></div>
@@ -131,7 +132,7 @@ export default function GridsSection() {
                       <span className="text-sm text-neutral-600 dark:text-neutral-400">Divisible by 6: creates 2 equal sections</span>
                     </div>
                   </div>
-                  
+
                   <div className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-1">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
@@ -150,7 +151,7 @@ export default function GridsSection() {
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="space-y-6">
                     <div>
                       <div className="flex justify-between items-center mb-2">
@@ -166,7 +167,7 @@ export default function GridsSection() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <h5 className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Golden Ratio (8:4)</h5>
@@ -181,7 +182,7 @@ export default function GridsSection() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <h5 className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Three Equal Columns (4:4:4)</h5>
@@ -205,7 +206,7 @@ export default function GridsSection() {
             </div>
           </div>
         </div>
-        
+
         {/* Real-world grid examples */}
         <div className="mb-16">
           <div className="text-center mb-10">
@@ -214,7 +215,7 @@ export default function GridsSection() {
               Here&apos;s how different grid arrangements create distinct visual experiences:
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="group bg-white/90 dark:bg-neutral-900/90 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-neutral-100 dark:border-neutral-800/70 hover:-translate-y-1">
               <div className="p-6">
@@ -247,7 +248,7 @@ export default function GridsSection() {
                 </p>
               </div>
             </div>
-          
+
             <div className="group bg-white/90 dark:bg-neutral-900/90 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-neutral-100 dark:border-neutral-800/70 hover:-translate-y-1">
               <div className="p-6">
                 <div className="inline-flex items-center px-2.5 py-1 mb-3 text-xs font-medium rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
@@ -259,7 +260,7 @@ export default function GridsSection() {
                     <div className="col-span-4 p-4 h-5/5 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-sm">
                       Category Filter Bar
                     </div>
-                    
+
                     {Array(8).fill(null).map((_, i) => (
                       <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded-md flex flex-col overflow-hidden">
                         <div className="h-3/5 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
@@ -276,7 +277,7 @@ export default function GridsSection() {
                 </p>
               </div>
             </div>
-          
+
             <div className="group bg-white/90 dark:bg-neutral-900/90 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-neutral-100 dark:border-neutral-800/70 hover:-translate-y-1">
               <div className="p-6">
                 <div className="inline-flex items-center px-2.5 py-1 mb-3 text-xs font-medium rounded-full bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
@@ -287,15 +288,15 @@ export default function GridsSection() {
                   <div className="grid grid-cols-4 gap-2 h-full">
                     {[galleryImage1, galleryImage2, galleryImage3, galleryImage4].map((img, i) => (
                       <div key={i} className="col-span-2 bg-purple-200 dark:bg-purple-900/40 rounded-md overflow-hidden relative group/img">
-                        <Image 
-                          src={img} 
-                          alt={`Gallery image ${i+1}`} 
+                        <Image
+                          src={img}
+                          alt={`Gallery image ${i + 1}`}
                           className="object-cover group-hover/img:scale-110 transition-transform duration-700 ease-out"
                           fill
                           sizes="(max-width: 768px) 50vw, 25vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end p-2">
-                          <span className="text-white text-xs">Photo {i+1}</span>
+                          <span className="text-white text-xs">Photo {i + 1}</span>
                         </div>
                       </div>
                     ))}
@@ -312,12 +313,12 @@ export default function GridsSection() {
           <div className="relative px-6 py-12 rounded-3xl overflow-hidden bg-gradient-to-br from-primary-50/90 to-primary-100/90 dark:from-primary-900/30 dark:to-primary-800/20 border border-primary-200/40 dark:border-primary-800/30 shadow-lg">
             <div className="absolute top-0 left-0 w-full h-full opacity-10 dark:opacity-5">
               <div className="absolute inset-0 grid grid-cols-6 grid-rows-12">
-                {Array(6*12).fill(null).map((_, i) => (
+                {Array(6 * 12).fill(null).map((_, i) => (
                   <div key={i} className="border border-primary-300/20 dark:border-primary-700/20"></div>
                 ))}
               </div>
             </div>
-            
+
             <div className="relative z-10">
               <div className="text-center mb-12">
                 <div className="section-label text-primary-700 dark:text-primary-300 bg-white/70 dark:bg-neutral-900/70 backdrop-blur-sm">
@@ -326,17 +327,17 @@ export default function GridsSection() {
                   </svg>
                   Responsive Harmony
                 </div>
-                
+
                 <h3 className="font-heading font-semibold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-4">
                   Fluid Harmony Across All Devices
                 </h3>
-                
+
                 <p className="text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
-                  Like a musical composition that adapts to different venues, our responsive grid system automatically 
+                  Like a musical composition that adapts to different venues, our responsive grid system automatically
                   transforms to create visual harmony on any screen size.
                 </p>
               </div>
-              
+
               <div className="flex flex-col lg:flex-row gap-8">
                 <div className="flex-1 transform transition-transform hover:translate-y-[-5px] duration-500">
                   <div className="bg-white/90 dark:bg-neutral-900/90 rounded-xl shadow-lg p-4 h-full">
@@ -345,14 +346,14 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Mobile
                         </span>
-                      </div>                        
+                      </div>
                       <div className="w-36 h-68 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-2xl shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-lg p-1.5 overflow-hidden">
                           <div className="grid grid-cols-1 gap-3">
                             <div className="h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
                               Filter
                             </div>
-                            
+
                             {Array(2).fill(null).map((_, i) => (
                               <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded-md flex flex-col overflow-hidden">
                                 <div className="h-14 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
@@ -363,11 +364,11 @@ export default function GridsSection() {
                                 </div>
                               </div>
                             ))}
-                            
+
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="text-center mt-4">
                         <h4 className="font-medium text-neutral-800 dark:text-neutral-200 text-sm">
                           Simplified Single Column
@@ -379,7 +380,7 @@ export default function GridsSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex-1 transform transition-transform hover:translate-y-[-5px] duration-500">
                   <div className="bg-white/90 dark:bg-neutral-900/90 rounded-xl shadow-lg p-4 h-full">
                     <div className="relative bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 p-5 rounded-lg">
@@ -387,14 +388,14 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Tablet
                         </span>
-                      </div>                        
+                      </div>
                       <div className="w-48 h-70 mx-auto bg-neutral-900 dark:bg-neutral-950 rounded-lg shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded-md p-1.5 overflow-hidden">
                           <div className="grid grid-cols-2 gap-3">
                             <div className="col-span-2 h-10 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
                               Product Filters
                             </div>
-                            
+
                             {Array(4).fill(null).map((_, i) => (
                               <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded-md flex flex-col overflow-hidden">
                                 <div className="h-12 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
@@ -404,14 +405,14 @@ export default function GridsSection() {
                                 </div>
                               </div>
                             ))}
-                            
+
                             <div className="col-span-2 h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
                               Load More
                             </div>
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="text-center mt-4">
                         <h4 className="font-medium text-neutral-800 dark:text-neutral-200 text-sm">
                           Balanced Dual-Column
@@ -423,7 +424,7 @@ export default function GridsSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex-1 transform transition-transform hover:translate-y-[-5px] duration-500">
                   <div className="bg-white/90 dark:bg-neutral-900/90 rounded-xl shadow-lg p-4 h-full">
                     <div className="relative bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 p-5 rounded-lg">
@@ -431,7 +432,7 @@ export default function GridsSection() {
                         <span className="bg-primary-50 text-primary-700 dark:bg-primary-900/70 dark:text-primary-200 text-xs font-medium px-3 py-1 rounded-full shadow-sm">
                           Desktop
                         </span>
-                      </div>                        
+                      </div>
                       <div className="h-60 mx-auto mt-10 bg-neutral-900 dark:bg-neutral-950 rounded shadow-lg p-1.5 overflow-hidden">
                         <div className="bg-white dark:bg-neutral-900 h-full w-full rounded p-1.5 overflow-hidden">
                           <div className="grid grid-cols-4 gap-2">
@@ -443,7 +444,7 @@ export default function GridsSection() {
                                 <span>On Sale</span>
                               </div>
                             </div>
-                            
+
                             {Array(8).fill(null).map((_, i) => (
                               <div key={i} className="bg-emerald-200 dark:bg-emerald-800/40 rounded overflow-hidden flex flex-col">
                                 <div className="h-10 bg-emerald-300/50 dark:bg-emerald-700/50"></div>
@@ -454,7 +455,7 @@ export default function GridsSection() {
                                 </div>
                               </div>
                             ))}
-                            
+
                             <div className="col-span-4 h-6 bg-emerald-100 dark:bg-emerald-900/40 rounded-md flex items-center justify-center text-emerald-800 dark:text-emerald-300 text-xs">
                               <div className="flex items-center space-x-2">
                                 <span>1</span>
@@ -467,7 +468,7 @@ export default function GridsSection() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="text-center mt-4">
                         <h4 className="font-medium text-neutral-800 dark:text-neutral-200 text-sm">
                           Rich Multi-Column
@@ -480,7 +481,7 @@ export default function GridsSection() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-12 bg-white/80 dark:bg-neutral-800/80 rounded-xl p-6 shadow-md backdrop-blur-sm">
                 <div className="flex flex-col md:flex-row gap-6 items-center">
                   <div className="md:w-1/4 flex justify-center">
@@ -490,16 +491,16 @@ export default function GridsSection() {
                       </svg>
                     </div>
                   </div>
-                  
+
                   <div className="md:w-3/4">
                     <h3 className="font-medium text-lg text-neutral-900 dark:text-white mb-3">Adaptive Harmony</h3>
                     <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
                       Our responsive grid system intelligently adapts to create the most visually harmonious layout for each device:
                     </p>
                     <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">                      <div className="bg-gradient-to-r from-primary-50 to-white dark:from-primary-900/30 dark:to-neutral-800/50 p-3 rounded">
-                        <h4 className="text-primary-700 dark:text-primary-300 font-medium text-sm">Mobile Experience</h4>
-                        <p className="text-neutral-600 dark:text-neutral-400 text-sm">Single-column product display optimized for browsing on small screens</p>
-                      </div>
+                      <h4 className="text-primary-700 dark:text-primary-300 font-medium text-sm">Mobile Experience</h4>
+                      <p className="text-neutral-600 dark:text-neutral-400 text-sm">Single-column product display optimized for browsing on small screens</p>
+                    </div>
                       <div className="bg-gradient-to-r from-primary-50 to-white dark:from-primary-900/30 dark:to-neutral-800/50 p-3 rounded">
                         <h4 className="text-primary-700 dark:text-primary-300 font-medium text-sm">Tablet Experience</h4>
                         <p className="text-neutral-600 dark:text-neutral-400 text-sm">Dual-column product grid balancing details and product visibility</p>
@@ -515,7 +516,7 @@ export default function GridsSection() {
             </div>
           </div>
         </div>
-          {/* Advanced Grid Patterns */}
+        {/* Advanced Grid Patterns */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40">
@@ -528,11 +529,11 @@ export default function GridsSection() {
               Harmonious Grid Solutions
             </h3>
             <p className="text-neutral-700 dark:text-neutral-300 max-w-3xl mx-auto">
-              These grid patterns showcase the versatility of our system, each designed to bring visual harmony to different 
+              These grid patterns showcase the versatility of our system, each designed to bring visual harmony to different
               types of content while maintaining a cohesive design language.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {gridSamples.map((sample, index) => (
               <div key={index} className="group bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border border-neutral-100 dark:border-neutral-800/70 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -549,31 +550,31 @@ export default function GridsSection() {
                       <h3 className="font-heading font-semibold text-lg text-neutral-950 dark:text-white">{sample.name}</h3>
                     </div>
                   </div>
-                  
+
                   <p className="font-body text-neutral-700 dark:text-neutral-400 mb-5 leading-relaxed">{sample.description}</p>
-                  
+
                   {/* Grid Preview */}
                   <div className="mb-5 bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-800/80 dark:to-neutral-900 p-5 rounded-lg overflow-hidden border border-neutral-200/80 dark:border-neutral-700/30 shadow-inner">
                     {sample.name === "Balanced Grid" && (
                       <div className="grid grid-cols-3 gap-4">
                         {Array(3).fill(null).map((_, i) => (
                           <div key={i} className="h-16 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/50 dark:to-primary-800/50 border border-primary-200/50 dark:border-primary-800/40 rounded-md flex items-center justify-center text-primary-700 dark:text-primary-300 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
-                            <span className="font-medium">Column {i+1}</span>
+                            <span className="font-medium">Column {i + 1}</span>
                           </div>
                         ))}
                       </div>
                     )}
-                    
+
                     {sample.name === "Adaptive Grid" && (
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {Array(6).fill(null).map((_, i) => (
                           <div key={i} className="h-12 bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/50 dark:to-primary-800/50 border border-primary-200/50 dark:border-primary-800/40 rounded-md flex items-center justify-center text-primary-700 dark:text-primary-300 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
-                            <span className="font-medium">Item {i+1}</span>
+                            <span className="font-medium">Item {i + 1}</span>
                           </div>
                         ))}
                       </div>
                     )}
-                    
+
                     {sample.name === "Focal Grid" && (
                       <div className="grid grid-cols-6 gap-4">
                         <div className="col-span-4 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-700/70 dark:to-primary-600/70 border border-primary-400/50 dark:border-primary-700/40 rounded-md flex items-center justify-center text-white shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
@@ -590,7 +591,7 @@ export default function GridsSection() {
                         </div>
                       </div>
                     )}
-                    
+
                     {sample.name === "Precision Grid" && (
                       <div className="grid grid-cols-12 gap-3">
                         <div className="col-start-1 col-end-9 h-12 bg-gradient-to-br from-primary-200 to-primary-300 dark:from-primary-800/60 dark:to-primary-700/60 border border-primary-300/50 dark:border-primary-700/40 rounded-md flex items-center justify-center text-primary-800 dark:text-primary-200 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
@@ -607,7 +608,7 @@ export default function GridsSection() {
                         </div>
                       </div>
                     )}
-                    
+
                     {sample.name === "Dynamic Grid" && (
                       <div className="grid grid-cols-3 grid-flow-dense gap-3">
                         <div className="col-span-2 h-12 bg-gradient-to-br from-primary-300 to-primary-400 dark:from-primary-700/70 dark:to-primary-600/70 border border-primary-400/50 dark:border-primary-700/40 rounded-md flex items-center justify-center text-white shadow-sm transition-transform duration-300 group-hover:scale-[1.02]">
@@ -628,7 +629,7 @@ export default function GridsSection() {
                       </div>
                     )}
                   </div>
-                  
+
                   {/* Code Snippet */}
                   <div className="relative">
                     <div className="absolute -top-4 -right-4 transform rotate-12 bg-primary-50 dark:bg-primary-900/40 px-2 py-1 text-xs font-semibold text-primary-700 dark:text-primary-300 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
@@ -646,13 +647,13 @@ export default function GridsSection() {
             ))}
           </div>
         </div>
-          {/* Design Principles Section */}
+        {/* Design Principles Section */}
         <div className="mb-16">
           <div className="relative bg-gradient-to-br from-white to-primary-50/80 dark:from-neutral-900 dark:to-primary-900/20 rounded-2xl p-8 lg:p-10 shadow-lg border border-primary-100/60 dark:border-primary-800/30 overflow-hidden">
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
               <div className="absolute right-0 top-0 w-full h-full bg-grid-pattern-light dark:bg-grid-pattern-dark transform rotate-12 scale-150 translate-x-1/4 -translate-y-1/4"></div>
             </div>
-            
+
             <div className="relative z-10">
               <div className="flex flex-col md:flex-row gap-8 items-center mb-10">
                 <div className="md:w-1/3">
@@ -662,16 +663,16 @@ export default function GridsSection() {
                     </svg>
                   </div>
                 </div>
-                
+
                 <div className="md:w-2/3">
                   <h3 className="font-heading font-semibold text-2xl md:text-3xl text-neutral-950 dark:text-white mb-4 text-center md:text-left">The Art of Grid Design</h3>
-                  <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">                    A harmonious grid system isn&apos;t just about technical implementation—it&apos;s about creating visual rhythm and balance 
-                    that guides the user&apos;s eye naturally through the content. The principles below will help you create designs that feel 
+                  <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">                    A harmonious grid system isn&apos;t just about technical implementation—it&apos;s about creating visual rhythm and balance
+                    that guides the user&apos;s eye naturally through the content. The principles below will help you create designs that feel
                     intentional, refined, and emotionally resonant.
                   </p>
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="bg-white/80 dark:bg-neutral-900/80 rounded-xl p-6 shadow-md backdrop-blur-sm transform transition hover:translate-y-[-5px] duration-500">
                   <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-4 shadow-sm">
@@ -701,7 +702,7 @@ export default function GridsSection() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-white/80 dark:bg-neutral-900/80 rounded-xl p-6 shadow-md backdrop-blur-sm transform transition hover:translate-y-[-5px] duration-500">
                   <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-4 shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-700 dark:text-primary-300">
@@ -730,7 +731,7 @@ export default function GridsSection() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-white/80 dark:bg-neutral-900/80 rounded-xl p-6 shadow-md backdrop-blur-sm transform transition hover:translate-y-[-5px] duration-500">
                   <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-4 shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-primary-700 dark:text-primary-300">
@@ -760,7 +761,7 @@ export default function GridsSection() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="mt-8 md:mt-12 bg-primary-50/80 dark:bg-primary-900/30 rounded-xl p-5 border border-primary-100 dark:border-primary-800/30">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6">
                   <div className="w-12 h-12 flex-shrink-0 rounded-full bg-white/90 dark:bg-neutral-800/90 flex items-center justify-center shadow-sm">
@@ -770,7 +771,7 @@ export default function GridsSection() {
                   </div>
                   <div>
                     <h4 className="font-medium text-lg text-neutral-900 dark:text-white mb-2 text-center md:text-left">Designer&apos;s Insight</h4>                    <p className="text-neutral-700 dark:text-neutral-300 italic">
-                      &quot;The most sophisticated designs often appear simple—they achieve harmony through disciplined use of grid systems. 
+                      &quot;The most sophisticated designs often appear simple—they achieve harmony through disciplined use of grid systems.
                       Their elegance comes not from adding more elements, but from finding the perfect placement for every essential one.&quot;
                     </p>
                   </div>
@@ -779,7 +780,7 @@ export default function GridsSection() {
             </div>
           </div>
         </div>
-          {/* Developer Resources Section */}
+        {/* Developer Resources Section */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/40">
@@ -887,14 +888,14 @@ export default function GridsSection() {
                   </div>
                   <pre className="p-3 text-xs overflow-x-auto">
                     <code className="font-mono text-neutral-800 dark:text-neutral-300">
-                      &lt;div class=&quot;<span className="text-emerald-600 dark:text-emerald-400">grid</span> 
-      <span className="text-primary-600 dark:text-primary-400">grid-cols-1</span> 
-      <span className="text-emerald-600 dark:text-emerald-400">sm:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-2</span> 
-      <span className="text-emerald-600 dark:text-emerald-400">md:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-3</span> 
-      <span className="text-emerald-600 dark:text-emerald-400">lg:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-4</span> 
-      <span className="text-emerald-600 dark:text-emerald-400">gap-4</span>&quot;&gt;
-        &lt;!-- Content adapts to all screen sizes --&gt;
-      &lt;/div&gt;
+                      &lt;div class=&quot;<span className="text-emerald-600 dark:text-emerald-400">grid</span>
+                      <span className="text-primary-600 dark:text-primary-400">grid-cols-1</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">sm:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-2</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">md:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-3</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">lg:</span><span className="text-primary-600 dark:text-primary-400">grid-cols-4</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">gap-4</span>&quot;&gt;
+                      &lt;!-- Content adapts to all screen sizes --&gt;
+                      &lt;/div&gt;
                     </code>
                   </pre>
                 </div>

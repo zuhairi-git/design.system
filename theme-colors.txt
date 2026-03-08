@@ -3,8 +3,8 @@
 ## Light Theme
 background: #ffffff
 foreground: #1f2937
-primary: #3b82f6
-primary-hover: #2563eb
+primary: #6366f1
+primary-hover: #4f46e5
 gradient-start: #3b82f6
 gradient-mid: #a855f7
 gradient-end: #3b82f6
@@ -29,8 +29,8 @@ bg-theme-light: #f9fafb
 ## Dark Theme
 background: #0a0a0a
 foreground: #ededed
-primary: #3b82f6
-primary-hover: #2563eb
+primary: #6366f1
+primary-hover: #4f46e5
 gradient-start: #3b82f6
 gradient-mid: #a855f7
 gradient-end: #3b82f6

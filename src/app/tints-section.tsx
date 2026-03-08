@@ -1,4 +1,5 @@
 import AnimatedSection from "@/components/AnimatedSection";
+import { SwatchIcon } from '@heroicons/react/24/outline';
 
 export default function TintsSection() {
   return (
@@ -6,14 +7,14 @@ export default function TintsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30">
-            <span className="mr-2">🖌️</span> Transparency System
+            <SwatchIcon className="w-4 h-4 mr-2" /> Transparency System
           </div>
           <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">Tints</h2>
           <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Our tint system provides transparent overlays for various UI elements.
           </p>
         </div>
-        
+
         <div className="bg-white dark:bg-neutral-900 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 mb-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -25,7 +26,7 @@ export default function TintsSection() {
               { name: "Accent Dark", color: "rgba(254, 73, 17, 0.4)", textColor: "text-white", usage: "Strong accent emphasis" },
             ].map((tint, index) => (
               <div key={index} className="hover:-translate-y-1 transition-all duration-300">
-                <div 
+                <div
                   className="h-40 rounded-xl mb-4 flex items-center justify-center shadow-md overflow-hidden"
                   style={{ backgroundColor: tint.color }}
                 >

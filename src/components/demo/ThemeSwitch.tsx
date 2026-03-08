@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { RadioGroup } from '@headlessui/react';
+import { SunIcon, MoonIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 // Mock theme context for demo purposes
 const useTheme = () => {
@@ -13,12 +14,12 @@ const useTheme = () => {
 export default function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
   const [announcement, setAnnouncement] = useState('');
-  
-  const themes = [
-    { value: 'light', label: 'Light Theme', icon: '☀️' },
-    { value: 'dark', label: 'Dark Theme', icon: '🌙' },
-    { value: 'colorful', label: 'Colorful Theme', icon: '🎨' }
-  ] as const;
+
+  const themes: { value: 'light' | 'dark' | 'colorful'; label: string; icon: ReactNode }[] = [
+    { value: 'light', label: 'Light Theme', icon: <SunIcon className="w-5 h-5" /> },
+    { value: 'dark', label: 'Dark Theme', icon: <MoonIcon className="w-5 h-5" /> },
+    { value: 'colorful', label: 'Colorful Theme', icon: <SparklesIcon className="w-5 h-5" /> }
+  ];
 
   // Get theme-specific styling for selected state
   const getSelectedStyles = (themeValue: typeof theme) => {
@@ -72,11 +73,10 @@ export default function ThemeSwitch() {
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative w-10 h-10 flex items-center justify-center rounded-full cursor-pointer overflow-hidden ${
-                    checked 
+                  className={`relative w-10 h-10 flex items-center justify-center rounded-full cursor-pointer overflow-hidden ${checked
                       ? getSelectedStyles(themeOption.value)
                       : getUnselectedStyles(theme)
-                  }`}
+                    }`}
                   role="button"
                   aria-label={themeOption.label}
                   aria-pressed={checked}
@@ -103,7 +103,7 @@ export default function ThemeSwitch() {
                   )}
 
                   {/* Icon with enhanced animations */}
-                  <motion.span 
+                  <motion.span
                     className="text-lg relative z-10"
                     animate={checked ? {
                       rotate: [0, 10, -10, 0],
@@ -138,9 +138,9 @@ export default function ThemeSwitch() {
 
       {/* Screen reader announcement */}
       {announcement && (
-        <div 
-          role="status" 
-          aria-live="polite" 
+        <div
+          role="status"
+          aria-live="polite"
           aria-atomic="true"
           className="sr-only"
         >

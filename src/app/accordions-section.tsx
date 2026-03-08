@@ -1,5 +1,6 @@
 import AnimatedSection from "@/components/AnimatedSection";
 import { AccordionShowcase } from "@/components/Accordion";
+import { SparklesIcon, MoonIcon, SunIcon, CheckCircleIcon, ExclamationTriangleIcon, NoSymbolIcon } from '@heroicons/react/24/outline';
 
 export default function AccordionSection() {
   return (
@@ -12,11 +13,11 @@ export default function AccordionSection() {
             </svg>
             Expandable Components
           </div>
-          
+
           <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
             Accordions
           </h2>
-          
+
           <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Collapsible content sections with multiple variants, icon support, badges, and nested tabs.
           </p>
@@ -34,13 +35,13 @@ export default function AccordionSection() {
             </span>
             Usage Examples
           </h3>
-          
+
           <div className="space-y-6">
             <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-6 border border-neutral-200 dark:border-neutral-700">
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Basic Accordion</h4>
               <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto">
                 <pre className="text-xs text-neutral-800 dark:text-neutral-200 font-mono">
-{`import Accordion from '@/components/Accordion';
+                  {`import Accordion from '@/components/Accordion';
 
 const items = [
   {
@@ -61,7 +62,7 @@ const items = [
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Advanced Configuration</h4>
               <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto">
                 <pre className="text-xs text-neutral-800 dark:text-neutral-200 font-mono">
-{`<Accordion 
+                  {`<Accordion 
   items={items}
   variant="bordered"        // default | bordered | filled | minimal
   allowMultiple={true}      // Allow multiple items open
@@ -75,7 +76,7 @@ const items = [
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Item with Nested Tabs</h4>
               <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto">
                 <pre className="text-xs text-neutral-800 dark:text-neutral-200 font-mono">
-{`const itemWithTabs = {
+                  {`const itemWithTabs = {
   id: 'complex-item',
   title: 'Component Documentation',
   content: 'This section contains detailed documentation.',
@@ -90,7 +91,7 @@ const items = [
               <h4 className="font-medium text-neutral-950 dark:text-white mb-4">Theme Variations</h4>
               <div className="bg-neutral-100 dark:bg-neutral-950 p-4 rounded-md overflow-auto">
                 <pre className="text-xs text-neutral-800 dark:text-neutral-200 font-mono">
-{`// Light theme (default)
+                  {`// Light theme (default)
 <Accordion items={items} theme="light" />
 
 // Dark theme with enhanced contrast
@@ -138,7 +139,7 @@ const items = [
           </h3>
           <div className="grid md:grid-cols-3 gap-4 text-sm text-purple-800 dark:text-purple-200">
             <div>
-              <h4 className="font-medium mb-2 text-purple-900 dark:text-purple-100">🌟 Colorful Theme</h4>
+              <h4 className="font-medium mb-2 text-purple-900 dark:text-purple-100 flex items-center gap-1.5"><SparklesIcon className="w-4 h-4" /> Colorful Theme</h4>
               <ul className="space-y-1">
                 <li>• Purple & blue gradients</li>
                 <li>• Enhanced badge borders</li>
@@ -147,7 +148,7 @@ const items = [
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-2 text-purple-900 dark:text-purple-100">🌙 Dark Theme</h4>
+              <h4 className="font-medium mb-2 text-purple-900 dark:text-purple-100 flex items-center gap-1.5"><MoonIcon className="w-4 h-4" /> Dark Theme</h4>
               <ul className="space-y-1">
                 <li>• High contrast backgrounds</li>
                 <li>• Optimized text readability</li>
@@ -156,7 +157,7 @@ const items = [
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-2 text-purple-900 dark:text-purple-100">☀️ Light Theme</h4>
+              <h4 className="font-medium mb-2 text-purple-900 dark:text-purple-100 flex items-center gap-1.5"><SunIcon className="w-4 h-4" /> Light Theme</h4>
               <ul className="space-y-1">
                 <li>• Clean, minimal styling</li>
                 <li>• Subtle shadow effects</li>
@@ -174,7 +175,7 @@ const items = [
           </h3>
           <div className="grid md:grid-cols-3 gap-4 text-sm text-amber-800 dark:text-amber-200">
             <div>
-              <h4 className="font-medium mb-2 text-amber-900 dark:text-amber-100">✅ Good For</h4>
+              <h4 className="font-medium mb-2 text-amber-900 dark:text-amber-100 flex items-center gap-1.5"><CheckCircleIcon className="w-4 h-4" /> Good For</h4>
               <ul className="space-y-1">
                 <li>• FAQ sections</li>
                 <li>• Documentation organization</li>
@@ -183,7 +184,7 @@ const items = [
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-2 text-amber-900 dark:text-amber-100">⚠️ Consider Alternatives</h4>
+              <h4 className="font-medium mb-2 text-amber-900 dark:text-amber-100 flex items-center gap-1.5"><ExclamationTriangleIcon className="w-4 h-4" /> Consider Alternatives</h4>
               <ul className="space-y-1">
                 <li>• Frequently accessed content</li>
                 <li>• Complex interactive content</li>
@@ -192,7 +193,7 @@ const items = [
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-2 text-amber-900 dark:text-amber-100">🚫 Avoid For</h4>
+              <h4 className="font-medium mb-2 text-amber-900 dark:text-amber-100 flex items-center gap-1.5"><NoSymbolIcon className="w-4 h-4" /> Avoid For</h4>
               <ul className="space-y-1">
                 <li>• Primary navigation</li>
                 <li>• Critical user actions</li>

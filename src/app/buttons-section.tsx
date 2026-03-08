@@ -1,4 +1,5 @@
 import AnimatedSection from "@/components/AnimatedSection";
+import { CursorArrowRaysIcon } from '@heroicons/react/24/outline';
 
 export default function ButtonsSection() {
   return (
@@ -10,7 +11,7 @@ export default function ButtonsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-14">
           <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
-            <span>👆</span> Button System
+            <CursorArrowRaysIcon className="w-4 h-4" /> Button System
           </div>
           <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white mb-4 tracking-tight">
             Buttons

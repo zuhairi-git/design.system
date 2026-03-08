@@ -9,6 +9,7 @@ import GridOnIcon from '@mui/icons-material/GridOn';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import RulerIcon from '@mui/icons-material/Straighten';
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 export default function SpacingSection() {
   const [selectedSpacing, setSelectedSpacing] = useState("4");
@@ -46,7 +47,7 @@ export default function SpacingSection() {
   const getCategoryColor = (category: string) => {
     const colors = {
       micro: "from-blue-500 to-blue-600",
-      base: "from-green-500 to-green-600", 
+      base: "from-green-500 to-green-600",
       layout: "from-purple-500 to-purple-600",
       macro: "from-orange-500 to-orange-600"
     };
@@ -56,7 +57,7 @@ export default function SpacingSection() {
   const getExampleColor = (type: string) => {
     const colors = {
       padding: "bg-blue-100 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700",
-      margin: "bg-green-100 dark:bg-green-900/30 border-green-300 dark:border-green-700", 
+      margin: "bg-green-100 dark:bg-green-900/30 border-green-300 dark:border-green-700",
       gap: "bg-purple-100 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700"
     };
     return colors[type as keyof typeof colors] || "bg-gray-100 dark:bg-gray-900/30";
@@ -65,16 +66,16 @@ export default function SpacingSection() {
   const selectedSpacingData = allSpacingValues.find(s => s.name === selectedSpacing);
 
   return (
-    <AnimatedSection 
-      id="spacing" 
-      className="ds-section" 
+    <AnimatedSection
+      id="spacing"
+      className="ds-section"
       animation="slide-up"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header with gradient */}
         <div className="mb-14">
           <div className="inline-flex items-center px-4 py-2 mb-6 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg">
-            <SpaceBarIcon className="mr-2" fontSize="small" /> 
+            <SpaceBarIcon className="mr-2" fontSize="small" />
             Enhanced Spacing System
           </div>
           <h2 className="font-heading font-bold text-4xl md:text-5xl bg-gradient-to-r from-neutral-900 to-neutral-700 dark:from-white dark:to-neutral-300 bg-clip-text text-transparent mb-6">
@@ -90,17 +91,16 @@ export default function SpacingSection() {
           <div className="flex flex-wrap items-center gap-4 mb-6">
             <button
               onClick={() => setShowGrid(!showGrid)}
-              className={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all ${
-                showGrid 
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' 
-                  : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
-              }`}
+              className={`inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all ${showGrid
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
+                }`}
               aria-label="Toggle 4px grid overlay"
             >
               <GridOnIcon className="mr-2" fontSize="small" />
               {showGrid ? 'Hide' : 'Show'} 4px Grid
             </button>
-            
+
             <div className="flex items-center gap-2">
               <TouchAppIcon className="text-neutral-500" fontSize="small" />
               <span className="text-sm text-neutral-600 dark:text-neutral-400">
@@ -114,11 +114,10 @@ export default function SpacingSection() {
               <button
                 key={type}
                 onClick={() => setActiveExample(type)}
-                className={`p-4 rounded-xl border-2 transition-all ${
-                  activeExample === type
-                    ? getExampleColor(type) + ' border-current shadow-lg transform scale-105'
-                    : 'bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700'
-                }`}
+                className={`p-4 rounded-xl border-2 transition-all ${activeExample === type
+                  ? getExampleColor(type) + ' border-current shadow-lg transform scale-105'
+                  : 'bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-700'
+                  }`}
                 aria-pressed={activeExample === type}
               >
                 <div className="font-medium text-neutral-900 dark:text-white capitalize">{type} Preview</div>
@@ -145,26 +144,25 @@ export default function SpacingSection() {
                   {category === 'macro' && 'Page-level and major spacing'}
                 </p>
               </div>
-              
+
               <div className="p-6">
                 <div className="space-y-4">
                   {values.map((spacing) => (
                     <button
                       key={spacing.name}
                       onClick={() => setSelectedSpacing(spacing.name)}
-                      className={`w-full flex items-center p-4 rounded-xl border-2 transition-all ${
-                        selectedSpacing === spacing.name
-                          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 shadow-lg transform scale-102'
-                          : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800'
-                      }`}
+                      className={`w-full flex items-center p-4 rounded-xl border-2 transition-all ${selectedSpacing === spacing.name
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 shadow-lg transform scale-102'
+                        : 'border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 dark:hover:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800'
+                        }`}
                       aria-label={`Select ${spacing.pixels}px spacing`}
                     >
                       <div className="flex items-center mr-4">
                         <div className="relative">
-                          <div 
+                          <div
                             className={`bg-gradient-to-r ${getCategoryColor(category)} rounded shadow-sm`}
-                            style={{ 
-                              height: '12px', 
+                            style={{
+                              height: '12px',
                               width: spacing.pixels === 0 ? '2px' : `${Math.min(spacing.pixels, 48)}px`
                             }}
                           />
@@ -173,7 +171,7 @@ export default function SpacingSection() {
                           )}
                         </div>
                       </div>
-                      
+
                       <div className="flex-1 text-left">
                         <div className="flex items-center gap-3 mb-1">
                           <span className="font-bold text-lg text-neutral-900 dark:text-white">
@@ -190,7 +188,7 @@ export default function SpacingSection() {
                           {spacing.usage}
                         </div>
                       </div>
-                      
+
                       <div className="ml-4">
                         <RulerIcon className="text-neutral-400" fontSize="small" />
                       </div>
@@ -205,7 +203,7 @@ export default function SpacingSection() {
           <h3 className="font-heading text-2xl font-bold text-neutral-900 dark:text-white mb-6">
             Live Spacing Preview
           </h3>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -218,10 +216,10 @@ export default function SpacingSection() {
                   </span>
                 )}
               </div>
-              
+
               <div className="bg-neutral-100 dark:bg-neutral-800 rounded-xl p-6 min-h-48 flex items-center justify-center">
                 {activeExample === 'padding' && (
-                  <div 
+                  <div
                     className={`bg-blue-200 dark:bg-blue-800/50 border-2 border-blue-400 dark:border-blue-600 rounded-lg transition-all duration-300 flex items-center justify-center`}
                     style={{ padding: `${selectedSpacingData?.pixels || 16}px` }}
                   >
@@ -230,11 +228,11 @@ export default function SpacingSection() {
                     </div>
                   </div>
                 )}
-                
+
                 {activeExample === 'margin' && (
                   <div className="flex flex-col items-center gap-4">
                     <div className="bg-white dark:bg-neutral-700 p-4 rounded-lg shadow-sm">Element 1</div>
-                    <div 
+                    <div
                       className="bg-green-200 dark:bg-green-800/50 border-2 border-green-400 dark:border-green-600 p-4 rounded-lg transition-all duration-300"
                       style={{ margin: `${selectedSpacingData?.pixels || 16}px 0` }}
                     >
@@ -243,9 +241,9 @@ export default function SpacingSection() {
                     <div className="bg-white dark:bg-neutral-700 p-4 rounded-lg shadow-sm">Element 3</div>
                   </div>
                 )}
-                
+
                 {activeExample === 'gap' && (
-                  <div 
+                  <div
                     className="flex items-center transition-all duration-300"
                     style={{ gap: `${selectedSpacingData?.pixels || 16}px` }}
                   >
@@ -256,12 +254,12 @@ export default function SpacingSection() {
                 )}
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-medium text-neutral-800 dark:text-neutral-200 mb-4">Code Example</h4>
-              <CodeSnippet 
+              <CodeSnippet
                 code={
-                  activeExample === 'padding' 
+                  activeExample === 'padding'
                     ? `<div className="p-${selectedSpacingData?.tailwind || '4'}">
   Content with ${selectedSpacingData?.pixels || 16}px padding
 </div>
@@ -274,7 +272,7 @@ export default function SpacingSection() {
 <div className="px-${selectedSpacingData?.tailwind || '4'}">Horizontal padding</div>
 <div className="py-${selectedSpacingData?.tailwind || '4'}">Vertical padding</div>`
                     : activeExample === 'margin'
-                    ? `<div className="m-${selectedSpacingData?.tailwind || '4'}">
+                      ? `<div className="m-${selectedSpacingData?.tailwind || '4'}">
   Element with ${selectedSpacingData?.pixels || 16}px margin
 </div>
 
@@ -285,7 +283,7 @@ export default function SpacingSection() {
 <div className="ml-${selectedSpacingData?.tailwind || '4'}">Left margin</div>
 <div className="mx-${selectedSpacingData?.tailwind || '4'}">Horizontal margin</div>
 <div className="my-${selectedSpacingData?.tailwind || '4'}">Vertical margin</div>`
-                    : `<div className="flex gap-${selectedSpacingData?.tailwind || '4'}">
+                      : `<div className="flex gap-${selectedSpacingData?.tailwind || '4'}">
   <div>Item 1</div>
   <div>Item 2</div>
   <div>Item 3</div>
@@ -324,7 +322,7 @@ export default function SpacingSection() {
                 </p>
               </div>
             </div>
-            
+
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="bg-green-500 rounded-full w-2 h-2 mt-2 mr-3 flex-shrink-0"></div>
@@ -337,7 +335,7 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-green-500 rounded-full w-2 h-2 mt-2 mr-3 flex-shrink-0"></div>
                 <div>
@@ -349,7 +347,7 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-green-500 rounded-full w-2 h-2 mt-2 mr-3 flex-shrink-0"></div>
                 <div>
@@ -361,7 +359,7 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="bg-green-500 rounded-full w-2 h-2 mt-2 mr-3 flex-shrink-0"></div>
                 <div>
@@ -381,10 +379,10 @@ export default function SpacingSection() {
             <h3 className="font-heading text-xl font-bold text-neutral-900 dark:text-white mb-6">
               Spacing Best Practices
             </h3>
-            
+
             <div className="space-y-4">
               <div className="flex items-start">
-                <span className="text-green-500 text-lg mr-3 flex-shrink-0">✓</span>
+                <CheckIcon className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-neutral-900 dark:text-white text-sm">
                     Use consistent scale values
@@ -394,9 +392,9 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
-                <span className="text-green-500 text-lg mr-3 flex-shrink-0">✓</span>
+                <CheckIcon className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-neutral-900 dark:text-white text-sm">
                     Progressive spacing increases
@@ -406,9 +404,9 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
-                <span className="text-green-500 text-lg mr-3 flex-shrink-0">✓</span>
+                <CheckIcon className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-neutral-900 dark:text-white text-sm">
                     Responsive spacing adjustments
@@ -418,9 +416,9 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
-                <span className="text-red-500 text-lg mr-3 flex-shrink-0">✗</span>
+                <XMarkIcon className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-neutral-900 dark:text-white text-sm">
                     Avoid arbitrary values
@@ -429,12 +427,12 @@ export default function SpacingSection() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
-                <span className="text-red-500 text-lg mr-3 flex-shrink-0">✗</span>
+                <XMarkIcon className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
                 <div>                  <p className="font-medium text-neutral-900 dark:text-white text-sm">
-                    Don&apos;t overcrowd interfaces
-                  </p>
+                  Don&apos;t overcrowd interfaces
+                </p>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
                     Ensure adequate breathing room between elements
                   </p>
@@ -449,7 +447,7 @@ export default function SpacingSection() {
           <h3 className="font-heading text-2xl font-bold text-neutral-900 dark:text-white mb-6">
             Real-World Usage Examples
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Card Example */}
             <div>
@@ -486,8 +484,8 @@ export default function SpacingSection() {
                     <label className="block text-sm font-medium text-neutral-900 dark:text-white mb-2">
                       Email
                     </label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       className="w-full px-3 py-2 border border-neutral-300 dark:border-neutral-600 rounded-lg"
                       placeholder="Enter your email"
                     />
@@ -496,8 +494,8 @@ export default function SpacingSection() {
                     <label className="block text-sm font-medium text-neutral-900 dark:text-white mb-2">
                       Password
                     </label>
-                    <input 
-                      type="password" 
+                    <input
+                      type="password"
                       className="w-full px-3 py-2 border border-neutral-300 dark:border-neutral-600 rounded-lg"
                       placeholder="Enter password"
                     />
