@@ -1,5 +1,5 @@
 /**
- * Accessibility utilities following WCAG 2.1 guidelines and Headless UI best practices
+ * Accessibility utilities following WCAG 2.2 guidelines and Headless UI best practices
  */
 
 import { useUniqueId } from './headlessPatterns';
@@ -275,10 +275,10 @@ export const colorContrast = {
       const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
       return result
         ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16),
-          }
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
         : null;
     };
 

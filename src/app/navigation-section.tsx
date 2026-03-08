@@ -7,10 +7,12 @@ import {
   HomeIcon,
   UserIcon,
   CogIcon,
+  Bars3Icon,
 } from '@heroicons/react/24/outline';
 import CodeSnippet from '@/components/CodeSnippet';
 import AnimatedSection from '@/components/AnimatedSection';
 import AdvancedNavigation from '@/components/demo/AdvancedNavigation';
+import Image from 'next/image';
 
 export default function NavigationSection() {
   const breadcrumbNavigation = [
@@ -21,18 +23,21 @@ export default function NavigationSection() {
 
   return (
     <AnimatedSection id="navigation" className="ds-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+            <Bars3Icon className="w-4 h-4" /> Navigation Patterns
+          </div>
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">
             Navigation Components
           </h2>
-          <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Comprehensive navigation patterns built with Headless UI and Tailwind CSS for seamless user experiences.
           </p>
         </div>
 
         <div className="space-y-16">
-          
+
           {/* Header Navigation */}
           <div className="space-y-8">
             <div>
@@ -50,9 +55,11 @@ export default function NavigationSection() {
                   {/* Brand / Profile */}
                   <div className="flex-shrink-0 ml-1">
                     <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white dark:ring-neutral-800 shadow-sm">
-                      <img
+                      <Image
                         src="/img/profile/image.png"
                         alt="Ali Al-Zuahri"
+                        width={40}
+                        height={40}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -64,7 +71,7 @@ export default function NavigationSection() {
                       <span>Home</span>
                       <ChevronRightIcon className="w-3 h-3 rotate-90" />
                     </button>
-                    
+
                     <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                       <span>Portfolio</span>
                       <ChevronRightIcon className="w-3 h-3 rotate-90" />
@@ -73,11 +80,11 @@ export default function NavigationSection() {
                     <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                       Blog
                     </a>
-                    
+
                     <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                       Audio Library
                     </a>
-                    
+
                     <a href="#" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                       Prompts
                     </a>
@@ -154,9 +161,8 @@ export default function NavigationSection() {
                                 Dashboard
                               </span>
                               <ChevronRightIcon
-                                className={`h-4 w-4 transition-transform ${
-                                  open ? 'rotate-90' : ''
-                                }`}
+                                className={`h-4 w-4 transition-transform ${open ? 'rotate-90' : ''
+                                  }`}
                               />
                             </Disclosure.Button>
                             <Transition
@@ -252,11 +258,10 @@ export default function NavigationSection() {
                         )}
                         <a
                           href={item.href}
-                          className={`text-sm font-medium transition-colors ${
-                            item.current
-                              ? 'text-blue-600 dark:text-blue-400'
-                              : 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300'
-                          }`}
+                          className={`text-sm font-medium transition-colors ${item.current
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-300'
+                            }`}
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
@@ -313,10 +318,9 @@ export default function NavigationSection() {
                 <Tab.List className="flex space-x-1 bg-neutral-100 dark:bg-neutral-700 p-1">
                   <Tab
                     className={({ selected }) =>
-                      `w-full rounded-lg py-2.5 text-sm font-medium leading-5 transition-all ${
-                        selected
-                          ? 'bg-white dark:bg-neutral-800 text-blue-700 dark:text-blue-400 shadow'
-                          : 'text-neutral-700 dark:text-neutral-300 hover:bg-white/[0.12] hover:text-blue-600'
+                      `w-full rounded-lg py-2.5 text-sm font-medium leading-5 transition-all ${selected
+                        ? 'bg-white dark:bg-neutral-800 text-blue-700 dark:text-blue-400 shadow'
+                        : 'text-neutral-700 dark:text-neutral-300 hover:bg-white/[0.12] hover:text-blue-600'
                       }`
                     }
                   >
@@ -324,10 +328,9 @@ export default function NavigationSection() {
                   </Tab>
                   <Tab
                     className={({ selected }) =>
-                      `w-full rounded-lg py-2.5 text-sm font-medium leading-5 transition-all ${
-                        selected
-                          ? 'bg-white dark:bg-neutral-800 text-blue-700 dark:text-blue-400 shadow'
-                          : 'text-neutral-700 dark:text-neutral-300 hover:bg-white/[0.12] hover:text-blue-600'
+                      `w-full rounded-lg py-2.5 text-sm font-medium leading-5 transition-all ${selected
+                        ? 'bg-white dark:bg-neutral-800 text-blue-700 dark:text-blue-400 shadow'
+                        : 'text-neutral-700 dark:text-neutral-300 hover:bg-white/[0.12] hover:text-blue-600'
                       }`
                     }
                   >
@@ -335,10 +338,9 @@ export default function NavigationSection() {
                   </Tab>
                   <Tab
                     className={({ selected }) =>
-                      `w-full rounded-lg py-2.5 text-sm font-medium leading-5 transition-all ${
-                        selected
-                          ? 'bg-white dark:bg-neutral-800 text-blue-700 dark:text-blue-400 shadow'
-                          : 'text-neutral-700 dark:text-neutral-300 hover:bg-white/[0.12] hover:text-blue-600'
+                      `w-full rounded-lg py-2.5 text-sm font-medium leading-5 transition-all ${selected
+                        ? 'bg-white dark:bg-neutral-800 text-blue-700 dark:text-blue-400 shadow'
+                        : 'text-neutral-700 dark:text-neutral-300 hover:bg-white/[0.12] hover:text-blue-600'
                       }`
                     }
                   >
@@ -408,7 +410,7 @@ export default function NavigationSection() {
               <div className="relative min-h-[80px] overflow-visible">
                 <AdvancedNavigation />
               </div>
-              
+
               {/* Demo Content Area */}
               <div className="p-8">
                 <div className="text-center">
@@ -416,8 +418,8 @@ export default function NavigationSection() {
                     Interactive Advanced Navigation
                   </h4>
                   <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-                    This is a fully interactive navigation component with all the advanced features including 
-                    dropdowns, animations, theme switching, and mobile responsiveness. Try clicking the dropdown arrows 
+                    This is a fully interactive navigation component with all the advanced features including
+                    dropdowns, animations, theme switching, and mobile responsiveness. Try clicking the dropdown arrows
                     and mobile menu button to see it in action.
                   </p>
                 </div>
@@ -474,7 +476,7 @@ export default function NavigationSection() {
                     </div>
                     <ChevronRightIcon className="w-4 h-4 text-neutral-400" />
                   </div>
-                  
+
                   <div className="bg-white/10 rounded-lg p-3 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">

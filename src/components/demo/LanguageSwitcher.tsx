@@ -3,7 +3,7 @@
 import React, { useState, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu } from '@headlessui/react';
-import { ChevronDownIcon, LanguageIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const FlagGB = () => (
   <svg viewBox="0 0 60 30" className="w-5 h-3.5 rounded-sm" aria-hidden="true">

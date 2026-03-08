@@ -2,10 +2,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  HomeIcon, 
-  UserIcon, 
+import {
+  HomeIcon,
+  UserIcon,
   SparklesIcon,
   ChevronDownIcon,
   Bars3Icon,
@@ -19,7 +20,7 @@ const AdvancedNavigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
   const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
-  
+
   const homeDropdownRef = useRef<HTMLDivElement>(null);
   const portfolioDropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -72,9 +73,11 @@ const AdvancedNavigation = () => {
         <div className="flex-shrink-0 ml-1">
           <Link href="/" className="block relative group">
             <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white dark:ring-neutral-800 shadow-sm group-hover:ring-blue-500 transition-all duration-300">
-              <img
+              <Image
                 src="/img/profile/image.png"
                 alt="Ali Al-Zuahri"
+                width={40}
+                height={40}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -93,7 +96,7 @@ const AdvancedNavigation = () => {
               <span>Home</span>
               <ChevronDownIcon className={`w-3 h-3 transition-transform duration-200 ${homeDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             <AnimatePresence>
               {homeDropdownOpen && (
                 <motion.div
@@ -128,7 +131,7 @@ const AdvancedNavigation = () => {
               <span>Portfolio</span>
               <ChevronDownIcon className={`w-3 h-3 transition-transform duration-200 ${portfolioDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             <AnimatePresence>
               {portfolioDropdownOpen && (
                 <motion.div
@@ -156,11 +159,11 @@ const AdvancedNavigation = () => {
           <Link href="/blog" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
             Blog
           </Link>
-          
+
           <Link href="/audio" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
             Audio Library
           </Link>
-          
+
           <Link href="/prompts" className="px-3 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
             Prompts
           </Link>
@@ -214,7 +217,7 @@ const AdvancedNavigation = () => {
                 <Link href="/prompts" className="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">
                   Prompts
                 </Link>
-                
+
                 <div className="pt-2 mt-2 border-t border-neutral-100 dark:border-neutral-800 flex justify-between px-4 py-2">
                   <div className="flex gap-2">
                     <LanguageSwitcher />

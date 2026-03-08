@@ -9,6 +9,7 @@ import {
   ExclamationCircleIcon,
   EyeIcon,
   EyeSlashIcon,
+  PencilSquareIcon,
 } from '@heroicons/react/24/outline';
 import CodeSnippet from '@/components/CodeSnippet';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -46,31 +47,31 @@ export default function FormsSection() {
     query === ''
       ? people
       : people.filter((person) =>
-          person.name
-            .toLowerCase()
-            .replace(/\s+/g, '')
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
-        );
+        person.name
+          .toLowerCase()
+          .replace(/\s+/g, '')
+          .includes(query.toLowerCase().replace(/\s+/g, ''))
+      );
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    
+
     if (!formData.password.trim()) {
       newErrors.password = 'Password is required';
     } else if (formData.password.length < 8) {
       newErrors.password = 'Password must be at least 8 characters';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -84,12 +85,15 @@ export default function FormsSection() {
 
   return (
     <AnimatedSection id="forms" className="ds-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-neutral-900 dark:text-white mb-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-14">
+          <div className="section-label text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20">
+            <PencilSquareIcon className="w-4 h-4" /> Input System
+          </div>
+          <h2 className="font-heading text-3xl md:text-4xl text-neutral-900 dark:text-white tracking-tight mb-4">
             Form Components
           </h2>
-          <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+          <p className="font-body text-lg text-neutral-500 dark:text-neutral-400 max-w-3xl">
             Comprehensive form controls built with Headless UI and Tailwind CSS, featuring validation, accessibility, and modern interactions.
           </p>
         </div>
@@ -120,11 +124,10 @@ export default function FormsSection() {
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`block w-full rounded-lg border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${
-                        errors.name
+                      className={`block w-full rounded-lg border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${errors.name
                           ? 'border-red-300 dark:border-red-600 focus:border-red-500 focus:ring-red-500 text-red-900 dark:text-red-100 placeholder-red-300'
                           : 'border-neutral-300 dark:border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-neutral-900 dark:text-white bg-white dark:bg-neutral-700'
-                      }`}
+                        }`}
                       placeholder="Enter your full name"
                     />
                     {errors.name && (
@@ -145,11 +148,10 @@ export default function FormsSection() {
                       id="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className={`block w-full rounded-lg border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${
-                        errors.email
+                      className={`block w-full rounded-lg border px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${errors.email
                           ? 'border-red-300 dark:border-red-600 focus:border-red-500 focus:ring-red-500 text-red-900 dark:text-red-100 placeholder-red-300'
                           : 'border-neutral-300 dark:border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-neutral-900 dark:text-white bg-white dark:bg-neutral-700'
-                      }`}
+                        }`}
                       placeholder="Enter your email"
                     />
                     {errors.email && (
@@ -172,11 +174,10 @@ export default function FormsSection() {
                       id="password"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                      className={`block w-full rounded-lg border px-3 py-2 pr-10 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${
-                        errors.password
+                      className={`block w-full rounded-lg border px-3 py-2 pr-10 shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors ${errors.password
                           ? 'border-red-300 dark:border-red-600 focus:border-red-500 focus:ring-red-500 text-red-900 dark:text-red-100 placeholder-red-300'
                           : 'border-neutral-300 dark:border-neutral-600 focus:border-blue-500 focus:ring-blue-500 text-neutral-900 dark:text-white bg-white dark:bg-neutral-700'
-                      }`}
+                        }`}
                       placeholder="Enter your password"
                     />
                     <button
@@ -281,10 +282,10 @@ export default function FormsSection() {
                 <Combobox value={selectedPerson} onChange={setSelectedPerson}>
                   <div className="relative mt-1">
                     <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white dark:bg-neutral-700 text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 sm:text-sm">                      <Combobox.Input
-                        className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-neutral-900 dark:text-white bg-white dark:bg-neutral-700 focus:ring-0"
-                        displayValue={(person: { id: number; name: string } | null) => person?.name || ''}
-                        onChange={(event) => setQuery(event.target.value)}
-                      />
+                      className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-neutral-900 dark:text-white bg-white dark:bg-neutral-700 focus:ring-0"
+                      displayValue={(person: { id: number; name: string } | null) => person?.name || ''}
+                      onChange={(event) => setQuery(event.target.value)}
+                    />
                       <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
                         <ChevronUpDownIcon
                           className="h-5 w-5 text-neutral-400"
@@ -309,8 +310,7 @@ export default function FormsSection() {
                             <Combobox.Option
                               key={person.id}
                               className={({ active }) =>
-                                `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                                  active ? 'bg-blue-600 text-white' : 'text-neutral-900 dark:text-white'
+                                `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? 'bg-blue-600 text-white' : 'text-neutral-900 dark:text-white'
                                 }`
                               }
                               value={person}
@@ -318,17 +318,15 @@ export default function FormsSection() {
                               {({ selected, active }) => (
                                 <>
                                   <span
-                                    className={`block truncate ${
-                                      selected ? 'font-medium' : 'font-normal'
-                                    }`}
+                                    className={`block truncate ${selected ? 'font-medium' : 'font-normal'
+                                      }`}
                                   >
                                     {person.name}
                                   </span>
                                   {selected ? (
                                     <span
-                                      className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                        active ? 'text-white' : 'text-blue-600'
-                                      }`}
+                                      className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? 'text-white' : 'text-blue-600'
+                                        }`}
                                     >
                                       <CheckIcon className="h-5 w-5" aria-hidden="true" />
                                     </span>
@@ -373,8 +371,7 @@ export default function FormsSection() {
                           <Listbox.Option
                             key={planIdx}
                             className={({ active }) =>
-                              `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                                active ? 'bg-amber-100 text-amber-900' : 'text-neutral-900 dark:text-white'
+                              `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? 'bg-amber-100 text-amber-900' : 'text-neutral-900 dark:text-white'
                               }`
                             }
                             value={plan}
@@ -383,9 +380,8 @@ export default function FormsSection() {
                               <>
                                 <div className="flex flex-col">
                                   <span
-                                    className={`block truncate ${
-                                      selected ? 'font-medium' : 'font-normal'
-                                    }`}
+                                    className={`block truncate ${selected ? 'font-medium' : 'font-normal'
+                                      }`}
                                   >
                                     {plan.name} - {plan.price}
                                   </span>
@@ -471,13 +467,11 @@ export default function FormsSection() {
                         key={plan.name}
                         value={plan}
                         className={({ active, checked }) =>
-                          `${
-                            active
-                              ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
-                              : ''
+                          `${active
+                            ? 'ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-sky-300'
+                            : ''
                           }
-                          ${
-                            checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white dark:bg-neutral-700'
+                          ${checked ? 'bg-sky-900 bg-opacity-75 text-white' : 'bg-white dark:bg-neutral-700'
                           }
                             relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                         }
@@ -489,17 +483,15 @@ export default function FormsSection() {
                                 <div className="text-sm">
                                   <RadioGroup.Label
                                     as="p"
-                                    className={`font-medium  ${
-                                      checked ? 'text-white' : 'text-neutral-900 dark:text-white'
-                                    }`}
+                                    className={`font-medium  ${checked ? 'text-white' : 'text-neutral-900 dark:text-white'
+                                      }`}
                                   >
                                     {plan.name}
                                   </RadioGroup.Label>
                                   <RadioGroup.Description
                                     as="span"
-                                    className={`inline ${
-                                      checked ? 'text-sky-100' : 'text-neutral-500 dark:text-neutral-400'
-                                    }`}
+                                    className={`inline ${checked ? 'text-sky-100' : 'text-neutral-500 dark:text-neutral-400'
+                                      }`}
                                   >
                                     <span>{plan.description}</span>{' '}
                                     <span aria-hidden="true">&middot;</span> <span>{plan.price}</span>
@@ -539,14 +531,12 @@ export default function FormsSection() {
                       <Switch
                         checked={enabled}
                         onChange={setEnabled}
-                        className={`${
-                          enabled ? 'bg-blue-600' : 'bg-neutral-200 dark:bg-neutral-600'
-                        } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+                        className={`${enabled ? 'bg-blue-600' : 'bg-neutral-200 dark:bg-neutral-600'
+                          } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
                       >
                         <span
-                          className={`${
-                            enabled ? 'translate-x-6' : 'translate-x-1'
-                          } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+                          className={`${enabled ? 'translate-x-6' : 'translate-x-1'
+                            } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
                         />
                       </Switch>
                     </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import AnimatedSection from '@/components/AnimatedSection';
 import CodeSnippet from '@/components/CodeSnippet';

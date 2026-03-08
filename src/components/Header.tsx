@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Combobox,
   ComboboxInput,
@@ -714,10 +715,12 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
                 <MenuButton className="flex rounded-full bg-white dark:bg-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ring-1 ring-neutral-200 dark:ring-neutral-700">
                   <span className="sr-only">Open user menu</span>
                   <div className="h-9 w-9 rounded-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
-                    <img
+                    <Image
                       className="h-full w-full object-cover"
                       src="/img/profile/image.png"
                       alt="Ali Al-Zuahri"
+                      width={36}
+                      height={36}
                     />
                   </div>
                 </MenuButton>
