@@ -30,9 +30,16 @@ export default function AnimatedSection({
     }
   }, [inView, hasAnimated]);
 
+  // Handle direct navigation to hash
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash === `#${id}`) {
+      setHasAnimated(true);
+    }
+  }, [id]);
+
   const getAnimationClass = () => {
     if (!hasAnimated) return 'opacity-0';
-    
+
     switch (animation) {
       case 'fade-in':
         return 'animate-fade-in';

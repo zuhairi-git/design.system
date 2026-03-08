@@ -412,8 +412,15 @@ export default function Header({ onSidebarToggle }: HeaderProps) {
       window.removeEventListener("scroll", detectActiveSection);
     };
   }, []); // Handle navigation link clicks
+  // Handle navigation link clicks
   const handleNavLinkClick = (sectionId: string) => {
     setActiveSection(sectionId);
+    // Close mobile menu after a tiny delay if open
+    if (mobileMenuOpen) {
+      setTimeout(() => {
+        setMobileMenuOpen(false);
+      }, 150);
+    }
   };
   // Create nav links from navigation structure
   const navLinks = navigationItems.map((item) => ({

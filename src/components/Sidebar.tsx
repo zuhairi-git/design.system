@@ -335,16 +335,18 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
   const handleNavClick = (item: NavigationItem) => {
     if (item.href) {
       setActiveSection(item.id);
-      // Close mobile sidebar after navigation
-      if (window.innerWidth < 768) {
-        onToggle();
+      // Close mobile sidebar after navigation with a tiny delay for smooth transition
+      if (typeof window !== 'undefined' && window.innerWidth < 1024) { // Use lg breakpoint for sidebar
+        setTimeout(() => {
+          onToggle();
+        }, 100);
       }
     }
   };
 
   // Clear search when sidebar closes on mobile
   useEffect(() => {
-    if (!isOpen && window.innerWidth < 768) {
+    if (!isOpen && typeof window !== 'undefined' && window.innerWidth < 1024) {
       setSearchQuery('');
     }
   }, [isOpen]);
@@ -437,14 +439,14 @@ export default function Sidebar({ isOpen, onToggle, className = '' }: SidebarPro
     <>
       {/* Mobile backdrop */}
       <div
-        className={`fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-40 md:hidden transition-opacity ease-linear duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-40 lg:hidden transition-opacity ease-linear duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={onToggle}
         aria-hidden="true"
       />
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-          } md:z-40 ${!isOpen ? 'md:hidden' : ''} ${className}`}
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 flex flex-col transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+          } lg:z-40 ${className}`}
         role="navigation"
         aria-label="Main navigation sidebar"
       >
